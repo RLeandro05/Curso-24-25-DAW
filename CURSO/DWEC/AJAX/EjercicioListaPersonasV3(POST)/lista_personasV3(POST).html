@@ -71,7 +71,7 @@
 	<script type="text/javascript">
 		let peticion; // Definir la petición como variable global para poder usarse correctamente
 		let urlListado = "servidor.php"; 																//CLASE: 'http://localhost/DAW_DWES_M/DWEC/AJAX/EjercicioListaPersonas/servidor.php'
-																										//CASA: 'http://localhost/2%C2%BADAW_M/DWEC/AJAX/EjercicioListaPersonas/servidor.php'
+		//CASA: 'http://localhost/2%C2%BADAW_M/DWEC/AJAX/EjercicioListaPersonas/servidor.php'
 		let objeto = new Object();
 
 		window.onload = function () {
@@ -97,14 +97,14 @@
 			objeto.servicio = "listar";
 
 			let parametros = {
-				method : "POST",
-				body : JSON.stringify(objeto)
+				method: "POST",
+				body: JSON.stringify(objeto)
 			};
 
-			fetch(urlListado, parametros).then(function(datos) {
+			fetch(urlListado, parametros).then(function (datos) {
 				console.log("datos: ", datos);
 				return datos.json();
-			}).then(function(response) {
+			}).then(function (response) {
 				console.log("response: ", response);
 				cargarLista(response);
 			});
@@ -181,7 +181,7 @@
 
 		const mostrarFormulario = () => { // Función para mostrar el formulario limpio en nueva persona
 			let formulario = document.getElementById("formPersonas");
-			
+
 			limpiarForm();
 
 			formulario.classList.add("ver");
@@ -214,7 +214,7 @@
 		}
 
 		const aniadirPersona = () => { // Función para añadir una nueva persona a la lista
-			desaparecerFormulario();
+			desaparecerFormulario1();
 
 			objeto.servicio = "insertar";
 			// Añadir atributos de los campos que se piden en el servidor
@@ -222,7 +222,21 @@
 			objeto.nombre = document.getElementById("nombre").value;
 			objeto.apellidos = document.getElementById("apellidos").value;
 
-			peticion.peticion(urlListado, "POST", cargarLista, JSON.stringify(objeto)); // Realizar nueva petición pero con "insertar"
+			
+			//peticion.peticion(urlListado, "POST", cargarLista, JSON.stringify(objeto)); // Realizar nueva petición pero con "insertar"
+
+			let parametros = {
+				method : "POST",
+				body : JSON.stringify(objeto)
+			};
+
+			fetch(urlListado, parametros).then(function (datos) {
+				console.log("datos: ", datos);
+				return datos.json();
+			}).then(function (response) {
+				console.log("response: ", response);
+				cargarLista(response);
+			});
 		}
 
 		const borrarPersona = (idPersona, nombrePersona, apellidosPersona) => { // Función para borrar una persona específica
@@ -230,8 +244,21 @@
 			objeto.servicio = "borrar";
 			objeto.id = idPersona;
 
-			if(confirm("¿Estás seguro de que deseas eliminar a '"+nombrePersona+" "+apellidosPersona+"'?")) {
-				peticion.peticion(urlListado, "POST", cargarLista, JSON.stringify(objeto));
+			let parametros = {
+				method: "POST",
+				body: JSON.stringify(objeto)
+			}
+
+			if (confirm("¿Estás seguro de que deseas eliminar a '" + nombrePersona + " " + apellidosPersona + "'?")) {
+				//peticion.peticion(urlListado, "POST", cargarLista, JSON.stringify(objeto));
+
+				fetch(urlListado, parametros).then(function (datos) {
+					console.log("datos: ", datos);
+					return datos.json();
+				}).then(function (response) {
+					console.log("response: ", response);
+					cargarLista(response);
+				});
 			}
 		}
 
@@ -260,8 +287,21 @@
 				//console.log(dniPersona, nombrePersona, apellidosPersona);
 
 
-				peticion.peticion(urlListado, "POST", cargarLista, JSON.stringify(objeto));
-				
+				//peticion.peticion(urlListado, "POST", cargarLista, JSON.stringify(objeto));
+
+				let parametros = {
+					method: "POST",
+					body: JSON.stringify(objeto)
+				}
+
+				fetch(urlListado, parametros).then(function (datos) {
+					console.log("datos: ", datos);
+					return datos.json();
+				}).then(function (response) {
+					console.log("response: ", response);
+					cargarLista(response);
+				});
+
 				desaparecerFormulario2();
 			}
 		}

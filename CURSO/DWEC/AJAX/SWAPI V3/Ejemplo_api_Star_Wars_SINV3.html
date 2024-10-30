@@ -113,7 +113,7 @@
 				let enlaceHomeworld = document.createElement("input");
 				enlaceHomeworld.type = "button";
 				enlaceHomeworld.value = obtenerPlaneta(personaje.homeworld, enlaceHomeworld);
-				enlaceHomeworld.onclick = function () {
+				enlaceHomeworld.onclick = () => {
 					mostrarDatosPlaneta(personaje.homeworld);
 				};
 				celdaHomeworld.appendChild(enlaceHomeworld);
@@ -131,14 +131,14 @@
 			});
 		}
 		function mostrarDatosPlaneta(urlPlaneta) {
-			console.log("Llega a mostrarDatosPlaneta.");
+			// console.log("Llega a mostrarDatosPlaneta.");
 			let bloqueContenido = document.getElementById("datosPlaneta");
 			bloqueContenido.innerHTML = "Datos del planeta: ";
 
 			let peticionPlaneta = new XMLHttpRequest();
 			peticionPlaneta.open('GET', urlPlaneta); // Poner true para realizar una petición asíncrona, es decir, que se ejecute en segundo plano sin refrescar la página
 			peticionPlaneta.onreadystatechange = function () {
-				if (peticionPlaneta.readyState == 4 && peticionPlaneta.status == 200) {
+				if (peticionPlaneta.readyState === 4 && peticionPlaneta.status === 200) {
 					let planeta = JSON.parse(peticionPlaneta.responseText);
 
 					let nombrePlaneta = document.createElement("p");
@@ -178,7 +178,7 @@
 		// Función para obtener el homeworld de un personaje mediante una nueva solicitud
 		const obtenerPlaneta = (url, enlaceHomeworld) => {
 			let peticionPlaneta = new XMLHttpRequest();
-			peticionPlaneta.open('GET', url);
+			peticionPlaneta.open('GET', url, true); // Poner true para realizar una petición asíncrona, es decir, que se ejecute en segundo plano sin refrescar la página
 			peticionPlaneta.onreadystatechange = function () {
 				if (peticionPlaneta.readyState == 4 && peticionPlaneta.status == 200) {
 					let planeta = JSON.parse(peticionPlaneta.responseText);

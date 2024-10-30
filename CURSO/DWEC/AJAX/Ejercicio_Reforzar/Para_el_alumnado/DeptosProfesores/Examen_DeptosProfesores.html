@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8" />
+	<title>Examen 1ª Evaluación DWEC</title>
+	<style>
+		h3 {
+			color: red;
+		}
+
+		/* CSS para el formulario:   */
+		.formProfes {
+			visibility: hidden;
+			position: absolute;
+			top: 20%;
+			left: 20%;
+			z-index: 11;
+			background-color: pink;
+			border: 2px solid maroon;
+			border-radius: 15px;
+			padding: 1em;
+			color: red;
+		}
+
+		.formProfes div label {
+			display: block;
+			margin-top: .5em;
+		}
+
+		.formProfes .btn {
+			display: block;
+			margin-top: 1em;
+		}
+
+
+		.ver {
+			visibility: visible;
+		}
+
+
+		#deptoDelProfe {
+			font-family: "Lucida Console", "Courier New", monospace;
+			font-size: 1.2em;
+			font-weight: bold;
+			color: blue;
+		}
+
+		#modificarProfesor {
+			border: 1px solid gray;
+			border-radius: 8px;
+			background-color: lightgray;
+			width: 300px;
+			height: 210px;
+			position: absolute;
+			left: 40%;
+			bottom: 35%;
+
+			display: none;
+		}
+
+		#modificarProfesor legend {
+			font-size: 1.2em;
+			text-align: center;
+		}
+
+		#atributos {
+			margin-left: .5em;
+		}
+
+		#atributos button {
+			cursor: pointer;
+		}
+
+		#atributos label:hover {
+			cursor: pointer;
+		}
+	</style>
+
+	<script type="text/javascript" src="utilAJAX.js"></script>
+	<script type="text/javascript">
+		/*
+		Cargar la tabla con las columnas ID, NOMBRE, DESCRIPCIÓN, y Acción, al inicio,
+		después de cargarse la página con los datos procedentes a la petición AJAX
+		correspondiente a deptosProfes.php.
+		La columna Acción contendrá un botón (1 punto)
+
+
+		2.Dar funcionalidad al los botones de la columna Acción de forma que,
+		al hacer click sobre dicho botón, se hará una petición para obtener los datos
+		de los profesores pertenecientes al departamento de la fila donde está dichobotón.
+		Dichos datos se utilizarán para pintarlos en la tabla profesores. (1 punto)
+
+
+		3. hacer que se indique el NOMBRE del departamento al que pertenecen
+		los profesores que se muestran en la tabla profesores. (0,5 puntos)
+
+
+		4. dar funcionalidad da los botones de la columna Eliminar.
+		De tal forma que cuando se pulse sobre uno de estos botones,
+		se preguntará si se desea eliminar al profesor de esa fila,
+		(de no ser así, si no se pregunta con opción a cancelar la acción, estapregunta NO puntuará)
+		y si la respuesta es afirmativa,
+		entonces se procederá a eliminar a ese profesor. (1 punto)
+
+
+		5. Añadir el código javascript para poder AÑADIR nuevos profesores, esto es,
+		utilizar los campos de “Añadir profe”, para,
+		rellenándolos poder añadir un nuevo profesor (2 puntos).
+		
+
+		6. Añadir el código javascript para poder MODIFICAR profesores, esto es,
+		utilizar los campos de “Modificar profe”, para,
+		rellenándolos poder modificar un nuevo profesor (2,5 puntos).
+		*/
+
+		let urlServidor = 'deptosProfes.php';
+		let objeto = new Object();
+		let peticion;
+
+		window.onload = () => {
+			//console.log("Entra en .onload");
+
+			peticion = new pAJAX();
+
+			cargarListaDptos(urlServidor);
+
+			document.querySelector("#cancelar").onclick = desaparecerFormularioModificar;
+
+			document.querySelector("#btCancelar").onclick = desaparecerFormularioAniadir;
+
+			document.querySelector("#btNuevaProfe").onclick = aniadirNuevoProfe;
+		}
+
+		const cargarListaDptos = (url) => { //Función para realizar petición 
+			//console.log("Entra en cargarListaDptos y la url es: ", url);
+
+			objeto.servicio = "departamentos";
+			//console.log(objeto.servicio);
+
+
+			peticion.peticion(url, 'POST', mostrarListaDptos, JSON.stringify(objeto));
+		}
+
+		const mostrarListaDptos = (response) => { //Función para mostrar la lista de Departamentos
+			//console.log("Entra en mostrarListaDptos porque la petición se realiza correctamente");
+
+			let listaDptos = JSON.parse(response);
+			//console.log(listaDptos);
+
+			let cuerpoTablaDepartamentos = document.querySelector("div#departamentos table tbody");
+			listaDptos.forEach(dpto => {
+				let fila = document.createElement("tr");
+
+				let celdaID = document.createElement("td");
+				celdaID.textContent = dpto.ID;
+
+				let celdaNOMBRE = document.createElement("td");
+				celdaNOMBRE.textContent = dpto.NOMBRE;
+
+				let celdaDESCRIPCION = document.createElement("td");
+				celdaDESCRIPCION.textContent = dpto.DESCRIPCION;
+
+				let celdaBOTON = document.createElement("button");
+				celdaBOTON.textContent = "Acción";
+				celdaBOTON.style.cursor = "pointer";
+				celdaBOTON.type = "button";
+				celdaBOTON.onclick = function () {
+					cargarListaProfesores(dpto.ID); //Llamar a la función cada que vez que se pinche en el botón
+					mostrarNombreDpto(dpto.NOMBRE);
+				}
+
+				fila.appendChild(celdaID);
+				fila.appendChild(celdaNOMBRE);
+				fila.appendChild(celdaDESCRIPCION);
+				fila.appendChild(celdaBOTON);
+
+				cuerpoTablaDepartamentos.appendChild(fila);
+			});
+
+		}
+
+		const mostrarNombreDpto = (nombreDpto) => { //Función para mostrar el nombre del departamento especificado
+			let spanDpto = document.querySelector("#deptoDelProfe");
+			spanDpto.textContent = nombreDpto;
+		}
+
+		const cargarListaProfesores = (idDpto) => { //Función para realizar petición
+			//console.log("Llega a cargarListaProfesores y el id es: ", idDpto);
+
+			objeto.servicio = "profesores";
+			objeto.id_departamento = idDpto;
+
+			peticion.peticion(urlServidor, 'POST', mostrarListaProfesores, JSON.stringify(objeto));
+		}
+
+		const mostrarListaProfesores = (response) => { //Función para mostrar los profesores
+			//console.log("Llega a mostrarListaProfesores porque la petición se realizó correctamente");
+
+			let listaProfesores = JSON.parse(response);
+			//console.log(listaProfesores);
+
+			let cuerpoTablaProfesores = document.querySelector("#detalle_profesores");
+			cuerpoTablaProfesores.textContent = "";
+
+			listaProfesores.forEach(profesor => {
+				let fila = document.createElement("tr");
+
+				let celdaID = document.createElement("td");
+				celdaID.textContent = profesor.ID;
+
+				let celdaDNI = document.createElement("td");
+				celdaDNI.textContent = profesor.DNI;
+
+				let celdaNOMBRE = document.createElement("td");
+				celdaNOMBRE.textContent = profesor.NOMBRE;
+
+				let celdaAPELLIDOS = document.createElement("td");
+				celdaAPELLIDOS.textContent = profesor.APELLIDOS;
+
+				let celdaELIMINAR = document.createElement("td");
+				let botonELIMINAR = document.createElement("button");
+				celdaELIMINAR.appendChild(botonELIMINAR);
+				botonELIMINAR.textContent = "Eliminar";
+				botonELIMINAR.type = "button";
+				botonELIMINAR.style.cursor = "pointer";
+				botonELIMINAR.onclick = function () {
+					eliminarProfesor(profesor.ID, profesor.NOMBRE, profesor.APELLIDOS);
+				}
+
+				let celdaEDITAR = document.createElement("td");
+				let botonEDITAR = document.createElement("button");
+				celdaEDITAR.appendChild(botonEDITAR);
+				botonEDITAR.textContent = "Editar";
+				botonEDITAR.type = "button";
+				botonEDITAR.style.cursor = "pointer";
+				botonEDITAR.onclick = function () {
+					modificarProfesor(profesor.ID, profesor.DNI, profesor.NOMBRE, profesor.APELLIDOS);
+				}
+
+				fila.appendChild(celdaID);
+				fila.appendChild(celdaDNI);
+				fila.appendChild(celdaNOMBRE);
+				fila.appendChild(celdaAPELLIDOS);
+				fila.appendChild(celdaELIMINAR);
+				fila.appendChild(celdaEDITAR);
+
+				cuerpoTablaProfesores.appendChild(fila);
+			});
+		}
+
+		const eliminarProfesor = (idProfesor, nombreProfesor, apellidosProfesor) => { //Función para eliminar un profesor específico
+			//console.log("Entra en eliminarProfesor, y lleva el id: ", idProfesor);
+
+			objeto.servicio = "eliminaProfe";
+			objeto.id = idProfesor;
+
+			if (confirm("¿Estás seguro de que quieres eliminar '" + nombreProfesor + " " + apellidosProfesor + "'?")) {
+				peticion.peticion(urlServidor, 'POST', mostrarListaProfesores, JSON.stringify(objeto));
+			}
+		}
+
+		const modificarProfesor = (idProfesor, dniProfesor, nombreProfesor, apellidosProfesor) => { //Función para modificar datos del profesor
+			document.querySelector("#idProfe").value = idProfesor;
+			document.querySelector("#dniProfe").value = dniProfesor;
+			document.querySelector("#nombreProfe").value = nombreProfesor;
+			document.querySelector("#apellidosProfe").value = apellidosProfesor;
+
+			aparecerFormularioModificar();
+
+			document.querySelector("#aplicar").onclick = function () {
+				objeto.servicio = "modificaProfe";
+				objeto.id = document.querySelector("#idProfe").value;
+				objeto.dni = document.querySelector("#dniProfe").value;
+				objeto.nombre = document.querySelector("#nombreProfe").value;
+				objeto.apellidos = document.querySelector("#apellidosProfe").value;
+
+				//console.log(objeto.id, objeto.dni, objeto.nombre, objeto.apellidos);
+
+				peticion.peticion(urlServidor, 'POST', mostrarListaProfesores, JSON.stringify(objeto));
+
+				desaparecerFormularioModificar();
+			}
+		}
+
+		const aniadirNuevoProfe = () => {
+			//console.log("Entra en aniadirNuevoProfe");
+
+			document.querySelector("#dni").value = "";
+			document.querySelector("#nombre").value = "";
+			document.querySelector("#apellidos").value = "";
+
+			aparecerFormularioAniadir();
+
+			document.querySelector("#btAnade").onclick = function () {
+				objeto.servicio = "anadeProfe";
+				objeto.dni = document.querySelector("#dni").value;
+				objeto.nombre = document.querySelector("#nombre").value;
+				objeto.apellidos = document.querySelector("#apellidos").value;
+
+				//console.log(objeto);
+
+				peticion.peticion(urlServidor, "POST", mostrarListaProfesores, JSON.stringify(objeto));
+
+				desaparecerFormularioAniadir();
+			};
+		}
+
+		const aparecerFormularioModificar = () => { // Función para aparecer el formulario
+			document.querySelector("#modificarProfesor").style.display = "block";
+		}
+
+		const desaparecerFormularioModificar = () => { // Función para desaparecer el formulario
+			document.querySelector("#modificarProfesor").style.display = "none";
+		}
+
+		const aparecerFormularioAniadir = () => { // Función para aparecer el formulario
+			document.querySelector("#formProfes").style.visibility = "visible";
+		}
+
+		const desaparecerFormularioAniadir = () => { // Función para desaparecer el formulario
+			document.querySelector("#formProfes").style.visibility = "hidden";
+		}
+
+
+
+	</script>
+
+</head>
+
+<body>
+	<h1>Registro de Usuarios</h1>
+	<form>
+		<br>
+		<h4>Selecciona Departamento:</h4>
+		<p>
+		<div id="departamentos">
+			<table border="1">
+				<thead>
+					<tr>
+						<th>ID</th>
+						<th>NOMBRE</th>
+						<th>DESCRIPCION</th>
+						<th>Acción</th>
+					</tr>
+				</thead>
+
+				<tbody id="detalle_departamentos">
+
+				</tbody>
+
+
+			</table>
+		</div>
+		</p>
+
+
+
+		<br />
+		<br />
+		Tabla de Profesores. Departamento de <span id="deptoDelProfe"></span>:
+		<br><br>
+		<button class="btn" id="btNuevaProfe" type="button">Nueva profe</button>
+
+		<p>
+		<div id="profesores">
+			<table border="1">
+				<thead>
+					<tr>
+						<th>ID</th>
+						<th>DNI</th>
+						<th>NOMBRE</th>
+						<th>APELLIDOS</th>
+						<th>Eliminar</th>
+						<th>Editar</th>
+					</tr>
+				</thead>
+
+				<tbody id="detalle_profesores">
+
+				</tbody>
+
+
+			</table>
+		</div>
+		</p>
+
+
+		<div id="formProfes" class="formProfes">
+			<fieldset>
+				<legend>Alta en el servicio</legend>
+				<div>
+					<label for="dni">DNI</label>
+					<input type="text" id="dni" size="10" maxlength="9" />
+				</div>
+				<div>
+					<label for="nombre">Nombre</label>
+					<input type="text" id="nombre" />
+				</div>
+				<div>
+					<label for="apellidos">Apellidos</label>
+					<input type="text" id="apellidos" size="40" />
+				</div>
+				<div class="btn">
+					<button id="btAnade" type="button" data-idprofe="-1">Añadir </button>
+					<button id="btCancelar" type="button">Cancelar </button>
+				</div>
+			</fieldset>
+		</div>
+
+		<div id="modificarProfesor">
+			<legend>Modificar Profesor</legend>
+
+			<div id="atributos">
+				<p>
+					<label for="idProfe">ID:</label>
+					<input type="text" id="idProfe" size="3">
+				</p>
+				<p>
+					<label for="dniProfe">DNI: </label>
+					<input type="text" id="dniProfe">
+				</p>
+				<p>
+					<label for="nombreProfe">NOMBRE: </label>
+					<input type="text" id="nombreProfe">
+				</p>
+				<p>
+					<label for="apellidosProfe">APELLIDOS: </label>
+					<input type="text" id="apellidosProfe">
+				</p>
+				<p>
+					<button type="button" id="aplicar">Aplicar</button>
+					<button type="button" id="cancelar">Cancelar</button>
+				</p>
+			</div>
+		</div>
+
+	</form>
+
+</body>
+
+</html>
