@@ -1,5 +1,27 @@
-//FETCH
+//FETCH GET
 fetch(url).then(function (datos) { // Promesa
+    console.log("datos: ", datos);
+    return datos.json(); // Parsear directamente a json
+}).then(function (response) {
+    console.log("response: ", response);
+    cargarLista(response); // Enviar a la función de carga de datos la respuesta del servidor
+});
+
+//--------------------------------------------------------
+
+//FETCH POST
+let objeto = { // Objeto
+    atributo1: valor1,
+    atributo2: valor2,
+    atributo3: valor3
+}
+
+let parametrosObjeto = { // Establecer parametros de POST y parse a JSON del objeto
+    method: "POST",
+    body: JSON.stringify(objeto)
+}
+
+fetch(url, parametrosObjeto).then(function (datos) { // Promesa
     console.log("datos: ", datos);
     return datos.json(); // Parsear directamente a json
 }).then(function (response) {
