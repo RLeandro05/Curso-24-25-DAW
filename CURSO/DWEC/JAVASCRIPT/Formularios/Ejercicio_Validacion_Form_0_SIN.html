@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <title>Validar Formularios</title>
+    <style type="text/css">
+        span {
+            color: red;
+        }
+    </style>
+    <script>
+        window.onload = function() {
+            document.getElementById("formulario_1").onsubmit = validarForm;
+            document.getElementById("nombre").onkeypress = permiteLetrasNumeros;
+        }
+
+        function permiteLetrasNumeros(evento) {
+            return ((evento.charCode >= 65 && evento.charCode <= 90) || 
+                    (evento.charCode >= 97 && evento.charCode <= 122) || 
+                    (evento.charCode >= 128 && evento.charCode <= 154) || 
+                    (evento.charCode >= 160 && evento.charCode <= 165) || 
+                    (evento.charCode >= 181 && evento.charCode <= 183) || 
+                    (evento.charCode >= 198 && evento.charCode <= 199) || 
+                    (evento.charCode >= 210 && evento.charCode <= 212) || 
+                    (evento.charCode >= 224 && evento.charCode <= 237) || 
+                    evento.charCode == 32);
+        }
+        
+        function validarForm() {
+            // Limpiar mensajes de error
+            document.getElementById("info_nombre").innerHTML = "";
+            document.getElementById("info_dni").innerHTML = "";
+            document.getElementById("info_sexo").innerHTML = "";
+            document.getElementById("info_sugerencia").innerHTML = "";
+            
+            let valid = true; // Variable para verificar la validez
+
+            // Validar nombre
+            var nombre = document.getElementById("nombre");
+            if (nombre.value.trim().length < 2) {
+                document.getElementById("info_nombre").innerHTML = "Debes poner al menos 2 letras sin espacios";
+                valid = false;
+            }
+
+            // Validar DNI
+            var letras = "TRWAGMYFPDXBNJZSQVHLCKE";
+            var dni = document.getElementById("dni").value;
+            if (dni.length !== 9 || letras[dni.substring(0, 8) % 23] !== dni[8].toUpperCase()) {
+                document.getElementById("info_dni").innerHTML = "DNI incorrecto";
+                valid = false;
+            }
+
+            // Validar sexo
+            var sexo = document.getElementById("sexo");
+            if (sexo.value === "") {
+                document.getElementById("info_sexo").innerHTML = "Selecciona una opción sexual";
+                valid = false;
+            }
+
+            // Validar sugerencia
+            var sugerencia = document.getElementById("sugerencia");
+            if (sugerencia.value.trim() === "") {
+                document.getElementById("info_sugerencia").innerHTML = "Te sugiero que sugieras";
+                valid = false;
+            }
+
+            return valid; // Solo permitir el envío si todo es válido
+        }
+    </script>
+</head>
+<body>
+
+<h1>Ejercicio Validación de Formularios</h1>
+<form id="formulario_1">
+    <p>
+        <h3>Formulario de Registro:</h3>
+        <label for="nombre">Nombre: </label>
+        <input type="text" name="nombre" id="nombre" maxlength="25" size="15" />
+        <span id="info_nombre">*</span>
+        <div>(Mínimo 2 letras)</div>
+        <br><br>
+        
+        <label for="dni">NIF: </label>
+        <input type="text" name="dni" id="dni" maxlength="9" size="9" />
+        <span id="info_dni">*</span>
+        <br><br><br>
+        
+        <label>Sexo: </label>
+        <select id="sexo">
+            <option value="">Selecciona una opción</option>
+            <option value="F">Femenino</option>
+            <option value="M">Masculino</option>
+            <option value="Y">Ya quisiera yo</option>
+        </select>
+        <span id="info_sexo">*</span>
+        
+        <br><br><br>
+        <label for="sugerencia">Alguna sugerencia: </label>
+        <textarea id="sugerencia" name="sugerencia"></textarea>
+        <span id="info_sugerencia">*</span>
+        <br><br>
+    </p>
+    <p><b>Todos los campos * son obligatorios.</b></p>
+    <br>
+    <p>
+        <input type="submit" value="ENVIAR">
+        <br><br>
+        <input type="reset" value="Limpiar">
+    </p>
+</form>
+</body>
+</html>

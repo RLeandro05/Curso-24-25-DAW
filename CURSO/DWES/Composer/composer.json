@@ -1,0 +1,18 @@
+{
+    "name": "daw_m/composer",
+    "autoload": {
+        "psr-4": {
+            "DawM\\Composer\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Leandro"
+        }
+    ],
+    "require": {
+        "monolog/monolog": "^3.7",
+        "fpdf/fpdf": "^1.86",
+        "nelexa/zip": "^4.0"
+    }
+}

@@ -1,0 +1,88 @@
+<!DOCTYPE html
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+	<title>Ejercicio 15 - Informaci�n sobre eventos</title>
+	<style type="text/css">
+		body {
+			font-family: arial, helvetica;
+		}
+
+		#info {
+			width: 160px;
+			border: thin solid silver;
+			padding: .5em;
+			position: fixed;
+		}
+
+		#info h1 {
+			margin: 0;
+		}
+	</style>
+	<script type="text/javascript">
+		window.onload = function() {
+			document.onmousemove = obtenerInformacionRaton; // Al cargar la página, llamar a la función una vez se mueve el ratón
+			document.onkeypress = obtenerInformacionTecla; // Al cargar la página, llamar a la función una vez se pulsa una tecla aleatoria
+			document.onclick = cambiarColorClick; // Al cargar la página, llamar a la función una vez dado click
+		}
+		function cambiarColorClick(event) {
+			// console.log("Entra en cambiarColorClick", event);
+			document.getElementById("info").style.backgroundColor = "yellow";
+		}
+		function obtenerInformacionTecla(event) {
+			// console.log("Info: ", event);
+			let caracter = "Caracter: ["+event.key+"]";
+			let codigo = "Codigo: ["+event.charCode+"]";
+
+			let mensaje = new Array(); // Array pra guardar las variables
+			mensaje[0] = "Teclado";
+			mensaje[1] = caracter;
+			mensaje[2] = codigo;
+
+			muestraInformacionTecla(mensaje);
+
+			document.getElementById("info").style.backgroundColor = "aqua";
+		}
+		function muestraInformacionTecla(mensaje) {
+			document.getElementById("info").innerHTML = '<h1>' + mensaje[0] + '</h1>'; // Mostrar Teclado en grande y luego el resto de variables
+			for (let i = 1; i < mensaje.length; i++) {
+				document.getElementById("info").innerHTML += '<p>' + mensaje[i] + '</p>'; // De cada valor del array, mostrar su contenido
+			}
+		}
+		function obtenerInformacionRaton(event) { // Variable event
+			let navegador = "Navegador: ["+event.clientX+"], ["+event.clientY+"]"; // Variable Navegador donde se guardan las coordenadas
+			let pagina = "Pagina: ["+event.pageX+"], ["+event.pageY+"]"; // Variable Pagina donde se guardan las coordenadas
+			let pantalla = "Pantalla: ["+event.screenX+"], ["+event.screenY+"]"; // Variable Pantalla donde se guardan las coordenadas
+
+			let mensaje = new Array(); // Array para guardar las variables y poder mostrarlas al usuario
+			mensaje[0] = "Raton";
+			mensaje[1] = navegador;
+			mensaje[2] = pagina;
+			mensaje[3] = pantalla;
+
+			muestraInformacionRaton(mensaje); // Llamar a la función llevando el array para ser mostrado
+
+			document.getElementById("info").style.backgroundColor = "white";
+
+		}
+		
+		function muestraInformacionRaton(mensaje) { // El array lo lleva consigo
+
+			document.getElementById("info").innerHTML = '<h1>' + mensaje[0] + '</h1>'; // Mostrar Ratón en grande y luego el resto de variables
+			for (let i = 1; i < mensaje.length; i++) {
+				document.getElementById("info").innerHTML += '<p>' + mensaje[i] + '</p>'; // De cada valor del array, mostrar su contenido
+			}
+		}
+	</script>
+</head>
+
+<body>
+	<div id="info"></div>
+	<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+	<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+	<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+</body>
+
+</html>

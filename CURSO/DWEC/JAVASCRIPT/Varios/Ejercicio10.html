@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <script type="text/javascript">
+
+            function esPalindromo(cadena) {
+                var arrayCadena = cadena.split(""); //Pasamos la cadena a array divida caracter por caracter
+
+                var nuevaCadena = "";
+
+                for (i in arrayCadena) { //Dentro del for creamos una nueva cadena idéntica a la original pero quitando los espacios en blanco
+                    if (arrayCadena[i] != " ") {
+                        nuevaCadena += arrayCadena[i];
+                    }
+                }
+                
+                var cadenaReversa = "";
+
+                for (i in arrayCadena.reverse()) { //Dentro del for creamos una nueva cadena pero revertida a la original, quitando también los espacios en blanco
+                if (arrayCadena[i] != " ") {
+                    cadenaReversa += arrayCadena[i];
+                }
+                }
+
+                if (nuevaCadena == cadenaReversa) { //Habiendo quitado los espacios en blanco, podemos comparar correctamente ambas cadenas para verificar si es palíndromo
+                    return "La cadena es un palíndromo."
+                }
+
+                return "La cadena no es un palíndromo."; //Devolvemos el resultado
+            }
+
+            var cadena = prompt("Escriba una cadena aleatoria: "); //Pasamos cadena al programa
+
+            var resultado = esPalindromo(cadena.toLowerCase()); //Llamada a la función "esPalindromo" con la cadena en minúsculas
+
+            alert(resultado); //Mostramos
+
+        </script>
+    </head>
+    <body></body>
+</html>

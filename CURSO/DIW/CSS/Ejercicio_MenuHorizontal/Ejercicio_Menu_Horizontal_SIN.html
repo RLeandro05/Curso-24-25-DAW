@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8"/>
+		<title>Ejercicio Menú Horizontal</title>
+		<style type="text/css">
+			ul li{
+				float: left;
+				list-style: none;
+				background-color: darkslateblue;
+				margin: .5em;
+				padding: .6em;
+			}
+			ul {
+				width: 100%;
+				position: relative;
+				left: -50px;
+			}
+			ul li a {
+				width: auto;
+				text-decoration: none;
+				color: white;
+			}
+			p {
+				float: right;
+			}
+			ul li:hover {
+				background-color: violet;
+				transition: 0.5s;
+			}
+
+		</style>
+	</head>
+	<body>
+		
+		<ul>
+			<li><a href="#">Enlace UNO</a></li>
+			<li><a href="#">Enlace DOS</a></li>
+			<li><a href="#">Enlace TRES</a></li>
+			<li><a href="#">Enlace CUATRO</a></li>
+		</ul>
+		
+		<p>
+			En este ejemplo, dejamos que el ul y el enlace (a) floten a la izquierda. 
+			Los elementos li se muestran como elementos en línea.
+			Esto hace que la lista esté en una línea. 
+			El elemento ul tiene una anchura de 100% y cada enlace en la lista NO tiene anchura (auto). 
+			Añadimos algunos colores y bordes para que sea más elegante.
+		</p>
+		
+	</body>
+</html>

@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8" />
+	<title>Ejercicio Tablas. CREAR TABLAS V3</title>
+
+	<script type="text/javascript">
+		window.onload = function () {
+			contadorEspecialColumnas = 0;
+			// Guardar el número de filas en una variable para eliminar sus valores por defecto
+			var nodoFilas = document.getElementById("nfilas");
+			nodoFilas.removeAttribute("value");
+			// Guardar el número de columnas en una variable para eliminar sus valores por defecto
+			var nodoColumnas = document.getElementById("ncolumnas");
+			nodoColumnas.removeAttribute("value");
+
+			// Cuando se pinche en el botón, llamar a la función
+			document.getElementById("boton").onclick = Generar_Tabla;
+		}
+		function Generar_Tabla() {
+			var validarExistenciaTablas = document.getElementsByTagName("table");
+
+			// Asegurar si ya existía una tabla
+			if (validarExistenciaTablas.length == 0) {
+				// En caso de no existir, crear una nueva como hija del body
+				var tabla = document.createElement("table");
+				tabla.id = "tabla";
+				tabla.style.border = "0.5px solid black";
+				document.body.appendChild(tabla);
+			} else {
+				var tabla = document.getElementById("tabla");
+			}
+
+			// Guardar el número de filas y columnas en sus variables
+			var nodoFilas = document.getElementById("nfilas");
+			var nodoColumnas = document.getElementById("ncolumnas");
+
+			if (contadorEspecialColumnas == 0) {
+				// Para crear las columnas, primero crear el thead como cabecera de la tabla
+				var cabeceraTabla = document.createElement("thead");
+				tabla.appendChild(cabeceraTabla);
+				// Crear la fila de la cabecera donde irán las columnas
+				var filaCabecera = document.createElement("tr");
+				cabeceraTabla.appendChild(filaCabecera);
+				// Por cada iteración, crear una nueva celda de columna según el número indicado
+				for (i = 0; i < nodoColumnas.value; i++) {
+					var columnaNueva = document.createElement("th");
+					filaCabecera.appendChild(columnaNueva);
+					columnaNueva.innerHTML = "Columna " + (i + 1);
+					columnaNueva.style.border = "0.5px solid black";
+				}
+
+				var cuerpoTabla = document.createElement("tbody");
+				cuerpoTabla.id = "body";
+				tabla.appendChild(cuerpoTabla); // Crear el tbody para añadir las filas
+
+				for (var i = 0; i < nodoFilas.value; i++) { // Dentro del primer for, crear nuevas filas según el número indicado
+					var filaNuevaBody = document.createElement("tr");
+					cuerpoTabla.appendChild(filaNuevaBody);
+					for (var j = 0; j < nodoColumnas.value; j++) { // Por cada fila creada, crear tantas celdas como columnas hayan la primera vez
+						var nuevaCelda = document.createElement("td");
+						nuevaCelda.style.border = "0.5px solid black";
+						filaNuevaBody.appendChild(nuevaCelda);
+						nuevaCelda.innerHTML = "Fila " + (i + 1) + ", Columna " + (j + 1);
+
+						(function (_i, _j) {
+							nuevaCelda.onclick = function () {
+								alertarCeldas(_i+1, _j+1);
+							}
+						})(i, j);
+					}
+				}
+				contadorEspecialColumnas++;
+			} else if (contadorEspecialColumnas > 0) { // En caso de no ser la primera vez, simplemente añadir nuevas columnas a partir de la última que se creó
+				var numColumnasActuales = document.getElementsByTagName("th").length;
+				var filaCabecera = document.getElementsByTagName("tr")[0]; // Llamar únicamente a la primera fila, la de la cabecera
+				for (var i = 0; i < nodoColumnas.value; i++) {
+					// Hacer los mismos pasos que cuando se crea una nueva, pero esta vez sumándole a partir de la última columna creada
+					var columnaNueva = document.createElement("th");
+					filaCabecera.appendChild(columnaNueva);
+					columnaNueva.innerHTML = "Columna " + (i + numColumnasActuales + 1);
+					columnaNueva.style.border = "0.5px solid black";
+				}
+
+				// Sacar el número de filas actuales
+				var numFilasActuales = document.getElementsByTagName("tr").length;
+				for (var i = 0; i < numFilasActuales; i++) {
+					if (i > 0) { // Comenzar a añadir nuevas celdas a partir de la fila debajo de las columnas
+						for (var j = 0; j < nodoColumnas.value; j++) { // A partir de las nuevas columnas creadas, añadir las nuevas celdas
+							var nuevaCelda = document.createElement("td");
+							nuevaCelda.style.border = "0.5px solid black";
+							document.getElementsByTagName("tr")[i].appendChild(nuevaCelda);
+							nuevaCelda.innerHTML = "Fila " + i + ", Columna " + (j + numColumnasActuales + 1);
+
+							(function (_i, _j) {
+								nuevaCelda.onclick = function () {
+									alertarCeldas(_i+1, _j+1);
+								}
+							})(i, j);
+						}
+					}
+				}
+
+				// Este for muestra el procedimiento de crear nuevas filas al quere añadir más, además de añadir las nuevas celdas a las nuevas columnas también añadidas
+				for (var i = 0; i < nodoFilas.value; i++) {
+					var nuevaFilaBody = document.createElement("tr"); // Crear una nueva fila
+					document.getElementById("body").appendChild(nuevaFilaBody); // Añadirla como hija
+
+					// Segundo for que itera sobre el número de columnas actuales, incluyendo las nuevas añadidas. Se usa el mismo procedimiento de creación de celdas
+					for (var j = 0; j < document.getElementsByTagName("th").length; j++) {
+						var nuevaCelda = document.createElement("td");
+						nuevaCelda.style.border = "0.5px solid black";
+						nuevaFilaBody.appendChild(nuevaCelda);
+						nuevaCelda.innerHTML = "Fila " + (i + (numFilasActuales - 1) + 1) + ", Columna " + (j + 1);
+
+						(function (_i, _j) {
+							nuevaCelda.onclick = function () {
+								alertarCeldas(_i+1, _j+1);
+							}
+						})(i, j);
+					}
+				}
+
+
+			}
+
+		}
+		function alertarCeldas(i, j) {
+			alert("Has pinchado en: Fila " + i + ", Columna " + j);
+		}
+
+
+	</script>
+
+</head>
+
+<body>
+	<br>
+
+	<h2>Ejercicio Tablas. CREAR TABLAS V4</h2>
+	<h2>USAMOS UNA CLAUSURA</h2>
+
+	<h3>Introducir el código javascript necesario, para que al pulsar sobre
+		el botón, se cree una tabla con un número fijo de filas y columnas. </h3>
+
+	<h3>Ahora generamos la tabla con formato: "thead" y "tbody"</h3>
+
+	<h3>Añadimos un evento (onclick en este caso) a cada una de las celdas de la tabla</h3>
+
+	<br />
+	<form>
+		<p>
+			<label for="nfilas">Introduce el número de filas:</label>
+			<input type="number" id="nfilas" value="4" min="1" max="1000" />
+			<br />
+			<label for="ncolumnas">Introduce el número de columnas:</label>
+			<input type="number" id="ncolumnas" value="5" min="1" max="1000" />
+		</p>
+		<p>
+			<button type="button" id="boton">
+				Generar Tabla
+			</button>
+		</p>
+	</form>
+	<br>
+
+	<div id="tabla">
+		Aquí se colocará la tabla que se cree dinámicamente con javascript.
+	</div>
+
+</body>
+
+</html>

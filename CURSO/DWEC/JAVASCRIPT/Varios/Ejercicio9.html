@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <script type="text/javascript">
+
+            function lecturaCadena(cadena) {
+                if (cadena == cadena.toUpperCase()) {
+                    return "La cadena está en mayúsculas.";
+                } else if (cadena == cadena.toLowerCase()) {
+                    return "La cadena está en minúsculas.";
+                }
+
+                return "La cadena está tanto en mayúsculas como minúsculas.";
+            }
+
+            var cadena = prompt("Escriba una cadena aleatorio: ");
+
+            var resultado = lecturaCadena(cadena);
+
+            alert(resultado);
+        </script>
+    </head>
+    <body></body>
+</html>

@@ -1,0 +1,160 @@
+
+	PRINCIPAL:
+
+		<h2 align="center">pasosBulder</h2>
+		      <p>
+		        pasosBulder es una aplicación desarrollada para definir los pasos de un bulder sobre una imagen. Y poder consultarlos posteriormente.
+		      </p>
+		      <p>
+		        El objetivo principal es poder <b>COMPARTIR</b> los bulders que se definen en una (o varias) imágen de un rocódromo para poder ser consultada por cualquier usuario de esta aplicación.
+		      </p>
+		      <p>
+		        Se podrán introducir bulders de cualquier lugar o rocódromo de España.
+		      </p>
+		      <p>
+		        El alta un lugar se hace a través de la búsqueda de lugares en google maps. Si un rocódromo o centro deportivo aún no ha sido dado de alta en sitios o lugares de google maps, ponte en contacto con algún responsable del rocódromo o centro deportivo, será
+		        muy fácil darlo de alta en google maps.
+		      </p>
+		      <p>
+		        Se accederá al menú de opciones y en este se escogerá la opción: Añadir lugar (rocódromo). Nos aparecerá un mapa con un campo de búsqueda. Bastará con escribir el nombre del lugar o centro deportivo y escogerlo de la lista que nos muestra. Un localizador
+		        (icono) situará el lugar en el mapa.<br> Pulsando sobre este localizador podremos fácilmente añadir el lugar.
+		      </p>
+
+
+
+
+
+	ABRIR O MOSTRAR BULDER:
+
+		<h2>Abrir o mostrar un bulder </h2>
+		      <p>
+		        Para mostrar un bulder pulsa el botón "Abrir bulder".
+		      </p>
+		      <p>
+		        Si hemos permitido el uso del GPS y nos encontramos en un lugar conocido (rocódromo). Entonces nos aparecerá el listado de todos los bulders del lugar en el que nos encontramos.
+		        <br><br> Existen dos desplegables: Lugar y Filtro.
+		        <ul>
+		          <li>
+		            <em>Lugar: </em>Se usa para mostrar los bulders de un rocódromo, dentro de una provincia y municipio.
+		          </li>
+		          <li>
+		            <em>Filtro: </em>Se usa para, una vez mostrados los bulders de un rocódromo, poder seleccionar o filtrar según los criterios del filtro.
+		          </li>
+		        </ul>
+		      </p>
+		      <p>
+		        Cierra los desplegables cuando no los necesites. Te resultará más cómodo.
+		      </p>
+		
+		      <p>
+		        Si no nos encontramos en un rocódromo (o no hemos permitido el uso del GPS) entonces nos aparecerá desplegado <em>Lugar. </em> Deberemos usarlo para buscar/seleccionar un rocódromo, y poder mostrar sus bulders.
+		      </p>
+
+
+
+
+
+
+	RÁPIDO O DETALLADO:
+
+		<h3>Rápido o Detallado</h3>
+		      <ul>
+		        <li>
+		          <em>Rápido: </em>Se definirán los pasos del bulder de forma rápida, asumiendo que en cada paso (cada presa) se podrá utilizar cualquiera de las dos manos (derecha o izquierda) es decir, no se mostrará (por defecto) una pantalla de opciones para
+		          indicar si, esa determinada presa debe ser con la mano izquierda o derecha.<br> Esta será la forma más rápida de crear o definir un bulder.
+		          <br> Para FINALIZAR el bulder pulsamos sobre el icono de grabar. Se nos mostrará un menú con las opciones para guardar el bulder.
+		        </li>
+		        <li>
+		          <em>Detallado: </em>Se marcará esta opción para que, cuando estemos definiendo el bulder, se muestre (en cada paso) una pantalla donde podremos especificar el tipo de movimiento (manos juntas, mano izquierda, mano derecha, cualquier mano o pie).<br>          Esta forma de definir un bulder es más lenta pero permite especificar al detalle los movimientos del bulder.
+		        </li>
+		      </ul>
+
+
+
+
+	DONDE (LUGAR E IMAGEN):
+
+		<h3>Donde (lugar e imagen):</h3>
+		      <ul>
+		        <li>
+		          <em>Lugar: </em>Podremos seleccionar un lurgar (rocódromo) y las imagenes que disponemos para, utilizando una de ellas poder definir un bulder sobre esa imagen.<br> Siempre que sea posible, esta debe ser la opción preferente a la hora de crear
+		          un bulder. Más rápida y no añadiremos una nueva imagen.
+		        </li>
+		        <li>
+		          <em>Captura de imagen: </em>Utilizaremos esta opción para crear un bulder usando la imagen tomada por la cámara de nuestro dispositivo.
+		          <br> NOTA: Si no nos encontramos en un rocódromo (o no hemos permitido el uso del GPS) esta opción estará desactivada.
+		        </li>
+		        <li>
+		          <em>Imagen local (galería): </em>Con esta opción podremos usar una imagen que tengamos guardada en la galería de imágenes de nuestro dispositivo.<br> NOTA: Si la imagen seleccionada contiene datos de GPS, se utilizarán para, de forma automática,
+		          seleccionar el lugar (rocódromo) al que pertenerá la imagen y los bulders que defimamos en ella.
+		        </li>
+      		</ul>
+
+
+
+	
+	DEFINIENDO UN BULDER:
+
+		<h2>Definiendo un bulder </h2>
+		      <p>
+		        <ul>
+		          <li>
+		            <em>Rápido: </em>Se dibujará el símbolo de cualqier mano, en el lugar donde hemos pusado, trazando una línea que une con el anterior.
+		          </li>
+		          <li>
+		            <em>Detallado: </em>Se mostrará una pantalla en la cual podremos indicar el tipo de paso que deseamos establecer, a saber:
+		            <p>
+		              <em>Manos juntas: </em>Para indicar que se de deben utilizar las dos manos a la vez.
+		              <br> <em>Mano izquierda: </em>Para indicar que se debe utilizar la mano izquierda.
+		              <br> <em>Mano derecha: </em>Para indicar que se debe utilizar la mano derecha.
+		              <br> <em>Cualquier mano: </em>Para indicar que se puede utilizar cualquier mano, o ambas.
+		              <br> <em>Pie: </em>Para indicar (de forma explícita) que se puede utilizar una presa para el pie.
+		            </p>
+		            <p>
+		              <em>Borrar paso anterior: </em> Si nos equivocamos al definir un paso podemos pulsar este botón para borrar el paso anterior.
+		            </p>
+		          </li>
+		        </ul>
+		        <p>
+		          NOTA: Si estamos definiendo de forma rápida, podemos acceder a las opciones detalladas realizando una PULSACIÓN LARGA.
+		        </p>
+		      </p>
+
+
+
+
+	FINALIZAR (GUARDAR) EL BULDER:
+
+		<article>
+	    		<h3>Finalizar (guardar) el bulder</h3>
+		      <p>
+		        Deberemos indicar el grado y dar un nombre o descripción a nuestro bulder para poder guardarlo.
+		      </p>
+		      <p>
+		        Después de guardar podemos definir otro nuevo bulder.<br><br> Si no deseamos definir más bulder pulsaremos en el botón "Atrás" de nuestro dispositivo.
+		      </p>
+
+
+
+	AÑADIR LUGAR (ROCÓDROMO)
+
+		<h2>Añadir lugar (rocódromo)</h2>
+		      <p>
+		        Para añadir un nuevo lugar o rocódromo debes escoger la opción correspondietne en el menú de opciones de la pantalla inicial.
+		      </p>
+		
+		      <p>
+		        Se nos mostrará una pantalla con un mapa y una caja (recuadro) de búsqueda (parte superior).
+		        <br> Escribiremos el nombre del lugar, centro deportivo o rocódromo y nos irán apareciendo lugares que cumplen con el criterio de búsqueda. Seleccionamos el adecuado y se mostrará en el mapa. <br> Al pulsar sobre el, nos aparecerá una ventana
+		        con información del lugar y la posibilidad de añadirlo. <br> Pulsando en "Añadir Lugar" añadimos el lugar. Y ya podremos introducir bulders en ese lugar. <br> Los lugares solo se añaden una sola vez.
+		      </p>
+		      <p>
+		        Si el lugar no aparece en la búsqueda. Realizando una pulsación larga sobre la zona del mapa donde está físicamente el lugar se mostrará en el mapa todos los lugares en un radio de 200 metros.
+		      </p>
+		
+		      <p>
+		        Si el lugar no existe en google maps, podemos contactar con los responsables del rocódromo o centro deportivo. <br> Si esto no es posible, puedes comunicarte con pasosBulder en info@pasosbulder.com para ayudar a dar de alta dicho lugar.
+		      </p>
+
+
+

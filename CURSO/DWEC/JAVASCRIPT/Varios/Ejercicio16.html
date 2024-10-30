@@ -1,0 +1,95 @@
+<!DOCTYPE html
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+	<title>Ejercicio 16 - Informaci�n sobre eventos</title>
+	<style type="text/css">
+		body {
+			font-family: arial, helvetica;
+		}
+
+		#info {
+			width: 160px;
+			border: thin solid silver;
+			padding: .5em;
+			position: fixed;
+		}
+
+		#info h1 {
+			margin: 0;
+		}
+	</style>
+	<script type="text/javascript">
+		function informacion(elEvento) {
+			var evento = elEvento || window.event;
+
+			let dimensiones = tamanoVentanaNavegador(); // Funcion para sacar las dimensiones de la pagina actual
+			let ancho = dimensiones[0]; // Sacar dimensiones
+			let alto = dimensiones[1];
+
+			let coordenadaX = evento.clientX; // Crear coordenadas por cada click
+			let coordenadaY = evento.clientY;
+
+			let resultado = "Resultado: ";
+
+			// Dependiendo de en qué posición esté, estará en un sitio u otro
+			if (coordenadaX < (ancho / 2) && coordenadaY < (alto / 2)) {
+				resultado += "Izquierda Arriba";
+			} else if (coordenadaX > (ancho / 2) && coordenadaY < (alto / 2)) {
+				resultado += "Derecha Arriba";
+			} else if (coordenadaX < (ancho / 2) && coordenadaY > (alto / 2)) {
+				resultado += "Izquierda Abajo";
+			} else if (coordenadaX > (ancho / 2) && coordenadaY > (alto / 2)) {
+				resultado += "Derecha Abajo";
+			}
+
+			let mensaje = new Array(); // Array para mostrar al usuario el resultado
+			mensaje[0] = "Posicion";
+			mensaje[1] = "Coordenada X: [" + coordenadaX + "]";
+			mensaje[2] = "Coordenada y: [" + coordenadaY + "]";
+			mensaje[3] = resultado;
+
+			muestraInformacion(mensaje);
+		}
+
+		function muestraInformacion(mensaje) { // Funcion para mostrar por pantalla el array creado anteriormente
+			document.getElementById("info").innerHTML = '<h1>' + mensaje[0] + '</h1>';
+			for (var i = 1; i < mensaje.length; i++) {
+				document.getElementById("info").innerHTML += '<p>' + mensaje[i] + '</p>';
+			}
+		}
+
+		function tamanoVentanaNavegador() { // Funcion para calcular las dimensiones de la página web dependiendo de cómo esté de abierta
+			console.log("Entra en tamanoVentanaNavegador");
+			// Adaptada de http://www.howtocreate.co.uk/tutorials/javascript/browserwindow
+			var dimensiones = [];
+
+			if (typeof (window.innerWidth) == 'number') {
+				// No es IE
+				dimensiones = [window.innerWidth, window.innerHeight];
+			} else if (document.documentElement && (document.documentElement.clientWidth || document.documentElement.clientHeight)) {
+				//IE 6 en modo estandar (no quirks)
+				dimensiones = [document.documentElement.clientWidth, document.documentElement.clientHeight];
+			} else if (document.body && (document.body.clientWidth || document.body.clientHeight)) {
+				//IE en modo quirks
+				dimensiones = [document.body.clientWidth, document.body.clientHeight];
+			}
+
+			return dimensiones;
+		}
+
+		document.onclick = informacion; // Por cada click en la página web, llama a la función "informacion", donde calcula el resultado del ejercicio
+
+	</script>
+</head>
+
+<body>
+	<div id="info"></div>
+	<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+	<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+	<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+</body>
+
+</html>

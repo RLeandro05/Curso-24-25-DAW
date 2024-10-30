@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>Envio de parametros con AJAX externo</title>
+	<style type="text/css">
+		.estilo_Tabla_1 {
+			font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+			width: 70%;
+			border-collapse: collapse;
+		}
+
+		.estilo_Tabla_1 td {
+			font-size: 1em;
+			border: 1px solid #98bf21;
+			padding: 4px;
+		}
+
+		.estilo_Tabla_1 th {
+			border: 1px solid #98bf21;
+			font-size: 1.2em;
+			padding: 5px;
+			background-color: #A7C942;
+			color: #ffffff;
+		}
+
+		.estilo_Tabla_1 tr td {
+			color: #000000;
+			background-color: #EAF2D3;
+		}
+
+		caption {
+			caption-side: bottom;
+			color: green;
+		}
+	</style>
+
+	<script type="text/javascript">
+		let peticion; // Definir la petición como variable global para poder usarse correctamente
+		let urlNext; // Definir una variable que guardará el siguiente enlace para el siguiente listado de personajes
+		let urlPrevious; // Definir una variable que guardará el anetrior enlace para el siguiente listado de personajes
+
+		window.onload = function () {
+			peticion = new XMLHttpRequest(); // Crear objeto HTTP para poder realizar la consulta. Dicho valor se asigna a petición
+
+			peticion.open('GET', 'https://swapi.dev/api/people/?format=json'); // Realizar .open con método GET al querer recuperar información con la url proporcionada
+			peticion.send(); // Enviar la consulta
+
+			peticion.onreadystatechange = primeraLista; // Por cada cambio realizado, llamar a recibe Personas para mostrar los personajes
+
+			let botonPrevious = document.createElement("input");
+			botonPrevious.type = "button";
+			botonPrevious.value = "Anterior";
+			document.getElementById("personajes").appendChild(botonPrevious);
+			botonPrevious.onclick = anteriorLista;
+
+			let botonNext = document.createElement("input");
+			botonNext.type = "button";
+			botonNext.value = "Siguiente";
+			document.getElementById("personajes").appendChild(botonNext);
+			botonNext.onclick = siguienteLista;
+		}
+
+		const primeraLista = () => { // Función para mostrar el listado de personajes
+			if (peticion.readyState == 4 && peticion.status == 200) { // .readyState === 4 para asegurar que la solicitud ha sido completada y .status === 200 para asegurar que se recibe una respuesta correcta del servidor
+				respuesta = JSON.parse(peticion.responseText); // Guardar en una variable parseada a JSON la peticion.responseText
+				let personajes = respuesta.results; // Del campo Results, guardar en un array el listado
+				urlNext = respuesta.next; // Guardar el siguiente enlace en la variable urlNext global
+				urlPrevious = respuesta.previous; // Guardar el anterior enlace en la variable urlPrevious global
+				// console.log(urlNext);
+
+				llenarTabla(personajes);
+			}
+		}
+
+		const siguienteLista = () => {
+			peticion = new XMLHttpRequest();
+			peticion.open('GET', urlNext); // Enviar la solicitud con el njuevo enlace al siguiente listado de personajes
+			peticion.send();
+
+			peticion.onreadystatechange = function () {
+				if (peticion.readyState == 4 && peticion.status == 200) {
+					let respuesta = JSON.parse(peticion.responseText); // Guardar en una variable parseada a JSON la peticion.responseText
+					let personajes = respuesta.results; // Del campo Results, guardar en un array el listado
+
+					urlPrevious = respuesta.previous; // Guardar el anterior enlace en la variable urlPrevious global
+					urlNext = respuesta.next; // Guardar el siguiente enlace en la variable urlNext global
+					//console.log(urlPrevious);
+					//console.log(urlNext);
+
+					llenarTabla(personajes);
+				}
+			}
+		}
+
+		const anteriorLista = () => {
+			let peticion = new XMLHttpRequest();
+			peticion.open('GET', urlPrevious); // Enviar la solicitud con el nuevo enlace al anterior listado de personajes
+			peticion.send();
+
+			peticion.onreadystatechange = function () {
+				if (peticion.readyState == 4 && peticion.status == 200) {
+					let respuesta = JSON.parse(peticion.responseText); // Guardar en una variable parseada a JSON la peticion.responseText
+					let personajes = respuesta.results; // Del campo Results, guardar en un array el listado
+
+					urlPrevious = respuesta.previous;
+					urlNext = respuesta.next;
+
+					//console.log(urlPrevious);
+					//console.log(urlNext);
+
+					llenarTabla(personajes);
+				}
+			}
+		}
+
+		function llenarTabla(personajes) {
+			let cuerpoPersonajes = document.getElementById("cuerpoPersonajes");
+			// Limpiar el contenido previo de la tabla
+			cuerpoPersonajes.innerHTML = '';
+
+			// Iterar sobre cada personaje y crear filas en la tabla
+			personajes.forEach(personaje => {
+				let fila = document.createElement("tr");
+
+				// Crear celdas con la información del personaje
+				let celdaNombre = document.createElement("td");
+				celdaNombre.textContent = personaje.name;
+
+				let celdaAltura = document.createElement("td");
+				celdaAltura.textContent = personaje.height;
+
+				let celdaPeso = document.createElement("td");
+				celdaPeso.textContent = personaje.mass;
+
+				let celdaNacimiento = document.createElement("td");
+				celdaNacimiento.textContent = personaje.birth_year;
+
+				let celdaGenero = document.createElement("td");
+				celdaGenero.textContent = personaje.gender;
+
+				// Celda para el homeworld, que requiere otra solicitud
+				let celdaHomeworld = document.createElement("td");
+				let enlaceHomeworld = document.createElement("input");
+				enlaceHomeworld.type = "button";
+				enlaceHomeworld.value = obtenerPlaneta(personaje.homeworld, enlaceHomeworld);
+				enlaceHomeworld.onclick = function () {
+					mostrarDatosPlaneta(personaje.homeworld);
+				};
+				celdaHomeworld.appendChild(enlaceHomeworld);
+
+				// Agregar las celdas a la fila
+				fila.appendChild(celdaNombre);
+				fila.appendChild(celdaAltura);
+				fila.appendChild(celdaPeso);
+				fila.appendChild(celdaNacimiento);
+				fila.appendChild(celdaGenero);
+				fila.appendChild(celdaHomeworld);
+
+				// Agregar la fila al cuerpo de la tabla
+				cuerpoPersonajes.appendChild(fila);
+			});
+		}
+		function mostrarDatosPlaneta(urlPlaneta) {
+			console.log("Llega a mostrarDatosPlaneta.");
+			let bloqueContenido = document.getElementById("datosPlaneta");
+			bloqueContenido.innerHTML = "Datos del planeta: ";
+
+			let peticionPlaneta = new XMLHttpRequest();
+			peticionPlaneta.open('GET', urlPlaneta); // Poner true para realizar una petición asíncrona, es decir, que se ejecute en segundo plano sin refrescar la página
+			peticionPlaneta.onreadystatechange = function () {
+				if (peticionPlaneta.readyState == 4 && peticionPlaneta.status == 200) {
+					let planeta = JSON.parse(peticionPlaneta.responseText);
+
+					let nombrePlaneta = document.createElement("p");
+					nombrePlaneta.textContent = "Nombre: "+planeta.name;
+
+					let periodoRotacionPlaneta = document.createElement("p");
+					periodoRotacionPlaneta.textContent = "Periodo de Rotación: "+planeta.rotation_period;
+
+					let periodoOrbitalPlaneta = document.createElement("p");
+					periodoOrbitalPlaneta.textContent = "Periodo Orbital: "+planeta.orbital_period;
+
+					let diametroPlaneta = document.createElement("p");
+					diametroPlaneta.textContent = "Diámetro: "+planeta.diameter;
+
+					let climaPlaneta = document.createElement("p");
+					climaPlaneta.textContent = "Clima: "+planeta.climate;
+
+					let gravedadPlaneta = document.createElement("p");
+					gravedadPlaneta.textContent = "Gravedad: "+planeta.gravity;
+
+					let terrenoPlaneta = document.createElement("p");
+					terrenoPlaneta.textContent = "Terreno: "+planeta.terrain;
+
+					bloqueContenido.appendChild(nombrePlaneta);
+					bloqueContenido.appendChild(periodoRotacionPlaneta);
+					bloqueContenido.appendChild(periodoOrbitalPlaneta);
+					bloqueContenido.appendChild(diametroPlaneta);
+					bloqueContenido.appendChild(climaPlaneta);
+					bloqueContenido.appendChild(gravedadPlaneta);
+					bloqueContenido.appendChild(terrenoPlaneta);
+				}
+			};
+			peticionPlaneta.send(); // Enviar la solicitud para completar el recorrido correctamente
+		}
+
+
+		// Función para obtener el homeworld de un personaje mediante una nueva solicitud
+		const obtenerPlaneta = (url, enlaceHomeworld) => {
+			let peticionPlaneta = new XMLHttpRequest();
+			peticionPlaneta.open('GET', url, true); // Poner true para realizar una petición asíncrona, es decir, que se ejecute en segundo plano sin refrescar la página
+			peticionPlaneta.onreadystatechange = function () {
+				if (peticionPlaneta.readyState == 4 && peticionPlaneta.status == 200) {
+					let planeta = JSON.parse(peticionPlaneta.responseText);
+					enlaceHomeworld.value = planeta.name; // Guardar el nombre en la celda
+				}
+			};
+			peticionPlaneta.send(); // Enviar la solicitud para completar el recorrido correctamente
+		}
+	</script>
+</head>
+
+<body>
+	<h3>Ejemplo de llamada a la API de STAR WARS</h3>
+	<br />
+
+	<p>
+	<table id="personajes" class="estilo_Tabla_1">
+		<caption>Personajes STAR WARS</caption>
+		<thead>
+			<tr>
+				<th>Nombre</th>
+				<th>Altura</th>
+				<th>Peso</th>
+				<th>Nacimiento</th>
+				<th>Género</th>
+				<th>Homeworld</th>
+			</tr>
+		</thead>
+		<tbody id="cuerpoPersonajes">
+
+		</tbody>
+	</table>
+	</p>
+
+	<br />
+	<div id="datosPlaneta">Datos del planeta:</div>
+</body>
+
+</html>

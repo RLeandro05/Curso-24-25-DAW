@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+
+<!-- Leandro Ligero Picón -->
+
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>“Datos Personales</title>
+</head>
+<body>
+  <!-- Encabezado -->
+   <h1>Datos Personales</h1>
+
+  <!-- Formulario Datos Personales -->
+
+  <form action="datos_personales.php" method="post">
+	<label for="Nombre">Nombre: </label>
+  	<input id="Nombre" type="text" required size="10"> <br>
+
+  	<label for="Apellidos">Apellidos: </label>
+  	<input id="Apellidos" type="text" required size="10"> <br>
+
+  	<label for="Clave">Clave: </label>
+  	<input id="Clave" type="password" required size="10"> <br> <br>
+
+  	Estación favorita del año: <br>
+
+  	<input id="Primavera" type="radio" name="Estacion" value="Primavera" required>
+  	<label for="Primavera">Primavera</label>
+
+  	<input id="Verano" type="radio" name="Estacion" value="Verano" required>
+  	<label id="Verano" for="Verano">Verano</label>
+
+  	<input id="Otoño" type="radio" name="Estacion" value="Otoño" required>
+  	<label for="Otoño">Otoño</label>
+
+  	<input id="Invierno" type="radio" name="Estacion" value="Invierno" required>
+  	<label for="Invierno">Invierno</label> <br> <br>
+
+  	Medio de transporte: <br>
+
+  	<select name="Seleccione Transporte">
+		<option>Seleccione Transporte</option>
+		<option>Autobús</option>
+		<option>Bicileta</option>
+		<option>Metro</option>
+		<option>Moto</option>
+		<option>Patinete</option>
+		<option>Tren</option>
+  	</select> <br>  <br>
+
+  	Aficiones: <br>
+
+  	<input id="Bailar" type="checkbox" name="Aficiones" value="Bailar">
+  	<label for="Bailar">Bailar</label> <br>
+
+  	<input id="Cantar" type="checkbox" name="Aficiones" value="Cantar">
+  	<label for="Cantar">Cantar</label> <br>
+
+  	<input id="Hacer Deporte" type="checkbox" name="Aficiones" value="Hacer Deporte">
+  	<label for="Hacer Deporte">Hacer Deporte</label> <br>
+
+  	<input id="Leer" type="checkbox" name="Aficiones" value="Leer">
+  	<label for="Leer">Leer</label> <br>
+
+  	<input id="Ver Series" type="checkbox" name="Aficiones" value="Ver Series">
+  	<label for="Ver Series">Leer</label> <br>
+
+  	<input id="Viajar" type="checkbox" name="Aficiones" value="Viajar">
+  	<label for="Viajar">Leer</label> <br>
+
+  	Observaciones: <br>
+
+  	<textarea></textarea> <br> <br>
+
+  	<input type="reset" value="Borrar">
+  	<input type="submit" value="Enviar">
+  	</form>
+  
+</body>
+</html>

@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>Examen 1</title>
+  <style type="text/css">
+    #datos_calculo {
+      margin-left: 20px;
+      margin-right: 77px;
+      float: left;
+    }
+
+    #figuras {
+      text-align: center;
+      margin: 0 20px;
+      float: left;
+      margin-bottom: 40px;
+    }
+
+    #ecuacion {
+      margin: 0 20px;
+      float: left;
+    }
+
+
+    #soluciones {
+      border: solid 1px blue;
+      width: 17em;
+      height: 7em;
+      padding: 0.4em;
+      display: inline-block;
+    }
+
+    #titulo_sol {
+      font-size: 1.2em;
+      color: blue;
+    }
+
+
+
+    #fracciones {
+      clear: both;
+      margin-left: 20px;
+      padding: 15px;
+      /*    border: 2px solid blue;  */
+    }
+
+    .fraccion {
+      float: left;
+      margin: 8px;
+      /*     border: 1px solid blue;     */
+    }
+
+    .fraccion input {
+      display: block;
+    }
+
+    #SolFracciones {
+      margin: 25px;
+      overflow: hidden;
+    }
+
+    .claseInput {
+      width: 3em;
+      margin: 0 .5em .5em 0;
+    }
+
+    #salMatriz {
+      margin-left: 1em;
+    }
+  </style>
+
+  <script type="text/javascript">
+    // Leandro Ligero Picón
+    window.onload = function () {
+      document.getElementById("base").onkeypress = filtrarCalculoAreasyVolumenes; // Filtrar base
+      document.getElementById("altura").onkeypress = filtrarCalculoAreasyVolumenes; // Filtrar altura
+      document.getElementById("profundidad").onkeypress = filtrarCalculoAreasyVolumenes; // Filtrar profundiad
+      document.getElementById("radio").onkeypress = filtrarCalculoAreasyVolumenes; // Filtrar radio
+      document.getElementById("btCalcular").onclick = calcularAreayVolumen; // Función para calcular el área y volumen de las figuras dadas
+
+      document.getElementById("a").onkeypress = filtrarEcuacionSegundoGrado; // Filtrar a
+      document.getElementById("b").onkeypress = filtrarEcuacionSegundoGrado; // Filtrar b
+      document.getElementById("c").onkeypress = filtrarEcuacionSegundoGrado; // Filtrar c
+      document.getElementById("btSolEc").onclick = calcularEcuacionSegundoGrado; // Función para calcular la ecuación de segundo grado
+
+      document.getElementById("a1").onkeypress = filtrarCalcularFraccion; // Filtrar a1
+      document.getElementById("b1").onkeypress = filtrarCalcularFraccion; // Filtrar b1
+      document.getElementById("a2").onkeypress = filtrarCalcularFraccion; // Filtrar a2
+      document.getElementById("b2").onkeypress = filtrarCalcularFraccion; // Filtrar b2
+      document.getElementById("btSolF").onclick = calcularFraccion; // Función para sumar dos fracciones
+
+      document.getElementById("btAnade").onclick = aniadirFraccion; // Función para añadir una nueva fracción
+
+      document.getElementById("btSolF_V2").onclick = CalcularFraccionV2; // Función para calcular la segunda versión de fracciones pero con mínimo 3 de ellas
+
+      document.getElementById("btGM").onclick = generarInputs; // Función para generar una matriz de inputs
+
+      document.getElementById("btDatosInputs").onclick = datosMatrizInputs;
+    }
+    let contadorComas = 0; // Contador para permitir sólo una coma en cada celda
+    function filtrarCalculoAreasyVolumenes(evento) {
+      // console.log(evento.charCode);
+      let caracter = evento.charCode;
+
+      if (caracter == 44 && contadorComas == 1) { // En caso de que sea una coma y ya tenga una en la celda, no permitir poner otra
+        return false;
+        contadorComas--;
+      } else if (caracter == 44 && contadorComas < 1) { // En caso negativo, se permite y se suma +1 al contador
+        contadorComas++;
+      }
+
+      return (caracter === 44 || caracter >= 48 && caracter <= 57); // Devolver true en caso de que el caracter sea una coma o un numero positivo
+    }
+    function calcularAreayVolumen() {
+      let base = parseInt(document.getElementById("base").value);
+      let altura = parseInt(document.getElementById("altura").value);
+      let profundidad = parseInt(document.getElementById("profundidad").value);
+      let radio = parseInt(document.getElementById("radio").value);
+
+      // Calcular área del rectángulo
+      let areaRectangulo = base * altura;
+      document.getElementById("area_rectangulo").value = areaRectangulo;
+
+      // Calcular área del triángulo
+      let areaTriangulo = (base * altura) / 2;
+      document.getElementById("area_triangulo").value = areaTriangulo;
+
+      // Calcular área del círculo
+      let areaCirculo = Math.PI * Math.pow(radio, 2);
+      document.getElementById("area_circulo").value = areaCirculo;
+
+      // Calcular volumen de la caja
+      let volumenCaja = base * altura * profundidad;
+      document.getElementById("volumen_caja").value = volumenCaja;
+
+      // Calcular volumen del cilindro
+      let volumenCilindro = Math.PI * Math.pow(radio, 2) * altura;
+      document.getElementById("volumen_cilindro").value = volumenCilindro;
+
+      // Calcular volumen de la esfera
+      let volumenEsfera = (4 * Math.PI * Math.pow(radio, 3)) / 3;
+      document.getElementById("volumen_esfera").value = volumenEsfera;
+    }
+    let contadorGuiones = 0; // Contador de signos negativos para poder poner sólo uno
+    function filtrarEcuacionSegundoGrado(evento) {
+      // console.log(evento.charCode);
+      let caracter = evento.charCode;
+
+      if (caracter == 45 && contadorGuiones == 1) { // En caso de que sea un guión y ya tenga uno en la celda, no permitir poner otro
+        return false;
+        contadorGuiones--;
+      } else if (caracter == 45 && contadorGuiones < 1) { // En caso negativo, se permite y se suma +1 al contador
+        contadorGuiones++;
+      }
+
+      return (caracter == 45 || caracter >= 48 && caracter <= 57); // Devolver true en caso de que el caracter sea un guión o un numero positivo
+    }
+    function calcularEcuacionSegundoGrado() {
+      let a = parseInt(document.getElementById("a").value);
+      let b = parseInt(document.getElementById("b").value);
+      let c = parseInt(document.getElementById("c").value);
+
+      let parteX1 = document.getElementById("sol_x1");
+      let parteX2 = document.getElementById("sol_x2");
+
+      let bNegativo = -1 * b; // Cambiar el b a negativo o positivo, según su signo
+      let denominador = 2 * a; // Calcular denominador fijo
+
+      let parteRaiz = 0; // Definir la parteRaiz
+      let parteInternaRaiz = Math.pow(b, 2) - 4 * a * c; // Realizar parteInternaRaiz para asegurar si es negativa o no
+
+      if (parteInternaRaiz < 0) { // En caso de ser negativa, no se puede hacer una raiz negativa
+        parteX1.innerHTML = "Sin solución con números Reales";
+        parteX2.innerHTML = "Sin solución con números Reales";
+        return;
+      } else { // En caso de que no sea negativa, se puede calcular la raíz
+        parteRaiz = Math.trunc(Math.sqrt(parteInternaRaiz));
+      }
+
+      let numeradorPartePositiva = bNegativo + parteRaiz; // Calcular primero la parte positiva de x1
+      let x1 = numeradorPartePositiva / denominador; // Calcular la parte x1 completa
+      parteX1.innerHTML = x1;
+
+      let numeradorParteNegativa = bNegativo - parteRaiz; // Calcular primero la parte negativa de x1
+      let x2 = numeradorParteNegativa / denominador; // Calcular la parte x2 completa
+      parteX2.innerHTML = x2;
+
+    }
+    let contadorPuntos = 0;
+    let contadorGuionesV2 = 0;
+    function filtrarCalcularFraccion(evento) {
+      // console.log(evento.charCode);
+      let caracter = evento.charCode;
+
+      if (caracter == 46 && contadorPuntos == 1) { // En caso de que sea un punto y ya tenga uno en la celda, no permitir poner otro
+        return false;
+        contadorPuntos--;
+      } else if (caracter == 46 && contadorPuntos < 1) { // En caso negativo, se permite y se suma +1 al contador
+        contadorPuntos++;
+      }
+
+      if (caracter == 45 && contadorGuionesV2 == 1) { // En caso de que sea un guión y ya tenga uno en la celda, no permitir poner otro
+        return false;
+        contadorGuionesV2--;
+      } else if (caracter == 45 && contadorGuionesV2 < 1) { // En caso negativo, se permite y se suma +1 al contador
+        contadorGuionesV2++;
+      }
+
+      return (caracter == 46 || caracter == 45 || caracter >= 48 && caracter <= 57); // Devolver true en caso de que el caracter sea un guión, un punto o un numero positivo
+    }
+    function calcularFraccion() {
+      // Definir variables de cada celda de las fracciones
+      let a1 = parseInt(document.getElementById("a1").value);
+      let b1 = parseInt(document.getElementById("b1").value);
+      let a2 = parseInt(document.getElementById("a2").value);
+      let b2 = parseInt(document.getElementById("b2").value);
+
+      let numerador = (a1 * b2) + (a2 * b1); // Calcular el numerador con la fórmula proporcionada
+      let denominador = b1 * b2; // Calcular el denominador con la fórmla proporcionada
+
+      document.getElementById("r1").value = numerador; // Introducir el resultado del numerador en la celda r1
+      document.getElementById("r2").value = denominador; // Introducir el resultado del denominador en la celda r2
+
+      document.getElementById("rf").value = numerador / denominador; // Calcular el resultado final devidiendo numerador y denominador y guardarlo en rf
+    }
+    contadorFracciones = 2;
+    function aniadirFraccion() {
+      let listaFracciones = document.getElementById("listaFracciones");
+      let nuevoDiv = document.getElementById("f1").cloneNode(true); // Clonar un div existente
+
+      let signoSuma = document.getElementById("fsuma").cloneNode(true); // Clonar el signo de suma y mostrar antes que la nueva fracción
+      listaFracciones.appendChild(signoSuma);
+
+      nuevoDiv.id = "f" + contadorFracciones;
+      listaFracciones.appendChild(nuevoDiv);
+
+      contadorFracciones++;
+    }
+    function CalcularFraccionV2() {
+      if (contadorFracciones < 3) {
+        return false;
+      }
+
+
+    }
+    function generarInputs() {
+      let numFilas = parseInt(document.getElementById("base").value);
+      let numColumnas = parseInt(document.getElementById("altura").value);
+
+      let tabla = document.createElement("table"); // Crear tabla nueva de Inputs
+      let zonaCreacionMatriz = document.getElementById("salMatriz");
+      zonaCreacionMatriz.appendChild(tabla);
+
+      // Crear el cuerpo de la cabecera para crear las columnas
+      let cuerpoCabecera = document.createElement("thead");
+      tabla.appendChild(cuerpoCabecera);
+
+      // Crear una fila exclusiva para la cabecera y añadirla como hija
+      let filaCabecera = document.createElement("tr");
+      cuerpoCabecera.appendChild(filaCabecera);
+
+      let min = 1;
+      let max = 1000;
+
+      for (let i = 0; i < numColumnas; i++) { // For para generar SÓLO COLUMNAS
+        // Crear celda nueva de cabecera según el número de columnas que hayamos puesto. Será hija de la fila de la cabecera
+        let celdaCabecera = document.createElement("input");
+        celdaCabecera.readOnly = true; // Indicar que sólo se puede leer, para no modificar valores
+        celdaCabecera.size = 1; // Poner una longitud pequeña para poder ver la tabla entera
+        celdaCabecera.className = "claseInput"; // Añadir la clase que se pide
+        celdaCabecera.name = "celdaCabeceraNAME";
+        celdaCabecera.style.textAlign = "center";
+        celdaCabecera.value = Math.floor(Math.random()*(max-min+1))+min;
+        filaCabecera.appendChild(celdaCabecera); // Añadirla como hija de la fila de la cabecera
+      }
+
+      // Crear el cuerpo de filas para crear nuevas filas en la tabla
+      let cuerpoFilas = document.createElement("tbody");
+      tabla.appendChild(cuerpoFilas);
+
+      for (let i = 0; i < numFilas; i++) { // Primer For para crear las filas
+        let nuevaFila = document.createElement("tr"); // Crear nueva fila una vez se creen todas las celdas correspondientes de dicha fila
+        for (let j = 0; j < numColumnas; j++) { // Segundo For para crear las celdas correctas según el número de columnas
+          let celdaFila = document.createElement("input"); // Crear celda nuevad de la fila
+          celdaFila.readOnly = true; // Indicar que sólo se puede leer, para no modificar valores
+          celdaFila.size = 1; // Poner una longitud pequeña para poder ver la tabla entera
+          celdaFila.className = "claseInput"; // Añadir la clase que se pide
+          celdaFila.name = "celdaFilaNAME";
+          celdaFila.style.textAlign = "center";
+          celdaFila.value = Math.floor(Math.random()*(max-min+1))+min;
+          nuevaFila.appendChild(celdaFila); // Añadirla como hija de la fila del cuepro de filas
+        }
+        cuerpoFilas.appendChild(nuevaFila); // Añadir al final la fila creada con sus celdas como hija del cuerpo
+      }
+
+      let botonDatos = document.getElementById("btDatosInputs");
+      botonDatos.disabled = false;
+    }
+    function datosMatrizInputs() {
+      
+    }
+
+  </script>
+
+
+</head>
+
+<body>
+
+  <h2>Cálculo de Áreas y Volúmenes</h2>
+
+  <div id="datos_calculo">
+    <p>
+      Introduce los datos para el Cálculo:
+    </p>
+    <p>
+      Base (b) :
+      <input type="text" id="base" name="base" value="9" size="4" maxlength="8">
+      <br />
+      Altura (h):
+      <input type="text" id="altura" name="altura" value="11" size="4" maxlength="8">
+      <br />
+      Profundidad (c):
+      <input type="text" id="profundidad" name="profundidad" value="13" size="4" maxlength="8">
+      <br />
+      Radio (r):
+      <input type="text" id="radio" name="radio" value="15" size="4" maxlength="8">
+      <br />
+    </p>
+    <br />
+    <input id="btCalcular" type="button" value="CALCULAR">
+  </div>
+
+  <div id="figuras">
+    <table border="1">
+      <thead>
+        <tr>
+          <th>AREAS</th>
+          <th>VOLUMENES</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td> Rectángulo
+            <br>
+            <img src="imagenes/Rectangulo.gif" width="150" height="150" alt="Rectángulo" />
+            <br>
+            Area:
+            <input type="text" id="area_rectangulo" name="area_rectangulo" value="" readonly="readonly" />
+          </td>
+          <td> Caja
+            <br>
+            <img src="imagenes/Ortoedro.gif" width="150" height="150" alt="Caja" />
+            <br>
+            Volumen:
+            <input type="text" id="volumen_caja" name="volumen_caja" value="" readonly="readonly" />
+          </td>
+        </tr>
+        <tr>
+          <td> Triángulo
+            <br>
+            <img src="imagenes/Triangulo.gif" width="150" height="150" alt="Triángulo" />
+            <br>
+            Area:
+            <input type="text" id="area_triangulo" name="area_triangulo" value="" readonly="readonly" />
+          </td>
+          <td> Cilindro
+            <br>
+            <img src="imagenes/Cilindro.gif" width="150" height="150" alt="Cilindro" />
+            <br>
+            Volumen:
+            <input type="text" id="volumen_cilindro" name="volumen_cilindro" value="" readonly="readonly" />
+          </td>
+        </tr>
+        <tr>
+          <td> Círculo
+            <br>
+            <img src="imagenes/Circulo.gif" width="150" height="150" alt="Círculo" />
+            <br>
+            Area:
+            <input type="text" id="area_circulo" name="area_circulo" value="" readonly="readonly" />
+          </td>
+          <td> Esfera
+            <br>
+            <img src="imagenes/Esfera.gif" width="150" height="150" alt="Esfera" />
+            <br>
+            Volumen:
+            <input type="text" id="volumen_esfera" name="volumen_esfera" value="" readonly="readonly" />
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+
+  <div id="ecuacion">
+    <h3>Solución para la Ecuación de 2º Grado</h3>
+    <p>
+      <input type="text" id="a" name="a" value="4" size="1" maxlength="4" /> X2 +
+      <input type="text" id="b" name="b" value="-11" size="1" maxlength="4" /> X +
+      <input type="text" id="c" name="c" value="2" size="1" maxlength="4" /> = 0
+      <input id="btSolEc" type="button" value="Calcular Ec.">
+    </p>
+    <p>
+    <div id="soluciones"><span id="titulo_sol">Soluciones:</span>
+      <span id="valores_sol">
+        <p>
+          X1 = <span id="sol_x1"> </span> <br />
+          X2 = <span id="sol_x2"> </span>
+        </p>
+      </span>
+    </div>
+    </p>
+  </div>
+
+
+  <br>
+
+
+  <div id="fracciones">
+    <h3>Suma de Fracciones:</h3>
+    <div id="SolFracciones">
+
+      <div id="listaFracciones">
+
+        <div id="f1" class="fraccion">
+          <input type="text" id="a1" name="a1" value="2" size="1" maxlength="4" />
+          <div>
+            <hr align="left">
+          </div>
+          <input type="text" id="b1" name="b1" value="3" size="1" maxlength="4" />
+
+        </div>
+
+        <div id="fsuma" class="fraccion"><br> + <br> </div>
+
+        <div id="f2" class="fraccion">
+          <input type="text" id="a2" name="a2" value="3" size="1" maxlength="4" />
+          <div>
+            <hr align="left">
+          </div>
+          <input type="text" id="b2" name="b2" value="5" size="1" maxlength="4" />
+        </div>
+
+
+
+      </div>
+
+
+
+      <div class="fraccion"><br> = <br> </div>
+
+      <div class="fraccion">
+        <input type="text" id="r1" name="r1" value="" size="1" maxlength="4" readonly="readonly" />
+        <div>
+          <hr align="left">
+        </div>
+        <input type="text" id="r2" name="r2" value="" size="1" maxlength="4" readonly="readonly" />
+      </div>
+
+      <div class="fraccion"><br> = <br> </div>
+
+      <div class="fraccion"><br> <input type="text" id="rf" name="rf" readonly="readonly" /> <br> </div>
+
+    </div>
+
+    <p>
+      <input id="btAnade" type="button" value="Añadir Fracción">
+      <input id="btSolF" type="button" value="Calcular Suma">
+      <input id="btSolF_V2" type="button" value="Calcular Suma V2">
+    </p>
+
+
+  </div>
+  <br><br>
+  <p>
+    <button type="button" id="btGM">
+      Generar Inputs
+    </button>
+  </p>
+  <div id="salMatriz">
+    (Aquí se colocarán inputs)
+  </div>
+  <hr>
+  <p>
+    <button type="button" id="btDatosInputs" disabled>
+      Datos de Inputs
+    </button>
+  </p>
+
+  <div>
+    Min: <input type="text" id="minimo" class="claseInput" readOnly>
+    Max: <input type="text" id="maximo" class="claseInput" readOnly>
+    Med: <input type="text" id="media" class="claseInput" readOnly>
+    Tot: <input type="text" id="total" class="claseInput" readOnly>
+  </div>
+  <br><br>
+
+
+
+
+</body>
+
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <script type="text/javascript">
+            var factorial = prompt("Introduzca un número para calcular su factorial: ");
+
+            var resultado = 1;
+
+            if (factorial > 0) {
+                for (var i = factorial; i > 0; i--) {
+                    resultado *= i;
+                }
+
+                alert("Resultado: " + resultado);
+            } else if (factorial == 0) {
+                alert("Resultado: 0");
+            } else {
+                alert("Sólo positivos en este programa.");
+            }
+        </script>
+    </head>
+    <body></body>
+</html>

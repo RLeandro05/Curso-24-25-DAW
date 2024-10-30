@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+
+<head>
+	<meta charset="UTF-8" />
+	<title>Validar Formularios</title>
+	<style type="text/css">
+		span {
+			color: red;
+		}
+
+		* {
+			outline: none;
+		}
+
+		h1 {
+			color: red;
+		}
+
+		form h3 + div {
+			color: orange;
+		}
+
+		form fieldset {
+			border-color: black;
+			border-width: .15em;
+			margin-top: 10px;
+		}
+
+		form fieldset, 
+		legend, 
+		input[type=text],
+		select,
+		textarea {
+			background-color: rgb(178, 240, 178);
+		}
+
+		legend {
+			border-top: solid .15em;
+			border-top-right-radius: 15px;
+			border-top-left-radius: 15px;
+			font-size: 1.2em;
+		}
+
+		fieldset:hover , 
+		fieldset:hover legend, 
+		fieldset:hover input[type=text],
+		fieldset:hover select,
+		fieldset:hover textarea {
+			background-color: rgb(248, 219, 164);
+		}
+
+		input, select {
+			border: none;
+			border-bottom: solid 1px;
+		}
+
+		textarea {
+			border: none;
+			border-top: solid 1px;
+			border-bottom: solid 1px;
+			margin-top: 15px;
+		}
+
+		input[type=submit], input[type=reset] {
+			border: solid 2px red;
+			background-color: lightcoral;
+			font-size: 1.2em;
+			border-radius: 5px;
+			color: white;
+		}
+
+		input[type=submit]:hover, input[type=reset]:hover {
+			background-color: rgb(248, 210, 197);
+			color: black;
+		}
+ 
+		input:checked + label{
+			font-weight: bold;
+			font-variant: small-caps;
+		}
+
+		input[type=checkbox]:hover, input[type=radio]:hover,
+		input[type=checkbox]:checked, input[type=radio]:checked {
+			transform: scale(1.3);
+		}
+
+		/* 
+			 * NO se ha usado float ni flex. No lo uses.
+			 * 
+			 * NO SE PUEDE USAR SELECTOR POR ID ni .CLASE
+			 *  Solo etiquetas, input[type=xxxxx] y pseudo clases
+			 *  Usar selectores de adyacencia, descendencia, hijo, etc.
+			 * 
+			 * La mayoría de las etiquetas (labels) 
+			 *  tienen un ancho de 70px;
+			 * 
+			 * Ojo a los bordes de las leyendas.
+			 * 
+			 * Colores usados:
+			 *  #FF6766;
+			 *  #E5FFBD;
+			 *  #FFCD72
+			 *  #F5BB9D;
+			 */
+	</style>
+</head>
+
+<body>
+	<h1>Ejercicio Validación de Formularios</h1>
+	<form id="formulario_1">
+		<h3>Formulario de Registro:</h3>
+		<div>(Todos los campos son obligatorios)</div>
+		<fieldset>
+			<legend>Datos personales:</legend>
+			<label for="nombre">Nombre: </label>
+			<input type="text" name="nombre" id="nombre" maxlength="25" size="15" />
+			<span id="info_nombre"></span>
+			<div>(Mínimo 2 letras)</div>
+
+			<label for="apellidos">Apellidos: </label>
+			<input type="text" name="apellidos" id="apellidos" maxlength="50" size="25" />
+			<span id="info_apellidos"></span>
+			<div>(Mínimo 4 letras)</div>
+
+			<label for="dni">NIF: </label>
+			<input type="text" name="dni" id="dni" maxlength="9" size="9" />
+			<span id="info_dni"></span>
+		</fieldset>
+
+
+		<fieldset class="adicionales">
+			<legend>Datos adicionales:</legend>
+			<label>Sexo: </label>
+			<ul>
+				<li>
+					<input type="radio" name="sexo" value="femenino" />
+					<label for="femenino">Femenino</label>
+				</li>
+				<li>
+					<input type="radio" name="sexo" value="masculino" />
+					<label for="masculino">Masculino</label>
+				</li>
+				<li>
+					<input type="radio" name="sexo" value="ni_me_acuerdo" />
+					<label for="ni_me_acuerdo">hace tanto que ni me acuerdo</label>
+				</li>
+			</ul>
+			<span id="info_sexo"></span>
+
+			<label for="f_dia">Fecha: </label>
+			<input type="text" id="f_dia" maxlength="2" size="1" /> /
+			<input type="text" id="f_mes" maxlength="2" size="1" /> /
+			<input type="text" id="f_ano" maxlength="4" size="3" />
+			<div>(dd/mm/aaaa)</div>
+			<span id="info_fecha"></span>
+
+			<label>Estatura: </label>
+			<input type="text" size="5" maxlength="7">
+			<div>(en metros)</div>
+			<span id="info_estatura"></span>
+
+			<label>Est. Civil:</label>
+			<select>
+				<option value="-1">Selecciona una opción</option>
+				<option value="1">Soltera/o</option>
+				<option value="2">Casada/o</option>
+				<option value="3">Separada/o</option>
+				<option value="4">Divorciada/o</option>
+				<option value="5">Pareja de hecho</option>
+				<option value="6">En la gloria</option>
+				<option value="7">Es complicado!!!!</option>
+			</select>
+			<span id="info_estado_civil"></span>
+		</fieldset>
+
+
+		<fieldset>
+			<legend>Otros datos: </legend>
+			<label>Preferencias en zumos de cebada: </label>
+			<ul>
+				<li>
+					<input type="checkbox" name="bebidas" value="paulaner" />
+					<label>Paulaner</label>
+				</li>
+				<li>
+					<input type="checkbox" name="bebidas" value="coronita" />
+					<label>Coronita</label>
+				</li>
+				<li>
+					<input type="checkbox" name="bebidas" value="cruzcampo" />
+					<label>Cruzcampo</label>
+				</li>
+				<li>
+					<input type="checkbox" name="bebidas" value="desperados" />
+					<label>Desperados</label>
+				</li>
+				<li>
+					<input type="checkbox" name="bebidas" value="grimbergen" />
+					<label>Grimbergen optimo bruno</label>
+				</li>
+				<li>
+					<input type="checkbox" name="bebidas" value="judas" />
+					<label>Judas</label>
+				</li>
+				<li>
+					<input type="checkbox" name="bebidas" value="lucifer" />
+					<label>Lucifer</label>
+				</li>
+				<li>
+					<input type="checkbox" name="bebidas" value="ambar" />
+					<label>Ambar Export</label>
+				</li>
+				<div>(Mínimo 3 opciones)</div>
+			</ul>
+			<span id="info_bebidas"></span>
+
+			<label for="cc">Cuenta Corriente: </label>
+			<input type="text" maxlength="20" size="22" />
+			<span id="info_ccc"></span>
+			<div>(20 dígitos sin blancos)</div>
+
+			<label>Alguna sugerencia: </label>
+			<textarea></textarea>
+			<span id="info_sugerencia"></span>
+		</fieldset>
+
+		<fieldset>
+			<input type="submit" value="ENVIAR">
+			<input type="reset" value="Limpiar">
+		</fieldset>
+
+	</form>
+</body>
+
+</html>

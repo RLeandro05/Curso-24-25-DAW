@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+
+<head>
+	<meta charset="UTF-8" />
+	<title>Validar Formularios</title>
+	<style type="text/css">
+		span {
+			color: red;
+		}
+	</style>
+	<script>
+		window.onload = function () {
+			document.getElementById("formulario_1").onsubmit = validarFecha;
+		}
+		function validarFecha() {
+			var dia = parseInt(document.getElementById("f_dia").value);
+			var mes = parseInt(document.getElementById("f_mes").value)-1;
+			var ano = parseInt(document.getElementById("f_ano").value);
+
+			var fecha = new Date(ano, mes, dia);
+
+			return (fecha.getFullYear() === ano && fecha.getMonth() === mes && fecha.getDate() === dia);
+		}
+
+
+	</script>
+</head>
+
+<body>
+
+	<h1>Ejercicio Validación de Formularios</h1>
+	<form id="formulario_1">
+		<p>
+		<h3>Formulario de Registro:</h3>
+		<label for="nombre">Nombre: </label>
+		<input type="text" name="nombre" id="nombre" maxlength="25" size="15" />
+		<span id="info_nombre"></span>
+		<div>(Mínimo 2 letras)</div>
+		<br><br>
+
+		<label for="apellidos">Apellidos: </label>
+		<input type="text" name="apellidos" id="apellidos" maxlength="50" size="25" />
+		<span id="info_apellidos"></span>
+		<div>(Mínimo 4 letras)</div>
+		<br><br>
+
+		<label for="dni">NIF: </label>
+		<input type="text" name="dni" id="dni" maxlength="9" size="9" />
+		<span id="info_dni"></span>
+		<br><br><br>
+
+		<label>Sexo: </label>
+		<select id="sexo">
+			<option value="">Selecciona una opción</option>
+			<option value="F">Femenino</option>
+			<option value="M">Masculino</option>
+			<option value="Y">Ya quisiera yo</option>
+		</select>
+		<span id="info_sexo"></span>
+		<br><br><br>
+
+		<label for="f_dia">Fecha: </label>
+		<input type="text" id="f_dia" maxlength="2" size="1" /> /
+		<input type="text" id="f_mes" maxlength="2" size="1" /> /
+		<input type="text" id="f_ano" maxlength="4" size="3" /> (dd/mm/aaaa)
+		<span id="info_fecha"></span>
+		<br><br><br>
+
+		<label for="sugerencia">Alguna sugerencia: </label>
+		<textarea id="sugerencia" name="sugerencia"></textarea>
+		<span id="info_sugerencia"></span>
+		<br><br>
+		</p>
+		<p><b>Todos los campos son obligatorios.</b></p>
+		<br>
+		<p>
+			<input type="submit" value="ENVIAR">
+			<br><br>
+			<input type="reset" value="Limpiar">
+
+		</p>
+	</form>
+</body>
+
+</html>

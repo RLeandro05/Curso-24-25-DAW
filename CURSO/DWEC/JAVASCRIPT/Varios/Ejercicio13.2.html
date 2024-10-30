@@ -1,0 +1,51 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+        <title>Ejercicio 13 - DOM b�sico y atributos XHTML</title>
+        <script type="text/javascript">
+
+        var contador = 6; //Contador para enumerar elementos nuevos creados
+
+            function anade() { //Funcion anade() para anadir nuevos elementos
+
+                var nuevoElemento = document.createElement("li"); //Creacion de nuevo elemento
+                nuevoElemento.id = contador;
+                var texto = document.createTextNode("Elemento "+ contador + " ");
+                nuevoElemento.appendChild(texto); //Adicion del texto en el elemento
+
+                var botonBorrar = document.createElement("input"); //Creacion de un boton para borrar el elemento creado, si lo indica el usuario
+                botonBorrar.type = "button";
+                botonBorrar.value = "Borrar " + contador;
+                nuevoElemento.appendChild(botonBorrar); //Adicion del boton de borrar como hijo del elemento creado
+
+                var lista = document.getElementById("lista");
+                lista.appendChild(nuevoElemento); //Adicion del nuevo elemento como hijo de la lista de la pagina
+
+                contador++;
+
+                botonBorrar.onclick = function() { //En caso de pinchar en el boton de Borrar, ejecutar funcion para llamar a una funcion exterior "borrarElemento()"
+                    borrarElemento(nuevoElemento); //Llevamos el elemento que queremos eliminar
+                }
+
+            }
+
+            function borrarElemento(elemento) { //Funcion para eliminar elementos creados
+                elemento.parentNode.removeChild(elemento); //Elimina el elemento seleccionado
+                //elemento.remove(); Otra forma de eliminar el elemento
+
+                contador--;
+            }
+        </script>
+    </head>
+    <body>
+        <ul id="lista">
+            <li>Lorem ipsum dolor sit amet</li>
+            <li>Consectetuer adipiscing elit</li>
+            <li>Sed mattis enim vitae orci</li>
+            <li>Phasellus libero</li>
+            <li>Maecenas nisl arcu</li>
+        </ul>
+        <input type="button" value="A&ntilde;adir elemento" onclick="anade()">
+    </body>
+</html>

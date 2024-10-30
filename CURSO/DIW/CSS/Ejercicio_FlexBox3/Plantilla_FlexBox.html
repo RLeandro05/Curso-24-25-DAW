@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>Plantilla</title>
+	<style type="text/css">
+		header {
+			height: 80px;
+			width: auto;
+			margin: auto;
+			border: 1px solid grey;
+		}
+
+		main {
+			display: flex;
+			border: 5px solid red;
+		}
+
+		section {
+			width: 90%;
+			margin: .4em 0;
+			padding: .2em;
+			border: 1px solid pink;
+		}
+
+		nav {
+			width: 15%;
+			margin: .4em;
+			padding: .2em;
+			border: 1px solid green;
+		}
+
+		p#menu {
+			text-align: center;
+			font-size: 1.5em;
+			background-color: pink;
+			color: darkred;
+		}
+
+
+
+		aside {
+			width: 15%;
+			margin: .4em;
+			padding: .2em;
+			border: 1px solid blue;
+		}
+
+		footer {
+			height: 50px;
+			width: auto;
+			margin: auto;
+			border: 1px solid grey;
+		}
+
+		div#seleccionMenu {
+			border: 1px solid lightsalmon;
+			text-align: center;
+		}
+
+		div#seleccionMenu input {
+			width: 95%;
+			max-width: 80%;
+			border: 1px solid darkgoldenrod;
+			background-color: #ffff7a;
+			border-radius: 10px;
+			margin-top: 10px;
+			text-align: center;
+			font-size: 1.5em;
+			color: darkgoldenrod;
+		}
+
+		div#seleccionMenu:hover {
+			background-color: #ffff7a;
+		}
+
+		div#seleccionMenu input:hover {
+			background-color: orange;
+			color: white;
+			cursor: pointer;
+		} 
+
+		div#seleccionMenu div  {
+			display: none;
+			margin-bottom: 2em;
+			color: blue;
+		}
+
+		div#seleccionMenu input:focus + div {
+			display: block;
+			background-color: orange;
+		}
+
+
+	</style>
+</head>
+
+<body>
+	<header>
+		<h3>Cabecera</h3>
+	</header>
+
+
+	<main>
+
+		<nav>
+			<p id="menu">Menú</p>
+			<div id="seleccionMenu">
+				<input type="text" value="Opción 1" readonly>
+				<div>Texto de la opción 1</div>
+
+				<input type="text" value="Opción 2" readonly>
+				<div>Texto de la opción 2</div>
+
+				<input type="text" value="Opción 3" readonly>
+				<div>Texto de la opción 3</div>
+
+				<input type="text" value="Opción 4" readonly>
+				<div>Texto de la opción 4</div>
+
+				<input type="text" value="Opción 5" readonly>
+				<div>Texto de la opción 5</div>
+			</div>
+		</nav>
+
+		<section>
+			<article>
+				<p>Artículo 1. Párrafo 1</p>
+				<p>Artículo 1. Párrafo 2</p>
+				<p>Artículo 1. Párrafo 3</p>
+			</article>
+			<article>
+				<p>Artículo 2. Párrafo 1</p>
+				<p>Artículo 3. Párrafo 2</p>
+				<p>Artículo 4. Párrafo 3</p>
+			</article>
+			<article>
+				<p>Artículo 3. Párrafo 1</p>
+				<p>Artículo 3. Párrafo 2</p>
+				<p>Artículo 3. Párrafo 3</p>
+			</article>
+		</section>
+
+		<aside>
+			<p>Esto es el lateral derecho. Para mostrar cosicas.</p>
+		</aside>
+
+	</main>
+
+	<footer>
+		<p>Este es el píe de página</p>
+	</footer>
+
+</body>
+
+</html>

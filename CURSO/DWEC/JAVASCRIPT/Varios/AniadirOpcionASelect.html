@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript">
+
+        // Cargar la página completamente antes de realizar la creacion de nodos
+        window.onload = function () {
+            constante = 10; // Definir vairbale constante
+
+            // For para iterar cada valor hasta la constante
+            for (i = 1; i <= constante; i++) {
+                var nodoSeleccion = document.getElementById("seleccion"); // Sacar nodo del select
+
+                var nodoOpcionNueva = document.createElement("option"); // Creacion de nuevo nodo option
+                var nodoTextoNuevo = document.createTextNode("Opcion " + i); // Añadir al nodo el texto de "Opcion" + el numero correspondiente de i
+                nodoOpcionNueva.value = i; // Añadir un atributo value que indique el numero correspondiente de i
+
+                nodoOpcionNueva.appendChild(nodoTextoNuevo); // Añadir el texto como hijo del nodo nuevo
+                nodoSeleccion.appendChild(nodoOpcionNueva); // Añadir  el nodo nuevo como hijo del nodo de select
+            }
+        }
+
+    </script>
+</head>
+
+<body>
+    <label for "seleccion">Seleccionar opcion</label>
+    <select id="seleccion">
+
+    </select>
+</body>
+
+</html>

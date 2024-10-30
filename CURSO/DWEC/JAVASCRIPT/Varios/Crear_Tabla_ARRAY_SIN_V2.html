@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8" />
+	<title>Ejercicio. CREAR TABLAS Y ARRAYS</title>
+
+	<style>
+		.claseInput {
+			width: 3em;
+			margin: 0 .5em .5em 0;
+		}
+
+		#salMatriz {
+			margin-left: 1em;
+		}
+	</style>
+
+	<script type="text/javascript">
+
+		//  Cuando crees los inputs, por javascript establece su clase a: claseInput (el css que tienes arriba)
+		//  Los inputs NO están metidos en ninguna tabla. Sólo están dentro del div salMatriz
+
+		window.onload = function () {
+			document.getElementById("btGenMatriz").onclick = crearMatrizInputs; // Una vez se pinche en el botón, llamar a la función
+			document.getElementById("btLlenarMatriz").onclick = llenarInputs; // Una vez se pinche en el botón, llamar a la función
+			document.getElementById("btGenTabla").onclick = crearTabla; // Una vez se pinche en el botón, llamar a la función
+			document.getElementById("nfiltroI").onkeypress = filtrarTabla;
+		}
+		function crearMatrizInputs() { // Función para crear la matriz de Inputs
+			// console.log("Llega a crearMatrizInputs")
+
+			// Desabilitar los inputs de selección de filas y columnas para no fastidiar el programa si le da por accidente
+			document.getElementById("nfilas").disabled = true;
+			document.getElementById("ncolumnas").disabled = true;
+
+
+			let tabla = document.createElement("table"); // Crear tabla nueva de Inputs
+			let zonaCreacionMatriz = document.getElementById("salMatriz");
+			zonaCreacionMatriz.appendChild(tabla);
+
+			// Sacar el valor del número de filas y columnas seleccionadas
+			let numFilas = document.getElementById("nfilas").value;
+			let numColumnas = document.getElementById("ncolumnas").value;
+
+			/*console.log("Filas: "+numFilas);
+			console.log("Filas: "+numColumnas);*/
+
+			// Crear el cuerpo de la cabecera para crear las columnas
+			let cuerpoCabecera = document.createElement("thead");
+			tabla.appendChild(cuerpoCabecera);
+
+			// Crear una fila exclusiva para la cabecera y añadirla como hija
+			let filaCabecera = document.createElement("tr");
+			cuerpoCabecera.appendChild(filaCabecera);
+
+			for (let i = 0; i < numColumnas; i++) { // For para generar SÓLO COLUMNAS
+				// Crear celda nueva de cabecera según el número de columnas que hayamos puesto. Será hija de la fila de la cabecera
+				let celdaCabecera = document.createElement("input");
+				celdaCabecera.readOnly = true; // Indicar que sólo se puede leer, para no modificar valores
+				celdaCabecera.size = 1; // Poner una longitud pequeña para poder ver la tabla entera
+				celdaCabecera.className = "claseInput"; // Añadir la clase que se pide
+				celdaCabecera.name = "celdaCabeceraNAME";
+				celdaCabecera.style.textAlign = "center";
+				filaCabecera.appendChild(celdaCabecera); // Añadirla como hija de la fila de la cabecera
+			}
+
+			// Crear el cuerpo de filas para crear nuevas filas en la tabla
+			let cuerpoFilas = document.createElement("tbody");
+			tabla.appendChild(cuerpoFilas);
+
+			for (let i = 0; i < numFilas; i++) { // Primer For para crear las filas
+				let nuevaFila = document.createElement("tr"); // Crear nueva fila una vez se creen todas las celdas correspondientes de dicha fila
+				for (let j = 0; j < numColumnas; j++) { // Segundo For para crear las celdas correctas según el número de columnas
+					let celdaFila = document.createElement("input"); // Crear celda nuevad de la fila
+					celdaFila.readOnly = true; // Indicar que sólo se puede leer, para no modificar valores
+					celdaFila.size = 1; // Poner una longitud pequeña para poder ver la tabla entera
+					celdaFila.className = "claseInput"; // Añadir la clase que se pide
+					celdaFila.name = "celdaFilaNAME";
+					celdaFila.style.textAlign = "center";
+					nuevaFila.appendChild(celdaFila); // Añadirla como hija de la fila del cuepro de filas
+				}
+				cuerpoFilas.appendChild(nuevaFila); // Añadir al final la fila creada con sus celdas como hija del cuerpo
+			}
+
+			document.getElementById("btGenMatriz").disabled = true;
+			document.getElementById("btLlenarMatriz").disabled = false;
+		}
+		function llenarInputs() { // Función para rellenar la matriz de números aleatorios
+			// console.log("Llega a llenarInputs");
+
+			// Crear un rango aleatorio de números para añadirlos en cada input
+			let rangoMin = document.getElementById("nfiltroI").min;
+			let rangoMax = document.getElementById("nfiltroI").max;
+
+			let listaInputs = document.getElementsByClassName("claseInput"); // Guardar la lista de los inputs creados con la clase
+
+			for (let i = 0; i < listaInputs.length; i++) { // For para iterar cada input y darle valor
+				listaInputs[i].value = Math.floor(Math.random() * (rangoMax - rangoMin + 1)) - rangoMin;
+			}
+
+			document.getElementById("btLlenarMatriz").disabled = true;
+			document.getElementById("btGenTabla").disabled = false; // Una vez hecho y comprobar que esté bien el código, habilitar el botón siguiente
+		}
+		function crearTabla() { // Función para crear la matriz en una tabla
+			// console.log("Llega a crearTabla");
+
+			// Guardar el valor de las filas y columnas que se quieren crear
+			let numFilas = document.getElementById("nfilas").value;
+			let numColumnas = document.getElementById("ncolumnas").value;
+
+			// Crear tabla y añadirla como hija de la zona donde se va a crear
+			let tabla = document.createElement("table");
+			document.getElementById("tabla").appendChild(tabla);
+
+			// Crear el cuerpo de la cabecera y ponerla como hija de la tabla
+			let cuerpoCabeceraTABLA = document.createElement("thead");
+			tabla.appendChild(cuerpoCabeceraTABLA);
+
+			let filaCabeceraTABLA = document.createElement("tr"); // Crear fila exclusiva para la cabecera
+			cuerpoCabeceraTABLA.appendChild(filaCabeceraTABLA); // Añadirla como hija de la cabecera
+
+			let listaInputsCabecera = document.getElementsByName("celdaCabeceraNAME");
+			for (let i = 0; i < numColumnas; i++) { // For para crear la cabecera
+				// Crear una celda que tendrá todo el contenido de la celda de dicha matriz
+				let celdaCabeceraTABLA = document.createElement("td"); // Crear una celda normal
+				let inputClonado = document.createElement("input"); // Clonar todo el contenido del input de la matriz y pasarla a la celda
+				inputClonado.value = listaInputsCabecera[i].value;
+                inputClonado.size = 1;
+                inputClonado.readOnly = true;
+                inputClonado.style.margin = "1em";
+                inputClonado.name = "inputTABLA";
+				inputClonado.style.border = "1px solid"; // Quitar el borde del input para hacerlo parecer como celda de tabla
+				inputClonado.style.textAlign = "center";
+				celdaCabeceraTABLA.appendChild(inputClonado); // Añadirla como hija de la celda, para que aparezca en dicha celda
+
+				filaCabeceraTABLA.appendChild(celdaCabeceraTABLA); // Añadir a la celda como hija de la fila de la cabecera
+			}
+
+			// Crear el cuerpo de filas y añadirla como hija de la tabla
+			let cuerpoFilasTABLA = document.createElement("tbody");
+			tabla.appendChild(cuerpoFilasTABLA);
+
+			let listaInputsFilas = document.getElementsByName("celdaFilaNAME"); // Guardar en una lista los inputs que sean del cuerpo de filas
+			let contadorCuerpoFilasINPUTS = 0;
+			for (let i = 0; i < numFilas; i++) { // Primer For para crear las filas
+				let nuevaFilaTABLA = document.createElement("tr"); // Crear una nueva fila
+				for (let j = 0; j < numColumnas; j++) { // Segundo Fro para crear las celdas correspondientes al número de columnas creadas
+					let celdaFilaTABLA = document.createElement("td"); // Crear una celda normal
+                    let inputClonado = document.createElement("input"); // Clonar el input correspondiente a partir del contador
+					inputClonado.value = listaInputsFilas[contadorCuerpoFilasINPUTS].value;
+                    inputClonado.size = 1;
+                    inputClonado.readOnly = true;
+                    inputClonado.style.margin = "1em";
+                    inputClonado.name = "inputTABLA";
+					inputClonado.style.border = "1px solid"; // Quitar el borde del input para hacerlo parecer como celda de tabla
+					inputClonado.style.textAlign = "center";
+
+					//Añadir como hija a cada elemento correspondiente
+					celdaFilaTABLA.appendChild(inputClonado);
+					nuevaFilaTABLA.appendChild(celdaFilaTABLA);
+
+					contadorCuerpoFilasINPUTS++; // Sumar +1 al contador para que vaya pasando por cada input de la lista en vez de usar j, ya que se reiniciaría la variable
+				}
+				cuerpoFilasTABLA.appendChild(nuevaFilaTABLA); // Añadir como hija del cuerpo de las filas
+			}
+
+			document.getElementById("btGenTabla").disabled = true; // Deshabilitar el botón para no fastidiar el programa
+		}
+		function filtrarTabla(event) { // Función para filtrar tabla según el valor del filtro
+			let tecla = event.charCode; // Guardar en una variable el código del carácter
+
+			// console.log("Tecla: " + tecla);
+
+			if (tecla === 13) { // Si el código es 13, es decir, ENTER, modificamos el valor del input por el nuevo ingresado
+				let nuevoValue = document.getElementById("nfiltroI").value; // Guardar el valor nuevo en una variable para que funcione el intercambio
+				document.getElementById("nfiltroI").value = nuevoValue; // Poner por defecto el nuevo valor guardado anteriormente
+
+				let listaInputs = document.getElementsByName("inputTABLA"); // Guardar una lista con todos los inputs creados
+
+				for (let i = 0; i < listaInputs.length; i++) { // For para mostrar los inputs que superen el valor del filtro indicado
+					if (listaInputs[i].value < document.getElementById("nfiltroI").value) {
+						listaInputs[i].hidden = true;
+					} else {
+						listaInputs[i].hidden = false;
+					}
+				}
+			}
+		}
+
+
+
+	</script>
+
+</head>
+
+<body>
+	<br>
+	<h2>Ejercicio Tablas y Arrays</h2>
+	<h3>Introducir el código javascript necesario, para que al pulsar sobre
+		el botón, se cree un array (matriz) de inputs (elementos DOM) con un número fijo de filas y columnas. </h3>
+
+	<br />
+	<form>
+		<p>
+			<label for="nfilas">Introduce el número de filas:</label>
+			<input type="number" id="nfilas" value="15" min="1" max="100" style="width: 3em" />
+			<br />
+			<label for="ncolumnas">Introduce el número de columnas:</label>
+			<input type="number" id="ncolumnas" value="8" min="1" max="100" style="width: 3em" />
+		</p>
+		<p>
+			<button type="button" id="btGenMatriz">
+				Generar Matriz de Inputs
+			</button>
+			<button type="button" id="btLlenarMatriz" disabled>
+				Llenar Matriz de Inputs
+			</button>
+			<button type="button" id="btGenTabla" disabled>
+				Generar tabla
+			</button>
+		</p>
+	</form>
+	<br>
+
+	<div id="salMatriz">
+		(Aquí se colocará la matriz de inputs)
+	</div>
+
+	<h3>
+		Filtro de tabla:
+	</h3>
+
+	<p>
+		Mostrar solo números >
+		<input type="number" id="nfiltroI" value="500" min="1" max="1000" style="width: 4em" />
+	</p>
+
+	<div id="tabla">
+		(Aquí se colocará la tabla que se cree dinámicamente con javascript.)
+	</div>
+
+</body>
+
+</html>

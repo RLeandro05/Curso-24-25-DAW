@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript">
+
+        // Cargar la página completamente antes de realizar la creacion de nodos
+        window.onload = function () {
+            // Añadir input de tipo boton para poder añadir nuevas opciones cuando se pulse en el
+            var boton = document.createElement("input");
+            boton.type = "button";
+            boton.value = "Llenar Select";
+            boton.id = "boton";
+            document.body.appendChild(boton); // Añadir como hijo del documento para mostra por pantalla
+
+            var nodoNumero = document.createElement("input");
+            nodoNumero.placeholder = "Cantidad";
+            nodoNumero.type = "number";
+            nodoNumero.id = "numeroOpcionesCreadas"
+            document.body.appendChild(nodoNumero);
+
+            document.getElementById("boton").onclick = llamarA; // AL pinchar en el boton, llevar a la funcion indicada
+            
+        }
+        function llamarA (){ // Funcion intermediaria
+            var numeroOpciones = document.getElementById("numeroOpcionesCreadas"); // Llamar al nodo de cantidad
+            constante = numeroOpciones.value; // Definir numero de nodos nuevos
+
+            var nodoSelect = document.getElementById("seleccion"); // Variable para el nodo select
+
+            llenoSelect(nodoSelect, constante);
+        }
+        function llenoSelect(nodoSelect, constante) {
+            nodoSelect.options.length = 0;
+            for(i = 1; i <= constante; i++) {
+                var nodoNuevo = document.createElement("option");
+                var textoNuevo = document.createTextNode("Opcion " + i);
+
+                nodoNuevo.value = i;
+
+                nodoNuevo.appendChild(textoNuevo);
+                nodoSelect.appendChild(nodoNuevo);
+            }
+        }
+
+    </script>
+</head>
+
+<body>
+    <label for "seleccion">Seleccionar opcion</label>
+    <select id="seleccion">
+
+    </select>
+</body>
+
+</html>

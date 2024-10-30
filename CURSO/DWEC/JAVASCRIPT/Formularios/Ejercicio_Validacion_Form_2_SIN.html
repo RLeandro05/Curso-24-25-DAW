@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+
+<head>
+	<meta charset="UTF-8" />
+	<title>Validar Formularios</title>
+	<style type="text/css">
+		span {
+			color: red;
+		}
+	</style>
+	<script
+		src="https://educacionadistancia.juntadeandalucia.es/centros/sevilla/pluginfile.php/360295/mod_folder/content/0/Utilidades.js"></script>
+	<script>
+		window.onload = function() {
+			document.getElementById("formulario_1").onsubmit = validarFormulario;
+		}
+		function validarFormulario() {
+
+			// Validar Sexo
+			var opcionesSexo = document.getElementsByName("sexo");
+
+			var resultadoSexo = false;
+			for (i = 0; i < opcionesSexo.length; i++) {
+				resultadoSexo = resultadoSexo || opcionesSexo[i].checked;
+				if(!resultadoSexo) {
+					document.getElementById("info_sexo").innerHTML = "Debe seleccionar una opción sexual";
+				}
+			}
+
+			// Validar Cebada
+			var opcionesCebada = document.getElementsByName("bebidas");
+
+			var resultadoCebada = false;
+			for(i = 0; i< opcionesCebada.length; i++) {
+				resultadoCebada = resultadoCebada || opcionesCebada[i].checked;
+				if(!resultadoCebada) {
+					document.getElementById("info_bebidas").innerHTML = "Debe seleccionar al menos una opción de bebidas";
+				}
+			}
+
+			return false;
+		}
+
+
+	</script>
+</head>
+
+<body>
+
+	<h1>Ejercicio Validación de Formularios</h1>
+	<form id="formulario_1">
+		<p>
+		<h3>Formulario de Registro:</h3>
+		<label for="nombre">Nombre: </label>
+		<input type="text" name="nombre" id="nombre" maxlength="25" size="15" />
+		<span id="info_nombre">*</span>
+		<div>(Mínimo 2 letras)</div>
+		<br><br>
+
+		<label for="apellidos">Apellidos: </label>
+		<input type="text" name="apellidos" id="apellidos" maxlength="50" size="25" />
+		<span id="info_apellidos">*</span>
+		<div>(Mínimo 4 letras)</div>
+		<br><br>
+
+		<label for="dni">NIF: </label>
+		<input type="text" name="dni" id="dni" maxlength="9" size="9" />
+		<span id="info_dni">*</span>
+		<br><br><br>
+
+
+
+		<label>Sexo: </label>
+		<input type="radio" name="sexo" value="femenino" />
+		<label for="femenino">Femenino</label>
+		<input type="radio" name="sexo" value="masculino" />
+		<label for="masculino">Masculino</label>
+		<input type="radio" name="sexo" value="ni_me_acuerdo" />
+		<label for="ni_me_acuerdo">hace tanto que ni me acuerdo</label>
+		<span id="info_sexo">*</span>
+		<br><br><br>
+
+
+
+		<label for="f_dia">Fecha: </label>
+		<input type="text" id="f_dia" maxlength="2" size="1" /> /
+		<input type="text" id="f_mes" maxlength="2" size="1" /> /
+		<input type="text" id="f_ano" maxlength="4" size="3" /> (dd/mm/aaaa)
+		<span id="info_fecha">*</span>
+		<br><br><br>
+
+
+
+		<label for="estatura">Estatura (en metros): </label>
+		<input type="text" id="estatura" size="5" maxlength="7">
+		<span id="info_estatura">*</span>
+		<br><br><br>
+
+
+		<label for="estado_civil">Estado Civil: </label>
+		<select id="estado_civil"><span id="info_estado_civil"></span>
+			<option value="-1">Selecciona una opción</option>
+			<option value="1">Soltera/o</option>
+			<option value="2">Casada/o</option>
+			<option value="3">Separada/o</option>
+			<option value="4">Divorciada/o</option>
+			<option value="5">Pareja de hecho</option>
+			<option value="6">En la gloria</option>
+			<option value="7">Es complicado!!!!</option>
+		</select>
+		<span id="info_estado_civil">*</span>
+		<br><br><br>
+
+
+		<div>Preferencias en zumos de cebada: <span id="info_bebidas">*</span></div>
+
+		<ul>
+			<li>
+				<input type="checkbox" name="bebidas" value="paulaner" />
+				<label>Paulaner</label>
+			</li>
+			<li>
+				<input type="checkbox" name="bebidas" value="coronita" />
+				<label>Coronita</label>
+			</li>
+			<li>
+				<input type="checkbox" name="bebidas" value="cruzcampo" />
+				<label>Cruzcampo</label>
+			</li>
+			<li>
+				<input type="checkbox" name="bebidas" value="desperados" />
+				<label>Desperados</label>
+			</li>
+			<li>
+				<input type="checkbox" name="bebidas" value="grimbergen" />
+				<label>Grimbergen optimo bruno</label>
+			</li>
+			<li>
+				<input type="checkbox" name="bebidas" value="judas" />
+				<label>Judas</label>
+			</li>
+			<li>
+				<input type="checkbox" name="bebidas" value="lucifer" />
+				<label>Lucifer</label>
+			</li>
+			<li>
+				<input type="checkbox" name="bebidas" value="ambar" />
+				<label>Ambar Export</label>
+			</li>
+		</ul>
+		<div>(Mínimo 3 opciones)</div>
+		<br><br>
+
+
+		<label for="cc">Número Cuenta Corriente: </label>
+		<input type="text" name="ccc" id="ccc" maxlength="20" size="22" />
+		<span id="info_ccc">*</span>
+		<div>(20 dígitos sin blancos)</div>
+		<br><br><br>
+
+
+		<label for="sugerencia">Alguna sugerencia: </label>
+		<textarea id="sugerencia" name="sugerencia"></textarea>
+		<span id="info_sugerencia">*</span>
+		<br><br>
+		</p>
+		<p><b>Todos los campos son obligatorios.</b></p>
+		<br>
+		<p>
+			<input type="submit" value="ENVIAR">
+			<br><br>
+			<input type="reset" value="Limpiar">
+
+		</p>
+	</form>
+</body>
+
+</html>

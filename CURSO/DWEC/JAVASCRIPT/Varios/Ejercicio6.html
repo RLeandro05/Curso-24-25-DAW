@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <script type="text/javascript">
+
+            var letras = ['T', 'R', 'W', 'A', 'G', 'M', 'Y', 'F', 'P', 'D', 'X', 'B', 'N', 'J', 'Z', 'S', 'Q', 'V', 'H', 'L', 'C', 'K', 'E', 'T'];
+
+            var numeroDNI = prompt("Introduzca el número de su DNI, por favor: ");
+
+            var numero23 = 23;
+
+            if (numeroDNI < 0 || numeroDNI > 99999999) {
+                alert("DNI no válido.");
+            } else {
+                alert("DNI válido. Calculando su letra correspondiente...");
+
+                var resultado = numeroDNI % numero23;
+
+                alert("Su letra correspondiente al DNI es: " + letras[resultado]);
+            }
+        </script>
+    </head>
+    <body></body>
+</html>

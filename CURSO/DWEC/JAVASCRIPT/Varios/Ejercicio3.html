@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <script type="text/javascript">
+            var valores = [true, 5, false, "hola", "adios", 2];
+
+            var cadenaMayor = valores[3] > valores[4];
+            alert("Resultado cadenas de texto: " + cadenaMayor); // Si es true, "hola" es mayor; Si no, es "adios"
+
+            var booleanos = valores[0] && valores[2]; // Dará false
+            alert("Resultado booleanos: " + booleanos);
+
+            var booleanos2 = valores[0] || valores[2]; // Dará true
+            alert("Resultado booleanos: " + booleanos2);
+
+            var suma = valores[1] + valores[5];
+            alert("Suma: " + suma);
+
+            var resta = valores[1] - valores[5];
+            alert("Resta: " + resta);
+
+            var producto = valores[1] * valores[5];
+            alert("Producto: " + producto);
+
+            var division = valores[1] / valores[5];
+            alert("División: " + division);
+
+            var resto = valores[1] % valores[5];
+            alert("Resto: " + resto);
+        </script>
+    </head>
+    <body>
+        <noscript> ES NECESARIO JAVASCRIPT </noscript>
+    </body>
+</html>
