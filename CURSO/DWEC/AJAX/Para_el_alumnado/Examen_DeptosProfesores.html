@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8" />
+	<title>Examen 1ª Evaluación DWEC</title>
+	<style>
+		h3 {
+			color: red;
+		}
+
+		/* CSS para el formulario:   */
+		.formProfes {
+			visibility: hidden;
+			position: absolute;
+			top: 20%;
+			left: 20%;
+			z-index: 11;
+			background-color: pink;
+			border: 2px solid maroon;
+			border-radius: 15px;
+			padding: 1em;
+			color: red;
+		}
+
+		.formProfes div label {
+			display: block;
+			margin-top: .5em;
+		}
+
+		.formProfes .btn {
+			display: block;
+			margin-top: 1em;
+		}
+
+
+		.ver {
+			visibility: visible;
+		}
+
+
+		#deptoDelProfe {
+			font-family: "Lucida Console", "Courier New", monospace;
+			font-size: 1.2em;
+			font-weight: bold;
+			color: blue;
+		}
+	</style>
+	<script type="text/javascript">
+		let urlServidor = 'deptosProfes.php';
+		let objeto = new Object();
+		let peticion;
+
+		window.onload = () => {
+			//console.log("Entra en .onload");
+
+			document.querySelector("#departamentos table").style.border = "none";
+			document.querySelector("#departamentos table").style.backgroundColor = "lightgray";
+
+			document.querySelector("#profesores table").style.border = "none";
+			document.querySelector("#profesores table").style.backgroundColor = "lightgray";
+
+			document.querySelector("#btAnade").style.marginBottom = ".2em";
+			document.querySelector("#btAnade").style.cursor = "pointer";
+
+			document.querySelector("#btCancelar").style.cursor = "pointer";
+
+			document.querySelector("#btNuevaProfe").disabled = true;
+			document.querySelector("#btNuevaProfe").style.backgroundColor = "lightgreen";
+			document.querySelector("#btNuevaProfe").style.borderRadius = "7px";
+
+			document.querySelector("#btAnadeDepto").style.cursor = "pointer";
+
+			document.querySelector("#btCancelarDepto").style.cursor = "pointer";
+
+			document.querySelector("#btNuevoDepto").style.cursor = "pointer";
+			document.querySelector("#btNuevoDepto").style.backgroundColor = "lightgreen";
+			document.querySelector("#btNuevoDepto").style.borderRadius = "7px";
+
+			cargarListaDptos(urlServidor); //Cargar automáticamente la lista de departamentos
+
+			document.querySelector("#btNuevoDepto").onclick = aniadirDepartamento; //Al pinchar, llevar a aniadirDepartamento
+
+			document.querySelector("#btCancelarDepto").onclick = cerrarFormDptos; //Al pinchar, cerrar formulario de añadir departamentos
+
+			document.querySelector("#btNuevaProfe").onclick = aniadirProfesor; //Al pinchar, añadir nuevo profesor
+
+			document.querySelector("#btCancelar").onclick = cerrarFormProfes; //Al pinchar, cerrar el formulario de añadir profesores
+		}
+
+		const cargarListaDptos = (urlServidor) => { //Función para cargar la lista de departamentos
+			//console.log("Entra en cargarListaDptos");
+
+			objeto.servicio = "departamentos";
+
+			let parametrosObjeto = {
+				method: "POST",
+				body: JSON.stringify(objeto)
+			}
+
+			fetch(urlServidor, parametrosObjeto).then(function (datos) { //Promesa
+				//console.log("datos: ", datos);
+				return datos.json(); //Parsear directamente a json
+			}).then(function (response) {
+				//console.log("response: ", response);
+				mostrarListaDptos(response); //Enviar a la función de carga de datos la respuesta del servidor
+			});
+		}
+
+		const mostrarListaDptos = (response) => { //Función para mostrar la lista de departamentos
+			//console.log("Entra en mostrarListDptos");
+
+			let listaDptos = response;
+
+			//console.log(listaDptos);
+
+			let cuerpoTabla = document.querySelector("#detalle_departamentos");
+			cuerpoTabla.textContent = "";
+
+			listaDptos.forEach(dpto => { //Iteración por cada departamento de la lista de departamentos
+				let fila = document.createElement("tr");
+
+				let celdaID = document.createElement("td");
+				celdaID.textContent = dpto.id;
+
+				let celdaNOMBRE = document.createElement("td");
+				celdaNOMBRE.textContent = dpto.nombre;
+
+				let celdaDESCRIPCION = document.createElement("td");
+				celdaDESCRIPCION.textContent = dpto.descripcion;
+
+				let celdaBOTON = document.createElement("td");
+				let btACCION = document.createElement("button")
+				btACCION.textContent = "Ver Profes";
+				btACCION.style.cursor = "pointer";
+				btACCION.style.backgroundColor = "pink";
+				btACCION.style.borderRadius = "7px";
+				btACCION.type = "button";
+				btACCION.onclick = function () { //Al pinchar, llamar a la función de carga para cargar la lista en el servidor, además de mostrar el nombre del departamento seleccionado
+					document.querySelector("#btNuevaProfe").disabled = false;
+					document.querySelector("#btNuevaProfe").style.cursor = "pointer";
+					cargarListaProfesores(dpto.id);
+					mostrarNombreDpto(dpto.nombre);
+				}
+				celdaBOTON.appendChild(btACCION);
+
+				fila.appendChild(celdaID);
+				fila.appendChild(celdaNOMBRE);
+				fila.appendChild(celdaDESCRIPCION);
+				fila.appendChild(celdaBOTON);
+
+				cuerpoTabla.appendChild(fila);
+			});
+
+		}
+
+		const aniadirDepartamento = () => { //Función para añadir un nuevo departamento
+			//console.log("Entra en aniadirDepartamento");
+
+			//Vaciar
+			document.querySelector("#nombreDepto").value = "";
+			document.querySelector("#descripcion").value = "";
+
+			abrirFormDptos();
+
+			document.querySelector("#btAnadeDepto").onclick = function () { //Al pinchar en el botón de añadir departamento, crear y mostrar actualizada la lista	
+				objeto.servicio = "anadeDepto";
+				objeto.nombre = document.querySelector("#nombreDepto").value;
+				objeto.descripcion = document.querySelector("#descripcion").value;
+
+				//console.log(objeto.servicio, objeto.nombre, objeto.descripcion);
+
+				let parametrosObjeto = {
+					method: "POST",
+					body: JSON.stringify(objeto)
+				}
+
+				fetch(urlServidor, parametrosObjeto).then(function (datos) { //Promesa
+					//console.log("datos: ", datos);
+					return datos.json(); //Parsear directamente a json
+				}).then(function (response) {
+					//console.log("response: ", response);
+					mostrarListaDptos(response); //Enviar a la función de carga de datos la respuesta del servidor
+				});
+
+				cerrarFormDptos();
+			}
+		}
+
+		const cargarListaProfesores = (idDepartamento) => { //Función para cargar la lista de profesores al servidor
+			//console.log("Entra en cargarListaProfesores y el id traído es: ", idDepartamento);
+
+			objeto.servicio = "profesores";
+			objeto.id_departamento = idDepartamento;
+
+			let parametrosObjeto = {
+				method: "POST",
+				body: JSON.stringify(objeto)
+			}
+
+
+			fetch(urlServidor, parametrosObjeto).then(function (datos) { //Promesa
+				//console.log("datos: ", datos);
+				return datos.json(); //Parsear directamente a json
+			}).then(function (response) {
+				//console.log("response: ", response);
+				mostrarListaProfesores(response); //Enviar a la función de carga de datos la respuesta del servidor
+			});
+		}
+
+		const mostrarListaProfesores = (response) => { //Función para mostrar la lista de profesores
+			//console.log("Llega a mostrarListaProfesores");
+
+			let listaProfesores = response;
+
+			let cuerpoTabla = document.querySelector("#detalle_profesores");
+			cuerpoTabla.textContent = "";
+
+			listaProfesores.forEach(profesor => { //Iteración por cada profesor de la lista de profesores
+				let fila = document.createElement("tr");
+
+				let celdaID = document.createElement("td");
+				celdaID.textContent = profesor.id;
+
+				let celdaDNI = document.createElement("td");
+				celdaDNI.textContent = profesor.dni;
+
+				let celdaNOMBRE = document.createElement("td");
+				celdaNOMBRE.textContent = profesor.nombre;
+
+				let celdaAPELLIDOS = document.createElement("td");
+				celdaAPELLIDOS.textContent = profesor.apellidos;
+
+				let celdaELIMINAR = document.createElement("td");
+				let botonELIMINAR = document.createElement("button");
+				celdaELIMINAR.appendChild(botonELIMINAR);
+				botonELIMINAR.textContent = "Eliminar";
+				botonELIMINAR.type = "button";
+				botonELIMINAR.style.cursor = "pointer";
+				botonELIMINAR.style.backgroundColor = "lightcoral";
+				botonELIMINAR.style.borderRadius = "7px";
+				botonELIMINAR.onclick = function () { //Al pinchar, llamar a al función para eliminar dicho profesor
+					eliminarProfesor(profesor.id, profesor.nombre, profesor.apellidos, profesor.id_departamento);
+				}
+
+				let celdaEDITAR = document.createElement("td");
+				let botonEDITAR = document.createElement("button");
+				celdaEDITAR.appendChild(botonEDITAR);
+				botonEDITAR.textContent = "Editar";
+				botonEDITAR.type = "button";
+				botonEDITAR.style.cursor = "pointer";
+				botonEDITAR.style.backgroundColor = "lightblue";
+				botonEDITAR.style.borderRadius = "7px";
+				botonEDITAR.onclick = function () { //Al pinchar, llamar a la función para modificaar dicho profesor
+					modificarProfesor(profesor.id, profesor.dni, profesor.nombre, profesor.apellidos);
+				}
+
+				fila.appendChild(celdaID);
+				fila.appendChild(celdaDNI);
+				fila.appendChild(celdaNOMBRE);
+				fila.appendChild(celdaAPELLIDOS);
+				fila.appendChild(celdaELIMINAR);
+				fila.appendChild(celdaEDITAR);
+
+				cuerpoTabla.appendChild(fila);
+			});
+		}
+
+		const eliminarProfesor = (idProfesor, nombreProfesor, apellidosProfesor, idDepartamento) => { //Función para eliminar un profesor específico
+			//console.log("Entra en eliminarProfesor y se eliminará el id: ", idProfesor);
+
+			//Insertar una confirmación para asegurarse de querer eliminar dicho profesor
+			if (confirm("¿Estás seguro de que deseas eliminar al profesor '"+nombreProfesor+" "+apellidosProfesor+"'?")) {
+				objeto.servicio = "eliminaProfe";
+				objeto.id = idProfesor;
+				objeto.id_departamento = idDepartamento;
+
+				let parametrosObjeto = {
+					method: "POST",
+					body: JSON.stringify(objeto)
+				}
+
+
+				fetch(urlServidor, parametrosObjeto).then(function (datos) { //Promesa
+					//console.log("datos: ", datos);
+					return datos.json(); //Parsear directamente a json
+				}).then(function (response) {
+					//console.log("response: ", response);
+					mostrarListaProfesores(response); //Enviar a la función de carga de datos la respuesta del servidor
+				});
+
+				//console.log("Elimina correctamente");
+			}
+
+		}
+
+		const aniadirProfesor = () => { //Función para añadir un nuevo profesor
+			//console.log("Entra en aniadirProfesor");
+
+			//Vaciar
+			document.querySelector("#dni").value = "";
+			document.querySelector("#nombre").value = "";
+			document.querySelector("#apellidos").value = "";
+
+			abrirFormProfes();
+
+			document.querySelector("#btAnade").onclick = () => { //Al pinchar, meter los nuevos valores al objeto para insertarlos en la tabla
+				objeto.servicio = "anadeProfe";
+				objeto.dni = document.querySelector("#dni").value;
+				objeto.nombre = document.querySelector("#nombre").value;
+				objeto.apellidos = document.querySelector("#apellidos").value;
+
+				let parametrosObjeto = {
+					method: "POST",
+					body: JSON.stringify(objeto)
+				}
+
+				fetch(urlServidor, parametrosObjeto).then(function (datos) { //Promesa
+					//console.log("datos: ", datos);
+					return datos.json(); //Parsear directamente a json
+				}).then(function (response) {
+					//console.log("response: ", response);
+					mostrarListaProfesores(response); //Enviar a la función de carga de datos la respuesta del servidor
+				});
+
+				cerrarFormProfes();
+			}
+		}
+
+		const modificarProfesor = (idProfesor, dniProfesor, nombreProfesor, apellidosProfesor) => { //Función para modificar un profesor existente
+			//console.log("Entra en modificarProfesor y sus datos son: ", idProfesor, dniProfesor, nombreProfesor, apellidosProfesor);
+
+			document.querySelector("#formProfes fieldset legend").textContent = "Modificar profesor";
+			//console.log(document.querySelector("#formProfes fieldset legend").value);
+
+			document.querySelector("#btAnade").textContent = "Aplicar";
+
+			document.querySelector("#dni").value = dniProfesor;
+			document.querySelector("#nombre").value = nombreProfesor;
+			document.querySelector("#apellidos").value = apellidosProfesor;
+
+			abrirFormProfes();
+
+			document.querySelector("#btAnade").onclick = () => { //Al pinchar, actualizar los valores en sus respectivas celdas
+				objeto.servicio = "modificaProfe";
+				objeto.id = idProfesor;
+				objeto.dni = document.querySelector("#dni").value;
+				objeto.nombre = document.querySelector("#nombre").value;
+				objeto.apellidos = document.querySelector("#apellidos").value;
+
+				let parametrosObjeto = {
+					method: "POST",
+					body: JSON.stringify(objeto)
+				}
+
+				//console.log(objeto.servicio, objeto.dni, objeto.nombre, objeto.apellidos);
+
+				fetch(urlServidor, parametrosObjeto).then(function (datos) { //Promesa
+					//console.log("datos: ", datos);
+					return datos.json(); //Parsear directamente a json
+				}).then(function (response) {
+					//console.log("response: ", response);
+					mostrarListaProfesores(response); //Enviar a la función de carga de datos la respuesta del servidor
+				});
+
+				cerrarFormProfes();
+				document.querySelector("div#formProfes fieldset legend").textContent = "Alta en el servicio";
+			}
+		}
+
+		const mostrarNombreDpto = (nombreDepartamento) => { //Función para mostrar el nombre del departamento seleccionado
+			//console.log("Entra en mostrarNombreDpto y su nombre es: ", nombreDepartamento);
+
+			let nombreDpto = document.querySelector("#deptoDelProfe");
+			nombreDpto.textContent = nombreDepartamento;
+		}
+
+		const abrirFormDptos = () => { //Función para abrir el formulario de departamentos
+			//console.log("Entra en abrirFormDptos");
+
+			document.querySelector("#formDeptos").style.visibility = "visible";
+		}
+
+		const cerrarFormDptos = () => { //Función para cerrar el formulario de departamentos
+			//console.log("Entra en cerrarFormDptos");
+			document.querySelector("#formDeptos").style.visibility = "hidden";
+		}
+
+		const abrirFormProfes = () => { //Función para abrir el formulario de profesores
+			//console.log("Entra en abrirFormDptos");
+			document.querySelector("#formProfes").style.visibility = "visible";
+		}
+
+		const cerrarFormProfes = () => { //Función para cerrar el formulario de profesores
+			//console.log("Entra en cerrarFormDptos");
+
+			document.querySelector("#btAnade").textContent = "Añadir";
+			document.querySelector("#formProfes").style.visibility = "hidden";
+		}
+
+	</script>
+</head>
+
+<body>
+	<h1>Registro de Usuarios</h1>
+	<form>
+		<br>
+		<button class="btn" id="btNuevoDepto" type="button">Nuevo Departamento</button>
+		<p>
+		<div id="departamentos">
+			<table border="1">
+				<thead>
+					<tr>
+						<th>ID</th>
+						<th>NOMBRE</th>
+						<th>DESCRIPCION</th>
+						<th>Acción</th>
+					</tr>
+				</thead>
+
+				<tbody id="detalle_departamentos">
+
+				</tbody>
+
+
+			</table>
+		</div>
+		</p>
+
+
+		<div id="formDeptos" class="formProfes">
+			<fieldset>
+				<legend>Nuevo Departamento</legend>
+				<div>
+					<label for="nombreDepto">Nombre</label>
+					<input type="text" id="nombreDepto" />
+				</div>
+
+				<div>
+					<label for="descripcion">Descripcion</label>
+					<textarea id="descripcion"></textarea>
+				</div>
+				<div class="btn">
+					<button id="btAnadeDepto" type="button">Añadir </button>
+					<button id="btCancelarDepto" type="button">Cancelar </button>
+				</div>
+			</fieldset>
+		</div>
+
+
+		<br />
+		<br />
+		Tabla de Profesores. Departamento de <span id="deptoDelProfe"></span>:
+		<br><br>
+		<button class="btn" id="btNuevaProfe" type="button">Nueva profe</button>
+
+		<p>
+		<div id="profesores">
+			<table border="1">
+				<thead>
+					<tr>
+						<th>ID</th>
+						<th>DNI</th>
+						<th>NOMBRE</th>
+						<th>APELLIDOS</th>
+						<th>Eliminar</th>
+						<th>Editar</th>
+					</tr>
+				</thead>
+
+				<tbody id="detalle_profesores">
+
+				</tbody>
+
+
+			</table>
+		</div>
+		</p>
+
+
+		<div id="formProfes" class="formProfes">
+			<fieldset>
+				<legend>Alta en el servicio</legend>
+				<div>
+					<label for="dni">DNI</label>
+					<input type="text" id="dni" size="10" maxlength="9" />
+				</div>
+				<div>
+					<label for="nombre">Nombre</label>
+					<input type="text" id="nombre" />
+				</div>
+				<div>
+					<label for="apellidos">Apellidos</label>
+					<input type="text" id="apellidos" size="40" />
+				</div>
+				<div class="btn">
+					<button id="btAnade" type="button" data-idprofe="-1">Añadir </button>
+					<button id="btCancelar" type="button">Cancelar </button>
+				</div>
+			</fieldset>
+		</div>
+
+	</form>
+
+</body>
+
+</html>
