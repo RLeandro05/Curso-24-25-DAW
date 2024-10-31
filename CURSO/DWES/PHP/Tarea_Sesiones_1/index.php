@@ -6,7 +6,7 @@ if (!isset($_SESSION['carrito'])) {
     $_SESSION['carrito'] = [];
 }
 
-// Lista de productos (puede ser de una base de datos)
+// Lista de productos
 $productos = [
     ['id' => 1, 'nombre' => 'Ratón', 'precio' => 8.99],
     ['id' => 2, 'nombre' => 'Teclado', 'precio' => 129.99],
@@ -18,7 +18,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Agregar el producto al carrito
     $_SESSION['carrito'][$idProducto] = ($_SESSION['carrito'][$idProducto] ?? 0) + 1;
 }
-
 ?>
 
 <!DOCTYPE html>
@@ -31,15 +30,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <body>
     <h1>Productos disponibles</h1>
     <ul>
-        <?php foreach ($productos as $producto): ?>
-            <li>
-                <?php echo $producto['nombre']; ?> - <?php echo $producto['precio']; ?>
-                <form method="POST" style="display:inline;">
-                    <input type="hidden" name="id" value="<?php echo $producto['id']; ?>">
-                    <button type="submit">Agregar al carrito</button>
-                </form>
-            </li>
-        <?php endforeach; ?>
+        <?php
+        foreach ($productos as $producto) {
+            echo '<li>';
+            echo $producto['nombre'] . ' - ' . number_format($producto['precio'], 2) . ' €';
+            echo '<form method="POST" style="display:inline;">';
+            echo '<input type="hidden" name="id" value="' . $producto['id'] . '">';
+            echo '<button type="submit">Agregar al carrito</button>';
+            echo '</form>';
+            echo '</li>';
+        }
+        ?>
     </ul>
     <a href="carrito.php">Ver carrito</a>
 </body>

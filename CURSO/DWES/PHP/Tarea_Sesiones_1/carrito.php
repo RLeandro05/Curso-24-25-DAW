@@ -7,11 +7,11 @@ if (empty($_SESSION['carrito'])) {
     exit;
 }
 
-// Lista de productos (debe coincidir con index.php)
+// Lista de productos
 $productos = [
-    1 => ['nombre' => 'Producto 1', 'precio' => 10],
-    2 => ['nombre' => 'Producto 2', 'precio' => 20],
-    3 => ['nombre' => 'Producto 3', 'precio' => 30],
+    1 => ['nombre' => 'Ratón', 'precio' => 8.99],
+    2 => ['nombre' => 'Teclado', 'precio' => 129.99],
+    3 => ['nombre' => 'Auriculares', 'precio' => 49.99],
 ];
 
 // Calcular total
@@ -22,7 +22,6 @@ foreach ($_SESSION['carrito'] as $id => $cantidad) {
 
 // Procesar la compra
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    // Aquí podrías añadir lógica para procesar el pago
     echo "<h2>Compra realizada con éxito!</h2>";
     // Limpiar el carrito
     $_SESSION['carrito'] = [];
@@ -40,14 +39,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <body>
     <h1>Tu carrito de compras</h1>
     <ul>
-        <?php foreach ($_SESSION['carrito'] as $id => $cantidad): ?>
-            <li>
-                <?php echo $productos[$id]['nombre']; ?> - Cantidad: <?php echo $cantidad; ?> - Precio: $<?php echo $productos[$id]['precio']; ?> 
-                - Total: $<?php echo $productos[$id]['precio'] * $cantidad; ?>
-            </li>
-        <?php endforeach; ?>
+        <?php
+        foreach ($_SESSION['carrito'] as $id => $cantidad) {
+            echo '<li>';
+            echo $productos[$id]['nombre'] . ' - Cantidad: ' . $cantidad . ' - Precio: ' . number_format($productos[$id]['precio'], 2) . ' €';
+            echo ' - Total: ' . number_format($productos[$id]['precio'] * $cantidad, 2) . ' €';
+            echo '</li>';
+        }
+        ?>
     </ul>
-    <h2>Total: $<?php echo $total; ?></h2>
+    <h2>Total: <?= number_format($total, 2) . ' €'; ?></h2>
     <form method="POST">
         <button type="submit">Realizar compra</button>
     </form>
