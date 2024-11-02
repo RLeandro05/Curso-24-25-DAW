@@ -166,9 +166,9 @@
 
         //---------------------------------------------------------------
 
-        cargarListadoPersonajes(url);
+        cargarListadoPersonajes(url); //Cargar directamente el primer personaje
 
-        btNext.onclick = () => {
+        btNext.onclick = () => { //Al pinchar, habilitar el botón previous si el contador es superior a 0
             btPrevious.disabled = false;
 
             contador++;
@@ -181,7 +181,7 @@
             cargarListadoPersonajes(url);
         }
 
-        btPrevious.onclick = () => {
+        btPrevious.onclick = () => { //Al pinchar, habilitar el botón next si el contador es menor al máximo de la lista
             btNext.disabled = false;
 
             contador--;
@@ -195,8 +195,8 @@
         }
     }
 
-    const cargarListadoPersonajes = (url) => {
-        //console.log("Entra eb cargarListadoPersonajes");
+    const cargarListadoPersonajes = (url) => { //Función para realizar la petición con FETCH
+        //console.log("Entra en cargarListadoPersonajes");
 
         fetch(url).then(function (datos) { //Promesa
             //console.log("datos: ", datos);
@@ -213,11 +213,11 @@
 
         let listaPersonajes = response.data.results;
 
-        if (contador == 0) {
+        if (contador == 0) { //Si el índice es el inicio, no permitir pinchar en previous
             btPrevious.disabled = true;
         }
 
-        if (contador == listaPersonajes.length - 1) {
+        if (contador == listaPersonajes.length - 1) { //Si el índice es el final, no permitir pinchar en next
             btNext.disabled = true;
         }
 
@@ -247,7 +247,7 @@
         btCOMICS.id = "btCOMICS";
         btCOMICS.type = "button";
         btCOMICS.textContent = "Ver Cómics";
-        btCOMICS.onclick = () => {
+        btCOMICS.onclick = () => { //Al pinchar en el botón, mostrar los cómics de dicho personaje
             //console.log("Entra en botonCOMICS.onlick");
 
             document.querySelector("#listaComics").style.display = "block";
@@ -274,7 +274,7 @@
         btSERIES.id = "btSERIES";
         btSERIES.type = "button";
         btSERIES.textContent = "Ver Series";
-        btSERIES.onclick = () => {
+        btSERIES.onclick = () => { //Al pinchar en el botón, mostrar las series de dicho personaje
             //console.log("Entra en botonSERIES.onlick");
 
             document.querySelector("#listaComics").style.display = "none";
@@ -301,7 +301,7 @@
         btHISTORIAS.id = "btHISTORIAS";
         btHISTORIAS.type = "button";
         btHISTORIAS.textContent = "Ver Historias";
-        btHISTORIAS.onclick = () => {
+        btHISTORIAS.onclick = () => { //Al pinchar en el botón, mostrar las historias de dicho personaje
             //console.log("Entra en botonHISTORIAS.onlick");
 
             document.querySelector("#listaComics").style.display = "none";
