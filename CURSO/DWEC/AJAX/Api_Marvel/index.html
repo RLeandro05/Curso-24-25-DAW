@@ -62,7 +62,7 @@
         height: 100%;
     }
 
-    #btCOMICS {
+    #btCOMICS, #listaComics {
         border: 1px solid darkred;
         background-color: #FF474C;
     }
@@ -72,7 +72,7 @@
         color: white;
     }
 
-    #btSERIES {
+    #btSERIES, #listaSeries {
         border: 1px solid green;
         background-color: lightgreen;
     }
@@ -82,7 +82,7 @@
         color: white;
     }
 
-    #btHISTORIAS {
+    #btHISTORIAS, #listaHistorias {
         border: 1px solid purple;
         background-color: #CBC3E3;
     }
@@ -90,6 +90,28 @@
     #btHISTORIAS:hover {
         background-color: purple;
         color: white;
+    }
+
+    #listaComics, #listaSeries ,#listaHistorias {
+        text-align: center;
+        margin: auto;
+        width: 500px;
+        height: auto;
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        display: none;
+    }
+
+    #comics {
+        text-align: left;
+        margin-left: 20px;
+    }
+
+    div {
+        border-radius: 8px;
+    }
+
+    legend {
+        font-size: 1.2em;
     }
 </style>
 
@@ -167,7 +189,7 @@
             btPrevious.disabled = true;
         }
 
-        if (contador == listaPersonajes.length-1) {
+        if (contador == listaPersonajes.length - 1) {
             btNext.disabled = true;
         }
 
@@ -198,8 +220,20 @@
         btCOMICS.type = "button";
         btCOMICS.textContent = "Ver Cómics";
         btCOMICS.onclick = () => {
-            console.log("Entra en botonCOMICS.onlick");
+            //console.log("Entra en botonCOMICS.onlick");
 
+            let listaComics = listaPersonajes[contador].comics.items;
+            //console.log(listaComics);
+
+            let comics = document.querySelector("#comics");
+            comics.textContent = "";
+
+            listaComics.forEach(comic => {
+                let p = document.createElement("p");
+                p.textContent = "- " + comic.name;
+
+                comics.appendChild(p);
+            });
         }
         celdaCOMICS.appendChild(btCOMICS);
 
@@ -262,6 +296,21 @@
 
             </tbody>
         </table>
+    </div>
+    <div id="listaComics">
+        <legend>Lista de Cómics del personaje</legend>
+        <div id="comics">
+        </div>
+    </div>
+    <div id="listaSeries">
+        <legend>Lista de Series del personaje</legend>
+        <div id="series">
+        </div>
+    </div>
+    <div id="listaHistorias">
+        <legend>Lista de Historias del personaje</legend>
+        <div id="historias">
+        </div>
     </div>
 </body>
 
