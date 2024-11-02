@@ -4,6 +4,92 @@
 <style type="text/css">
     #tabla {
         text-align: center;
+        border: none;
+    }
+
+    td:hover {
+        background-color: lightgray;
+        transition: .5s;
+    }
+
+    th {
+        background-color: gray;
+        color: rgb(245, 242, 242);
+    }
+
+    th,
+    td {
+        border: 1px solid gray;
+        border-collapse: collapse;
+    }
+
+    #tabla,
+    #divTabla {
+        width: 100%;
+    }
+
+    #next,
+    #previous {
+        font-size: 1.2em;
+        margin-top: .3em;
+
+        border: 1px solid gray;
+        border-radius: 8px;
+        background-color: lightcyan;
+    }
+
+    #next:hover,
+    #previous:hover {
+        background-color: cyan;
+        transition: .5s;
+    }
+
+    #next {
+        float: right;
+    }
+
+    button:hover {
+        cursor: pointer;
+    }
+
+    #btCOMICS,
+    #btSERIES,
+    #btHISTORIAS {
+        border-radius: 8px;
+        font-size: 1em;
+        transition: .5s;
+        width: 100%;
+        height: 100%;
+    }
+
+    #btCOMICS {
+        border: 1px solid darkred;
+        background-color: #FF474C;
+    }
+
+    #btCOMICS:hover {
+        background-color: darkred;
+        color: white;
+    }
+
+    #btSERIES {
+        border: 1px solid green;
+        background-color: lightgreen;
+    }
+
+    #btSERIES:hover {
+        background-color: green;
+        color: white;
+    }
+
+    #btHISTORIAS {
+        border: 1px solid purple;
+        background-color: #CBC3E3;
+    }
+
+    #btHISTORIAS:hover {
+        background-color: purple;
+        color: white;
     }
 </style>
 
@@ -15,29 +101,75 @@
     const ts = '02/11/2024, 11:58:10';
     const hash = 'a2bd4e14605eb1b7f97e53b4c2f3934a'; //https://www.md5hashgenerator.com/
     const url = 'https://gateway.marvel.com:443/v1/public/characters?apikey=96ca6d3ab8ec7cd9297164c4448bf213&ts=02/11/2024, 11:58:10&hash=a2bd4e14605eb1b7f97e53b4c2f3934a';
+
     let contador = 0;
-    let indice = 0;
+    let btPrevious;
+    let btNext;
+
     let objeto = new Object();
 
     window.onload = () => {
+        btPrevious = document.createElement("button");
+        btPrevious.id = "previous";
+        btPrevious.type = "button";
+        btPrevious.textContent = "Previous";
+        document.querySelector("#divTabla").appendChild(btPrevious);
+        btPrevious.disabled = true;
+
+        btNext = document.createElement("button");
+        btNext.id = "next";
+        btNext.type = "button";
+        btNext.textContent = "Next";
+        document.querySelector("#divTabla").appendChild(btNext);
+
+        //---------------------------------------------------------------
+
         cargarListadoPersonajes(url);
+
+        btNext.onclick = () => {
+            btPrevious.disabled = false;
+
+            contador++;
+            //console.log(contador);
+
+            cargarListadoPersonajes(url);
+        }
+
+        btPrevious.onclick = () => {
+            btNext.disabled = false;
+
+            contador--;
+            //console.log(contador);
+
+            cargarListadoPersonajes(url);
+        }
     }
 
     const cargarListadoPersonajes = (url) => {
         //console.log("Entra eb cargarListadoPersonajes");
 
-        fetch(url).then(function (datos) { // Promesa
-            console.log("datos: ", datos);
-            return datos.json(); // Parsear directamente a json
+        fetch(url).then(function (datos) { //Promesa
+            //console.log("datos: ", datos);
+            return datos.json(); //Parsear directamente a json
         }).then(function (response) {
-            console.log("response: ", response);
-            mostrarPersonajes(response); // Enviar a la función de carga de datos la respuesta del servidor
+            //console.log("response: ", response);
+            mostrarPersonajes(response); //Enviar a la función de carga de datos la respuesta del servidor
         });
 
     }
 
-    const mostrarPersonajes = (response) => {
+    const mostrarPersonajes = (response) => { //Función para mostrar un sólo personaje de 1 en 1
+        //console.log("Llega a mostrarPersonajes");
+
         let listaPersonajes = response.data.results;
+
+        if (contador == 0) {
+            btPrevious.disabled = true;
+        }
+
+        if (contador == listaPersonajes.length-1) {
+            btNext.disabled = true;
+        }
 
         let cuerpoTabla = document.querySelector("#cuerpo");
         cuerpoTabla.textContent = "";
@@ -61,34 +193,37 @@
         celdaMODIFICACION.textContent = listaPersonajes[contador].modified;
 
         let celdaCOMICS = document.createElement("td");
-        let botonCOMICS = document.createElement("button");
-        botonCOMICS.type = "button";
-        botonCOMICS.textContent = "Ver Cómics";
-        botonCOMICS.onclick = () => {
+        let btCOMICS = document.createElement("button");
+        btCOMICS.id = "btCOMICS";
+        btCOMICS.type = "button";
+        btCOMICS.textContent = "Ver Cómics";
+        btCOMICS.onclick = () => {
             console.log("Entra en botonCOMICS.onlick");
 
         }
-        celdaCOMICS.appendChild(botonCOMICS);
+        celdaCOMICS.appendChild(btCOMICS);
 
         let celdaSERIES = document.createElement("td");
-        let botonSERIES = document.createElement("button");
-        botonSERIES.type = "button";
-        botonSERIES.textContent = "Ver Series";
-        botonSERIES.onclick = () => {
+        let btSERIES = document.createElement("button");
+        btSERIES.id = "btSERIES";
+        btSERIES.type = "button";
+        btSERIES.textContent = "Ver Series";
+        btSERIES.onclick = () => {
             console.log("Entra en botonSERIES.onlick");
 
         }
-        celdaSERIES.appendChild(botonSERIES);
+        celdaSERIES.appendChild(btSERIES);
 
         let celdaHISTORIAS = document.createElement("td");
-        let botonHISTORIAS = document.createElement("button");
-        botonHISTORIAS.type = "button";
-        botonHISTORIAS.textContent = "Ver Historias";
-        botonHISTORIAS.onclick = () => {
+        let btHISTORIAS = document.createElement("button");
+        btHISTORIAS.id = "btHISTORIAS";
+        btHISTORIAS.type = "button";
+        btHISTORIAS.textContent = "Ver Historias";
+        btHISTORIAS.onclick = () => {
             console.log("Entra en botonHISTORIAS.onlick");
 
         }
-        celdaHISTORIAS.appendChild(botonHISTORIAS);
+        celdaHISTORIAS.appendChild(btHISTORIAS);
 
         fila.appendChild(celdaID);
         fila.appendChild(celdaNOMBRE);
@@ -99,10 +234,6 @@
         fila.appendChild(celdaHISTORIAS);
 
         cuerpoTabla.appendChild(fila);
-
-        contador++;
-
-        //console.log(contador);
     }
 </script>
 
@@ -114,7 +245,7 @@
 
 <body>
     <h2>Listado de personajes de la API de Marvel</h2>
-    <div>
+    <div id="divTabla">
         <table id="tabla" border="1">
             <thead id="cabecera">
                 <tr>
