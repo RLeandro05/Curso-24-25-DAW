@@ -2,9 +2,29 @@
 <html lang="en">
 
 <style type="text/css">
+
+    * {
+        cursor: url("images/mic5.cur") 10 10, auto;
+    }
+    
+    #cabeceraH2 {
+        text-align: center;
+        background-color: white;
+        margin-left: auto;
+        margin-right: auto;
+        width: 500px;
+    }
+
+    body {
+        background-image: url("images/img_2.jpg");
+        background-repeat: no-repeat;
+        background-size: 100% 900px;
+    }
+
     #tabla {
         text-align: center;
         border: none;
+        background-color: white;
     }
 
     td:hover {
@@ -49,7 +69,7 @@
     }
 
     button:hover {
-        cursor: pointer;
+        cursor: url("images/mic6.cur"), pointer;
     }
 
     #btCOMICS,
@@ -63,12 +83,12 @@
     }
 
     #btCOMICS, #listaComics {
-        border: 1px solid darkred;
-        background-color: #FF474C;
+        border: 1px solid #c11c84;
+        background-color: #ffa2ca;
     }
 
     #btCOMICS:hover {
-        background-color: darkred;
+        background-color: #c11c84;
         color: white;
     }
 
@@ -101,7 +121,7 @@
         display: none;
     }
 
-    #comics {
+    #comics, #series, #historias {
         text-align: left;
         margin-left: 20px;
     }
@@ -154,6 +174,10 @@
             contador++;
             //console.log(contador);
 
+            document.querySelector("#listaComics").style.display = "none";
+            document.querySelector("#listaSeries").style.display = "none";
+            document.querySelector("#listaHistorias").style.display = "none";
+
             cargarListadoPersonajes(url);
         }
 
@@ -162,6 +186,10 @@
 
             contador--;
             //console.log(contador);
+
+            document.querySelector("#listaComics").style.display = "none";
+            document.querySelector("#listaSeries").style.display = "none";
+            document.querySelector("#listaHistorias").style.display = "none";
 
             cargarListadoPersonajes(url);
         }
@@ -222,6 +250,10 @@
         btCOMICS.onclick = () => {
             //console.log("Entra en botonCOMICS.onlick");
 
+            document.querySelector("#listaComics").style.display = "block";
+            document.querySelector("#listaSeries").style.display = "none";
+            document.querySelector("#listaHistorias").style.display = "none";
+
             let listaComics = listaPersonajes[contador].comics.items;
             //console.log(listaComics);
 
@@ -243,8 +275,24 @@
         btSERIES.type = "button";
         btSERIES.textContent = "Ver Series";
         btSERIES.onclick = () => {
-            console.log("Entra en botonSERIES.onlick");
+            //console.log("Entra en botonSERIES.onlick");
 
+            document.querySelector("#listaComics").style.display = "none";
+            document.querySelector("#listaSeries").style.display = "block";
+            document.querySelector("#listaHistorias").style.display = "none";
+
+            let listaSeries = listaPersonajes[contador].series.items;
+            //console.log(listaComics);
+
+            let series = document.querySelector("#series");
+            series.textContent = "";
+
+            listaSeries.forEach(serie => {
+                let p = document.createElement("p");
+                p.textContent = "- " + serie.name;
+
+                series.appendChild(p);
+            });
         }
         celdaSERIES.appendChild(btSERIES);
 
@@ -254,8 +302,24 @@
         btHISTORIAS.type = "button";
         btHISTORIAS.textContent = "Ver Historias";
         btHISTORIAS.onclick = () => {
-            console.log("Entra en botonHISTORIAS.onlick");
+            //console.log("Entra en botonHISTORIAS.onlick");
 
+            document.querySelector("#listaComics").style.display = "none";
+            document.querySelector("#listaSeries").style.display = "none";
+            document.querySelector("#listaHistorias").style.display = "block";
+
+            let listaHistorias = listaPersonajes[contador].stories.items;
+            //console.log(listaComics);
+
+            let historias = document.querySelector("#historias");
+            historias.textContent = "";
+
+            listaHistorias.forEach(historia => {
+                let p = document.createElement("p");
+                p.textContent = "- " + historia.name;
+
+                historias.appendChild(p);
+            });
         }
         celdaHISTORIAS.appendChild(btHISTORIAS);
 
@@ -274,11 +338,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="images/favicon.png" type="image/png">
     <title>API Marvel</title>
 </head>
 
 <body>
-    <h2>Listado de personajes de la API de Marvel</h2>
+    <div id="cabeceraH2">
+        <h2>Listado de personajes de la API de Marvel</h2>
+    </div>
     <div id="divTabla">
         <table id="tabla" border="1">
             <thead id="cabecera">
