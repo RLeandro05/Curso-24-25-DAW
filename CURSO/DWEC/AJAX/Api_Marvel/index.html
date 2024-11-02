@@ -1,10 +1,117 @@
 <!DOCTYPE html>
 <html lang="en">
+
+<style type="text/css">
+    #tabla {
+        text-align: center;
+    }
+</style>
+
+<script type="text/javascript">
+    //PUBLIC_KEY = '96ca6d3ab8ec7cd9297164c4448bf213'
+    //PRIVATE_KEY = '123d77dfd318524a84769c5951e1a26b960ea5d6'
+
+    const apikey = '96ca6d3ab8ec7cd9297164c4448bf213';
+    const ts = '02/11/2024, 11:58:10';
+    const hash = 'a2bd4e14605eb1b7f97e53b4c2f3934a'; //https://www.md5hashgenerator.com/
+    const url = 'https://gateway.marvel.com:443/v1/public/characters?apikey=96ca6d3ab8ec7cd9297164c4448bf213&ts=02/11/2024, 11:58:10&hash=a2bd4e14605eb1b7f97e53b4c2f3934a';
+    let contador = 0;
+    let indice = 0;
+    let objeto = new Object();
+
+    window.onload = () => {
+        cargarListadoPersonajes(url);
+    }
+
+    const cargarListadoPersonajes = (url) => {
+        //console.log("Entra eb cargarListadoPersonajes");
+
+        fetch(url).then(function (datos) { // Promesa
+            console.log("datos: ", datos);
+            return datos.json(); // Parsear directamente a json
+        }).then(function (response) {
+            console.log("response: ", response);
+            mostrarPersonajes(response); // Enviar a la función de carga de datos la respuesta del servidor
+        });
+
+    }
+
+    const mostrarPersonajes = (response) => {
+        let listaPersonajes = response.data.results;
+
+        let cuerpoTabla = document.querySelector("#cuerpo");
+        cuerpoTabla.textContent = "";
+
+        let fila = document.createElement("tr");
+
+        let celdaID = document.createElement("td");
+        celdaID.textContent = listaPersonajes[contador].id;
+
+        let celdaNOMBRE = document.createElement("td");
+        celdaNOMBRE.textContent = listaPersonajes[contador].name;
+
+        let celdaDESCRIPCION = document.createElement("td");
+        if (listaPersonajes[contador].description.length == 0) {
+            celdaDESCRIPCION.textContent = "UNKNOWN";
+        } else {
+            celdaDESCRIPCION.textContent = listaPersonajes[contador].description;
+        }
+
+        let celdaMODIFICACION = document.createElement("td");
+        celdaMODIFICACION.textContent = listaPersonajes[contador].modified;
+
+        let celdaCOMICS = document.createElement("td");
+        let botonCOMICS = document.createElement("button");
+        botonCOMICS.type = "button";
+        botonCOMICS.textContent = "Ver Cómics";
+        botonCOMICS.onclick = () => {
+            console.log("Entra en botonCOMICS.onlick");
+
+        }
+        celdaCOMICS.appendChild(botonCOMICS);
+
+        let celdaSERIES = document.createElement("td");
+        let botonSERIES = document.createElement("button");
+        botonSERIES.type = "button";
+        botonSERIES.textContent = "Ver Series";
+        botonSERIES.onclick = () => {
+            console.log("Entra en botonSERIES.onlick");
+
+        }
+        celdaSERIES.appendChild(botonSERIES);
+
+        let celdaHISTORIAS = document.createElement("td");
+        let botonHISTORIAS = document.createElement("button");
+        botonHISTORIAS.type = "button";
+        botonHISTORIAS.textContent = "Ver Historias";
+        botonHISTORIAS.onclick = () => {
+            console.log("Entra en botonHISTORIAS.onlick");
+
+        }
+        celdaHISTORIAS.appendChild(botonHISTORIAS);
+
+        fila.appendChild(celdaID);
+        fila.appendChild(celdaNOMBRE);
+        fila.appendChild(celdaDESCRIPCION);
+        fila.appendChild(celdaMODIFICACION);
+        fila.appendChild(celdaCOMICS);
+        fila.appendChild(celdaSERIES);
+        fila.appendChild(celdaHISTORIAS);
+
+        cuerpoTabla.appendChild(fila);
+
+        contador++;
+
+        //console.log(contador);
+    }
+</script>
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>API Marvel</title>
 </head>
+
 <body>
     <h2>Listado de personajes de la API de Marvel</h2>
     <div>
@@ -26,4 +133,5 @@
         </table>
     </div>
 </body>
+
 </html>
