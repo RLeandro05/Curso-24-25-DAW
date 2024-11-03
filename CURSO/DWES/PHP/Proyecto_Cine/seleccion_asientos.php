@@ -14,11 +14,10 @@
         exit(); //Parar la ejecución del código
     }
 
-    // Procesar selección de asientos
-    if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['asientos'])) {
-        $_SESSION['asientos_seleccionados'] = $_POST['asientos'];
-        $_SESSION['asientos_ocupados'] = array_merge($_SESSION['asientos_ocupados'], $_SESSION['asientos_seleccionados']);
-        header("Location: pago.php");
+    if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['asientos'])) { //Asegurar si se manda con POST y si existe el name "asientos"
+        $_SESSION['asientos_seleccionados'] = $_POST['asientos']; //Guardar en un nuevo atributo los asientos seleccionados
+        $_SESSION['asientos_ocupados'] = array_merge($_SESSION['asientos_ocupados'], $_SESSION['asientos_seleccionados']); //Añadir los nuevos asientos al atributo de ocupados
+        header("Location: pago.php"); //Dirigirse automáticamente a pago.php
         exit();
     }
 ?>
