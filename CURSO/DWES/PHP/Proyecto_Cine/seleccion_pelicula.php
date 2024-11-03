@@ -1,7 +1,15 @@
 <?php
+    session_start();
+
     $mensajeH2 = "Selección de horario de ";
 
     if (isset($_REQUEST["pelicula"])) { //Primero, asegurar de que se esocgió alguna opción anterior
+        $_SESSION['pelicula'] = $_REQUEST["pelicula"];
+
+        /*echo "<pre>";
+        print_r($_SESSION);
+        echo "</pre>";*/
+
         if ($_REQUEST["pelicula"] == "spiderman1") { //Caso Spider-Man 1
             $mensajeH2 = $mensajeH2 . "Spider-Man 1";
 

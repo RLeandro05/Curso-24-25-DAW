@@ -1,4 +1,6 @@
 <?php
+    session_start();
+    
     echo nl2br("<h2>Bienvenid@ al Cine</h2>\n"); //Mensaje de bienvenida
 
     echo nl2br("<h3>Cartelera del día</h3>\n");

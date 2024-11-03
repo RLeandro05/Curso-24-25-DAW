@@ -1,3 +1,54 @@
 <?php
-echo "hola";
+    session_start();
+
+    if(!isset($_SESSION['asientos_seleccionados'])) { //Asegurarse de que seleccionó asientos el usuario
+        echo nl2br("<h2>No has seleccionado ningún asiento</h2>\n");
+        echo nl2br("<h3>Pinche en el siguiente enlace</h3>\n");
+        echo "<a href=\"inde.php\"> >>> Pinche aquí para volver";
+
+        exit();
+    }
+
+    /*echo "<pre>";
+    print_r($_SESSION);
+    echo "</pre>";*/
+
+    /*if (time() - $_SESSION['inicio_seleccion'] > 60) { //Cada segundo que pase, se resta el tiempo actual menos el tiempo en el que empezó el usuario
+        echo "<p>El tiempo para el pago ha expirado.</p>"; //Cuando supere el minuto, mostrar el mensaje
+        echo "<p><a href=\"inde.php\"> >>> Pinche aquí para volver</a></p>";
+        unset($_SESSION['inicio_seleccion']); //Eliminar el atributo para que cuando vuelva a meterse el usuario, empiece en 0 segundos de nuevo
+        $_SESSION['asientos_ocupados'] = []; //Vaciar el array de asientos si estuvo escogiendo asientos
+        exit(); //Parar la ejecución del código
+    }*/
 ?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style type="text/css">
+        #divPago {
+            border: 1px solid gray;
+            width: 500px;
+            height: 400px;
+            border-radius: 8px;
+            background-color: lightgray;
+            text-align: center;
+        }
+    </style>
+    <title>Pago total</title>
+</head>
+<body>
+    <div id="divPago">
+        <h2>Resumen de la compra</h2>
+        <p>Película: '<?php echo $_SESSION['pelicula']?>'</p>
+        <p>
+        Asientos: '
+            <?php
+                print_r($_SESSION['asientos_seleccionados']);
+            ?>'
+        </p>
+    </div>
+</body>
+</html>
