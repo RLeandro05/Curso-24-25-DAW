@@ -1,17 +1,19 @@
 <?php
     session_start();
 
-    if(!isset($_SESSION['asientos_seleccionados'])) { //Asegurarse de que seleccionó asientos el usuario
+    //$_SESSION['horarioPelicula'] = $_POST['horario'];
+
+    echo "<pre>";
+    print_r($_SESSION);
+    echo "</pre>";
+
+    /*if(!isset($_SESSION['asientos_seleccionados'])) { //Asegurarse de que seleccionó asientos el usuario
         echo nl2br("<h2>No has seleccionado ningún asiento</h2>\n");
         echo nl2br("<h3>Pinche en el siguiente enlace</h3>\n");
         echo "<a href=\"inde.php\"> >>> Pinche aquí para volver";
 
         exit();
-    }
-
-    echo "<pre>";
-    print_r($_SESSION);
-    echo "</pre>";
+    }*/
 
     /*if (time() - $_SESSION['inicio_seleccion'] > 60) { //Cada segundo que pase, se resta el tiempo actual menos el tiempo en el que empezó el usuario
         echo "<p>El tiempo para el pago ha expirado.</p>"; //Cuando supere el minuto, mostrar el mensaje
