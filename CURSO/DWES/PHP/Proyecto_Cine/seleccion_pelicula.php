@@ -9,7 +9,7 @@
 
             echo nl2br("<h3>Horarios actualmente disponibles</h3>"); //Mostrar a detalle los horarios disponibles para escoger
 
-            echo "<form method=\"POST\" action=\"\">";
+            echo "<form method=\"POST\" action=\"seleccion_asientos.php\">";
 
             echo nl2br("<input type=\"radio\" id=\"horario1\" name=\"horario\" value=\"horario1\">");
             echo nl2br("<label for=\"horario1\"> 15:30 PM</label>\n");
@@ -32,7 +32,7 @@
 
             echo nl2br("<h3>Horarios actualmente disponibles</h3>"); //Mostrar a detalle los horarios disponibles para escoger
 
-            echo "<form method=\"POST\" action=\"\">";
+            echo "<form method=\"POST\" action=\"seleccion_asientos.php\">";
 
             echo nl2br("<input type=\"radio\" id=\"horario1\" name=\"horario\" value=\"horario1\">");
             echo nl2br("<label for=\"horario1\"> 15:00 PM</label>\n");
@@ -54,7 +54,7 @@
 
             echo nl2br("<h3>Horarios actualmente disponibles</h3>"); //Mostrar a detalle los horarios disponibles para escoger
 
-            echo "<form method=\"POST\" action=\"\">";
+            echo "<form method=\"POST\" action=\"seleccion_asientos.php\">";
 
             echo nl2br("<input type=\"radio\" id=\"horario1\" name=\"horario\" value=\"horario1\">");
             echo nl2br("<label for=\"horario1\"> 16:15 PM</label>\n");
