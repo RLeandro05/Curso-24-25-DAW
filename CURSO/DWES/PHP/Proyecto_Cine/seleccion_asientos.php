@@ -1,11 +1,18 @@
 <?php
     session_start(); //Iniciar sesión
 
+    if(!isset($_REQUEST['horario'])) { //Si no escoge ningún horario, mostrar mensaje de error y dar la opción de volver al inicio
+        echo nl2br("<h2>¡Vaya! Parece que no has seleccionado ningún horario de la película</h2>");
+        echo nl2br("<h3>Por favor, pinche en el siguiente enlace para volver a la página de inicio</h3> >>> <a href=\"inde.php\">Pinche aquí para volver</a>");
+    
+        exit();
+    }
+
+    $_SESSION["horarioPelicula"] = $_REQUEST["horario"];
+
     /*echo "<pre>";
     print_r($_SESSION);
     echo "</pre>";*/
-
-    $_SESSION["horarioPelicula"] = $_REQUEST["horario"];
 
     //Guardar en una variable el array de asientos ocupados, en caso de que anteriormente ya lo estuviesen
     $asientos_ocupados = isset($_SESSION['asientos_ocupados']) ? $_SESSION['asientos_ocupados'] : [];

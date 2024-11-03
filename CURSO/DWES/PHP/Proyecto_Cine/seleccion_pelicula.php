@@ -19,13 +19,13 @@
 
             echo "<form method=\"POST\" action=\"seleccion_asientos.php\">";
 
-            echo nl2br("<input type=\"radio\" id=\"horario1\" name=\"horario\" value=\"horario1\">");
+            echo nl2br("<input type=\"radio\" id=\"horario1\" name=\"horario\" value=\"15:30 PM\">");
             echo nl2br("<label for=\"horario1\"> 15:30 PM</label>\n");
 
-            echo nl2br("<input type=\"radio\" id=\"horario2\" name=\"horario\" value=\"horario2\">");
+            echo nl2br("<input type=\"radio\" id=\"horario2\" name=\"horario\" value=\"17:00 PM\">");
             echo nl2br("<label for=\"horario2\"> 17:00 PM</label>\n");
 
-            echo nl2br("<input type=\"radio\" id=\"horario3\" name=\"horario\" value=\"horario3\">");
+            echo nl2br("<input type=\"radio\" id=\"horario3\" name=\"horario\" value=\"20:15 PM\">");
             echo nl2br("<label for=\"horario3\"> 20:15 PM</label>\n\n");
 
             echo "<input type=\"submit\" value=\"Enviar respuesta\"> ";
@@ -42,13 +42,13 @@
 
             echo "<form method=\"POST\" action=\"seleccion_asientos.php\">";
 
-            echo nl2br("<input type=\"radio\" id=\"horario1\" name=\"horario\" value=\"horario1\">");
+            echo nl2br("<input type=\"radio\" id=\"horario1\" name=\"horario\" value=\"15:00 PM\">");
             echo nl2br("<label for=\"horario1\"> 15:00 PM</label>\n");
 
-            echo nl2br("<input type=\"radio\" id=\"horario2\" name=\"horario\" value=\"horario2\">");
+            echo nl2br("<input type=\"radio\" id=\"horario2\" name=\"horario\" value=\"18:00 PM\">");
             echo nl2br("<label for=\"horario2\"> 18:00 PM</label>\n");
 
-            echo nl2br("<input type=\"radio\" id=\"horario3\" name=\"horario\" value=\"horario3\">");
+            echo nl2br("<input type=\"radio\" id=\"horario3\" name=\"horario\" value=\"21:00 PM\">");
             echo nl2br("<label for=\"horario3\"> 21:00 PM</label>\n\n");
 
             echo "<input type=\"submit\" value=\"Enviar respuesta\"> ";
@@ -64,13 +64,13 @@
 
             echo "<form method=\"POST\" action=\"seleccion_asientos.php\">";
 
-            echo nl2br("<input type=\"radio\" id=\"horario1\" name=\"horario\" value=\"horario1\">");
+            echo nl2br("<input type=\"radio\" id=\"horario1\" name=\"horario\" value=\"16:15 PM\">");
             echo nl2br("<label for=\"horario1\"> 16:15 PM</label>\n");
 
-            echo nl2br("<input type=\"radio\" id=\"horario2\" name=\"horario\" value=\"horario2\">");
+            echo nl2br("<input type=\"radio\" id=\"horario2\" name=\"horario\" value=\"18:45 PM\">");
             echo nl2br("<label for=\"horario2\"> 18:45 PM</label>\n");
 
-            echo nl2br("<input type=\"radio\" id=\"horario3\" name=\"horario\" value=\"horario3\">");
+            echo nl2br("<input type=\"radio\" id=\"horario3\" name=\"horario\" value=\"20:00 PM\">");
             echo nl2br("<label for=\"horario3\"> 20:00 PM</label>\n\n");
 
             echo "<input type=\"submit\" value=\"Enviar respuesta\"> ";
