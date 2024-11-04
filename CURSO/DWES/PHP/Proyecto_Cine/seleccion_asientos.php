@@ -1,82 +1,75 @@
 <?php
-    session_start(); //Iniciar sesión
+session_start();
 
-    /*if(!isset($_REQUEST['horario'])) { //Si no escoge ningún horario, mostrar mensaje de error y dar la opción de volver al inicio
-        echo nl2br("<h2>¡Vaya! Parece que no has seleccionado ningún horario de la película</h2>");
-        echo nl2br("<h3>Por favor, pinche en el siguiente enlace para volver a la página de inicio</h3> >>> <a href=\"inde.php\">Pinche aquí para volver</a>");
-    
-        exit();
-    }*/
+// Inicializar el array de asientos ocupados si no existe
+if (!isset($_SESSION['asientos_ocupados'])) {
+    $_SESSION['asientos_ocupados'] = [];
+}
 
-    $_SESSION['asientos_seleccionados'] = "";
-
-    echo "<pre>";
-    print_r($_SESSION);
-    echo "</pre>";
-
-    //Guardar en una variable el array de asientos ocupados, en caso de que anteriormente ya lo estuviesen
-    $asientos_ocupados = isset($_SESSION['asientos_ocupados']) ? $_SESSION['asientos_ocupados'] : [];
-
-    /*if (!isset($_SESSION['inicio_seleccion'])) { //En el caso de que no exista el atributo inicio_seleccion, crearlo y añadirlo el tiempo transcurrido
-        $_SESSION['inicio_seleccion'] = time();
-    } elseif (time() - $_SESSION['inicio_seleccion'] > 60) { //Cada segundo que pase, se resta el tiempo actual menos el tiempo en el que empezó el usuario
-        echo "<p>El tiempo para la selección de asientos ha expirado.</p>"; //Cuando supere el minuto, mostrar el mensaje
-        echo "<p><a href=\"inde.php\"> >>> Pinche aquí para volver</a></p>";
-        unset($_SESSION['inicio_seleccion']); //Eliminar el atributo para que cuando vuelva a meterse el usuario, empiece en 0 segundos de nuevo
-        $_SESSION['asientos_ocupados'] = []; //Vaciar el array de asientos si estuvo escogiendo asientos
-        exit(); //Parar la ejecución del código
-    }*/
-
-    if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['asientos'])) { //Asegurar si se manda con POST y si existe el name "asientos"
-        $_SESSION['asientos_seleccionados'] = $_POST['asientos']; //Guardar en un nuevo atributo los asientos seleccionados
-        $_SESSION['asientos_ocupados'] = array_merge($_SESSION['asientos_ocupados'], $_SESSION['asientos_seleccionados']); //Añadir los nuevos asientos al atributo de ocupados
+// Comprobar si se ha enviado el formulario desde la selección de película
+if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['accion']) && $_POST['accion'] == 'seleccion_horario') {
+    if (isset($_POST["horario"])) {
         $_SESSION["horarioPelicula"] = $_POST["horario"];
-        header("Location: pago.php"); //Dirigirse automáticamente a pago.php
-        exit();
     }
+}
+
+// Recuperar los asientos ocupados
+$asientos_ocupados = $_SESSION['asientos_ocupados'];
+
+// Si se envían asientos, guardarlos en la sesión
+if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['asientos'])) {
+    // Guardar los asientos seleccionados en la sesión
+    $_SESSION['asientos_seleccionados'] = $_POST['asientos'];
+    
+    // Actualizar los asientos ocupados
+    $_SESSION['asientos_ocupados'] = array_merge($asientos_ocupados, $_SESSION['asientos_seleccionados']);
+    
+    // Redirigir a pago.php
+    header("Location: pago.php");
+    exit();
+}
 ?>
 
 <!DOCTYPE html>
 <html lang="es">
-    <head>
-        <meta charset="UTF-8">
-        <title>Selección de Asientos</title>
-        <style>
-            .asiento { width: 30px; height: 30px; }
-            .ocupado { background-color: #FF474C; }
-            .disponible { background-color: lightgreen; }
-        </style>
-    </head>
-    <body>
-        <h2>Selecciona tus asientos</h2>
-        <p>Tienes 1 minuto para seleccionar tus asientos.</p>
+<head>
+    <meta charset="UTF-8">
+    <title>Selección de Asientos</title>
+    <style>
+        .asiento { width: 30px; height: 30px; }
+        .ocupado { background-color: #FF474C; }
+        .disponible { background-color: lightgreen; }
+    </style>
+</head>
+<body>
+    <h2>Selecciona tus asientos</h2>
+    <p>Tienes 1 minuto para seleccionar tus asientos.</p>
 
-        <form method="POST" action="seleccion_asientos.php">
-            <table>
-                <?php for ($fila = 1; $fila <= 5; $fila++): ?> <!--Por cada fila, crear un tr-->
-                    <tr>
-                        <?php for ($columna = 1; $columna <= 6; $columna++): ?> <!--Por cada fila, crear 6 columnas/asientos-->
-                            <?php
-                            $asiento = "Fila{$fila}-Asiento{$columna}"; //Crear un asiento con los valores generados de ambos for
-                            $ocupado = in_array($asiento, $asientos_ocupados); //Guardar true o false dependiendo de si ese asiento ya existía en la lista de asientos ocupados
-                            ?>
-                            <td> <!--Crear una nueva celda-->
-                                <input 
-                                    type="checkbox" 
-                                    name="asientos[]" 
-                                    value="<?= $asiento ?>"
-                                    class="asiento" 
-                                    <?= $ocupado ? 'disabled' : '' ?>
-                                >
-                                <label
-                                    class="<?= $ocupado ? 'ocupado' : 'disponible' ?>"
-                                ><?= $asiento ?></label>
-                            </td>
-                        <?php endfor; ?>
-                    </tr>
-                <?php endfor; ?>
-            </table>
-            <button type="submit">Confirmar Selección</button>
-        </form>
-    </body>
+    <form method="POST" action="">
+        <table>
+            <?php for ($fila = 1; $fila <= 5; $fila++): ?>
+                <tr>
+                    <?php for ($columna = 1; $columna <= 6; $columna++): ?>
+                        <?php
+                        $asiento = "Fila{$fila}-Asiento{$columna}";
+                        $ocupado = in_array($asiento, $asientos_ocupados);
+                        ?>
+                        <td>
+                            <input 
+                                type="checkbox" 
+                                name="asientos[]" 
+                                value="<?= $asiento ?>" 
+                                class="asiento" 
+                                <?= $ocupado ? 'disabled' : '' ?>
+                            >
+                            <label class="<?= $ocupado ? 'ocupado' : 'disponible' ?>"><?= $asiento ?></label>
+                        </td>
+                    <?php endfor; ?>
+                </tr>
+            <?php endfor; ?>
+        </table>
+        <input type="hidden" name="horario" value="<?php echo isset($_SESSION['horarioPelicula']) ? $_SESSION['horarioPelicula'] : ''; ?>">
+        <button type="submit">Confirmar Selección</button>
+    </form>
+</body>
 </html>
