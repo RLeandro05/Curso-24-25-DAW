@@ -7,6 +7,48 @@
     print_r($_SESSION);
     echo "</pre>";*/
 
+    if($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["pagado"])) { //Asegurar de que se pinchó en el botón Pagar
+
+        //Dar la opción de descargar el ticket
+        echo "<form action=\"pago.php\" method=\"post\">";
+        echo "<h3><input type=\"submit\" name=\"ticket\" value=\"Descargar Ticket\"></h3>";
+        echo "</form>";
+
+    }
+
+    if($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["ticket"])) { //Asegurar de que se pinchó  en el botón Descargar Ticket
+        //Guardar toda la información del ticket
+        $pelicula = $_SESSION["pelicula"];
+        $sesion = $_SESSION["horarioPelicula"];
+        $precioUnidad = 3;
+        $asientos = $_SESSION["asientos_seleccionados"];
+        $total = 3*count($_SESSION["asientos_seleccionados"]);
+
+        //Crear el archivo
+        header("Content-Type: text/plain");
+        header('Content-Disposition: attachment; filename="ticket.txt"');
+
+        //Añadir al archivo el contenido
+        echo nl2br("Película: ".$pelicula."\n");
+        echo nl2br("Hora de sesión: ".$sesion."\n");
+        echo nl2br("---------------------\n");
+        echo nl2br("Precio unitario: ".$precioUnidad." €\n");
+        echo "Asientos: ";
+        foreach ($asientos as $asiento) {
+            echo $asiento.", ";
+        }
+        echo nl2br("\n");
+        echo nl2br("---------------------\n");
+        echo nl2br("Total a pagar: ".$total." €\n");
+        if(isset($_SESSION["user"])) {
+            echo nl2br("Usuario que paga: ".$_SESSION["user"]);
+        } else {
+            echo nl2br("Usuario que paga: Invitado");
+        }
+
+        exit(); //Terminar ejecución
+    }
+
     if (!isset($_SESSION['tiempo'])) { //Crear el atributo de tiempo en caso de que no exista
         $_SESSION["tiempo"] = time();
     }
@@ -40,11 +82,27 @@
     <style type="text/css">
         #divPago {
             border: 1px solid gray;
-            width: 500px;
-            height: 400px;
+            width: 250px;
+            height: 280px;
             border-radius: 8px;
             background-color: lightgray;
+            margin: auto;
+            padding: 10px;
+            text-align: left;
+        }
+
+        #divPago h2 {
             text-align: center;
+        }
+
+        h3 {
+            margin: auto;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+
+        input[type=submit] {
+            font-size: 1.3em;
         }
     </style>
     <title>Pago total</title>
@@ -65,14 +123,18 @@
             ?>
         </p>
         <p>Total a pagar: <?php echo 3*count($_SESSION['asientos_seleccionados'])?> €</p>
+        <form action="pago.php" method="post">
+        <p><input type="submit" name="pagado" value="Pagar"></p>
+        </form>
     </div>
+    <h3 id="sesion">
+        <?php //Código para mostrar quién inicia sesión
+        if (!isset($_SESSION["user"])) {
+            echo nl2br("\n\n Iniciado sesión como: Invitado");
+        } else {
+            echo nl2br("\n\n Iniciado sesión como: ".$_SESSION["user"]);
+        }
+        ?>
+    </h3>
 </body>
 </html>
-
-<?php //Código para mostrar quién inicia sesión
-    if (!isset($_SESSION["user"])) {
-        echo nl2br("\n\n <h3>Iniciado sesión como: Invitado</h3>");
-    } else {
-        echo nl2br("\n\n <h3>Iniciado sesión como: ".$_SESSION["user"]."</h3>");
-    }
-?>
