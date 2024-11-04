@@ -4,7 +4,9 @@
     if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["registrado"])) { //Asegurarse de que se usa POST para enviar datos y de que se pulsa en Registrar
         //Crear el usuario y registro en $_SESSION
         $_SESSION["user"] = trim($_POST["user"]);
+        $_SESSION["pass"] = trim($_POST["pass"]);
         $_SESSION["copiaUser"] = trim($_POST["user"]); //Añadir una copia de user para poder validarlo en login.php
+        $_SESSION["copiaPass"] = trim($_POST["pass"]); //Añadir una copia de pass para poder validarlo en login.php
         $_SESSION["registrado"] = $_POST["registrado"];
 
         header("Location: index.php");

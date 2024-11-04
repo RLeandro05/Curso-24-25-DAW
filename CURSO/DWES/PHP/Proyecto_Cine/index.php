@@ -23,6 +23,11 @@
 
     //unset($_SESSION["user"]);
     //unset($_SESSION["registrado"]);
+    //session_unset();
+
+    echo "<pre>";
+    print_r($_SESSION);
+    echo "</pre>";
 
     if(isset($_SESSION['user'])) { //Asegurarse de si existe el usuario, para mostrar el mensaje de bienvenida
         $userName = $_SESSION['user'];
@@ -32,8 +37,6 @@
     } else { //Si no existe ningún usuario y ya estaba registrado, enviar a login.php
         echo "<button><a href=\"login.php\">Iniciar Sesión</a></button>";
     }
-
-    //session_unset();
 
     echo "</form>";
 ?>
