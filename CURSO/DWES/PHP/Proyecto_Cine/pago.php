@@ -3,28 +3,29 @@
 
     //$_SESSION['horarioPelicula'] = $_POST['horario'];
 
-    echo "<pre>";
+    /*echo "<pre>";
     print_r($_SESSION);
-    echo "</pre>";
+    echo "</pre>";*/
 
-    /*if(!isset($_SESSION['asientos_seleccionados'])) { //Asegurarse de que seleccionó asientos el usuario
-        echo nl2br("<h2>No has seleccionado ningún asiento</h2>\n");
-        echo nl2br("<h3>Pinche en el siguiente enlace</h3>\n");
-        echo "<a href=\"index.php\"> >>> Pinche aquí para volver";
-
-        exit();
-    }*/
-
-    /*if (time() - $_SESSION['inicio_seleccion'] > 60) { //Cada segundo que pase, se resta el tiempo actual menos el tiempo en el que empezó el usuario
-        echo "<p>El tiempo para el pago ha expirado.</p>"; //Cuando supere el minuto, mostrar el mensaje
+    if (!isset($_SESSION['tiempo'])) { //Crear el atributo de tiempo en caso de que no exista
+        $_SESSION["tiempo"] = time();
+    }
+    
+    if(time() - $_SESSION["tiempo"] > 10) { //Si supera el tiempo concreto, dar la opción de volver al inicio pero sin cerrar sesión
+        echo nl2br("El tiempo para seleccionar asientos a concluído\n");
         echo "<p><a href=\"index.php\"> >>> Pinche aquí para volver</a></p>";
-        unset($_SESSION['inicio_seleccion']); //Eliminar el atributo para que cuando vuelva a meterse el usuario, empiece en 0 segundos de nuevo
-        $_SESSION['asientos_ocupados'] = []; //Vaciar el array de asientos si estuvo escogiendo asientos
-        echo "<pre>";
+    
+        unset($_SESSION['tiempo']); //Eliminar el atributo de tiempo para luego reiniciarlo
+
+        //Dejar libres aquellos asientos previamente seleccionados
+        $_SESSION["asientos_ocupados"] = array_diff($_SESSION["asientos_ocupados"], $_SESSION["asientos_seleccionados"]);
+
+        /*echo "<pre>";
         print_r($_SESSION);
-        echo "</pre>";
-        exit(); //Parar la ejecución del código
-    }*/
+        echo "</pre>";*/
+
+        exit(); //Detener la ejecución
+    }
 ?>
 
 <!DOCTYPE html>
@@ -48,12 +49,16 @@
     <div id="divPago">
         <h2>Resumen de la compra</h2>
         <p>Película: '<?php echo $_SESSION['pelicula']?>'</p>
+        <p>Sesión: '<?php echo $_SESSION['horarioPelicula']?>'</p>
         <p>Precio por entrada: 3 €</p>
         <p>
-        Asientos: '
+        Asientos:
             <?php
-                print_r($_SESSION['asientos_seleccionados']);
-            ?>'
+                foreach ($_SESSION['asientos_seleccionados'] as $asiento) {
+                    echo $asiento.", ";
+                }
+                //print_r($_SESSION['asientos_seleccionados']);
+            ?>
         </p>
         <p>Total a pagar: <?php echo 3*count($_SESSION['asientos_seleccionados'])?> €</p>
     </div>
