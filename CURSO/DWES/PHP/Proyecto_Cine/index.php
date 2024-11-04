@@ -19,5 +19,20 @@
     echo "<input type=\"submit\" value=\"Enviar respuesta\"> "; //Al enviar, mostrar a detalle los horarios
     echo "<input type=\"reset\" value=\"Borrar respuesta\">";
 
+    //unset($_SESSION["user"]);
+    //unset($_SESSION["registrado"]);
+
+    echo nl2br("\n\n\n");
+    if(isset($_SESSION['user'])) {
+        $userName = $_SESSION['user'];
+        echo "<h3>¡Hola, $userName!</h3>";
+    } else if(!isset($_SESSION["registrado"])){
+        echo "<button><a href=\"registro.php\">Regístrate</a></button>";
+    } else {
+        echo "<button><a href=\"login.php\">Iniciar Sesión</a></button>";
+    }
+
+    //session_unset();
+
     echo "</form>";
 ?>
