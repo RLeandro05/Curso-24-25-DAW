@@ -9,11 +9,16 @@ if (!isset($_SESSION['tiempo'])) { //Crear el atributo de tiempo en caso de que 
     $_SESSION["tiempo"] = time();
 }
 
-if(time() - $_SESSION["tiempo"] > 60) { //Si supera el tiempo concreto, dar la opción de volver al inicio, sin cerrar sesión
+if(time() - $_SESSION["tiempo"] > 10) { //Si supera el tiempo concreto, dar la opción de volver al inicio, sin cerrar sesión
     echo nl2br("El tiempo para seleccionar asientos a concluído\n");
     echo "<p><a href=\"index.php\"> >>> Pinche aquí para volver</a></p>";
 
     unset($_SESSION['tiempo']);
+
+    if(isset($_SESSION["user"])) {
+        unset($_SESSION["user"]);
+    }
+    
     exit();
 }
 
@@ -90,7 +95,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['asientos'])) {
         </table>
         <input type="hidden" name="horario" value="<?php echo isset($_SESSION['horarioPelicula']) ? $_SESSION['horarioPelicula'] : ''; ?>">
         <input type="hidden" name="tiempo" value="<?php echo isset($_SESSION['tiempo']) ? $_SESSION['tiempo'] : ''; ?>">
+        <br>
         <button type="submit">Confirmar Selección</button>
     </form>
 </body>
 </html>
+
+<?php //Código para mostrar quién inicia sesión
+    if (!isset($_SESSION["user"])) {
+        echo nl2br("\n\n <h3>Iniciado sesión como: Invitado</h3>");
+    } else {
+        echo nl2br("\n\n <h3>Iniciado sesión como: ".$_SESSION["user"]."</h3>");
+    }
+?>

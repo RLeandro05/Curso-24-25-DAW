@@ -48,6 +48,12 @@ if (isset($_REQUEST["pelicula"])) { //Primero, asegurar de que se escogió algun
     echo "</form>";
 
     echo "<a href=\"index.php\"> >>> Pinche aquí para volver</a>"; //Opción de volver al inicio
+
+    if (!isset($_SESSION["user"])) { //Código para mostrar quién inicia sesión
+        echo nl2br("\n\n <h3>Iniciado sesión como: Invitado</h3>");
+    } else {
+        echo nl2br("\n\n <h3>Iniciado sesión como: ".$_SESSION["user"]."</h3>");
+    }
     
 } else { //Si no se escogió ninguna opción
     echo nl2br("<h2>¡Vaya! Parece que no has seleccionado ninguna película de la cartelera</h2>");

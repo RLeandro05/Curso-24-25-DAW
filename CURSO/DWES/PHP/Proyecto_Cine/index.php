@@ -25,9 +25,9 @@
     //unset($_SESSION["registrado"]);
     //session_unset();
 
-    echo "<pre>";
+    /*echo "<pre>";
     print_r($_SESSION);
-    echo "</pre>";
+    echo "</pre>";*/
 
     if(isset($_SESSION['user'])) { //Asegurarse de si existe el usuario, para mostrar el mensaje de bienvenida
         $userName = $_SESSION['user'];

@@ -11,11 +11,15 @@
         $_SESSION["tiempo"] = time();
     }
     
-    if(time() - $_SESSION["tiempo"] > 60) { //Si supera el tiempo concreto, dar la opción de volver al inicio pero sin cerrar sesión
+    if(time() - $_SESSION["tiempo"] > 10) { //Si supera el tiempo concreto, dar la opción de volver al inicio pero sin cerrar sesión
         echo nl2br("El tiempo para seleccionar asientos a concluído\n");
         echo "<p><a href=\"index.php\"> >>> Pinche aquí para volver</a></p>";
     
         unset($_SESSION['tiempo']); //Eliminar el atributo de tiempo para luego reiniciarlo
+
+        if(isset($_SESSION["user"])) {
+            unset($_SESSION["user"]);
+        }
 
         //Dejar libres aquellos asientos previamente seleccionados
         $_SESSION["asientos_ocupados"] = array_diff($_SESSION["asientos_ocupados"], $_SESSION["asientos_seleccionados"]);
@@ -64,3 +68,11 @@
     </div>
 </body>
 </html>
+
+<?php //Código para mostrar quién inicia sesión
+    if (!isset($_SESSION["user"])) {
+        echo nl2br("\n\n <h3>Iniciado sesión como: Invitado</h3>");
+    } else {
+        echo nl2br("\n\n <h3>Iniciado sesión como: ".$_SESSION["user"]."</h3>");
+    }
+?>
