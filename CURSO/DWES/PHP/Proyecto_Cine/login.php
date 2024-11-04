@@ -1,7 +1,11 @@
 <?php
     session_start();
 
-    if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["logueado"]) && $_POST["user"] == $_SESSION["copiaUser"] && $_POST["pass"] == $_SESSION["copiaPass"]) { //Asegurarse de que se usa POST para enviar datos y de que se pulsa en Registrar
+    if ($_SERVER["REQUEST_METHOD"] == "POST" 
+    && isset($_POST["logueado"]) 
+    && $_POST["user"] == $_SESSION["copiaUser"] 
+    && $_POST["pass"] == $_SESSION["copiaPass"]) { //Asegurarse de que se usa POST para enviar datos y de que se pulsa en Iniciair Sesión,
+                                                    //además de verificar que el usuario y la contraseña son correctas
         //Crear el usuario y registro en $_SESSION
         $_SESSION["user"] = trim($_POST["user"]);
         $_SESSION["pass"] = trim($_POST["pass"]);
