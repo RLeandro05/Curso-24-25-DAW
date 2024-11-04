@@ -46,10 +46,10 @@ if (isset($_REQUEST["pelicula"])) { // Primero, asegurar de que se escogió algu
     echo "<input type=\"reset\" value=\"Borrar respuesta\">";
     echo "</form>";
 
-    echo "<a href=\"inde.php\"> >>> Pinche aquí para volver</a>";
+    echo "<a href=\"index.php\"> >>> Pinche aquí para volver</a>";
     
 } else { // Si no se escogió ninguna opción
     echo nl2br("<h2>¡Vaya! Parece que no has seleccionado ninguna película de la cartelera</h2>");
-    echo nl2br("<h3>Por favor, pinche en el siguiente enlace para volver a la página de inicio</h3> >>> <a href=\"inde.php\">Pinche aquí para volver</a>");
+    echo nl2br("<h3>Por favor, pinche en el siguiente enlace para volver a la página de inicio</h3> >>> <a href=\"index.php\">Pinche aquí para volver</a>");
 }
 ?>

@@ -10,14 +10,14 @@
     /*if(!isset($_SESSION['asientos_seleccionados'])) { //Asegurarse de que seleccionó asientos el usuario
         echo nl2br("<h2>No has seleccionado ningún asiento</h2>\n");
         echo nl2br("<h3>Pinche en el siguiente enlace</h3>\n");
-        echo "<a href=\"inde.php\"> >>> Pinche aquí para volver";
+        echo "<a href=\"index.php\"> >>> Pinche aquí para volver";
 
         exit();
     }*/
 
     /*if (time() - $_SESSION['inicio_seleccion'] > 60) { //Cada segundo que pase, se resta el tiempo actual menos el tiempo en el que empezó el usuario
         echo "<p>El tiempo para el pago ha expirado.</p>"; //Cuando supere el minuto, mostrar el mensaje
-        echo "<p><a href=\"inde.php\"> >>> Pinche aquí para volver</a></p>";
+        echo "<p><a href=\"index.php\"> >>> Pinche aquí para volver</a></p>";
         unset($_SESSION['inicio_seleccion']); //Eliminar el atributo para que cuando vuelva a meterse el usuario, empiece en 0 segundos de nuevo
         $_SESSION['asientos_ocupados'] = []; //Vaciar el array de asientos si estuvo escogiendo asientos
         echo "<pre>";
