@@ -75,7 +75,7 @@
     } elseif (isset($_POST["cerrarSesion"])) { //Redireccionar al usuario a index.php después de cerrar sesión
         unset($_SESSION["user"]);
         header("Location: index.php");
-        exit();
+        exit(); //Terminar ejecución
     }
 ?>
 
