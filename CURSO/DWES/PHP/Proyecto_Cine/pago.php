@@ -11,7 +11,7 @@
         $_SESSION["tiempo"] = time();
     }
     
-    if(time() - $_SESSION["tiempo"] > 10) { //Si supera el tiempo concreto, dar la opción de volver al inicio pero sin cerrar sesión
+    if(time() - $_SESSION["tiempo"] > 60) { //Si supera el tiempo concreto, dar la opción de volver al inicio pero sin cerrar sesión
         echo nl2br("El tiempo para seleccionar asientos a concluído\n");
         echo "<p><a href=\"index.php\"> >>> Pinche aquí para volver</a></p>";
     
