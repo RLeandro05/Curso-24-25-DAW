@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+  <head>   
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"> 
+    <title>Plantilla</title>
+    <script type="text/javascript">
+		
+		const obtenerUsuarios = ()=>{
+			setTimeout(()=>{
+				console.log("Usuarios listos!!!")
+			}, 3000)
+		}
+		const obtenerClientes = ()=>{
+			setTimeout(()=>{
+				console.log("Clientes listos!!!")
+			}, 2000)
+		}
+		const obtenerProductos = ()=>{
+			setTimeout(()=>{
+				console.log("Productos listos!!!")
+			}, 500)
+		}
+	
+		const obtenerUsuariosP = (id_grupo)=>{ //Pasar un id como parámetro
+			return new Promise((resolve, reject)=>{ //Crear una nueva promesa
+				setTimeout(()=>{ //Realizar un tiempo de espera
+					if (id_grupo) { //En caso de existir valor en el parámetro del id, entrar en el bloque
+						let usuarios = [ //Crear una serie de usuarios
+							{id: 1, nombre: "Zarzalones Inferior"},
+							{id: 2, nombre: "Rio Verde"},
+							{id: 3, nombre: "Calzadillas"}
+						];
+						resolve(usuarios);
+					} else { //Si no existe, mostrar el mensaje de error
+						reject("Sin id del grupo para los usuarios");
+					}
+				}, 3000)
+			});
+		}
+		
+		const obtenerClientesP = (usuarios)=>{ //Pasar usuarios como parámetro
+			return new Promise((resolve, reject)=>{ //Crear una nueva promesa
+				setTimeout(()=>{ //Realizar un tiempo de espera
+					if (usuarios) { //En caso de existir valor en el parámetro de los usuarios, entrar en el bloque
+						let clientes = [ //Crear una serie de clientes
+							{id: 1, id_usuario:1, localidad: "Yunquera, Málaga"},
+							{id: 2, id_usuario:2, localidad: "Otívar, Granada"},
+							{id: 3, id_usuario:3, localidad: "Almadén de la Plata, Sevilla"},
+						];
+						resolve(clientes);
+					} else { //Si no existe, mostrar el mensaje de error
+						reject("Sin Usuarios");
+					}
+				}, 2000)
+			});
+		}
+		
+		const obtenerProductosP = (clientes)=>{ //Pasar clientes como parámetro
+			return new Promise((resolve, reject)=>{ //Crear una nueva promesa
+				setTimeout(()=>{ //Realizar un tiempo de espera
+					if (clientes) { //En caso de existir valor en el parámetro de los clientes, entrar en el bloque
+						let productos = [ //Crear una serie de productos
+							{id: 1, id_cliente:1, nRapeles: 4, longitudMax: 26},
+							{id: 2, id_cliente:2, nRapeles: 7, longitudMax: 12},
+							{id: 3, id_cliente:3, nRapeles: 3, longitudMax: 12},
+						];
+						resolve(productos);
+					} else { //Si no existe, mostrar el mensaje de error
+						reject("Sin Clientes");
+					}
+					
+				}, 800)
+			});
+		}
+		
+		
+		//Consumimos las promesas:
+		//Se mostrarán en Console
+		
+		obtenerUsuariosP(11) //Id pasado como parámetro
+			.then(usuarios=>{
+				console.log("usuarios: ", usuarios); //Mostrar usuarios
+				return obtenerClientesP(usuarios); //Usuarios pasados como parámetro
+			})
+			.then(clientes=>{
+				console.log("clientes: ", clientes); //Mostrar clientes
+				return obtenerProductosP(clientes); //Clientes pasados como parámetro
+			})
+			.then(productos=>{
+				console.log("productos: ", productos); //Mostrar productos
+			})
+			.catch( err=> console.log("Error: ", err) ); //Si se cumple que no exista el parámetro pasado, ya sea en una de las funciones,
+														// mostrar el reject correspondiente de la función que falle
+			
+			
+		/*
+		obtenerUsuariosP(11)
+			.then(obtenerClientesP)
+			.then(obtenerProductosP)
+			.catch( err=> console.log("Error: ", err) ); 
+		*/
+      
+			
+		/*
+		obtenerUsuariosP(11)
+			.then(usuarios=>{
+				console.log("usuarios: ", usuarios);
+				obtenerClientesP(usuarios);
+			})
+			.then(clientes=>{
+				console.log(clientes);
+				obtenerProductosP(clientes);
+			})
+			.then(productos=>{
+				console.log("productos: ", productos);
+				
+			})
+			.catch( err=> console.log("Error: ", err) ); 
+			*/
+		
+		
+      
+    </script>
+  </head>
+  
+  <body>
+    <p>Ejemplo</p>
+    
+  </body>
+  
+</html>
