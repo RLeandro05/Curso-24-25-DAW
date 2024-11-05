@@ -17,10 +17,6 @@
     
         unset($_SESSION['tiempo']); //Eliminar el atributo de tiempo para luego reiniciarlo
 
-        if(isset($_SESSION["user"])) {
-            unset($_SESSION["user"]);
-        }
-
         //Dejar libres aquellos asientos previamente seleccionados
         $_SESSION["asientos_ocupados"] = array_diff($_SESSION["asientos_ocupados"], $_SESSION["asientos_seleccionados"]);
 

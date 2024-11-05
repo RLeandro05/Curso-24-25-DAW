@@ -15,10 +15,6 @@ if(time() - $_SESSION["tiempo"] > 60) { //Si supera el tiempo concreto, dar la o
 
     unset($_SESSION['tiempo']);
 
-    if(isset($_SESSION["user"])) {
-        unset($_SESSION["user"]);
-    }
-
     exit();
 }
 
