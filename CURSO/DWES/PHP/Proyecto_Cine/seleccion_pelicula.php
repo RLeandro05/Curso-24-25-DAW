@@ -3,13 +3,13 @@ session_start();
 
 $mensajeH2 = "Selección de horario de ";
 
-if (isset($_REQUEST["pelicula"])) { // Primero, asegurar de que se escogió alguna opción anterior
+if (isset($_REQUEST["pelicula"])) { //Primero, asegurar de que se escogió alguna opción anterior
     $_SESSION['pelicula'] = $_POST["pelicula"];
-    $_SESSION['horarioPelicula'] = "";
+    $_SESSION['horarioPelicula'] = ""; //Deja vacío el horario antes de ser seleccionado
 
-    echo "<pre>";
+    /*echo "<pre>";
     print_r($_SESSION);
-    echo "</pre>";
+    echo "</pre>";*/
 
     $mensajeH2 .= $_POST["pelicula"] == "spiderman1" ? "Spider-Man 1" : ($_POST["pelicula"] == "spiderman2" ? "Spider-Man 2" : "Spider-Man 3");
     
@@ -17,8 +17,9 @@ if (isset($_REQUEST["pelicula"])) { // Primero, asegurar de que se escogió algu
     echo nl2br("<h3>Horarios actualmente disponibles</h3>");
 
     echo "<form method=\"POST\" action=\"seleccion_asientos.php\">";
-    echo "<input type=\"hidden\" name=\"accion\" value=\"seleccion_horario\">"; // Campo oculto para identificar el formulario
+    echo "<input type=\"hidden\" name=\"accion\" value=\"seleccion_horario\">"; //Campo oculto para identificar el formulario
 
+    //Dependiendo de qué película se escoja anteriormente, mostrar una lista de horarios u otra
     if ($_POST["pelicula"] == "spiderman1") {
         echo nl2br("<input type=\"radio\" id=\"horario1\" name=\"horario\" value=\"15:30 PM\">");
         echo nl2br("<label for=\"horario1\"> 15:30 PM</label>\n");
@@ -46,9 +47,15 @@ if (isset($_REQUEST["pelicula"])) { // Primero, asegurar de que se escogió algu
     echo "<input type=\"reset\" value=\"Borrar respuesta\">";
     echo "</form>";
 
-    echo "<a href=\"index.php\"> >>> Pinche aquí para volver</a>";
+    echo "<a href=\"index.php\"> >>> Pinche aquí para volver</a>"; //Opción de volver al inicio
+
+    if (!isset($_SESSION["user"])) { //Código para mostrar quién inicia sesión
+        echo nl2br("\n\n <h3>Iniciado sesión como: Invitado</h3>");
+    } else {
+        echo nl2br("\n\n <h3>Iniciado sesión como: ".$_SESSION["user"]."</h3>");
+    }
     
-} else { // Si no se escogió ninguna opción
+} else { //Si no se escogió ninguna opción
     echo nl2br("<h2>¡Vaya! Parece que no has seleccionado ninguna película de la cartelera</h2>");
     echo nl2br("<h3>Por favor, pinche en el siguiente enlace para volver a la página de inicio</h3> >>> <a href=\"index.php\">Pinche aquí para volver</a>");
 }
