@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script type="text/javascript">
+        const obtenerUsuariosP = () => {
+            return new Promise((resolve, reject) => {
+                setTimeout(() => {
+                    resolve("Usuarios listos!!!");
+                }, 3000)
+            });
+        }
+
+        const obtenerClientesP = () => {
+            return new Promise((resolve, reject) => {
+                setTimeout(() => {
+                    resolve("Clientes listos!!!");
+                    // reject();
+                }, 2000)
+            });
+        }
+
+        const obtenerProductosP = () => {
+            return new Promise((resolve, reject) => {
+                setTimeout(() => {
+                    resolve("Productos listos!!!");
+                }, 500)
+            });
+        }
+
+        let gruposUsuarios = {
+            grupo1: {
+                usuario1: [""]
+            }
+        }
+
+        obtenerUsuariosP()
+            .then(datos => console.log("Usuarios: "+datos))
+            .then(obtenerClientesP)
+            .then(datos => console.log("Clientes: "+datos))
+            .then(obtenerProductosP)
+            .then(datos => console.log("Productos: "+datos))
+            .catch(err => console.log("err: ", err));
+
+    </script>
+    <title>Fetch Promesas</title>
+</head>
+
+<body>
+
+</body>
+
+</html>
