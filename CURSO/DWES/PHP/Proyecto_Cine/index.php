@@ -1,5 +1,7 @@
 <?php
     session_start();
+
+    echo nl2br("SID actual: ".session_id()); //Generar un SID
     
     echo nl2br("<h2>Bienvenid@ al Cine</h2>\n"); //Mensaje de bienvenida
 

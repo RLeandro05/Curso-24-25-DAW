@@ -29,6 +29,9 @@
 
     if($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["pagado"])) { //Asegurar de que se pinchó en el botón Pagar
 
+        session_regenerate_id(); //Generar un nuevo SID
+        //echo session_id();
+
         //Dar la opción de descargar el ticket
         echo "<form action=\"pago.php\" method=\"post\">";
         echo "<h3><input type=\"submit\" name=\"ticket\" value=\"Descargar Ticket\"></h3>";
