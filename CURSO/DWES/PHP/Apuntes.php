@@ -89,6 +89,12 @@
     //Destruir o acabar sesión
     session_destroy();
 
+    //Crear un SID
+    session_id();
+
+    //Generar un nuevo SID
+    session_regenerate_id();
+
     //Añadir un atributo a session
     $_SESSION["atributo"] = "valor";
 
@@ -103,7 +109,23 @@
 
     //Parar ejecución del código
     exit();
+?>
+    <!--Estructura para hacer un for de php en html-->
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        <?php for($i = 1; $i < 5; $i++): ?>
+            <p>Hola</p>
+        <?php endfor;?>
+    </body>
+    </html>
 
+<?php
     //Cabecera de .txt
     header("Content-Type: text/plain");
     header('Content-Disposition: attachment; filename="saludo.txt"');
