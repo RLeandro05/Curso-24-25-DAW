@@ -5,6 +5,13 @@ session_start();
 print_r($_SESSION);
 echo "</pre>";*/
 
+if($_SERVER["REQUEST_METHOD"] == "POST" && !isset($_POST["horario"])) { //En el caso de que no se haya seleccionado un horario, mostrar mensaje de error
+    echo nl2br("<h2>¡Vaya! Parece que no has seleccionado ningún horario de la película</h2>");
+    echo nl2br("<h3>Por favor, pinche en el siguiente enlace para volver a la página de inicio</h3> >>> <a href=\"index.php\">Pinche aquí para volver</a>");
+
+    exit(); //Terminar ejecución de código
+}
+
 if (!isset($_SESSION['tiempo'])) { //Crear el atributo de tiempo en caso de que no exista
     $_SESSION["tiempo"] = time();
 }
