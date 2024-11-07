@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>Ejemplo Web Storage</title>
+	<style>
+		div {
+			border: 2px solid blue;
+			margin: 2em;
+			padding: 1em;
+		}
+	</style>
+	<script type="text/javascript">
+		window.onload = () => {
+			// Pedir el número de visitas para ver si existe o no
+			let visitas = localStorage.getItem('contadorVisitas');
+
+			//Si no existe, inicializa el contador en 0
+			if (visitas === null) {
+				visitas = 0;
+			} else { //En caso contrario, parsear a Integer
+				visitas = parseInt(visitas);
+			}
+
+			//Incrementar el contador
+			visitas++;
+
+			// Guardar el nuevo valor del contador en localStorage, el cual se guardará en memoria para cuando se vuelva a pedir
+			localStorage.setItem('contadorVisitas', visitas);
+
+			//Mostrar el número de visitas en la página
+			document.getElementById('nvisitas').innerText = `Número de visitas: ${visitas}`;
+
+			document.querySelector("#btGuardar").onclick = guardarDato;
+
+			document.querySelector("#btMostrar").onclick = mostrarDato;
+
+			document.querySelector("#btBorrarDato").onclick = borrarDato;
+
+			document.querySelector("#btBorrarTodo").onclick = borrarTodo;
+
+			document.querySelector("#btContenido").onclick = mostrarTodo;
+		};
+
+		const guardarDato = () => { //Función para guardar datos
+			localStorage.setItem(document.querySelector("#etiqueta").value, document.querySelector("#dato").value);
+			alert("Datos guardados");
+
+			document.querySelector("#etiqueta").value = "";
+			document.querySelector("#dato").value = "";
+		}
+
+		const mostrarDato = () => { //Función para mostrar el dato de la etiqueta mencionada
+			let etiqueta = document.querySelector("#etiqueta").value;
+			//console.log(localStorage.getItem(document.querySelector("#etiqueta").value));
+
+			if (localStorage.getItem(etiqueta) == null) { //Verificar si existe dato asignado
+				alert("No existe dato asignado a '" + etiqueta + "'");
+			} else { //Si existe, mostrarlo por pantalla
+				document.querySelector("#sal").textContent = localStorage.getItem(etiqueta);
+			}
+
+		}
+
+		const borrarDato = () => { //Función para borrar un dato asignado a una etiqueta
+			let etiqueta = document.querySelector("#etiqueta").value;
+
+			if (localStorage.getItem(etiqueta) == null) { //Verificar si existe dato asignado
+				alert("No existe dato asignado a '" + etiqueta + "'");
+			} else { //Si existe, mostrarlo por pantalla
+				localStorage.removeItem(etiqueta);
+				alert("Ha sido eliminado de la memoria: '" + etiqueta + "'");
+			}
+		}
+
+		const borrarTodo = () => { //Función para borrar todo el contenido de Web Storage
+			localStorage.clear();
+			alert("Todos los elementos han sido eliminados de la memoria");
+		}
+
+		const mostrarTodo = () => { //Función para mostrar todo el contenido de Web Storage
+			let bloque = document.querySelector("#contenido").innerHTML;
+			bloque = "";
+
+			for (let i = 0; i < localStorage.length; i++) {
+				let key = localStorage.key(i);
+				let contenido = localStorage.getItem(key);
+
+				bloque += key+" - "+contenido+"<br><br>";
+			}
+
+			document.querySelector("#contenido").innerHTML = bloque;
+		}
+	</script>
+</head>
+
+<body>
+
+	<h3>Esto es un ejemplo de Web Storage</h3>
+
+	<label>Nombre: </label>
+	<input type="text" name="etiqueta" id="etiqueta">
+	<br><br>
+	<label>Dato: </label>
+	<input type="text" name="dato" id="dato">
+	<br /><br />
+
+	<hr>
+	<br><br>
+	<button id="btGuardar">Guardar Dato</button>
+	<button id="btMostrar">Mostrar Dato</button>
+	<button id="btContenido">Contenido del Web Storage</button>
+
+	<button id="btBorrarDato">Borrar Dato</button>
+	<button id="btBorrarTodo">Borrar Todo</button>
+
+	<p>
+	<div id="sal">
+		Aquí ponemos el dato leído del localStorage
+	</div>
+	<div id="nvisitas">
+		Aquí se muestra el número de visitas
+	</div>
+	</p>
+	<p>
+	<div id="contenido">
+		Contenido de todo el Web Storage
+	</div>
+	</p>
+
+</body>
+
+</html>
