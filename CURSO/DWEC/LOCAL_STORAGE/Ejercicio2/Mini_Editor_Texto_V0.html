@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+  <head>   
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"> 
+    <title>Plantilla</title>
+		
+		<style type="text/css">
+		#texto {
+			width: 700px;
+			height: 500px;
+			border: 1px solid blue;
+			padding: 0.4em;
+		}
+		span {
+			border: 2px solid red;
+			margin: 1.1em;
+			padding: .2em;
+			cursor: pointer;
+			background-color: pink;
+		}
+		
+		</style>
+		
+    <script type="text/javascript">
+
+		window.onload = () => {
+			//localStorage.clear();
+
+			for(let i = 0; i<localStorage.length; i++) { //Cada vez que se recarge la página, mostrar del localStorage todo el contenido en el select
+				let select = document.querySelector("#listaEtiquetas");
+			
+				let nuevaOpcion = new Option(localStorage.key(i), localStorage[i]);
+
+				select.add(nuevaOpcion);
+			}
+
+			document.querySelector("#negrita").addEventListener("mousedown", ponerNegrita); //Función que pone en negrita el texto
+			document.querySelector("#cursiva").addEventListener("mousedown", ponerCursiva); //Función que pone en cursiva el texto
+			document.querySelector("#subrayado").addEventListener("mousedown", ponerSubrayado); //Función que pone en subrayado el texto
+			document.querySelector("#color").addEventListener("mousedown", ponerColor); //Función que pone color en el texto
+
+			document.querySelector("#guardar").addEventListener("click", guardar); //Función que guarda el texto
+
+			document.querySelector("#listaEtiquetas").addEventListener("change", mostrarDato); //Función que muestra el dato de la opción del select escogida
+		}
+      
+      function ponerNegrita(e) {
+		document.execCommand("bold", false, null);
+		e.preventDefault();
+	  }
+
+	  function ponerCursiva(e) {
+		document.execCommand("italic", false, null);
+		e.preventDefault();
+	  }
+
+	  function ponerSubrayado(e) {
+		document.execCommand("underline", false, null);
+		e.preventDefault();
+	  }
+
+	  function ponerColor(e) {
+		document.execCommand("foreColor", false, "#ff0000");
+		e.preventDefault();
+	  }
+
+	  function guardar() {
+		let nombre = document.querySelector("#nombre").value;
+		let texto = document.querySelector("#texto").innerHTML;
+
+		if(nombre.trim().length == 0 || texto.trim().length == 0) { //Verificar que el nombre o el contenido están vacíos
+			alert("El nombre o el contenido está vacío");
+		} else { //En caso contrario, guardarlo
+			localStorage[nombre] = texto;
+			alert("Elemento '"+nombre+"' guardado en localStorage"); //Mostrar que se realizó correctamente
+
+			let select = document.querySelector("#listaEtiquetas");
+
+			let nuevaOpcion = new Option(nombre, texto); //Crear una nueva opción
+
+			select.add(nuevaOpcion); //Añadirla al select
+
+			//Limpiar el contenido por si quiere añadir nuevas etiquetas al localStorage
+			nombre = "";
+			texto = "";
+
+			
+			//console.log(listaEtiquetas);
+		}
+		//console.log(texto);
+	  }
+
+	  function mostrarDato() {
+		let nombre = document.querySelector("#listaEtiquetas").value;
+		let contenido = document.querySelector("#texto");
+
+		contenido.innerHTML = localStorage[nombre]; //Cambiar el contenido para mostrar el dato asociado a dicha opción seleccionada del select
+	  }
+    </script>
+  </head>
+  
+  <body>
+
+    <h3>Procesador de Textos</h3>
+		<label for="nombre">Nombre del Texto:</label>
+		<input type="text" id="nombre" size="15">	
+		
+		Lista de Etiquetas <select  id="listaEtiquetas" multiple>
+
+		</select>
+		<p>
+			<span id="guardar">Guardar</span>
+			<span id="negrita">Negrita</span>
+			<span id="cursiva">Cursiva</span>
+			<span id="subrayado">Subrayado</span>
+			<span id="color">Color</span>
+		</p>
+		<div id="texto" contentEditable="true" spellcheck="true">
+			Esto es un texto de prueba para no tener que estar escribiendo.
+		</div>
+		<p id="sal"></p>
+    
+  </body>
+  
+</html>
