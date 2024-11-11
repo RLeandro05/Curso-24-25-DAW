@@ -90,13 +90,13 @@
             ¡Prepárate para sudar, quemar calorías y alcanzar tus metas de fitness más rápido que nunca!.
         </p>
         *EN CASO DE ESCOGER CROSSFIT, ELIJA EL HORARIO: <br>
-        <input type="radio" id="horario1" name="horario">
+        <input type="radio" id="horario1" name="horario" value="<?php print_r ($_SESSION["matrizClases"]["crossfit"]["lunes"]["hora"])?>">
         <label for="horario1"><?php print_r ($_SESSION["matrizClases"]["crossfit"]["lunes"]["hora"])?></label>
 
-        <input type="radio" id="horario2" name="horario">
+        <input type="radio" id="horario2" name="horario" value="<?php print_r ($_SESSION["matrizClases"]["crossfit"]["miércoles"]["hora"])?>">
         <label for="horario2"><?php print_r ($_SESSION["matrizClases"]["crossfit"]["miércoles"]["hora"])?></label>
 
-        <input type="radio" id="horario3" name="horario">
+        <input type="radio" id="horario3" name="horario" value="<?php print_r ($_SESSION["matrizClases"]["crossfit"]["viernes"]["hora"])?>">
         <label for="horario3"><?php print_r ($_SESSION["matrizClases"]["crossfit"]["viernes"]["hora"])?></label>
 
         <input type="hidden" name="clase" value="crossfit">

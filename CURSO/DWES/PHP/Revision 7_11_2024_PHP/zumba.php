@@ -89,10 +89,10 @@
             ¡Olvídate de la monotonía y descubre una nueva forma de entrenar!.
         </p>
         *EN CASO DE ESCOGER ZUMBA, ELIJA EL HORARIO: <br>
-        <input type="radio" id="horario1" name="horario">
+        <input type="radio" id="horario1" name="horario" value="<?php print_r ($_SESSION["matrizClases"]["zumba"]["martes"]["hora"])?>">
         <label for="horario1"><?php print_r ($_SESSION["matrizClases"]["zumba"]["martes"]["hora"])?></label>
 
-        <input type="radio" id="horario2" name="horario">
+        <input type="radio" id="horario2" name="horario" value="<?php print_r ($_SESSION["matrizClases"]["zumba"]["jueves"]["hora"])?>">
         <label for="horario2"><?php print_r ($_SESSION["matrizClases"]["zumba"]["jueves"]["hora"])?></label>
 
         <input type="hidden" name="clase" value="zumba">
