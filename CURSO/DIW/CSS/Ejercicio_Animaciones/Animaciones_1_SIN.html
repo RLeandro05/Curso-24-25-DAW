@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>Plantilla</title>
+	<style type="text/css">
+		.prueba1 {
+			background-color: black;
+			color: yellow;
+			width: 100px;
+			height: 100px;
+			position: absolute;
+			left: 40%;
+
+		}
+
+		#d1 {
+			animation: muevelo 5s linear infinite;
+		}
+
+		#d2 {
+			animation: muevelo 5s linear infinite;
+			animation-delay: .5s;
+		}
+
+		#d3 {
+			animation: muevelo 5s linear infinite;
+			animation-delay: 1s;
+		}
+
+		@keyframes muevelo {
+			0% {
+				transform: translateX(0) rotate(0deg);
+				filter: blur(0);
+			}
+
+			25% {
+				transform: translateX(-200px) rotate(100deg);
+				filter: blur(.2em);
+			}
+
+			50% {
+				transform: translateX(-400px) rotate(200deg);
+				filter: blur(.3em);
+			}
+
+			75% {
+				transform: translateX(-200px) rotate(100deg);
+				filter: blur(.2em);
+			}
+
+			100% {
+				transform: translateX(0) rotate(0deg);
+				filter: blur(0);
+			}
+		}
+	</style>
+
+</head>
+
+<body>
+
+	<div id="d1" class="prueba1">
+		<p>
+			Hace mucho tiempo, en una galaxia lejana, muy lejana.
+		</p>
+	</div>
+
+	<div id="d2" class="prueba1">
+		<p>
+			Hace mucho tiempo, en una galaxia lejana, muy lejana.
+		</p>
+	</div>
+
+	<div id="d3" class="prueba1">
+		<p>
+			Hace mucho tiempo, en una galaxia lejana, muy lejana.
+		</p>
+	</div>
+
+</body>
+
+</html>
