@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coche</title>
+
+    <style type="text/css">
+
+        /* Asegurarse de que el coche no se desborde */
+        #coche {
+            width: 500px; /* Ajustar tamaño según la imagen */
+            animation: conduce 6s ease-in-out infinite; /* Animación continua */
+        }
+
+        /* Definir la animación */
+        @keyframes conduce {
+            0% {
+                transform: translateX(0) rotateY(0deg);
+            }
+            25% {
+                transform: translateX(calc(100vw - 500px)) rotateY(0deg); /* Limitar el movimiento a la pantalla */
+            }
+            50% {
+                transform: translateX(calc(100vw - 500px)) rotateY(180deg); /* Gira el coche al llegar al extremo */
+            }
+            75% {
+                transform: translateX(0) rotateY(180deg); /* Regresar al punto inicial con rotación */
+            }
+            100% {
+                transform: translateX(0) rotateY(0deg); /* Regresar a la posición original */
+            }
+        }
+    </style>
+</head>
+<body>
+    <img id="coche" src="car-1803_256.gif" alt="coche.gif">
+</body>
+</html>
