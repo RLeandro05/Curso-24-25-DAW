@@ -265,8 +265,11 @@ const aniadirPersona = async () => {
 
 //Función para mostrar el formulario
 const mostrarFormulario = async () => {
-	document.querySelector("#formPersonas").style.display = "block";
+    const formulario = document.querySelector("#formPersonas");
+	
+    formulario.style.display = "block";
 }
+
 
 //Función para quitar el formulario
 const desaparecerFormulario = async () => {
