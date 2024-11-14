@@ -1,4 +1,5 @@
 let jsStoreCon;
+const dbName = 'Ejercicio1';
 
 function BD() {
 	//Crear una conexión para poder hacer una base de datos
@@ -18,7 +19,6 @@ function BD() {
 	};
 
 	//Crear nombre de la base de datos y añadir tanto el nombre como las tablas en la misma
-	let dbName = 'Ejercicio1';
 	let dataBase = {
 		name: dbName,
 		tables: [tbPersonas]
@@ -79,19 +79,6 @@ function BD() {
 
 	}
 
-	//Función para eliminar la base de datos
-	/*const eliminarDB = async () => {
-		try {
-			await jsStoreCon.dropDb(dbName);
-			console.log("Base de datos eliminada con éxito");
-		} catch (ex) {
-			console.log("Error al eliminar la base de datos:", ex);
-		}
-	};
-
-	//Llamada a eliminarDB para probar
-	eliminarDB();*/
-
 	//Función para mostrar de la base de datos, la tabla entera
 	const mostrarPersonas = async () => {
 		let personas = await jsStoreCon.select({ //Realizar consulta de select *
@@ -122,7 +109,6 @@ function BD() {
 			let celdaESTATURA = fila.insertCell();
 			celdaESTATURA.textContent = persona.estatura;
 
-			//Crear la celda para el botón de eliminar
 			let celdaBtELIMINAR = fila.insertCell();
 			let btELIMINAR = document.createElement("button");
 			btELIMINAR.textContent = "Eliminar";
@@ -130,6 +116,14 @@ function BD() {
 				eliminarPersona(persona.id, persona.nombre, persona.apellidos);
 			};
 			celdaBtELIMINAR.appendChild(btELIMINAR);
+
+			let celdaBtMODIFICAR = fila.insertCell();
+			let btMODIFICAR = document.createElement("button");
+			btMODIFICAR.textContent = "Editar";
+			btMODIFICAR.onclick = function () { //En caso de pinchar en él, llamar a la función
+				modificarPersona(persona.id, persona.nombre, persona.apellidos);
+			};
+			celdaBtMODIFICAR.appendChild(btMODIFICAR);
 		});
 	};
 
@@ -158,4 +152,74 @@ function BD() {
 			}
 		}
 	}
+}
+
+//Función para eliminar la base de datos
+const eliminarDB = async () => {
+	try {
+		await jsStoreCon.dropDb(dbName);
+		console.log("Base de datos eliminada con éxito");
+	} catch (ex) {
+		console.log("Error al eliminar la base de datos:", ex);
+	}
+};
+
+//Función para añadir una nueva persona
+const aniadirPersona = async () => {
+	console.log("Llega a aniadirPersona");
+
+	mostrarFormulario(); //Mostrar formulario
+
+	//Entrar al bloque al pinchar en Añadir
+	document.querySelector("#btAniadir").onclick = async () => {
+		//Guardar en variables los valores del formulario
+		let dni = document.querySelector("#dni").value;
+		let nombre = document.querySelector("#nombre").value;
+		let apellidos = document.querySelector("#apellidos").value;
+		let fecna = document.querySelector("#fecna").value;
+		let estatura = parseInt(document.querySelector("#estatura").value);
+
+		console.log(dni, nombre, apellidos, fecna, estatura);
+
+		if (!dni || !nombre || !fecna || !estatura) { //Si algunos de los campos excepto apellidos está nulo, mostrra mensaje de error
+			alert("Algunos de los campos (excepto 'APELLIDOS') está vacío.");
+		} else {
+			try {
+				//Crear una nueva persona
+				const nuevaPersona = {
+					dni: dni,
+					nombre: nombre,
+					apellidos: apellidos,
+					fecNac: new Date(fecna),
+					estatura: estatura
+				}
+
+				//Realizar la consulta de inserción
+				await jsStoreCon.insert({
+					into: "personas",
+					values: [nuevaPersona]
+				})
+
+				console.log("Persona añadida correctamente");
+
+				BD(); //Volver a mostrar la lista para asegurarse de que está añadida a la tabla
+
+				desaparecerFormulario(); //Desaparecer formulario
+
+			} catch (error) {
+				console.error("Hubo un error al añadir a la nueva persona", error);
+			}
+		}
+
+	}
+}
+
+//Función para mostrar el formulario
+const mostrarFormulario = async () => {
+	document.querySelector("#formPersonas").style.display = "block";
+}
+
+//Función para quitar el formulario
+const desaparecerFormulario = async () => {
+	document.querySelector("#formPersonas").style.display = "none";
 }

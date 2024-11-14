@@ -18,6 +18,12 @@
     <script type="text/javascript">
 
         BD();
+        //eliminarDB();
+
+        window.onload = () => {
+            document.querySelector("#btNuevaPersona").onclick = aniadirPersona;
+            document.querySelector("#btCancelar").onclick = desaparecerFormulario;
+        }
 
     </script>
 </head>
@@ -32,12 +38,14 @@
                 <th>Fecha de Nacimiento</th>
                 <th>Estatura</th>
                 <th>Eliminar</th>
+                <th>Editar</th>
             </tr>
         </thead>
         <tbody>
             <!-- Aquí se agregarán las filas dinámicamente -->
         </tbody>
-    </table>
+    </table> <br>
+    <button type="button" id="btNuevaPersona">Nueva Persona</button>
 
     <div id="formPersonas">
         <legend>Añadir nueva persona</legend>
@@ -58,8 +66,8 @@
             <label for="estatura">ESTATURA: </label>
             <input type="number" name="estatura" id="estatura" required> <br> <br>
 
-            <button type="button">Añadir</button>
-            <button type="button">Cancelar</button>
+            <button type="button" id="btAniadir">Añadir</button>
+            <button type="button" id="btCancelar">Cancelar</button>
         </div>
     </div>
 </body>
