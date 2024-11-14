@@ -165,7 +165,7 @@ function BD() {
 		let dni = document.querySelector("#dni").value = persona.dni;
 		let nombre = document.querySelector("#nombre").value = persona.nombre;
 		let apellidos = document.querySelector("#apellidos").value = persona.apellidos;
-		let fecna = document.querySelector("#fecna").value = persona.fecna;
+		let fecna = document.querySelector("#fecna").value = persona.fecNac.toLocaleDateString('en-CA');
 		let estatura = document.querySelector("#estatura").value = persona.estatura;
 
 		console.log(dni, nombre, apellidos, fecna, estatura);
