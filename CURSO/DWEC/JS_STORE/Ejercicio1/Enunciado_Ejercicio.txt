@@ -1,0 +1,64 @@
+	EJERCICIO JsStore:
+
+Se trata de hacer un CRUD en indexedDB usando la API de JsStore.
+
+En concreto un CRUD de una tabla de personas, con los campos que se detallan en el punto 3º.
+
+Esta API ya está ilustrada en el ejemplo de esta carpeta (ver la carpeta Ejemplo JsStore).
+
+Para la realización del ejercicio nos tenemos que fijar en el mencionado ejemplo, esto es:
+
+1º Incluir la biblioteca JsStore.
+	Descomprimiendo el archivo jsstore.rar y enlazándolo de Tal y como se puede ver en el ejemplo.
+	Importante: Al subir el archivo index.html la plataforma Moodle le mete un prefijos NO deseado
+		a la etiqueta <script>, en este caso es este:
+
+		https://educacionadistancia.juntadeandalucia.es/centros/sevilla/pluginfile.php/924809/mod_folder/content/0/Ejemplo%20JsStore/
+
+		Se debe quitar y dejar solo lo necesario para enlazar lo siguiente: 
+
+		jsstore/jsstore.min.js
+		jsstore/jsstore.worker.min.js
+
+		Evidentemente en 2 etiquetas <script>
+
+
+
+2º Crear BD.js
+
+	Para ello debemos de fijarnos nuevamente en el ejemplo, y en ese ficher añadir:
+
+	* Conexión
+	* Definicion de una tabla, la tabla personas.
+	* Creación de la base de datos con dicha tabla.
+	* Creación del método necesario para hacer un insert de 2 objetos (registros) al crear la tabla.
+	* Creación de los métodos para realizar el CRUD de la tabla personas.
+
+
+
+3º La tabla personas, en su primera versión, tendrá los siguientes campos:
+
+
+	id: Clave principal y autoincremental.
+
+	dni: De tipo string y no puede ser nulo.
+
+	nombre: De tipo string y no puede ser nulo.
+
+	apellidos: De tipo string y PUEDE ser nulo.
+
+	fnacimiento: De tipo fecha y hora y no puede ser nulo.
+
+	estatura: De tipo numérico.
+
+
+
+4º Incluir el código JavaScript en lista_personas.html (o como quieras llamar al único fichero .html) necesario
+	para realizar dicho CRUD, esto es, pintar la tabla de personas al inicio, al cargarse la página,
+	hablitar botones (o el mecanismo que se quiera, pero que sea funcional) para añadir, modificar y borrar
+	elementos de la tabla personas, esto es, personas. 
+
+	Tal y como hemos visto anteriores CRUD´s pero en este caso será en una base de datos local, usada y gestionada
+	por el navegador web.
+
+
