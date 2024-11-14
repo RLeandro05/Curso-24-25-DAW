@@ -10,7 +10,7 @@ function BD() {
 				dni: { notNull: true, dataType: "string"},
 				nombre: { notNull: true, dataType: "string"},
 				apellidos: { notNull: false, dataType: "string"},
-				fecNac: { notNull: true, dataType: "date_time"},
+				fecNac: { notNull: true, dataType: "date_time"}, //date_time para añadir además de la fecha, también la hora
 				estatura: { dataType: "number" },
 		}
 	};
