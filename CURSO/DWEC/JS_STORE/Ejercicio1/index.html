@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,16 +8,34 @@
 
     <!--Añadir las extensiones de jsstore a la cabecera con etiqueta script-->
     <script src="jsstore/jsstore.min.js"></script>
-	<script src="jsstore/jsstore.worker.min.js"></script>
+    <script src="jsstore/jsstore.worker.min.js"></script>
 
     <!--Llamar a BD.js para crear la base de datos-->
     <script src="BD.js"></script>
-	
-	<script>
-		BD();
-	</script>
+
+    <script type="text/javascript">
+
+        BD();
+
+    </script>
 </head>
+
 <body>
-    
+    <table border="1" id="personasTable">
+        <thead>
+            <tr>
+                <th>DNI</th>
+                <th>Nombre</th>
+                <th>Apellidos</th>
+                <th>Fecha de Nacimiento</th>
+                <th>Estatura</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Aquí se agregarán las filas dinámicamente -->
+        </tbody>
+    </table>
 </body>
+
 </html>
