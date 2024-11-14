@@ -17,3 +17,7 @@ legend {
     font-size: 1.2em;
     font-weight: bold;
 }
+
+th, td {
+    text-align: center;
+}
