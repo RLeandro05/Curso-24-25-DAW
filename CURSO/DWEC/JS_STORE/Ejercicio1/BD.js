@@ -204,13 +204,6 @@ function BD() {
 
 				desaparecerFormulario(); //Desaparecer el formulario
 
-				//Vaciar los contenidos
-				document.querySelector("#dni").value = "";
-				document.querySelector("#nombre").value = "";
-				document.querySelector("#apellidos").value = "";
-				document.querySelector("#fecna").value = "";
-				document.querySelector("#estatura").value = "";
-
 			} catch (error) {
 				console.error("Hubo un error al modificar la persona", error);
 			}
@@ -276,6 +269,13 @@ const mostrarFormulario = async () => {
 //Función para quitar el formulario
 const desaparecerFormulario = async () => {
 	document.querySelector("#formPersonas").style.display = "none";
+
+	//Vaciar los contenidos
+	document.querySelector("#dni").value = "";
+	document.querySelector("#nombre").value = "";
+	document.querySelector("#apellidos").value = "";
+	document.querySelector("#fecna").value = "";
+	document.querySelector("#estatura").value = "";
 }
 
 //Función para eliminar la base de datos
