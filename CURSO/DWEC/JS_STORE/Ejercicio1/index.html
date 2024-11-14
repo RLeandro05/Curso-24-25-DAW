@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ejercicio1_JsStore</title>
 
+    <link rel="stylesheet" href="css/style.css">
+
     <!--Añadir las extensiones de jsstore a la cabecera con etiqueta script-->
     <script src="jsstore/jsstore.min.js"></script>
     <script src="jsstore/jsstore.worker.min.js"></script>
@@ -29,13 +31,37 @@
                 <th>Apellidos</th>
                 <th>Fecha de Nacimiento</th>
                 <th>Estatura</th>
-                <th>Acciones</th>
+                <th>Eliminar</th>
             </tr>
         </thead>
         <tbody>
             <!-- Aquí se agregarán las filas dinámicamente -->
         </tbody>
     </table>
+
+    <div id="formPersonas">
+        <legend>Añadir nueva persona</legend>
+
+        <div id="cuerpoFormulario">
+            <label for="dni">DNI: </label>
+            <input type="text" name="dni" id="dni" required> <br> <br>
+
+            <label for="nombre">NOMBRE: </label>
+            <input type="text" name="nombre" id="nombre" required> <br> <br>
+
+            <label for="apellidos">APELLIDOS: </label>
+            <input type="text" name="apellidos" id="apellidos"> <br> <br>
+
+            <label for="fecna">FECHA_NACIMIENTO: </label>
+            <input type="date" name="fecna" id="fecna"> <br> <br>
+
+            <label for="estatura">ESTATURA: </label>
+            <input type="number" name="estatura" id="estatura" required> <br> <br>
+
+            <button type="button">Añadir</button>
+            <button type="button">Cancelar</button>
+        </div>
+    </div>
 </body>
 
 </html>

@@ -1,0 +1,19 @@
+#formPersonas {
+    border: 1px solid gray;
+    border-radius: 10px;
+    background-color: lightgray;
+    width: 300px;
+    margin: auto;
+
+    display: none;
+}
+
+#cuerpoFormulario {
+    padding: 1em;
+}
+
+legend {
+    text-align: center;
+    font-size: 1.2em;
+    font-weight: bold;
+}
