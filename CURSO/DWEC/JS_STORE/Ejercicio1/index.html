@@ -21,7 +21,11 @@
         //eliminarDB();
 
         window.onload = () => {
-            document.querySelector("#btNuevaPersona").onclick = aniadirPersona;
+            document.querySelector("#btNuevaPersona").onclick = () => { //En el caso de añadir, cambiar el título y texto del botón
+                document.querySelector("legend").innerHTML = "Añadir nueva persona";
+                document.querySelector("#btAniadir").innerHTML = "Añadir";
+                aniadirPersona();
+            };
             document.querySelector("#btCancelar").onclick = desaparecerFormulario;
         }
 

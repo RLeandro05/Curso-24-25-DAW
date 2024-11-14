@@ -121,7 +121,10 @@ function BD() {
 			let btMODIFICAR = document.createElement("button");
 			btMODIFICAR.textContent = "Editar";
 			btMODIFICAR.onclick = function () { //En caso de pinchar en él, llamar a la función
-				modificarPersona(persona.id, persona.nombre, persona.apellidos);
+				//En el caso de editar, cambiar el título y el botón
+				document.querySelector("legend").innerHTML = "Modificar persona";
+				document.querySelector("#btAniadir").innerHTML = "Aplicar";
+				modificarPersona(persona);
 			};
 			celdaBtMODIFICAR.appendChild(btMODIFICAR);
 		});
@@ -152,17 +155,68 @@ function BD() {
 			}
 		}
 	}
-}
 
-//Función para eliminar la base de datos
-const eliminarDB = async () => {
-	try {
-		await jsStoreCon.dropDb(dbName);
-		console.log("Base de datos eliminada con éxito");
-	} catch (ex) {
-		console.log("Error al eliminar la base de datos:", ex);
+	//Función para modificar la información de una persona específica
+	const modificarPersona = async (persona) => {
+		console.log("Llega a modificarPersona");
+
+		let id = persona.id;
+
+		let dni = document.querySelector("#dni").value = persona.dni;
+		let nombre = document.querySelector("#nombre").value = persona.nombre;
+		let apellidos = document.querySelector("#apellidos").value = persona.apellidos;
+		let fecna = document.querySelector("#fecna").value = persona.fecna;
+		let estatura = document.querySelector("#estatura").value = persona.estatura;
+
+		console.log(dni, nombre, apellidos, fecna, estatura);
+
+
+		mostrarFormulario(); //Mostrar formulario
+
+		document.querySelector("#btAniadir").onclick = async () => {
+			dni = document.querySelector("#dni").value;
+			nombre = document.querySelector("#nombre").value;
+			apellidos = document.querySelector("#apellidos").value;
+			fecna = document.querySelector("#fecna").value;
+			estatura = parseInt(document.querySelector("#estatura").value);
+
+			//Crear a la persona modificada
+			const personaModificada = {
+				dni: dni,
+				nombre: nombre,
+				apellidos: apellidos,
+				fecNac: new Date(fecna),
+				estatura: estatura
+			}
+
+			try {
+				//Realizar la consulta para actualizar la persona en la base de datos
+				await jsStoreCon.update({
+					in: "personas",
+					set: personaModificada,
+					where: {
+						id: id
+					}
+				});
+
+				//Mostrar la lista de personas para asegurar que la actualización fue exitosa
+				mostrarPersonas();
+
+				desaparecerFormulario(); //Desaparecer el formulario
+
+				//Vaciar los contenidos
+				document.querySelector("#dni").value = "";
+				document.querySelector("#nombre").value = "";
+				document.querySelector("#apellidos").value = "";
+				document.querySelector("#fecna").value = "";
+				document.querySelector("#estatura").value = "";
+
+			} catch (error) {
+				console.error("Hubo un error al modificar la persona", error);
+			}
+		}
 	}
-};
+}
 
 //Función para añadir una nueva persona
 const aniadirPersona = async () => {
@@ -223,3 +277,13 @@ const mostrarFormulario = async () => {
 const desaparecerFormulario = async () => {
 	document.querySelector("#formPersonas").style.display = "none";
 }
+
+//Función para eliminar la base de datos
+const eliminarDB = async () => {
+	try {
+		await jsStoreCon.dropDb(dbName);
+		console.log("Base de datos eliminada con éxito");
+	} catch (ex) {
+		console.log("Error al eliminar la base de datos:", ex);
+	}
+};
