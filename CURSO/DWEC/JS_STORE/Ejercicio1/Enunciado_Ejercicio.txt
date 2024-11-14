@@ -21,6 +21,7 @@ Para la realización del ejercicio nos tenemos que fijar en el mencionado ejempl
 		jsstore/jsstore.worker.min.js
 
 		Evidentemente en 2 etiquetas <script>
+HECHO----------------------------------------------------------------------------------
 
 
 
