@@ -111,6 +111,7 @@ function BD() {
 
 			let celdaBtELIMINAR = fila.insertCell();
 			let btELIMINAR = document.createElement("button");
+			btELIMINAR.id = "btEliminar";
 			btELIMINAR.textContent = "Eliminar";
 			btELIMINAR.onclick = function () { //En caso de pinchar en él, llamar a la función
 				eliminarPersona(persona.id, persona.nombre, persona.apellidos);
@@ -120,6 +121,7 @@ function BD() {
 			let celdaBtMODIFICAR = fila.insertCell();
 			let btMODIFICAR = document.createElement("button");
 			btMODIFICAR.textContent = "Editar";
+			btMODIFICAR.id = "btModificar";
 			btMODIFICAR.onclick = function () { //En caso de pinchar en él, llamar a la función
 				//En el caso de editar, cambiar el título y el botón
 				document.querySelector("legend").innerHTML = "Modificar persona";

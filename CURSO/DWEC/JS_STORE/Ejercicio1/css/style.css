@@ -1,23 +1,83 @@
+* {
+    font-family: sans-serif;
+}
+
+#personasTable {
+    border-collapse: collapse;
+    background-color: lightgray;
+}
+
 #formPersonas {
     border: 1px solid gray;
     border-radius: 10px;
     background-color: lightgray;
-    width: 300px;
+    width: 800px;
+    height: 530px;
     margin: auto;
-
     display: none;
 }
 
 #cuerpoFormulario {
     padding: 1em;
+    font-size: 2em;
 }
 
 legend {
     text-align: center;
-    font-size: 1.2em;
+    font-size: 3em;
     font-weight: bold;
 }
 
 th, td {
     text-align: center;
+    border: 1px solid gray;
+    padding: .5em;
+}
+
+th {
+    background-color: #a3a3a3;
+}
+
+#btNuevaPersona, #btAniadir {
+    border: 1px solid darkgreen;
+    background-color: #89ac76;
+    font-weight: bold;
+    color: white;
+}
+
+#btNuevaPersona:hover, #btAniadir:hover {
+    background-color: darkgreen;
+}
+
+#btEliminar, #btCancelar {
+    border: 1px solid darkred;
+    background-color: #eba4a4;
+    font-weight: bold;
+    color: white;
+}
+
+#btEliminar:hover, #btCancelar:hover {
+    background-color: darkred;
+}
+
+#btModificar {
+    border: 1px solid darkorchid;
+    background-color: #C8A2C8;
+    font-weight: bold;
+    color: white;
+}
+
+#btModificar:hover {
+    background-color: darkorchid;
+}
+
+#btEliminar, #btModificar, #btNuevaPersona, #btAniadir, #btCancelar {
+    border-radius: 5px;
+    width: 80px;
+    height: 40px;
+}
+
+#btEliminar:hover, #btModificar:hover, #btNuevaPersona:hover, #btAniadir:hover {
+    cursor: pointer;
+    transition: .5s;
 }

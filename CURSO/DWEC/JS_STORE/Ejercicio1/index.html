@@ -8,6 +8,15 @@
 
     <link rel="stylesheet" href="css/style.css">
 
+    <style type="text/css">
+       * {
+        cursor: url("cursors/cursor.cur") 10 10, auto;
+       }
+       #btEliminar:hover, #btModificar:hover, #btNuevaPersona:hover, #btAniadir:hover, #btCancelar:hover {
+        cursor: url("cursors/pointer.cur"), pointer;
+       }
+    </style>
+
     <!--Añadir las extensiones de jsstore a la cabecera con etiqueta script-->
     <script src="jsstore/jsstore.min.js"></script>
     <script src="jsstore/jsstore.worker.min.js"></script>
@@ -24,6 +33,7 @@
             document.querySelector("#btNuevaPersona").onclick = () => { //En el caso de añadir, cambiar el título y texto del botón
                 document.querySelector("legend").innerHTML = "Añadir nueva persona";
                 document.querySelector("#btAniadir").innerHTML = "Añadir";
+                desaparecerFormulario();
                 aniadirPersona();
             };
             document.querySelector("#btCancelar").onclick = desaparecerFormulario;
@@ -33,7 +43,7 @@
 </head>
 
 <body>
-    <table border="1" id="personasTable">
+    <table id="personasTable">
         <thead>
             <tr>
                 <th>DNI</th>
