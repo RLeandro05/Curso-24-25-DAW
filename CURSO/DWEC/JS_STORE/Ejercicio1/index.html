@@ -28,6 +28,7 @@
                 aniadirPersona();
             };
             document.querySelector("#btCancelar").onclick = desaparecerFormulario;
+            document.querySelector("#imagen").onchange = leerImagen;
         }
 
     </script>
@@ -42,6 +43,8 @@
                 <th>Apellidos</th>
                 <th>Fecha de Nacimiento</th>
                 <th>Estatura</th>
+                <th>Imagen Blob</th>
+                <th>Imagen 64</th>
                 <th>Eliminar</th>
                 <th>Editar</th>
             </tr>
@@ -70,6 +73,9 @@
 
             <label for="estatura">ESTATURA: </label>
             <input type="number" name="estatura" id="estatura" required> <br> <br>
+
+            <label for="imagen">IMAGEN: </label>
+            <input type="file" name="imagen" id="imagen" required> <br> <br>
 
             <button type="button" id="btAniadir">Añadir</button>
             <button type="button" id="btCancelar">Cancelar</button>

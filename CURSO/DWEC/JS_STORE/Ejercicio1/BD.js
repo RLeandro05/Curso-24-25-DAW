@@ -15,6 +15,8 @@ function BD() {
 			apellidos: { notNull: false, dataType: "string" },
 			fecNac: { notNull: true, dataType: "date_time" }, //date_time para añadir además de la fecha, también la hora
 			estatura: { dataType: "number" },
+			imagenBlob: { notNull: false, dataType: "object" },
+			imagen64: { notNull: false, dataType: "string" }
 		}
 	};
 
@@ -263,10 +265,16 @@ const aniadirPersona = async () => {
 	}
 }
 
+//Función para leer imágenes
+const leerImagen = async () => {
+	console.log("Entra en leerImagen");
+	
+}
+
 //Función para mostrar el formulario
 const mostrarFormulario = async () => {
     const formulario = document.querySelector("#formPersonas");
-	
+
     formulario.style.display = "block";
 }
 
