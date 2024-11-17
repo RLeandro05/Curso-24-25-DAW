@@ -1,18 +1,19 @@
 <?php
     require_once "Program.php";
 
-    // Productos
+    //Productos
     $producto1 = new Producto("Ordenador", 1299.99, 23);
     $producto2 = new Producto("Monitor", 99.99, 10);
     $producto3 = new Producto("Ratón", 49.99, 5);
 
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
-        $producto = (string) $_POST['listaProductos'];  // Nombre del producto
-        $cantidad = (int) $_POST['cantidad']; // Cantidad
+        $producto = (string) $_POST['listaProductos'];  //Nombre del producto
+        $cantidad = (int) $_POST['cantidad']; //Cantidad
 
         $mensaje = "";
 
+        //Dependiendo del producto, cambiar el stock de uno u otro
         switch ($producto) {
             case $producto1->getNombre():
                 $mensaje = $producto1->disminuirStock($cantidad);
