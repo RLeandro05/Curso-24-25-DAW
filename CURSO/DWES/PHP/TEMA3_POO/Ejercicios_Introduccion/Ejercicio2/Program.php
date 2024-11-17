@@ -7,7 +7,7 @@
         private float $precio;
         private int $stock;
 
-        public function __construct(string $nombre, float $precio, int $stock) {
+        public function __construct(string $nombre, float $precio, int $stock = 0) {
             $this->id = self::$idIncrementa++; //Primero asigna y luego incrementa
             $this->nombre = $nombre;
             $this->precio = $precio;
@@ -32,6 +32,16 @@
         public function getStock()
         {
                 return $this->stock;
+        }
+
+        //Método para asegurarse de si existe stock o no de un producto
+        public function disminuirStock($cantidad) {
+            if ($this->stock >= $cantidad) {
+                $this->stock = $this->stock - $cantidad;
+                return nl2br("<h2>Pedido realizado correctamente. Stock disminuido a ".$this->stock." unidades</h2>");
+            } else {
+                return  nl2br("<h2>Pedido no realizado. No hay suficiente stock</h2>");
+            }
         }
     }
 ?>
