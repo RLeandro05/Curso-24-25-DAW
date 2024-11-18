@@ -60,14 +60,18 @@ function BD() {
 				nombre: "Alfonso",
 				apellidos: "Domínguez Martín",
 				fecNac: new Date("1990-12-03"),
-				estatura: 176
+				estatura: 176,
+				imagenBlob: null,
+				imagen64: null
 			},
 			{
 				dni: "12345678B",
 				nombre: "Laura",
 				apellidos: null,
 				fecNac: new Date("1992-03-12"),
-				estatura: 164
+				estatura: 164,
+				imagenBlob: null,
+				imagen64: null
 			}
 		]
 
@@ -110,6 +114,19 @@ function BD() {
 
 			let celdaESTATURA = fila.insertCell();
 			celdaESTATURA.textContent = persona.estatura;
+
+			let celdaIMAGENBLOB = fila.insertCell();
+			celdaIMAGENBLOB.textContent = persona.imagenBlob;
+
+			let celdaIMAGEN64 = fila.insertCell();
+			if(persona.imagen64) { //En el caso de que exista una imagen asociada, mostrarla
+				let img = document.createElement("img");
+				img.src = persona.imagen64;
+				img.style.width = "100px";
+				celdaIMAGEN64.appendChild(img);
+			} else { //Si no existe la imagen, mostrar un mensaje que indique no hay imagen asociada a la persona
+				celdaIMAGEN64.textContent = "No hay imagen";
+			}
 
 			let celdaBtELIMINAR = fila.insertCell();
 			let btELIMINAR = document.createElement("button");
@@ -172,7 +189,7 @@ function BD() {
 		let fecna = document.querySelector("#fecna").value = persona.fecNac.toLocaleDateString('en-CA');
 		let estatura = document.querySelector("#estatura").value = persona.estatura;
 
-		console.log(dni, nombre, apellidos, fecna, estatura);
+		console.log(dni, nombre, apellidos, fecna, estatura, imagen);
 
 
 		mostrarFormulario(); //Mostrar formulario
@@ -184,13 +201,21 @@ function BD() {
 			fecna = document.querySelector("#fecna").value;
 			estatura = parseInt(document.querySelector("#estatura").value);
 
+			let img = document.querySelector("#imagen").files[0];
+
+			if (img) {
+				await leerImagen(persona);
+			}
+
 			//Crear a la persona modificada
 			const personaModificada = {
 				dni: dni,
 				nombre: nombre,
 				apellidos: apellidos,
 				fecNac: new Date(fecna),
-				estatura: estatura
+				estatura: estatura,
+				imagenBlob: null,
+				imagen64: persona.imagen64
 			}
 
 			try {
@@ -229,8 +254,17 @@ const aniadirPersona = async () => {
 		let apellidos = document.querySelector("#apellidos").value;
 		let fecna = document.querySelector("#fecna").value;
 		let estatura = parseInt(document.querySelector("#estatura").value);
+		let img = document.querySelector("#imagen").files[0];
 
-		console.log(dni, nombre, apellidos, fecna, estatura);
+		console.log(dni, nombre, apellidos, fecna, estatura, img);
+
+		let persona = {
+			imagen64: null
+		}
+
+		if (img) {
+            await leerImagen(persona); // Leer la imagen y asignarla a persona.imagen64
+        }
 
 		if (!dni || !nombre || !fecna || !estatura) { //Si algunos de los campos excepto apellidos está nulo, mostrra mensaje de error
 			alert("Algunos de los campos (excepto 'APELLIDOS') está vacío.");
@@ -242,7 +276,9 @@ const aniadirPersona = async () => {
 					nombre: nombre,
 					apellidos: apellidos,
 					fecNac: new Date(fecna),
-					estatura: estatura
+					estatura: estatura,
+					imagenBlob: null,
+					imagen64: persona.imagen64
 				}
 
 				//Realizar la consulta de inserción
@@ -266,9 +302,29 @@ const aniadirPersona = async () => {
 }
 
 //Función para leer imágenes
-const leerImagen = async () => {
+const leerImagen = async (persona) => {
 	console.log("Entra en leerImagen");
-	
+
+	//Guardar la imagen en la variable
+	let fichero = document.querySelector("#imagen").files[0];
+
+	//Crear un nuevo reader
+	let reader = new FileReader();
+
+	//Si existe el fichero, es decir, la imagen, leer el archivo
+	return new Promise((resolve, reject) => {
+        //Si existe el fichero, es decir, la imagen, leer el archivo
+        if (fichero) {
+            reader.onloadend = () => {
+                persona.imagen64 = reader.result; //Guardar el resultado leído en persona.imagen64
+                resolve(); // Resolvemos la promesa una vez que se ha leído la imagen
+            };
+            reader.onerror = reject; // Si ocurre un error, lo rechazamos
+            reader.readAsDataURL(fichero); //Leer el archivo
+        } else {
+            reject("No hay archivo de imagen seleccionado");
+        }
+    });
 }
 
 //Función para mostrar el formulario
