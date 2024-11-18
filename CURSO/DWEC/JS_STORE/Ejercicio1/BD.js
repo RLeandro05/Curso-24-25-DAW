@@ -120,6 +120,7 @@ function BD() {
 
 			let celdaIMAGEN64 = fila.insertCell();
 			if(persona.imagen64) { //En el caso de que exista una imagen asociada, mostrarla
+				//Dar los atributos necesarios a la imagen creada
 				let img = document.createElement("img");
 				img.src = persona.imagen64;
 				img.style.width = "100px";
@@ -189,21 +190,22 @@ function BD() {
 		let fecna = document.querySelector("#fecna").value = persona.fecNac.toLocaleDateString('en-CA');
 		let estatura = document.querySelector("#estatura").value = persona.estatura;
 
-		console.log(dni, nombre, apellidos, fecna, estatura, imagen);
+		console.log(dni, nombre, apellidos, fecna, estatura);
 
 
 		mostrarFormulario(); //Mostrar formulario
 
-		document.querySelector("#btAniadir").onclick = async () => {
+		document.querySelector("#btAniadir").onclick = async () => { //Una vez pulsado en aplicar los cambios, entrar a la función
+			//Guardar los nuevos valores en las variables
 			dni = document.querySelector("#dni").value;
 			nombre = document.querySelector("#nombre").value;
 			apellidos = document.querySelector("#apellidos").value;
 			fecna = document.querySelector("#fecna").value;
 			estatura = parseInt(document.querySelector("#estatura").value);
 
-			let img = document.querySelector("#imagen").files[0];
+			let img = document.querySelector("#imagen").files[0]; //Guardar la imagen del formulario en una variable
 
-			if (img) {
+			if (img) { //Si esa imagen existe, es decir, que se ha escogido alguna imagen, llamar a leerImagen, pasándole la persona. No podrá seguir adelante hasta terminar la función
 				await leerImagen(persona);
 			}
 
@@ -254,16 +256,17 @@ const aniadirPersona = async () => {
 		let apellidos = document.querySelector("#apellidos").value;
 		let fecna = document.querySelector("#fecna").value;
 		let estatura = parseInt(document.querySelector("#estatura").value);
-		let img = document.querySelector("#imagen").files[0];
+
+		let img = document.querySelector("#imagen").files[0]; //Guardar la imagen del formulario en una variable
 
 		console.log(dni, nombre, apellidos, fecna, estatura, img);
 
-		let persona = {
+		let persona = { //Crear un objeto persona que guarde un atributo imagen64 para poder darle valor al final
 			imagen64: null
 		}
 
-		if (img) {
-            await leerImagen(persona); // Leer la imagen y asignarla a persona.imagen64
+		if (img) { //Si esa imagen existe, es decir, que se ha escogido alguna imagen, llamar a leerImagen, pasándole la persona. No podrá seguir adelante hasta terminar la función
+            await leerImagen(persona); //Leer la imagen y asignarla a persona.imagen64
         }
 
 		if (!dni || !nombre || !fecna || !estatura) { //Si algunos de los campos excepto apellidos está nulo, mostrra mensaje de error
@@ -306,22 +309,20 @@ const leerImagen = async (persona) => {
 	console.log("Entra en leerImagen");
 
 	//Guardar la imagen en la variable
-	let fichero = document.querySelector("#imagen").files[0];
+	let img = document.querySelector("#imagen").files[0];
 
 	//Crear un nuevo reader
 	let reader = new FileReader();
 
-	//Si existe el fichero, es decir, la imagen, leer el archivo
-	return new Promise((resolve, reject) => {
-        //Si existe el fichero, es decir, la imagen, leer el archivo
-        if (fichero) {
-            reader.onloadend = () => {
+	return new Promise((resolve, reject) => { //Crear una nueva promesa
+        if (img) { //Si existe la imagen, entrar
+            reader.onloadend = () => { //Una vez se lea entero, entrar
                 persona.imagen64 = reader.result; //Guardar el resultado leído en persona.imagen64
-                resolve(); // Resolvemos la promesa una vez que se ha leído la imagen
+                resolve(); //Al existir la imagen, podemos dar por concluida la ejecución de la promesa, devolviendo un resolve como prueba de éxito
             };
-            reader.onerror = reject; // Si ocurre un error, lo rechazamos
-            reader.readAsDataURL(fichero); //Leer el archivo
-        } else {
+            reader.onerror = reject; //Si ocurre un error, lo rechazamos
+            reader.readAsDataURL(img); //Leer el archivo al final
+        } else { //Si no existe ninguna imagen seleccionada o sin seleccionar, directamente rechazar la promesa
             reject("No hay archivo de imagen seleccionado");
         }
     });
