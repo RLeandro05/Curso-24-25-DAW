@@ -4,15 +4,14 @@
     /*Actividad 5: Calcular la población total de 
     cada comunidad y mostrarla en una tabla HTML*/
 
-    //CABE DESTACAR QUE SÇOLO APARECEN LAS POBLACIONES DE LAS CAPITALES
-
-    foreach ($comunidades as $comunidad => $infoComunidad) {
-        foreach ($infoComunidad["capital"] as $capital => $infoCapital) {
-            print_r($infoCapital);
+    //Función para calcular la población total de cada comunidad
+    function calcularPoblacionTotal($provincias) {
+        $total = 0;
+        foreach ($provincias as $provincia => $datos) {
+            $total += $datos['poblacion'];
         }
+        return $total;
     }
-
-
 ?>
 
 <!DOCTYPE html>
@@ -25,27 +24,24 @@
 <body>
     <table border="1">
         <thead>
-            <th>Comunidades</th>
-            <th>Total Población</th>
+            <tr>
+                <th>Comunidades</th>
+                <th>Total Población</th>
+            </tr>
         </thead>
         <tbody>
-            <tr>
-                <td>Andalucía</td>
-                <td><?php
-                        ?></td>
-            </tr>
-            <tr>
-                <td>Cataluña</td>
-            </tr>
-            <tr>
-                <td>Castilla Y León</td>
-            </tr>
-            <tr>
-                <td>Galicia</td>
-            </tr>
-            <tr>
-                <td>País Vasco</td>
-            </tr>
+            <?php foreach ($comunidades as $comunidad => $infoComunidad): ?>
+                <tr>
+                    <td><?php echo $comunidad; ?></td>
+                    <td>
+                        <?php 
+                            //Calculamos la población total sumando las provincias
+                            $poblacionTotal = calcularPoblacionTotal($infoComunidad['provincias']);
+                            echo number_format($poblacionTotal);
+                        ?>
+                    </td>
+                </tr>
+            <?php endforeach; ?>
         </tbody>
     </table>
 </body>

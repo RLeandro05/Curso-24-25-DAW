@@ -11,8 +11,8 @@
 
         foreach ($comunidades as $comunidad => $infoComunidad) {
             foreach ($infoComunidad["provincias"] as $provincia => $infoProvincia) {
-                if($PROVINCIA == $infoProvincia) {
-                    echo nl2br($infoProvincia."\n");
+                if($PROVINCIA === $provincia) {
+                    echo $provincia;
                     $booleano = true;
                 }
             }
