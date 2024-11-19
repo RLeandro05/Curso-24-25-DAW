@@ -17,14 +17,32 @@
             return $this->nombre;
         }
 
+        //Método para insertar un nuevo nombre
+        public function setNombre($nombre){
+            $this->nombre = $nombre;
+            return $this;
+        }
+
         //Método para obtener el apellido
         public function getApellido() {
             return $this->apellido;
         }
 
+        //Método para insertar un nuevo apellido
+        public function setApellido($apellido){
+            $this->apellido = $apellido;
+            return $this;
+        }
+
         //Método para obtener el salario
         public function getSalario() {
             return $this->salario;
+        }
+
+        //Método para insertar un nuevo salario
+        public function setSalario($salario){
+            $this->salario = $salario;
+            return $this;
         }
 
         //Método para calcular el sueldo
@@ -38,6 +56,18 @@
 
             //Si no hay valor, simplemente devuelve el salario por el mes, es decir, el tiempo completo
             return number_format($salario*$mes, 2, ",", ".");
+        }
+
+        //Método para clonar un empleado
+        public function clonarEmpleado(object $empleado) {
+            //Clonar empleado
+            $empleadoClonado = clone $empleado;
+
+            //Añadir texto editado para demostrar que está clonado
+            $empleadoClonado->setNombre($empleado->getNombre()." (CLONADO)");
+
+            //Devolver empleado
+            return $empleadoClonado;
         }
     }
 ?>

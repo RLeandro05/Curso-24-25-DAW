@@ -1,5 +1,5 @@
 <?php
-    require_once("Empleado.php");
+    require_once("Empleado.php"); //Incluir Empleado.php
 
     class EmpleadoTiempoCompleto extends Empleado { //Clase hija que hereda de Empleado
         public function __construct(string $nombre, string $apellido, float $salario) {

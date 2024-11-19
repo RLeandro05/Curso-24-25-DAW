@@ -1,5 +1,6 @@
 <?php
 
+    //Incluir las subclases. Como ya contenían Empleado.php, no hace falta volver a ponerlo
     require_once("EmpleadoTiempoCompleto.php");
     require_once("EmpleadoPorHoras.php");
     
@@ -12,8 +13,15 @@
     $sueldoPorHoras = $empleadoPorHoras->obtenerSueldoPorHoras();
 
     echo "<h2>";
-    echo nl2br("El empleado <u><i>'".$empleadoTiempoCompleto->getNombre()." ".$empleadoTiempoCompleto->getApellido()."'</u></i> tiene un <u><i>sueldo de: '".$sueldoTiempoCompleto."€'</u></i>\n");
-    echo nl2br("El empleado <u><i>'".$empleadoPorHoras->getNombre()." ".$empleadoPorHoras->getApellido()."'</u></i> tiene un <u><i>sueldo de: '".$sueldoPorHoras."€'</u></i>\n");
+    echo nl2br("El empleado <u><i>'".$empleadoTiempoCompleto->getNombre()." ".$empleadoTiempoCompleto->getApellido()."'</i></u> tiene un <u><i>sueldo de: '".$sueldoTiempoCompleto."€'</i></u>\n");
+    echo nl2br("El empleado <u><i>'".$empleadoPorHoras->getNombre()." ".$empleadoPorHoras->getApellido()."'</i></u> tiene un <u><i>sueldo de: '".$sueldoPorHoras."€'</i></u>\n");
     echo "</h2>";
 
+    //Llamar al método para asignar el objeto clonado a uno nuevo
+    $empleadoTiempoCompletoCLONADO = $empleadoTiempoCompleto->clonarEmpleado($empleadoTiempoCompleto);
+
+    echo "<h3>";
+    echo nl2br("Ahora, el empleado <u><i>'".$empleadoTiempoCompleto->getNombre()." ".$empleadoTiempoCompleto->getApellido()."'</i></u> ha sido clonado.\n");
+    echo nl2br("El empleado clonado es: <u><i>'".$empleadoTiempoCompletoCLONADO->getNombre()." ".$empleadoTiempoCompletoCLONADO->getApellido()."'</i></u>\n");
+    echo "</h3>";
 ?>
