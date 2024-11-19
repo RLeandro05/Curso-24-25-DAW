@@ -4,14 +4,7 @@
         protected string $nombre;
         protected string $apellido;
         protected float $salario;
-
-        //Crear constructor de la clase
-        public function __construct(string $nombre, string $apellido, float $salario) {
-            $this->nombre = $nombre;
-            $this->apellido = $apellido;
-            $this->salario = $salario;
-        }
-
+        
         //Función para obtener el nombre
         public function getNombre() {
             return $this->nombre;
