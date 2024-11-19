@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>Ejemplo GEOLOCALIZACIÓN</title>
+	<script type="text/javascript">
+
+		/*
+  
+		 Hay dos métodos que puedes utilizar: 
+		 
+				getCurrentPosition() y watchPosition().
+  
+  GetCurrentPosition() es un one-shot: recupera información de la ubicación del usuario
+											  una vez y eso es todo. Este es el que usaremos.
+										   
+  WatchPosition() es para el seguimiento del usuario. 
+											  A este  se le  llama continuamente y devuelve nuevos resultados 
+											  cada vez que el usuario cambia de posición.
+  
+			  Ambas funciones hacen uso de las devoluciones de llamada o callbacks. 
+			  Callbacks son sólo nombres de otras funciones 
+			  que se pasan como parámetros en una llamada a un método.
+  
+			  Es necesario especificar dos funciones de devolución de llamada 
+			  en la llamada a getCurrentPosition – una para el éxito y otra de fracaso.
+  
+		 */
+
+
+		function Ejemplo() {
+			var info = document.getElementById("info");
+
+			if (navigator.geolocation) {
+				info.innerHTML = "El navegador SOPORTA la GEOLOCALIZACIÓN";
+				var geo = navigator.geolocation;
+				geo.getCurrentPosition(muestraLoc, muestraErr);
+			} else {
+				info.innerHTML = "Lo Sentimos. El navegador NO SOPORTA la GEOLOCALIZACIÓN";
+			}
+		}
+
+		function muestraLoc(pos) {
+			var lat = pos.coords.latitude;
+			var lon = pos.coords.longitude;
+			var alt = pos.coords.altitude;
+			document.getElementById("info").innerHTML += "<br />Latitud: " + lat +
+				"<br />Longitud: " + lon +
+				"<br />Altitud: " + alt;
+		}
+
+		function muestraErr(error) {
+			var errores = {
+				1: 'Permission denied',
+				2: 'Position unavailable',
+				3: 'Request timeout'
+			};
+			document.getElementById("info").innerHTML += "<br /> Ha habido un ERROR. " + errores[error.code];
+		}
+
+		window.onload = function () {
+			document.getElementById("btEjemplo").onclick = Ejemplo;
+		}
+
+
+	</script>
+</head>
+
+<body>
+	<h3>Ejemplo GEOLOCALIZACIÓN</h3>
+	<p>Este es un ejemplo de la utilización de la API de geolocalización de HTML5</p>
+	<h4>Acceder a la páginia a través del protocolo http
+		o dar permisos específicos al navegador
+	</h4>
+
+	<button id="btEjemplo">Ver Ejemplo Geolocalización</button>
+
+	<p>
+	<div id="info">
+		Aquí ponemos la información
+	</div>
+	</p>
+
+</body>
+
+</html>
