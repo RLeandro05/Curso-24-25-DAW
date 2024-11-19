@@ -1,9 +1,9 @@
 <?php
     abstract class Empleado { //Clase padre Empleado
         //Instanciar atributos
-        private string $nombre;
-        private string $apellido;
-        private float $salario;
+        protected string $nombre;
+        protected string $apellido;
+        protected float $salario;
 
         //Crear constructor de la clase
         public function __construct(string $nombre, string $apellido, float $salario) {
