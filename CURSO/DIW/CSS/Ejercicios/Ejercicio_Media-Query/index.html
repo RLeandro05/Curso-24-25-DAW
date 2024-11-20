@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Media-Query</title>
+
+    <style type="text/css">
+        table {
+            text-align: center;
+            font-size: 1.5em;
+            width: 100%;
+        }
+
+        @media (max-width: 1000px) {
+            table {
+                font-size: 1.2em;
+            }
+        }
+
+        @media (max-width: 800px) {
+            table {
+                font-size: 1em;
+            }
+        }
+
+        @media (max-width: 500px) {
+            table {
+                font-size: .8em;
+            }
+        }
+
+        @media (max-width: 300px) {
+            table {
+                font-size: .5em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <table border="1">
+        <thead>
+            <th>Columna 1</th>
+            <th>Columna 2</th>
+            <th>Columna 3</th>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Elemento 1</td>
+                <td>Elemento 2</td>
+                <td>Elemento 3</td>
+            </tr>
+            <tr>
+                <td>Elemento 4</td>
+                <td>Elemento 5</td>
+                <td>Elemento 6</td>
+            </tr>
+            <tr>
+                <td>Elemento 7</td>
+                <td>Elemento 8</td>
+                <td>Elemento 9</td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>
