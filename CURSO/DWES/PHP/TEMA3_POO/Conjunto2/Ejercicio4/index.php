@@ -9,8 +9,8 @@
     $empleadoPorHoras = new EmpleadoPorHoras("Mario", "Escobar", 10.2, 8);
 
     //Llamar a los métodos de cada objeto
-    $sueldoTiempoCompleto = $empleadoTiempoCompleto->obtenerSueldoTiempoCompleto();
-    $sueldoPorHoras = $empleadoPorHoras->obtenerSueldoPorHoras();
+    $sueldoTiempoCompleto = $empleadoTiempoCompleto->calcularSueldo($empleadoTiempoCompleto->getSalario());
+    $sueldoPorHoras = $empleadoPorHoras->calcularSueldo($empleadoPorHoras->getSalario(), $empleadoPorHoras->getHoras());
 
     echo "<h2>";
     echo nl2br("El empleado <u><i>'".$empleadoTiempoCompleto->getNombre()." ".$empleadoTiempoCompleto->getApellido()."'</i></u> tiene un <u><i>sueldo de: '".$sueldoTiempoCompleto."€'</i></u>\n");

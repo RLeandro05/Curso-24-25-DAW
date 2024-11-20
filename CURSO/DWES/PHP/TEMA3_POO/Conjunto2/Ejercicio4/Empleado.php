@@ -46,17 +46,7 @@
         }
 
         //Método para calcular el sueldo
-        public function calcularSueldo(float $salario, int $horas = 0) {
-            $mes = 22; //Días de trabajo aprox. por mes (Sin contar 8 días de findes)
-
-            if($horas != 0) { //En el caso de trabajar por horas, si se da un valor, realizar cálculos extra
-                $salarioPorDia = $horas*$salario;
-                return number_format($salarioPorDia*$mes, 2, ",", ".");
-            }
-
-            //Si no hay valor, simplemente devuelve el salario por el mes, es decir, el tiempo completo
-            return number_format($salario*$mes, 2, ",", ".");
-        }
+        abstract public function calcularSueldo(float $salario, int $horas = 0);
 
         //Método para clonar un empleado
         public function clonarEmpleado(object $empleado) {
