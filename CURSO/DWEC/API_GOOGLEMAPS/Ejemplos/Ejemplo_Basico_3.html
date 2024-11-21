@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="initial-scale=1.0">
+	<style type="text/css">
+		#divmapa {
+			width: 100%;
+			height: 700px;
+			border: 1px solid blue;
+		}
+	</style>
+
+	<title>API v3 de Google Maps. Ejemplo Básico 3</title>
+
+	<script type="text/javascript" src="http://maps.google.com/maps/api/js?key=AIzaSyA6rLid89W1HGF2lCnQbfx62tr-57ugzdU">
+	</script>
+
+	<script type="text/javascript">
+
+		let lat = 0;
+		let lon = 0;
+
+		window.onload = function () {
+			// Esto se llama para iniciar la geolocalización al cargar la página
+			Geolocalizacion();
+
+			document.querySelector("#btCargarMapa").onclick = function() { 
+				CargarMapa(lat, lon); 
+			};
+		}
+
+		function Geolocalizacion() { //Función para obtener la geolocalización
+			if (navigator.geolocation) {
+				document.getElementById("info").innerHTML = "El navegador SOPORTA la GEOLOCALIZACIÓN";
+				var geo = navigator.geolocation;
+				geo.watchPosition(muestraLoc, muestraErr); //Llamar a muestraLoc para sacar las coordenadas
+			} else {
+				document.getElementById("info").innerHTML = "Lo Sentimos. El navegador NO SOPORTA la GEOLOCALIZACIÓN";
+			}
+		}
+
+		function muestraLoc(pos) { //Función para sacar las coordenadas exactas del dispositivo
+			lat = pos.coords.latitude;
+			lon = pos.coords.longitude;
+			document.getElementById("info").innerHTML += "<br />Latitud: " + lat + "<br />Longitud: " + lon;
+		}
+
+		function muestraErr(error) { //Función para mostrar mensaje de error
+			var errores = {
+				1: 'Permission denied',
+				2: 'Position unavailable',
+				3: 'Request timeout'
+			};
+			document.getElementById("info").innerHTML += "<br /> Ha habido un ERROR. " + errores[error.code];
+		}
+
+		function CargarMapa(latitud, longitud) {
+			if (latitud === 0 && longitud === 0) {
+				alert("No se pudieron obtener las coordenadas.");
+				return;
+			}
+
+			var divMapa = document.getElementById("divmapa");
+
+			//Crear un nuevo mapa que se centre en el centro
+			var centro = new google.maps.LatLng(latitud, longitud);
+
+			// Creamos las opciones
+			var opciones = {
+				center: centro,
+				zoom: 17,
+				// mapTypeId: google.maps.MapTypeId.ROADMAP  // es el tipo de mapa por defecto.
+			};
+
+			//Crear el mapa
+			var mapa = new google.maps.Map(divMapa, opciones);
+
+			// Le colocamos un marcador:
+			var marcador = new google.maps.Marker({
+				position: centro,
+				map: mapa,
+				title: "IES Velázquez"
+			});
+		}
+
+	</script>
+</head>
+
+<body>
+	<h3>API v3 de Google Maps. Ejemplo Básico 3</h3>
+	<h5>En esta versión, le añadimos una ventanica de información.</h5>
+	<p>
+		<button id="btCargarMapa">Cargar Mapa</button>
+	</p>
+	<p id="info"></p> <!-- Agregar este párrafo para mostrar los detalles de la geolocalización -->
+	<div id="divmapa">
+		Aquí pondremos el mapa
+	</div>
+</body>
+
+</html>

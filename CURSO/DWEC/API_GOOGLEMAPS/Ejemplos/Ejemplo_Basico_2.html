@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  	<meta charset="utf-8">
+  	<style type="text/css">
+      #divmapa {
+      	width: 700px;
+      	height: 700px;
+      	border: 1px solid blue; 
+     	}
+    </style>
+  	
+    <title>API v3 de Google Maps. Ejemplo Básico 2</title>
+    
+    <script type="text/javascript" 
+    	src="http://maps.google.com/maps/api/js?key=AIzaSyA6rLid89W1HGF2lCnQbfx62tr-57ugzdU">
+		// "http://maps.google.com/maps/api/js?key=key_value"
+    </script>
+    
+    <script type="text/javascript">
+      
+      function CargarMapa() {
+      	var divMapa = document.getElementById("divmapa");
+      	
+      	var centro = new google.maps.LatLng(37.874327, -0.756041);
+      	
+      	var opciones = {
+					center: centro,  
+					zoom: 17,
+				};
+				
+      	var mapa = new google.maps.Map(divMapa, opciones);
+      	
+      	
+      	var marcador = new google.maps.Marker({
+      		position: centro,
+      		map: mapa,
+      		title:"Av del Mar Menor, Murcia"
+  		});
+      	
+      }
+      
+    </script>
+  </head>
+  
+  <body>
+    <h3>API v3 de Google Maps. Ejemplo Básico 2</h3>
+    <h5>En esta versión, le introducimos un marcador.</h5>
+    <p>
+    	<button id="btCargarMapa" onclick="CargarMapa()">Cargar Mapa</button>
+    </p>
+    <p>
+    	<div id="divmapa">
+    		Aquí pondremos el mapa
+    	</div>
+    </p>
+  </body>
+  
+</html>
