@@ -15,8 +15,6 @@ if (isset($_POST['usuario']) && isset($_POST['contrasena'])) {
 
     if (isset($usuarios[$usuario]) && $usuarios[$usuario] === $contrasena) {
         $_SESSION['usuario'] = $usuario;
-        //inicializa los horarios
-        inicializar_horarios();
         header('Location: main.php');
         exit;
     } else {

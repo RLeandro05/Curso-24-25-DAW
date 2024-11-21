@@ -20,11 +20,11 @@ if($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["sesionCerrada"])) {
 <html>
 <head>
     <title>Gimnasio Iron Forge</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
     <header>
-        <img src="logo.png" alt="Logo de Iron Forge">
+        <img src="../img/logo.png" alt="Logo de Iron Forge">
         <h1>Donde se forjan las leyendas</h1>
     </header>
     <nav>

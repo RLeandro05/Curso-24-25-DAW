@@ -1,6 +1,4 @@
 <?php
-
-    function inicializar_horarios() {
         $matrizClases = [ //Matriz de clases a elegir
             'yoga' => [
                 'lunes' => [
@@ -57,9 +55,6 @@
                 ],       
             ]
         ];
-
-        return $matrizClases;
-    }
 
     function reservar_plaza() {
 
