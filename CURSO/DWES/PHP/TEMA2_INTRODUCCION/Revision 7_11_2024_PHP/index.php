@@ -1,13 +1,18 @@
 <?php 
 session_start();
-session_unset();
-session_destroy();
+//session_unset();
+//session_destroy();
 
 //evita el almacenamiento en caché
 header('Cache-Control: no-store, no-cache, must-revalidate');
 
 $aux= session_id();
 print_r(nl2br( "\n El SID actual antes de iniciar el código de cierre de sesion es: " . session_id(). "\n"));
+
+//En caso de querer cerrar sesión en alguna parte de la página, cerrar sesión completamente
+if($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["sesionCerrada"])) {
+    session_destroy();
+}
 
 
 ?>
