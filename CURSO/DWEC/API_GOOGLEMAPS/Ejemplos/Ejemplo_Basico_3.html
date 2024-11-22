@@ -26,8 +26,8 @@
 			// Esto se llama para iniciar la geolocalización al cargar la página
 			Geolocalizacion();
 
-			document.querySelector("#btCargarMapa").onclick = function() { 
-				CargarMapa(lat, lon); 
+			document.querySelector("#btCargarMapa").onclick = function () {
+				CargarMapa(lat, lon);
 			};
 		}
 
@@ -35,7 +35,7 @@
 			if (navigator.geolocation) {
 				document.getElementById("info").innerHTML = "El navegador SOPORTA la GEOLOCALIZACIÓN";
 				var geo = navigator.geolocation;
-				geo.watchPosition(muestraLoc, muestraErr); //Llamar a muestraLoc para sacar las coordenadas
+				geo.getCurrentPosition(muestraLoc, muestraErr); //Llamar a muestraLoc para sacar las coordenadas
 			} else {
 				document.getElementById("info").innerHTML = "Lo Sentimos. El navegador NO SOPORTA la GEOLOCALIZACIÓN";
 			}
@@ -71,7 +71,6 @@
 			var opciones = {
 				center: centro,
 				zoom: 17,
-				// mapTypeId: google.maps.MapTypeId.ROADMAP  // es el tipo de mapa por defecto.
 			};
 
 			//Crear el mapa
@@ -82,6 +81,37 @@
 				position: centro,
 				map: mapa,
 				title: "IES Velázquez"
+			});
+
+			let timer;
+			let clickTimeout = 300;
+			//Evento que aumenta el zoom al hacer click
+			google.maps.event.addListener(marcador, "click", function () {
+				clearTimeout(timer);
+
+				timer = setTimeout(function () {
+					mapa.setZoom(mapa.getZoom() + 2.5);
+					mapa.setCenter(marcador.getPosition());
+				}, clickTimeout)
+
+			});
+
+			//Evento que disminuye el zoom al hacer doble click (si deseas otro comportamiento, modifica esta acción)
+			google.maps.event.addListener(marcador, "dblclick", function () {
+
+				clearTimeout(timer);
+
+				mapa.setZoom(mapa.getZoom() - 2.5);
+				mapa.setCenter(marcador.getPosition());
+			});
+
+			//Evento que disminuye el zoom al hacer doble click (si deseas otro comportamiento, modifica esta acción)
+			google.maps.event.addListener(marcador, "contextmenu", function () {
+
+				clearTimeout(timer);
+
+				mapa.setZoom(mapa.getZoom() - 2.5);
+				mapa.setCenter(marcador.getPosition());
 			});
 		}
 

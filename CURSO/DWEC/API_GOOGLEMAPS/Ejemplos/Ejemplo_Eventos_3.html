@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<style type="text/css">
+		/* TENEMOS QUE DARLE UN TAMAÑO AL DIV QUE CONTIENE EL MAPA. SI NO, NO SE VERÁ  */
+		#divmapa {
+			width: 100%;
+			height: 700px;
+			border: 1px solid blue;
+		}
+	</style>
+
+	<title>API v3 de Google Maps. Ejemplo Eventos 3</title>
+
+	<script type="text/javascript" src="http://maps.google.com/maps/api/js?key=AIzaSyA6rLid89W1HGF2lCnQbfx62tr-57ugzdU">
+	</script>
+
+	<script type="text/javascript">
+
+		var mapa;
+		var infoWindows = []; //Array para almacenar los InfoWindows
+
+		function CargarMapa() {
+			//Configurar las opciones
+			var opciones = {
+				center: new google.maps.LatLng(37.386719, -5.981365), //Instanciar las coordenadas
+				zoom: 17
+			};
+			//Dibujamos el mapa
+			mapa = new google.maps.Map(document.getElementById("divmapa"), opciones);
+
+			//Le asignamos el evento click al MAPA
+			google.maps.event.addListener(mapa, 'click', function (e) {
+				ponVentana(e.latLng, mapa); //Llevar la latitud y longitud del mapa
+			});
+
+			//Añadir el listener para el cambio de zoom
+			google.maps.event.addListener(mapa, 'zoom_changed', function () {
+				//Obtener el nivel de zoom actual
+				var zoom = mapa.getZoom();
+
+				console.log(mapa.getZoom());
+				
+				//Actualizar el contenido de todos los InfoWindows
+				infoWindows.forEach(function(infoWindow) {
+					var content = infoWindow.getContent(); //Obtener contenido actual
+					var pos = infoWindow.getPosition();   //Obtener posición actual
+
+					//infoWindow.setContent("");
+					infoWindow.setContent("<h4>Información de las coordenadas actuales: </h4>" + 
+					"Latitud: " + pos.lat() + " <br />" + 
+					"Longitud: " + pos.lng() + " <br />" + 
+					"Zoom: " + zoom);
+				});
+			});
+		}
+
+		//Función para poner las coordenadas en un mensaje
+		function ponVentana(pos, mapa) {
+			var infowindow = new google.maps.InfoWindow({
+				position: pos, //Establecer la posición (es decir, la latitud y longitud pasadas)
+				map: mapa,
+				content: "<h4>Información de las coordenadas actuales: </h4>" + 
+					"Latitud: " + pos.lat() + " <br />" + 
+					"Longitud: " + pos.lng() + " <br />" + 
+					"Zoom: " + mapa.getZoom() // Integrar las dos coordenadas pasadas del parámetro pos
+			});
+
+			//Almacenar la referencia del InfoWindow en el array
+			infoWindows.push(infowindow);
+		}
+
+		//Al cargar la página, llamar a CargarMapa para crear y mostrar el mapa nuevo
+		window.onload = CargarMapa;
+
+	</script>
+</head>
+
+<body>
+	<h3>API v3 de Google Maps. Ejemplo Eventos 3</h3>
+	<h5>En esta versión, le añadimos un evento al MAPA.</h5>
+	<p>El evento consiste en hacer poner una ventanica de info
+		con las coordenadas allí donde el usuario ha hecho click
+	</p>
+
+	<p>
+		<div id="divmapa">
+			Aquí pondremos el mapa
+		</div>
+	</p>
+
+</body>
+
+</html>
