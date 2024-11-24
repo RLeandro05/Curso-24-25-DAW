@@ -1,0 +1,144 @@
+Manual para Configurar Servidores Web para Ejecutar Java EE
+Este manual tiene como objetivo explicar cómo configurar tres servidores web para ejecutar aplicaciones Java EE, incluyendo Servlets, JSP, WebSockets y EJBs, en sistemas operativos Windows y Linux. Se cubrirán tres servidores distintos que pueden ser utilizados en entornos de desarrollo web: Apache Tomcat, WildFly y GlassFish. La combinación de sistemas operativos será:
+
+Apache Tomcat para Linux (Ubuntu)
+WildFly para Windows
+GlassFish para Linux (Ubuntu)
+A lo largo del manual, explicaremos los pasos necesarios para instalar, configurar y poner en marcha cada uno de estos servidores.
+
+1. Apache Tomcat en Ubuntu (Linux)
+¿Qué es Apache Tomcat?
+Apache Tomcat es un servidor web de código abierto que implementa las especificaciones de Java EE, pero de forma más sencilla que otros servidores más complejos. Es ampliamente utilizado para aplicaciones web basadas en Servlets y JSP.
+
+Pasos para instalar Apache Tomcat en Ubuntu:
+1.1 Descargar Apache Tomcat
+Visita la página oficial de Apache Tomcat en https://tomcat.apache.org/download-90.cgi.
+En la sección Binary Distributions, descarga el archivo .tar.gz de la última versión estable (por ejemplo, apache-tomcat-9.0.x.tar.gz).
+1.2 Instalación de Apache Tomcat
+Abre una terminal en Ubuntu y navega al directorio donde descargaste el archivo:
+bash
+Copiar código
+cd /ruta/a/descargas
+Descomprime el archivo descargado:
+bash
+Copiar código
+tar xvf apache-tomcat-9.0.x.tar.gz
+Mueve el directorio descomprimido a un lugar adecuado (por ejemplo, /opt):
+bash
+Copiar código
+sudo mv apache-tomcat-9.0.x /opt/tomcat
+1.3 Configuración de Apache Tomcat
+Configuración del Puerto: Por defecto, Tomcat usa el puerto 8080. Si quieres cambiar el puerto, edita el archivo server.xml ubicado en /opt/tomcat/conf/.
+
+bash
+Copiar código
+sudo nano /opt/tomcat/conf/server.xml
+Busca la línea:
+
+xml
+Copiar código
+<Connector port="8080" protocol="HTTP/1.1" ... />
+Cambia el valor de port por el que desees.
+
+Permisos: Asegúrate de que el usuario de Tomcat tenga los permisos adecuados:
+
+bash
+Copiar código
+sudo chown -R $USER:$USER /opt/tomcat
+1.4 Arrancar Apache Tomcat
+Para iniciar Tomcat, ejecuta el siguiente comando:
+
+bash
+Copiar código
+/opt/tomcat/bin/startup.sh
+Para detenerlo, usa:
+
+bash
+Copiar código
+/opt/tomcat/bin/shutdown.sh
+Puedes acceder a Tomcat a través de tu navegador usando http://localhost:8080.
+
+1.5 Desplegar una aplicación
+Coloca tu archivo .war (archivo web de aplicación Java) en el directorio webapps dentro de la instalación de Tomcat.
+Tomcat automáticamente desplegará la aplicación cuando detecte el archivo.
+2. WildFly en Windows
+¿Qué es WildFly?
+WildFly es un servidor de aplicaciones Java EE de código abierto que ofrece una implementación más robusta y completa de Java EE, con soporte para EJB, JPA, JAX-RS, y más. Es una opción ideal para aplicaciones empresariales.
+
+Pasos para instalar WildFly en Windows:
+2.1 Descargar WildFly
+Visita la página oficial de WildFly: https://wildfly.org/downloads/.
+Descarga la versión ZIP más reciente de WildFly.
+2.2 Instalación de WildFly
+Extrae el archivo ZIP descargado a un directorio de tu preferencia, por ejemplo, C:\wildfly.
+Asegúrate de que tienes instalada la JDK. Puedes comprobarlo ejecutando java -version en la línea de comandos. Si no la tienes, descarga e instala la última versión desde Oracle o desde OpenJDK.
+2.3 Configuración de WildFly
+Abre la línea de comandos (CMD) en Windows y navega hasta el directorio donde descomprimiste WildFly:
+
+cmd
+Copiar código
+cd C:\wildfly\bin
+Para iniciar el servidor, ejecuta:
+
+cmd
+Copiar código
+standalone.bat
+Para acceder a la consola de administración de WildFly, abre tu navegador y ve a http://localhost:9990.
+
+2.4 Desplegar una aplicación en WildFly
+Accede a la consola de administración de WildFly.
+En la sección Deployments, selecciona Add y sube el archivo .war de tu aplicación.
+WildFly desplegará automáticamente la aplicación.
+3. GlassFish en Ubuntu (Linux)
+¿Qué es GlassFish?
+GlassFish es un servidor de aplicaciones Java EE completo, desarrollado originalmente por Sun Microsystems (ahora parte de Oracle). Proporciona soporte completo para todas las especificaciones de Java EE, incluido EJB, JPA, JSF, y más.
+
+Pasos para instalar GlassFish en Ubuntu:
+3.1 Descargar GlassFish
+Visita la página oficial de GlassFish en https://javaee.github.io/glassfish/.
+Descarga el archivo .zip de la versión más reciente.
+3.2 Instalación de GlassFish
+Abre una terminal y navega al directorio donde descargaste el archivo:
+bash
+Copiar código
+cd /ruta/a/descargas
+Descomprime el archivo:
+bash
+Copiar código
+unzip glassfish-5.x.x.zip
+Mueve el directorio descomprimido a /opt:
+bash
+Copiar código
+sudo mv glassfish5 /opt/glassfish
+3.3 Configuración de GlassFish
+Establecer Variables de Entorno: Para que el sistema reconozca GlassFish, añade el siguiente bloque a tu archivo .bashrc:
+
+bash
+Copiar código
+export GLASSFISH_HOME=/opt/glassfish
+export PATH=$PATH:$GLASSFISH_HOME/bin
+Luego, ejecuta:
+
+bash
+Copiar código
+source ~/.bashrc
+Arrancar GlassFish: Para iniciar GlassFish, ejecuta el siguiente comando:
+
+bash
+Copiar código
+/opt/glassfish/bin/asadmin start-domain
+Para detenerlo:
+
+bash
+Copiar código
+/opt/glassfish/bin/asadmin stop-domain
+Puedes acceder a la consola de administración en http://localhost:4848.
+
+3.4 Desplegar una aplicación en GlassFish
+Accede a la consola de administración de GlassFish.
+Ve a Applications y selecciona Deploy.
+Carga tu archivo .war para desplegar la aplicación.
+Conclusión
+Este manual proporciona una guía para instalar y configurar tres servidores de aplicaciones Java EE en dos sistemas operativos populares: Ubuntu (Linux) y Windows. Los servidores elegidos — Apache Tomcat, WildFly y GlassFish — son opciones muy populares para el desarrollo y la ejecución de aplicaciones web basadas en Java EE.
+
+Con este conocimiento, puedes ahora configurar tu entorno de desarrollo para ejecutar Servlets, JSP, WebSockets y EJBs, y elegir el servidor adecuado según tus necesidades y sistema operativo.
