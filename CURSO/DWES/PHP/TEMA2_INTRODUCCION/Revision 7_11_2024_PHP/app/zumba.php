@@ -1,6 +1,18 @@
 <?php
     session_start(); // Iniciar sesión
 
+    //Incluir el horario y su respectiva clase
+    require_once("horario.php");
+    require_once("../class/Zumba.php");
+
+    //Objeto de crossfit
+    $objZumba = new Zumba($matrizClases["yoga"]["lunes"]["hora"], $matrizClases["yoga"]["miércoles"]["hora"]);
+
+
+    //Guardar en sus respectivas variables los horarios
+    $horario1 = $objZumba->getHorario1();
+    $horario2 = $objZumba->getHorario2();
+
     if($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["realizarReserva"]) && isset($_POST["horario"]) ) { //Si elije realizar la reserva, se va a procesar_formulario.php
         $_SESSION["horario"] = $_POST["horario"];
         $_SESSION["clase"] = $_POST["clase"];
@@ -24,17 +36,17 @@
 <body>
     <form action="zumba.php" method="post">
         <h3>Zumba</h3>
-        <img src="zumba.jpg" alt="zumba.jpg"> <br>
+        <img src="../img/zumba.jpg" alt="zumba.jpg"> <br>
         <p>¡Tonifica tu cuerpo y mejora tu condición física mientras te mueves al ritmo de la música! <br>
             La Zumba es una forma divertida y efectiva de quemar calorías, fortalecer tus músculos y mejorar tu coordinación. <br>
             ¡Olvídate de la monotonía y descubre una nueva forma de entrenar!.
         </p>
         *EN CASO DE ESCOGER ZUMBA, ELIJA EL HORARIO: <br>
-        <input type="radio" id="horario1" name="horario" value="<?php print_r ($_SESSION["matrizClases"]["zumba"]["martes"]["hora"])?>">
-        <label for="horario1"><?php print_r ($_SESSION["matrizClases"]["zumba"]["martes"]["hora"])?></label>
+        <input type="radio" id="horario1" name="horario" value="<?= $horario1?>">
+        <label for="horario1"><?= $horario1?></label>
 
-        <input type="radio" id="horario2" name="horario" value="<?php print_r ($_SESSION["matrizClases"]["zumba"]["jueves"]["hora"])?>">
-        <label for="horario2"><?php print_r ($_SESSION["matrizClases"]["zumba"]["jueves"]["hora"])?></label>
+        <input type="radio" id="horario2" name="horario" value="<?= $horario2?>">
+        <label for="horario2"><?= $horario2?></label>
 
         <input type="hidden" name="clase" value="zumba">
 
