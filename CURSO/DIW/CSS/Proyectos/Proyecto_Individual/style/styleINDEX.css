@@ -69,6 +69,7 @@ a {
     background-color: #e9e2d0; /* Beige claro para el fondo de la descripción */
     color: #374045; /* Gris carbón suave para el texto */
     font-size: .95em;
+    width: 700px;
 }
 
 #descripcion h2 {
@@ -87,4 +88,24 @@ a {
     color: #374045;
     text-decoration: underline;
     font-style: italic;
+}
+
+#descripcion a:hover {
+    background-color: #374045;
+    color: #d3e0ea;
+    transition: .5s;
+}
+
+#imgServidor {
+    width: 800px;
+    height: 750px;
+    float: right;
+    margin-top: 8%;
+    margin-right: 10%;
+}
+
+#apache {
+    border: 1px solid;
+    width: 200px;
+    height: 200px;
 }
