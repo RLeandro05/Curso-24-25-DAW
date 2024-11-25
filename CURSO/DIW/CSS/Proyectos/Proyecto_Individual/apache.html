@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apache Tomcat</title>
+
+    <link rel="stylesheet" href="style/styleAPACHE.css">
+</head>
+
+<body>
+    <div id="cabecera">
+        <div id="tituloLogo">
+            <h2><a href="index.html">ToolBox Web</a></h2>
+        </div>
+        <div id="menuCabecera">
+            <a href="apache.html"><span id="apacheTomcat"> Apache Tomcat </span></a>
+            <a href="wildfly.html"><span id="wildFly"> WildFly </span></a>
+            <a href="glassfish.html"><span id="glassFish"> GlassFish </span></a>
+        </div>
+    </div>
+
+    <div id="cuerpo">
+        <section id="contenido">
+            <h1>Apache Tomcat en Ubuntu (Linux)</h1>
+
+            <article id="introduccion">
+                <h2>¿Qué es Apache Tomcat?</h2>
+                <p>
+                    Apache Tomcat es un <i><b><u>servidor web de código abierto</u></b></i> que implementa las especificaciones de <i><b><u>Java EE</u></b></i>,
+                    pero de forma más sencilla que otros servidores más complejos. Es ampliamente utilizado para
+                    <i><b><u>aplicaciones web basadas en Servlets y JSP</u></b></i> -><a href="https://tomcat.apache.org/">[...]</a>.
+                </p>
+            </article>
+
+            <article id="pasosInstalacion">
+                <h2>Pasos para instalar Apache Tomcat en Ubuntu</h2>
+                <ol>
+                    <li>
+                        <h3>1. Descargar Apache Tomcat</h3>
+                        <p>
+                            Visita la página oficial de Apache Tomcat en
+                            <a href="https://tomcat.apache.org/download-90.cgi" target="_blank">Tomcat Downloads</a>.
+                            Descarga el archivo <code>.tar.gz</code> de la última versión estable.
+                        </p>
+                    </li>
+                    <li>
+                        <h3>2. Instalación de Apache Tomcat</h3>
+                        <pre>
+                            <code>
+# Navega al directorio de descargas:
+cd /ruta/a/descargas
+
+# Descomprime el archivo descargado:
+tar xvf apache-tomcat-9.0.x.tar.gz
+
+# Mueve el directorio a un lugar adecuado:
+sudo mv apache-tomcat-9.0.x /opt/tomcat
+                        </code>
+                        </pre>
+                    </li>
+                    <li>
+                        <h3>3. Configuración de Apache Tomcat</h3>
+                        <p>
+                            Edita el archivo <code>server.xml</code> para cambiar el puerto predeterminado:
+                        </p>
+                        <pre><code>
+sudo nano /opt/tomcat/conf/server.xml
+
+# Busca la línea y edita:
+Connector port="8080" protocol="HTTP/1.1" ... /
+                        </code></pre>
+                    </li>
+                    <li>
+                        <h3>4. Arrancar Apache Tomcat</h3>
+                        <pre><code>
+# Para iniciar:
+/opt/tomcat/bin/startup.sh
+
+# Para detener:
+/opt/tomcat/bin/shutdown.sh
+                        </code></pre>
+                    </li>
+                    <li>
+                        <h3>5. Desplegar una aplicación</h3>
+                        <p>
+                            Coloca tu archivo <code>.war</code> en el directorio <code>webapps</code>.
+                            Tomcat lo desplegará automáticamente.
+                        </p>
+                    </li>
+                </ol>
+            </article>
+        </section>
+    </div>
+
+    <footer id="pie">
+        <table id="contacto">
+            <tr>
+                <td>© 2024 ToolBox Web</td>
+                <td><img id="imgInsta" src="img/instagram.png" alt="instagram"> <a
+                        href="https://www.instagram.com/">Instagram: @toolboxweb</a></td>
+                <td><a href="index.html">Inicio</a></td>
+            </tr>
+            <tr>
+                <td><img id="imgMaps" src="img/maps.png" alt="maps"> Calle Fátima, Nº 33</td>
+                <td><img id="imgFace" src="img/facebook.png" alt="facebook"> <a
+                        href="https://www.facebook.com">Facebook: @toolboxweb</a></td>
+                <td><a href="nosotros.html">Sobre Nosotros</a></td>
+            </tr>
+            <tr>
+                <td><img id="imgTel" src="img/tel.png" alt="tel"> Tel: +34 612 34 56 78</td>
+                <td><img id="imgTwitter" src="img/twitter.png" alt="twitter"> <a href="https://twitter.com">Twitter:
+                        @toolboxweb</a></td>
+                <td><a href="contacto.html">Contáctanos</a></td>
+            </tr>
+            <tr>
+                <td><img id="imgMail" src="img/mail.png" alt="mail"> Correo: toolbox@web.com</td>
+                <td><img id="imgTelegram" src="img/telegram.png" alt="telegram"> <a
+                        href="https://telegram.com">Telegram: toolboxweb</a></td>
+                <td><a href="faq.html">FAQ</a></td>
+            </tr>
+        </table>
+    </footer>
+</body>
+
+</html>
