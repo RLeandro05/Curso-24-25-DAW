@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apache Tomcat</title>
+
+    <link rel="stylesheet" href="style/styleWILDFLY.css">
+</head>
+
+<body>
+    <div id="cabecera">
+        <div id="tituloLogo">
+            <h2><a href="index.html">ToolBox Web</a></h2>
+        </div>
+        <div id="menuCabecera">
+            <a href="apache.html"><span id="apacheTomcat"> Apache Tomcat </span></a>
+            <a href="wildfly.html"><span id="wildFly"> WildFly </span></a>
+            <a href="glassfish.html"><span id="glassFish"> GlassFish </span></a>
+        </div>
+    </div>
+
+    <div id="cuerpo">
+        <section id="contenido">
+            <h1>WildFly en Windows</h1>
+
+            <article id="introduccion">
+                <h2>¿Qué es WildFly?</h2>
+                <p>
+                    WildFly es un <i><b><u>servidor de aplicaciones Java EE de código abierto </u></b></i>
+                    que ofrece una <i><b><u>implementación</u></b></i> más <i><b><u>robusta y completa</u></b></i> de Java EE, 
+                    con <i><b><u>soporte para EJB, JPA, JAX-RS</u></b></i>, y más. 
+                    Es una opción <i><b><u>ideal para aplicaciones empresariales.</u></b></i>
+                    -><a href="https://www.wildfly.org/" target="_blank">[...]</a>.
+                </p>
+            </article>
+
+            <article id="pasosInstalacion">
+                <h2>Pasos para instalar WildFly en Windows</h2>
+                <ol>
+                    <li>
+                        <h3>1. Descargar WildFly</h3>
+                        <p>
+                            Visita la página oficial de WildFly en
+                            <a href="https://wildfly.org/downloads/" target="_blank">WildFly Downloads</a>.
+                            Descarga la versión ZIP más reciente de WildFly.
+                        </p>
+                    </li>
+                    <li>
+                        <h3>2. Instalación de WildFly</h3>
+                        <p>
+                            <i><b><u>Extrae el archivo ZIP descargado a un directorio de tu preferencia</u></b></i>, por ejemplo, <code>C:\wildfly</code>.
+                            <i><b><u>Asegúrate de que tienes instalada la JDK</u></b></i>. Puedes comprobarlo ejecutando <code>java -version</code> en la línea de comandos. Si no la tienes, descarga e instala la última versión desde Oracle o desde OpenJDK: <br>
+                            
+                            <ul>
+                                <li>
+                                    <p>
+                                        <a href="https://www.oracle.com/java/technologies/downloads/#jdk23-windows" target="_blank">Descargar JDK en Oracle</a>
+                                    </p>
+                                </li>
+                                <li>
+                                    <p>
+                                        <a href="https://jdk.java.net/23/" target="_blank">Descargar JDK en OpenJDK</a>
+                                    </p>
+                                </li>
+                            </ul>
+                        </p>
+                    </li>
+                    <li>
+                        <h3>3. Configuración de WildFly</h3>
+                        <p>
+                            <i><b><u>Abre la línea de comandos</u></b></i> (CMD) en Windows y <i><b><u>navega hasta el directorio donde descomprimiste WildFly:</u></b></i>
+                        </p>
+                        <pre>
+                            <code>
+# Ingresa al directorio wildfly:
+cd C:\wildfly\bin
+
+# Para iniciar el servidor, ejecuta:
+standalone.bat
+                            </code>
+                        </pre>
+                        <p>
+                            Para acceder a la consola de administración de WildFly, <i><b><u>abre tu navegador y ve a</u></b></i> <code>http://localhost:9990</code>
+                        </p>
+                    </li>
+                    <li>
+                        <h3>4. Desplegar una aplicación en WildFly</h3>
+                        <p>
+                            <i><b><u>Accede a la consola de administración de WildFly</u></b></i>.
+                            En la sección <code>Deployments</code>, selecciona <code>Add</code> y <i><b><u>sube el archivo</u></b></i> <code>.war</code> de tu aplicación.
+                            WildFly desplegará automáticamente la aplicación.
+                        </p>
+                    </li>
+                </ol>
+            </article>
+        </section>
+    </div>
+
+    <footer id="pie">
+        <br>
+        <br>
+        
+        <table id="contacto">
+            <tr>
+                <td>© 2024 ToolBox Web</td>
+                <td><img id="imgInsta" src="img/instagram.png" alt="instagram"> <a href="https://www.instagram.com/" target="_blank">Instagram: @toolboxweb</a></td>
+                <td><a href="index.html">Inicio</a></td>
+            </tr>
+
+            <tr>
+                <td><img id="imgMaps" src="img/maps.png" alt="maps"> <a href="https://www.google.es/maps/place/C.+F%C3%A1tima,+33,+41089+Dos+Hermanas,+Sevilla/@37.3334844,-5.9376783,17z/data=!4m5!3m4!1s0xd126fce9b222de1:0x4c860bb3704cd44!8m2!3d37.3334802!4d-5.9351034?entry=ttu&g_ep=EgoyMDI0MTEyNC4xIKXMDSoASAFQAw%3D%3D" target="_blank">Calle Fátima, Nº 33</a></td>
+                <td><img id="imgFace" src="img/facebook.png" alt="facebook"> <a href="https://www.facebook.com" target="_blank">Facebook: @toolboxweb</a></td>
+                <td><a href="nosotros.html">Sobre Nosotros</a></td>
+            </tr>
+
+            <tr>
+                <td><img id="imgTel" src="img/tel.png" alt="tel"> Tel: +34 612 34 56 78</td>
+                <td><img id="imgTwitter" src="img/twitter.png" alt="twitter"> <a href="https://twitter.com" target="_blank">Twitter: @toolboxweb</a></td>
+                <td><a href="contacto.html">Contáctanos</a></td>
+            </tr>
+
+            <tr>
+                <td><img id="imgMail" src="img/mail.png" alt="mail"> Correo: toolbox@web.com</td>
+                <td><img id="imgTelegram" src="img/telegram.png" alt="telegram"> <a href="https://telegram.com" target="_blank">Telegram: toolboxweb</a></td>
+                <td><a href="faq.html">FAQ</a></td>
+            </tr>
+        </table>
+    </footer>
+</body>
+
+</html>

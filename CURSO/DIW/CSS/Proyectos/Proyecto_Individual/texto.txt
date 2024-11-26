@@ -61,18 +61,27 @@ Puedes acceder a Tomcat a través de tu navegador usando http://localhost:8080.
 1.5 Desplegar una aplicación
 Coloca tu archivo .war (archivo web de aplicación Java) en el directorio webapps dentro de la instalación de Tomcat.
 Tomcat automáticamente desplegará la aplicación cuando detecte el archivo.
+
+---------------------------------------------------------------------------------------------
+
 2. WildFly en Windows
 ¿Qué es WildFly?
 WildFly es un servidor de aplicaciones Java EE de código abierto que ofrece una implementación más robusta y completa de Java EE, con soporte para EJB, JPA, JAX-RS, y más. Es una opción ideal para aplicaciones empresariales.
 
 Pasos para instalar WildFly en Windows:
+
 2.1 Descargar WildFly
+
 Visita la página oficial de WildFly: https://wildfly.org/downloads/.
 Descarga la versión ZIP más reciente de WildFly.
+
 2.2 Instalación de WildFly
+
 Extrae el archivo ZIP descargado a un directorio de tu preferencia, por ejemplo, C:\wildfly.
 Asegúrate de que tienes instalada la JDK. Puedes comprobarlo ejecutando java -version en la línea de comandos. Si no la tienes, descarga e instala la última versión desde Oracle o desde OpenJDK.
+
 2.3 Configuración de WildFly
+
 Abre la línea de comandos (CMD) en Windows y navega hasta el directorio donde descomprimiste WildFly:
 
 cmd
@@ -86,10 +95,13 @@ standalone.bat
 Para acceder a la consola de administración de WildFly, abre tu navegador y ve a http://localhost:9990.
 
 2.4 Desplegar una aplicación en WildFly
+
 Accede a la consola de administración de WildFly.
 En la sección Deployments, selecciona Add y sube el archivo .war de tu aplicación.
 WildFly desplegará automáticamente la aplicación.
+
 3. GlassFish en Ubuntu (Linux)
+
 ¿Qué es GlassFish?
 GlassFish es un servidor de aplicaciones Java EE completo, desarrollado originalmente por Sun Microsystems (ahora parte de Oracle). Proporciona soporte completo para todas las especificaciones de Java EE, incluido EJB, JPA, JSF, y más.
 
