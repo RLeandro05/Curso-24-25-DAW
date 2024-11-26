@@ -1,5 +1,6 @@
 <?php
     require_once("CintaVideo.php"); //Incluir la clase que se va a usar
+    require_once("Juego.php");
 
     /*
     //Crear objeto Soporte
@@ -9,9 +10,17 @@
     $objSoporte1->muestraResumen();
     */
 
+    /*
     //Crear objeto CintaVideo
-    $objCV = new CintaVideo("DVD Blue-Ray", 12 ,  8.90, 120);
+    $objCV1 = new CintaVideo("DVD Blue-Ray", 12 ,  8.90, 120);
 
     //Mostrar resumen del objeto
-    $objCV->muestraResumen();
+    $objCV1->muestraResumen();
+    */
+
+    //Crear objeto Juego
+    $objJuego1 = new Juego("God Of War Ragnarok", 1, 59.99, "PS5", 1, 1);
+
+    //Mostrar resumen del objeto
+    $objJuego1->muestraResumen();
 ?>
