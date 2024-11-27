@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catálogo de Productos</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .container {
+            max-width: 800px;
+            margin: auto;
+        }
+        h1, h2 {
+            text-align: center;
+            color: #333;
+        }
+        .categoria {
+            margin-bottom: 40px;
+        }
+        .producto {
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 15px;
+            margin: 10px 0;
+            display: flex;
+            align-items: center;
+        }
+        .producto img {
+            max-width: 100px;
+            margin-right: 20px;
+        }
+        .producto div {
+            display: flex;
+            flex-direction: column;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Catálogo de Productos</h1>
+
+        <!-- Sección: Camisas -->
+        <div class="categoria">
+            <h2>Camisas - Hombre</h2>
+            <div class="producto">
+                <img src="img\camisaHombre.jpg" alt="Camisa Casual Hombre">
+                <div>
+                    <h3>Camisa Casual Hombre</h3>
+                    <p>Precio: $25.99</p>
+                    <p>Cantidad: 50</p>
+                </div>
+            </div>
+            <div class="producto">
+                <img src="img\camisaVestirHombre.png" alt="Camisa Formal Hombre">
+                <div>
+                    <h3>Camisa Formal Hombre</h3>
+                    <p>Precio: $39.99</p>
+                    <p>Cantidad: 30</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="categoria">
+            <h2>Camisas - Mujer</h2>
+            <div class="producto">
+                <img src="img\camisaVestirMujer.jpg" alt="Blusa Casual Mujer">
+                <div>
+                    <h3>Blusa Casual Mujer</h3>
+                    <p>Precio: $22.99</p>
+                    <p>Cantidad: 60</p>
+                </div>
+            </div>
+            <div class="producto">
+                <img src="img\camisaMujer.png" alt="Blusa Formal Mujer">
+                <div>
+                    <h3>Blusa Formal Mujer</h3>
+                    <p>Precio: $35.99</p>
+                    <p>Cantidad: 25</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="categoria">
+            <h2>Camisas - Niño</h2>
+            <div class="producto">
+                <img src="img\camisaNino.jpg" alt="Camisa Infantil">
+                <div>
+                    <h3>Camisa Infantil</h3>
+                    <p>Precio: $15.99</p>
+                    <p>Cantidad: 40</p>
+                </div>
+            </div>
+            <div class="producto">
+                <img src="img\camisaVestirNino.png" alt="Camisa Escolar Niño">
+                <div>
+                    <h3>Camisa Escolar Niño</h3>
+                    <p>Precio: $18.99</p>
+                    <p>Cantidad: 35</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Repetir estructura para otras categorías como calcetines, pantalones y jerseys -->
+        <div class="categoria">
+            <h2>Calcetines - Hombre</h2>
+            <div class="producto">
+                <img src="img\calcetinesAdulto.png" alt="Pack 3 Calcetines Hombre">
+                <div>
+                    <h3>Pack 3 Calcetines Hombre</h3>
+                    <p>Precio: $9.99</p>
+                    <p>Cantidad: 100</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="categoria">
+            <h2>Pantalones - Mujer</h2>
+            <div class="producto">
+                <img src="img\pantalonMujer.png" alt="Jeans Mujer">
+                <div>
+                    <h3>Jeans Mujer</h3>
+                    <p>Precio: $44.99</p>
+                    <p>Cantidad: 70</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="categoria">
+            <h2>Jerseys - Niño</h2>
+            <div class="producto">
+                <img src="img\jerseyNino.png" alt="Jersey Infantil">
+                <div>
+                    <h3>Jersey Infantil</h3>
+                    <p>Precio: $29.99</p>
+                    <p>Cantidad: 25</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

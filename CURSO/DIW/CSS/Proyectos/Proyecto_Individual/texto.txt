@@ -100,28 +100,37 @@ Accede a la consola de administración de WildFly.
 En la sección Deployments, selecciona Add y sube el archivo .war de tu aplicación.
 WildFly desplegará automáticamente la aplicación.
 
+------------------
+
 3. GlassFish en Ubuntu (Linux)
 
 ¿Qué es GlassFish?
 GlassFish es un servidor de aplicaciones Java EE completo, desarrollado originalmente por Sun Microsystems (ahora parte de Oracle). Proporciona soporte completo para todas las especificaciones de Java EE, incluido EJB, JPA, JSF, y más.
 
 Pasos para instalar GlassFish en Ubuntu:
+
 3.1 Descargar GlassFish
+
 Visita la página oficial de GlassFish en https://javaee.github.io/glassfish/.
 Descarga el archivo .zip de la versión más reciente.
+
 3.2 Instalación de GlassFish
 Abre una terminal y navega al directorio donde descargaste el archivo:
+
 bash
 Copiar código
+
 cd /ruta/a/descargas
 Descomprime el archivo:
 bash
 Copiar código
+
 unzip glassfish-5.x.x.zip
 Mueve el directorio descomprimido a /opt:
 bash
 Copiar código
 sudo mv glassfish5 /opt/glassfish
+
 3.3 Configuración de GlassFish
 Establecer Variables de Entorno: Para que el sistema reconozca GlassFish, añade el siguiente bloque a tu archivo .bashrc:
 

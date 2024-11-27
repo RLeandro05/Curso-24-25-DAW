@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apache Tomcat</title>
+
+    <link rel="stylesheet" href="style/styleGLASSFISH.css">
+</head>
+
+<body>
+    <div id="cabecera">
+        <div id="tituloLogo">
+            <h2><a href="index.html">ToolBox Web</a></h2>
+        </div>
+        <div id="menuCabecera">
+            <a href="apache.html"><span id="apacheTomcat"> Apache Tomcat </span></a>
+            <a href="wildfly.html"><span id="wildFly"> WildFly </span></a>
+            <a href="glassfish.html"><span id="glassFish"> GlassFish </span></a>
+        </div>
+    </div>
+
+    <div id="cuerpo">
+        <section id="contenido">
+            <h1>GlassFish en Ubuntu (Linux)</h1>
+
+            <article id="introduccion">
+                <h2>¿Qué es GlassFish?</h2>
+                <p>
+                    GlassFish es un <i><b><u>servidor de aplicaciones Java EE</u></b></i> completo, 
+                    <i><b><u>desarrollado</u></b></i> originalmente <i><b><u>por Sun Microsystems</u></b></i> (ahora parte de Oracle). 
+                    <i><b><u>Proporciona soporte completo</u></b></i> para todas las especificaciones de Java EE, 
+                    <i><b><u>incluido EJB, JPA, JSF</u></b></i>, y más.
+                    -><a href="https://glassfish.org/" target="_blank">[...]</a>.
+                </p>
+            </article>
+
+            <article id="pasosInstalacion">
+                <h2>Pasos para instalar GlassFish en Ubuntu (Linux)</h2>
+                <ol>
+                    <li>
+                        <h3>1. Descargar GlassFish</h3>
+                        <p>
+                            Visita la página oficial de GlassFish en
+                            <a href="https://glassfish.org/download.html" target="_blank">GlassFish Downloads</a>.
+                            Descarga el archivo .zip de la versión más reciente.
+                        </p>
+                    </li>
+                    <li>
+                        <h3>2. Instalación de GlassFish</h3>
+                        <p>
+                            <i><b><u>Abre una terminal</u></b></i> y navega al directorio donde descargaste el archivo:
+                            <pre>
+                                <code>
+# Diríjete a la ruta donde se descargó
+cd /ruta/a/descargas
+
+# Descomprime el archivo:
+unzip glassfish-5.x.x.zip
+
+# Mueve el directorio descomprimido a /opt:
+sudo mv glassfish5 /opt/glassfish
+                                </code>
+                            </pre>
+                        </p>
+                    </li>
+                    <li>
+                        <h3>3. Configuración de GlassFish</h3>
+                        <p>
+                            <i><b><u>Establecer Variables de Entorno</u></b></i>: 
+                            Para que el sistema reconozca GlassFish, 
+                            <i><b><u>añade el siguiente bloque a tu archivo</u></b></i> <code>.bashrc</code>    :
+                        </p>
+                        <pre>
+                            <code>
+# Ejecuta las siguientes exportaciones:
+export GLASSFISH_HOME=/opt/glassfish
+export PATH=$PATH:$GLASSFISH_HOME/bin
+
+# Luego, ejecuta:
+source ~/.bashrc
+                            </code>
+                        </pre>
+                        <p>
+                            <i><b><u>Para iniciar o detener GlassFish, ejecuta los siguientes comandos</u></b></i>:
+                        </p>
+                        <pre>
+                            <code>
+# Para iniciar GlassFish:
+/opt/glassfish/bin/asadmin start-domain
+
+# Para detener GlassFish:
+/opt/glassfish/bin/asadmin stop-domain
+                            </code>
+                        </pre>
+                        <p>
+                            Puedes acceder a la consola de administración en <code>http://localhost:4848</code>.
+                        </p>
+                    </li>
+                    <li>
+                        <h3>4. Desplegar una aplicación en GlassFish</h3>
+                        <p>
+                            <i><b><u>Accede a la consola de administración de GlassFish</u></b></i>.
+                            Ve a <code>Applications</code> y selecciona <code>Deploy</code>.
+                            <i><b><u>Carga tu archivo</u></b></i> <code>.war</code> para desplegar la aplicación.
+                        </p>
+                    </li>
+                </ol>
+            </article>
+        </section>
+    </div>
+
+    <footer id="pie">
+        <br>
+        <br>
+        
+        <table id="contacto">
+            <tr>
+                <td>© 2024 ToolBox Web</td>
+                <td><img id="imgInsta" src="img/instagram.png" alt="instagram"> <a href="https://www.instagram.com/" target="_blank">Instagram: @toolboxweb</a></td>
+                <td><a href="index.html">Inicio</a></td>
+            </tr>
+
+            <tr>
+                <td><img id="imgMaps" src="img/maps.png" alt="maps"> <a href="https://www.google.es/maps/place/C.+F%C3%A1tima,+33,+41089+Dos+Hermanas,+Sevilla/@37.3334844,-5.9376783,17z/data=!4m5!3m4!1s0xd126fce9b222de1:0x4c860bb3704cd44!8m2!3d37.3334802!4d-5.9351034?entry=ttu&g_ep=EgoyMDI0MTEyNC4xIKXMDSoASAFQAw%3D%3D" target="_blank">Calle Fátima, Nº 33</a></td>
+                <td><img id="imgFace" src="img/facebook.png" alt="facebook"> <a href="https://www.facebook.com" target="_blank">Facebook: @toolboxweb</a></td>
+                <td><a href="nosotros.html">Sobre Nosotros</a></td>
+            </tr>
+
+            <tr>
+                <td><img id="imgTel" src="img/tel.png" alt="tel"> Tel: +34 612 34 56 78</td>
+                <td><img id="imgTwitter" src="img/twitter.png" alt="twitter"> <a href="https://twitter.com" target="_blank">Twitter: @toolboxweb</a></td>
+                <td><a href="contacto.html">Contáctanos</a></td>
+            </tr>
+
+            <tr>
+                <td><img id="imgMail" src="img/mail.png" alt="mail"> Correo: toolbox@web.com</td>
+                <td><img id="imgTelegram" src="img/telegram.png" alt="telegram"> <a href="https://telegram.com" target="_blank">Telegram: toolboxweb</a></td>
+                <td><a href="faq.html">FAQ</a></td>
+            </tr>
+        </table>
+    </footer>
+</body>
+
+</html>

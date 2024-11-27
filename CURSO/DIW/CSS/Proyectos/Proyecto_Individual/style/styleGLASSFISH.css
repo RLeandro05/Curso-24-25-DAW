@@ -1,0 +1,193 @@
+* {
+    color: #374045; /* Gris carbón suave para el texto */
+    background-color: #d3e0ea; /* Azul grisáceo pálido para el fondo */
+}
+
+body {
+    margin: 0;
+    
+}
+
+#cuerpo {
+    height: 1500px;
+}
+
+#cabecera {
+    text-align: center;
+    width: 100%;
+    height: 80px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: #374045; /* Gris carbón suave para la cabecera */
+    color: #e9e2d0; /* Beige claro para el texto en la cabecera */
+    z-index: 1000;
+}
+
+#cabecera #tituloLogo {
+    margin: 20px 10px 10px 15px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    width: 230px;
+    font-size: 1.3em;
+    color: #e9e2d0; /* Beige claro para el texto del título */
+}
+
+#tituloLogo h2 a {
+    color: #d3e0ea;
+    background-color: #374045;
+}
+
+a {
+    text-decoration: none;
+    color: #e9e2d0; /* Beige claro para los enlaces */
+    background-color: #374045;
+}
+
+section#contenido a {
+    padding: 3px;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+section#contenido a:hover {
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.35); /* Agrega una sombra */
+    transform: rotate(5deg); /* Rotación de 5 grados */
+}
+
+
+#menuCabecera {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    position: absolute;
+    left: 35%;
+    top: 35px;
+    font-size: 1.2em;
+}
+
+#menuCabecera span {
+    margin-left: 20px;
+    border: 1px solid;
+    border-radius: 5px;
+    padding: 10px;
+    padding-left: 15px;
+    background-color: #e9e2d0; /* Beige claro para el fondo de los botones */
+    color: #374045; /* Gris carbón suave para el texto de los botones */
+    transition: background-color 0.5s ease, color 0.5s ease, transform 0.3s ease;
+}
+
+#menuCabecera span:hover {
+    background-color: #374045; /* Gris carbón suave */
+    color: #d3e0ea; /* Azul grisáceo pálido */
+}
+
+
+#cuerpo {
+    padding: 120px 10%; /* Espaciado superior para evitar solapamiento con la cabecera fija */
+    font-family: Arial, sans-serif;
+}
+
+li {
+    list-style: none;
+}
+
+#contenido {
+    background-color: #e9e2d0; /* Beige claro */
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+#contenido h1 {
+    font-size: 1.75em;
+    color: #374045; /* Gris carbón */
+    text-align: center;
+    margin-left: 33%;
+    margin-bottom: 20px;
+    padding: 5px;
+    width: 400px;
+    border-radius: 5px;
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.3);
+}
+
+#introduccion, #pasosInstalacion {
+    padding: 2px;
+    padding-left: 10px;
+    border-radius: 5px;
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.3);
+}
+
+#pasosInstalacion {
+    margin-top: 25px;
+}
+
+#pasosInstalacion pre {
+    width: 90%;
+}
+
+article, h1 {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+article:hover, h1:hover {
+    transform: scale(1.05); /* Aumenta el tamaño un 10% */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3); /* Agrega una sombra */
+}
+
+#contenido h2, #contenido h3 {
+    color: #2c3333; /* Tonalidad oscura */
+    margin-top: 20px;
+}
+
+#contenido p, #contenido pre {
+    margin: 10px 0;
+    line-height: 1.5em;
+}
+
+code {
+    background-color: #f3f4f6;
+    padding: 2px 5px;
+    border-radius: 3px;
+    font-family: monospace;
+}
+
+pre {
+    background-color: #f3f4f6;
+    padding: 10px;
+    border-radius: 5px;
+    overflow-x: auto;
+}
+
+#pasosInstalacion ul li{
+    list-style: square;
+}
+
+#pie {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    border: 1px solid; /* Puedes ajustar esto según tu diseño */
+    height: 250px;
+    background-color: #374045;
+}
+
+table {
+    margin-left: 25%;
+    margin-top: 25px;
+    border-collapse: collapse; /* Hace que las celdas compartan los bordes */
+}
+
+table * {
+    background-color: #374045;
+    color: #d3e0ea;
+    font-size: 1.05em;
+}
+
+/* Ajustar el padding si es necesario */
+td {
+    padding-bottom: 15px;
+    padding-right: 100px;
+}
+
+
+#imgMaps, #imgTel, #imgMail, #imgInsta, #imgFace, #imgTwitter, #imgTelegram {
+    height: 15px;
+    width: 15px;
+}
