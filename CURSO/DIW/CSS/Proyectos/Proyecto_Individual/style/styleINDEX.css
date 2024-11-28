@@ -5,11 +5,12 @@
 
 body {
     margin: 0;
-    
 }
 
 #cuerpo {
-    height: 800px;
+    height: 1200px;
+    padding: 120px 100px; /* Espaciado superior para evitar solapamiento con la cabecera fija */
+    font-family: Arial, sans-serif;
 }
 
 #cabecera {
@@ -43,6 +44,18 @@ a {
     background-color: #374045;
 }
 
+section#contenido a {
+    padding: 3px;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+section#contenido a:hover {
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.35); /* Agrega una sombra */
+    transform: rotate(5deg); /* Rotación de 5 grados */
+}
+
 #menuCabecera {
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     position: absolute;
@@ -65,6 +78,83 @@ a {
 #menuCabecera span:hover {
     background-color: #374045; /* Gris carbón suave */
     color: #d3e0ea; /* Azul grisáceo pálido */
+}
+
+li {
+    list-style: none;
+}
+
+#contenido {
+    background-color: #e9e2d0; /* Beige claro */
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-wrap: wrap; /* Permite que los elementos se ajusten si es necesario */
+    justify-content: space-between; /* Espacia los artículos */
+    align-items: flex-start; /* Alinea los artículos en la parte superior */
+}
+
+#contenido h1 {
+    font-size: 1.75em;
+    color: #374045; /* Gris carbón */
+    text-align: center;
+    margin-left: 27%;
+    margin-bottom: 20px;
+    padding: 5px;
+    width: 530px;
+    border-radius: 5px;
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.3);
+}
+
+#introduccion {
+    width: 100%; /* Ocupa toda la anchura de la columna */
+    margin-bottom: 10px; /* Espacio entre los elementos */
+    padding: 2px;
+    border-radius: 5px;
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.3);
+}
+
+#imagenServidores {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-basis: 48%; /* Ajusta el tamaño de la imagen */
+    padding: 2px;
+    border-radius: 5px;
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.3);
+}
+
+#a {
+    width: 50%;
+    padding: 2px;
+    border-radius: 5px;
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.3);
+}
+
+#imgServidores {
+    width: 100%; /* Ajusta el tamaño de la imagen para que se mantenga en el contenedor */
+    max-width: 650px; /* Tamaño máximo de la imagen */
+    height: auto; /* Mantiene la proporción de la imagen */
+}
+
+article, h1 {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+article:hover, h1:hover {
+    transform: scale(1.05); /* Aumenta el tamaño un 10% */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3); /* Agrega una sombra */
+}
+
+#contenido h2, #contenido h3 {
+    color: #2c3333; /* Tonalidad oscura */
+    margin-top: 20px;
+}
+
+#contenido p, #contenido pre {
+    margin: 10px 0;
+    line-height: 1.5em;
 }
 
 #pie {
@@ -91,7 +181,6 @@ td {
     padding-bottom: 15px;
     padding-right: 100px;
 }
-
 
 #imgMaps, #imgTel, #imgMail, #imgInsta, #imgFace, #imgTwitter, #imgTelegram {
     height: 15px;
