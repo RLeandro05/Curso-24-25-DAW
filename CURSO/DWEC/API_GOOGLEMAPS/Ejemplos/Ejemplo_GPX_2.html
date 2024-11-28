@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="initial-scale=1.0">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Ejemplo de acceso a fichero XML (local) e imprimir en mapa</title>
+
+    <style type="text/css">
+        #divMapa {
+            width: 100%;
+            height: 700px;
+            border: 1px solid blue; 
+           }
+      </style>
+
+    <script type="text/javascript" src="http://maps.google.com/maps/api/js?key=AIzaSyA6rLid89W1HGF2lCnQbfx62tr-57ugzdU">
+        // "http://maps.google.com/maps/api/js?key=key_value"
+    </script>
+
+    <script type="text/javascript">
+        let contador = 1;
+
+        window.onload = () => {
+            document.querySelector("#id_fichero").addEventListener("change", Leer_Fichero);
+        }
+
+        function Leer_Fichero(evento) { //Función para leer el fichero xml
+            let e = evento || window.event; //Guardar en una variabel el evento accionado
+            let fichero = e.target.files[0]; //Guardar el fichero en una variable
+
+            function Convertir_a_XML(texto) { //Función para convertir a xml
+                let xml = null;
+                if (window.ActiveXObject) {
+                    xml = new ActiveXObject("Microsoft.XMLDOM");
+                    xml.loadXML(texto);
+                } else {
+                    xml = new DOMParser().parseFromString(texto, "text/xml");
+                    return xml;
+                }
+            }
+
+            let reader = new FileReader(); //Instanciar un reader
+
+            reader.onload = function (e) { //Cuando se cargue el fichero, convertir a xml y devolver resultado
+                let miXml = Convertir_a_XML(reader.result);
+                console.log("miXml: ", miXml);
+                tratarXML(miXml);
+            }
+            reader.readAsText(fichero); //Leer el fichero como texto
+        }
+
+        function tratarXML(xml) { //Función para tratar el xml y crear los puntos
+            let puntos = xml.getElementsByTagName("trkpt"); //Guardar como array los puntos trkpt del gpx
+
+            alert("Número de puntos: " + puntos.length);
+
+            //Instanciar la latitud y longitud
+            let latitud, longitud;
+
+            /*
+            for (let i = 0; i < puntos.length; i++) {
+                latitud = puntos[i].getAttributeNode("lat").nodeValue;
+                longitud = puntos[i].getAttributeNode("lon").nodeValue;
+                sal.innerHTML += contador +". latitud: " + latitud + " longitud: " + longitud + "<br>";
+                contador++;
+            }
+                */
+
+            CargarMapa(puntos);
+        }
+
+        function CargarMapa(puntos) { //Función para cargar el mapa con los puntos del GPX
+            var divMapa = document.getElementById("divMapa");
+            console.log(divMapa);
+            
+            //Guardar el primer punto
+            latitud = puntos[0].getAttributeNode("lat").nodeValue;
+            longitud = puntos[0].getAttributeNode("lon").nodeValue;
+
+            //Crear el centro con el primer punto del array
+            var centro = new google.maps.LatLng(latitud, longitud);
+
+            var opciones = {
+                center: centro,
+                zoom: 17,
+            };
+
+            //Crear un nuevo mapa
+            var mapa = new google.maps.Map(divMapa, opciones);
+
+
+            for (let i = 0; i < puntos.length; i++) { //Iterar cada elemento del array de los puntos
+                latitud = puntos[i].getAttributeNode("lat").nodeValue;
+                longitud = puntos[i].getAttributeNode("lon").nodeValue;
+
+                //Por cada iteración, actualizar coordenadas
+                centro = new google.maps.LatLng(latitud, longitud);
+
+                //Crear un nuevo marcador por cada iteración
+                var marcador = new google.maps.Marker({
+                    position: centro,
+                    icon: "punto.png",
+                    map: mapa,
+                });
+            }
+
+        }
+    </script>
+</head>
+
+<body>
+
+    <p>
+        <label for="id_fichero">Selecciona el fichero a leer:</label><br>
+        <input id="id_fichero" type="file" />
+    </p>
+
+    <p>
+    <div id="divMapa">
+
+    </div>
+    </p>
+
+
+</body>
+
+</html>
