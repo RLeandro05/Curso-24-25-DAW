@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="initial-scale=1.0">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Ejemplo de acceso a fichero XML (local)</title>
+    <script type="text/javascript">
+        let contador = 1;
+        
+        window.onload = () => {
+            document.querySelector("#id_fichero").addEventListener("change", Leer_Fichero);
+        }
+
+        function Leer_Fichero(evento) {
+            let e = evento || window.event;
+            let fichero = e.target.files[0];
+
+            function Convertir_a_XML(texto) {
+                let xml = null;
+                if (window.ActiveXObject) {
+                    xml = new ActiveXObject("Microsoft.XMLDOM");
+                    xml.loadXML(texto);
+                } else {
+                    xml = new DOMParser().parseFromString(texto, "text/xml");
+                    return xml;
+                }
+            }
+
+            let reader = new FileReader();
+
+            reader.onload = function (e) {
+                let miXml = Convertir_a_XML(reader.result);
+                console.log("miXml: ", miXml);
+                tratarXML(miXml);
+            }
+            reader.readAsText(fichero);
+        }
+
+        function tratarXML(xml) {
+            let puntos = xml.getElementsByTagName("trkpt");
+            alert("Número de puntos: " + puntos.length);
+            let sal = document.querySelector("#sal");
+            sal.innerHTML += "<p>Listado de puntos: </p>";
+            let latitud, longitud;
+
+            for (let i = 0; i < puntos.length; i++) {
+                latitud = puntos[i].getAttributeNode("lat").nodeValue;
+                longitud = puntos[i].getAttributeNode("lon").nodeValue;
+                sal.innerHTML += contador +". latitud: " + latitud + " longitud: " + longitud + "<br>";
+                contador++;
+            }
+        }
+    </script>
+</head>
+
+<body>
+
+    <p>
+        <label for="id_fichero">Selecciona el fichero a leer:</label><br>
+        <input id="id_fichero" type="file" />
+    </p>
+
+    <p>
+    <div id="sal">
+        Aquí pongo el contenido del fichero!!!
+    </div>
+    </p>
+
+
+</body>
+</html>
