@@ -53,7 +53,6 @@ section#contenido a {
 
 section#contenido a:hover {
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.35); /* Agrega una sombra */
-    transform: rotate(5deg); /* Rotación de 5 grados */
 }
 
 #menuCabecera {
@@ -111,6 +110,7 @@ li {
     width: 100%; /* Ocupa toda la anchura de la columna */
     margin-bottom: 10px; /* Espacio entre los elementos */
     padding: 2px;
+    padding-left: 15px;
     border-radius: 5px;
     box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.3);
 }
@@ -120,14 +120,15 @@ li {
     justify-content: center;
     align-items: center;
     flex-basis: 48%; /* Ajusta el tamaño de la imagen */
-    padding: 2px;
+    padding: 3px;
     border-radius: 5px;
     box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.3);
 }
 
-#a {
-    width: 50%;
+#seleccionServidor {
+    width: 48%;
     padding: 2px;
+    padding-left: 15px;
     border-radius: 5px;
     box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.3);
 }
@@ -138,13 +139,17 @@ li {
     height: auto; /* Mantiene la proporción de la imagen */
 }
 
+article {
+    box-shadow: 0 0px 20px rgba(0, 0, 0, 0.3); /* Agrega una sombra */
+}
+
 article, h1 {
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 article:hover, h1:hover {
     transform: scale(1.05); /* Aumenta el tamaño un 10% */
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3); /* Agrega una sombra */
+    box-shadow: 0 0px 20px rgba(0, 0, 0, 0.5); /* Agrega una sombra */
 }
 
 #contenido h2, #contenido h3 {
@@ -152,9 +157,36 @@ article:hover, h1:hover {
     margin-top: 20px;
 }
 
-#contenido p, #contenido pre {
+#contenido p {
     margin: 10px 0;
     line-height: 1.5em;
+}
+
+#contenedorServidores {
+    margin-right: 2%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+#apache, #wildfly, #glassfish {
+    background-color: #e9e2d0;
+    margin: 10px;
+    border-radius: 10px;
+    padding: 2%;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.3);
+}
+
+#apache:hover, #wildfly:hover, #glassfish:hover {
+    transform: scale(1.1); /* Aumenta el tamaño un 10% */
+    box-shadow: 0 0px 20px rgba(0, 0, 0, 0.5); /* Agrega una sombra */
+}
+
+#imgApache, #imgWildFly, #imgGlassFish {
+    width: 150px;
+    height: 140px;
+    background-color: #e9e2d0;
 }
 
 #pie {
