@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="initial-scale=1.0">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Ejemplo de acceso a fichero XML (local) e imprimir en mapa</title>
+
+    <style type="text/css">
+        #divMapa {
+            width: 100%;
+            height: 700px;
+            border: 1px solid blue;
+        }
+    </style>
+
+    <script type="text/javascript" src="http://maps.google.com/maps/api/js?libraries=geometry&key=AIzaSyA6rLid89W1HGF2lCnQbfx62tr-57ugzdU">
+        // "http://maps.google.com/maps/api/js?key=key_value"
+    </script>
+
+    <script type="text/javascript">
+        let contador = 1;
+
+        window.onload = () => {
+            document.querySelector("#id_fichero").addEventListener("change", Leer_Fichero);
+        }
+
+        function Leer_Fichero(evento) { //Función para leer el fichero xml
+            let e = evento || window.event; //Guardar en una variabel el evento accionado
+            let fichero = e.target.files[0]; //Guardar el fichero en una variable
+
+            function Convertir_a_XML(texto) { //Función para convertir a xml
+                let xml = null;
+                if (window.ActiveXObject) {
+                    xml = new ActiveXObject("Microsoft.XMLDOM");
+                    xml.loadXML(texto);
+                } else {
+                    xml = new DOMParser().parseFromString(texto, "text/xml");
+                    return xml;
+                }
+            }
+
+            let reader = new FileReader(); //Instanciar un reader
+
+            reader.onload = function (e) { //Cuando se cargue el fichero, convertir a xml y devolver resultado
+                let miXml = Convertir_a_XML(reader.result);
+                console.log("miXml: ", miXml);
+                tratarXML(miXml);
+            }
+            reader.readAsText(fichero); //Leer el fichero como texto
+        }
+
+        function tratarXML(xml) { //Función para tratar el xml y crear los puntos
+            let puntos = xml.getElementsByTagName("trkpt"); //Guardar como array los puntos trkpt del gpx
+
+            alert("Número de puntos: " + puntos.length);
+
+            //Instanciar la latitud y longitud
+            let latitud, longitud;
+
+            CargarMapa(puntos);
+        }
+
+        function CargarMapa(puntos) { //Función para cargar el mapa con los puntos del GPX
+            var divMapa = document.getElementById("divMapa");
+            console.log(divMapa);
+
+            //Guardar el primer punto
+            latitud = puntos[0].getAttributeNode("lat").nodeValue;
+            longitud = puntos[0].getAttributeNode("lon").nodeValue;
+
+            //Crear el centro con el primer punto del array
+            var centro = new google.maps.LatLng(latitud, longitud);
+
+            var opciones = {
+                center: centro,
+                zoom: 17,
+            };
+
+            //Crear un nuevo mapa
+            var mapa = new google.maps.Map(divMapa, opciones);
+
+
+            //Mostrar punto de inicio
+            centro = new google.maps.LatLng(puntos[0].getAttributeNode("lat").nodeValue, puntos[0].getAttributeNode("lon").nodeValue);
+            //Crear un nuevo marcador de inicio
+            var marcador = new google.maps.Marker({
+                position: centro,
+                icon: "iniciar.png",
+                map: mapa,
+                title: "Inicio"
+            });
+
+            //Mostrar punto de meta
+            centro = new google.maps.LatLng(puntos[puntos.length - 1].getAttributeNode("lat").nodeValue, puntos[puntos.length - 1].getAttributeNode("lon").nodeValue);
+            //Crear un nuevo marcador de meta
+            var marcador = new google.maps.Marker({
+                position: centro,
+                icon: "terminar.png",
+                map: mapa,
+                title: "Meta"
+            });
+
+            //Instanciar una ruta que una los puntos
+            let rutaLineada = new Array();
+
+            for (let i = 0; i < puntos.length; i++) { //Por cada iteración, meter en el array de la ruta lineada las coordenadas
+                latitud = puntos[i].getAttributeNode("lat").nodeValue;
+                longitud = puntos[i].getAttributeNode("lon").nodeValue;
+                rutaLineada.push(new google.maps.LatLng(latitud, longitud));
+            }
+
+            //Pintar la ruta
+            new google.maps.Polyline({
+                path: rutaLineada,
+                map: mapa,
+                geodesic: true,
+                strokeColor: 'FF0000',
+                strokeOpacity: 1.0,
+                strokeWeight: 2,
+                clickable: true
+            });
+
+            //Calcular distancia en metros
+            let distanciaM = google.maps.geometry.spherical.computeLength(rutaLineada);
+            let distanciaKM = 0;
+            
+            let informacion = document.querySelector("#informacion");
+            informacion.innerHTML = "";
+
+            if (distanciaM >= 1000) {
+                distanciaKM = (distanciaM/1000).toFixed(2);
+                informacion.innerHTML += "Distancia: " + distanciaKM + " Km";
+                console.log("Información: ", informacion);
+                
+            } else {
+                informacion.innerHTML += "Distancia: " + distanciaM.toFixed(2) + "m";
+            }
+            
+            //Sacar fecha inicial y final
+            let dateInic = new Date(puntos[0].getElementsByTagName("time")[0].innerHTML);
+            let dateFin = new Date(puntos[puntos.length - 1].getElementsByTagName("time")[0].innerHTML);
+
+            //Crear objeto date con la resta en milisegundos de ambas fechas
+            let diff = new Date(dateFin - dateInic);
+
+            //Guardar en una cadena las horas, minutos y segundos de la resta de ambas fechas
+            let tiempo = diff.getUTCHours() + ":" + diff.getUTCMinutes() + ":" + diff.getUTCSeconds();
+
+            //Calcular velocidad media en Km/H
+            let velocidad = (distanciaKM/((diff/1000)/3600)).toFixed(2);
+
+            //Mostrar por pantalla el tiempo y la velocidad media
+            informacion.innerHTML += " || Tiempo: " + tiempo + " || Velocidad: " + velocidad + " Km/H";
+            
+            
+
+        }
+    </script>
+</head>
+
+<body>
+
+    <p>
+        <label for="id_fichero">Selecciona el fichero a leer:</label><br>
+        <input id="id_fichero" type="file" />
+    </p>
+
+    <div id="informacion">
+        
+    </div>
+
+    <p>
+    <div id="divMapa">
+
+    </div>
+    </p>
+
+
+</body>
+
+</html>
