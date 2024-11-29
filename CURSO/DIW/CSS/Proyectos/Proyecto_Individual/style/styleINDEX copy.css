@@ -7,10 +7,6 @@ body {
     margin: 0;
 }
 
-a {
-    text-decoration: none;
-}
-
 #cuerpo {
     height: 1200px;
     padding: 120px 100px; /* Espaciado superior para evitar solapamiento con la cabecera fija */
@@ -27,15 +23,6 @@ a {
     background-color: #374045; /* Gris carbón suave para la cabecera */
     color: #e9e2d0; /* Beige claro para el texto en la cabecera */
     z-index: 1000;
-}
-
-#cabecera #tituloLogo {
-    background-color: #374045;
-    color: #d3e0ea;
-}
-
-#cabecera #menuCabecera a {
-    background-color: #374045;
 }
 
 #cabecera #tituloLogo {
@@ -162,23 +149,27 @@ article:hover, h1:hover {
 
 #contenedorServidores a {
     background-color: #e9e2d0;
-    margin: 2%;
-    margin-right: 3%;
+    
 }
 
-#imgApache, #imgWildFly, #imgGlassFish {
+#apache, #wildfly, #glassfish {
     background-color: #e9e2d0;
+    margin: 10px;
     border-radius: 10px;
     padding: 2%;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.3);
-    width: 150px;
-    height: 140px;
 }
 
-#imgApache:hover, #imgWildFly:hover, #imgGlassFish:hover {
+#apache:hover, #wildfly:hover, #glassfish:hover {
     transform: scale(1.1); /* Aumenta el tamaño un 10% */
     box-shadow: 0 0px 20px rgba(0, 0, 0, 0.5); /* Agrega una sombra */
+}
+
+#imgApache, #imgWildFly, #imgGlassFish {
+    width: 150px;
+    height: 140px;
+    background-color: #e9e2d0;
 }
 
 #pie {
