@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gpx creator="Wikiloc - http://www.wikiloc.com" version="1.1" xmlns="http://www.topografix.com/GPX/1/1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.topografix.com/GPX/1/1 http://www.topografix.com/GPX/1/1/gpx.xsd">
+  <wpt lat="36.719584" lon="-5.251572">
+    <ele>0.0</ele>
+    <time>2013-11-12T09:08:20Z</time>
+    <name>Benaoján</name>
+    <cmt>Benaoján</cmt>
+    <desc>Benaoján</desc>
+  </wpt>
+  <wpt lat="36.726819" lon="-5.250146">
+    <ele>551.0</ele>
+    <time>2013-11-12T10:14:54Z</time>
+    <name>Coche1</name>
+    <cmt>Coche1</cmt>
+    <desc>Coche1</desc>
+  </wpt>
+  <wpt lat="36.727132" lon="-5.250249">
+    <ele>555.0</ele>
+    <time>2013-11-12T10:14:54Z</time>
+    <name>Coche2</name>
+    <cmt>Coche2</cmt>
+    <desc>Coche2</desc>
+  </wpt>
+  <wpt lat="36.727250" lon="-5.250171">
+    <ele>556.0</ele>
+    <time>2013-11-12T10:14:54Z</time>
+    <name>EscaladaBenaoján2</name>
+    <cmt>EscaladaBenaoján2</cmt>
+    <desc>EscaladaBenaoján2</desc>
+  </wpt>
+  <trk>
+    <name>Escuela de Escalada de Benaoján, en Benaoján (Málaga) [2]</name>
+    <cmt>Acceso a una de las escuelas de escalada de Benaoján, en Benaoján, en el Parque Natural Sierra de Grazalema (Málaga).</cmt>
+    <desc>Acceso a una de las escuelas de escalada de Benaoján, en Benaoján, en el Parque Natural Sierra de Grazalema (Málaga).</desc>
+    <trkseg>
+      <trkpt lat="36.719130" lon="-5.250482">
+        <ele>519.7</ele>
+        <time>2015-01-04T19:45:42Z</time>
+      </trkpt>
+      <trkpt lat="36.719582" lon="-5.250411">
+        <ele>520.2</ele>
+        <time>2015-01-04T19:46:02Z</time>
+      </trkpt>
+      <trkpt lat="36.720099" lon="-5.250445">
+        <ele>522.6</ele>
+        <time>2015-01-04T19:46:22Z</time>
+      </trkpt>
+      <trkpt lat="36.720900" lon="-5.250532">
+        <ele>526.9</ele>
+        <time>2015-01-04T19:46:42Z</time>
+      </trkpt>
+      <trkpt lat="36.721885" lon="-5.250790">
+        <ele>536.6</ele>
+        <time>2015-01-04T19:47:02Z</time>
+      </trkpt>
+      <trkpt lat="36.722092" lon="-5.250745">
+        <ele>539.4</ele>
+        <time>2015-01-04T19:47:22Z</time>
+      </trkpt>
+      <trkpt lat="36.722719" lon="-5.250486">
+        <ele>539.0</ele>
+        <time>2015-01-04T19:47:42Z</time>
+      </trkpt>
+      <trkpt lat="36.723388" lon="-5.250325">
+        <ele>534.6</ele>
+        <time>2015-01-04T19:48:02Z</time>
+      </trkpt>
+      <trkpt lat="36.724600" lon="-5.250142">
+        <ele>532.7</ele>
+        <time>2015-01-04T19:48:22Z</time>
+      </trkpt>
+      <trkpt lat="36.725829" lon="-5.250250">
+        <ele>535.6</ele>
+        <time>2015-01-04T19:48:42Z</time>
+      </trkpt>
+      <trkpt lat="36.726605" lon="-5.250190">
+        <ele>545.2</ele>
+        <time>2015-01-04T19:49:02Z</time>
+      </trkpt>
+      <trkpt lat="36.726985" lon="-5.250135">
+        <ele>555.8</ele>
+        <time>2015-01-04T19:49:22Z</time>
+      </trkpt>
+      <trkpt lat="36.727106" lon="-5.250256">
+        <ele>553.9</ele>
+        <time>2015-01-04T19:49:42Z</time>
+      </trkpt>
+      <trkpt lat="36.727156" lon="-5.250246">
+        <ele>557.2</ele>
+        <time>2015-01-04T19:50:02Z</time>
+      </trkpt>
+      <trkpt lat="36.727261" lon="-5.250176">
+        <ele>556.7</ele>
+        <time>2015-01-04T19:50:22Z</time>
+      </trkpt>
+    </trkseg>
+  </trk></gpx>

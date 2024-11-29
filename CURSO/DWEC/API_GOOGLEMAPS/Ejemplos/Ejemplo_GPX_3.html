@@ -129,9 +129,9 @@
             informacion.innerHTML = "";
 
             if (distanciaM >= 1000) {
-                distanciaKM = (distanciaM/1000).toFixed(2);
-                informacion.innerHTML += "Distancia: " + distanciaKM + " Km";
-                console.log("Información: ", informacion);
+                distanciaKM = distanciaM/1000;
+                informacion.innerHTML += "Distancia: " + distanciaKM.toFixed(2) + " km";
+                //console.log("Información: ", informacion);
                 
             } else {
                 informacion.innerHTML += "Distancia: " + distanciaM.toFixed(2) + "m";
@@ -148,10 +148,22 @@
             let tiempo = diff.getUTCHours() + ":" + diff.getUTCMinutes() + ":" + diff.getUTCSeconds();
 
             //Calcular velocidad media en Km/H
-            let velocidad = (distanciaKM/((diff/1000)/3600)).toFixed(2);
+            let diffSegundos = diff / 1000;
+
+            //Instanciar velocidad
+            let velocidad = 0;
+
+            if (distanciaM >= 1000) { //Si son kilómetros, directamente hacer el cálculo
+                velocidad = (distanciaKM/(diffSegundos/3600));
+                
+            } else { //Si son metros, dividir entre 1000 pra hacer conversión a kilómetros y hacer el cálculo
+                distanciaM = distanciaM/1000;
+                velocidad = (distanciaM/(diffSegundos/3600));
+            }
+            
 
             //Mostrar por pantalla el tiempo y la velocidad media
-            informacion.innerHTML += " || Tiempo: " + tiempo + " || Velocidad: " + velocidad + " Km/H";
+            informacion.innerHTML += " || Tiempo: " + tiempo + " || Velocidad: " + velocidad.toFixed(2) + " km/h";
             
             
 
