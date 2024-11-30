@@ -7,33 +7,12 @@ body {
     margin: 0;
 }
 
-#tituloLogo h2 a {
-    display: inline-block;
-    color: #d3e0ea; /* Azul grisáceo pálido */
-    background-color: #374045;
-    transition: transform 0.3s ease;
-}
-
-#tituloLogo h2 a:hover {
-    transform: scale(1.1) rotate(-2deg);
-}
-
-a {
-    text-decoration: none;
-}
-
 #cuerpo {
-    height: 500px;
-    padding: 120px 350px; /* Espaciado superior para evitar solapamiento con la cabecera fija */
-    font-family: Arial, sans-serif;
+    height: 950px;
 }
 
 #cabecera #tituloLogo h2, #cabecera #tituloLogo h2 a {
     background-color: #374045;
-}
-
-#cabecera #tituloLogo h2 a {
-    color: #d3e0ea;
 }
 
 #cabecera {
@@ -49,20 +28,41 @@ a {
 }
 
 #cabecera #tituloLogo {
-    background-color: #374045;
-    color: #d3e0ea;
-}
-
-#cabecera #menuCabecera a {
-    background-color: #374045;
-}
-
-#cabecera #tituloLogo {
     margin: 20px 10px 10px 15px;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     width: 230px;
     font-size: 1.3em;
     color: #e9e2d0; /* Beige claro para el texto del título */
+}
+
+#tituloLogo h2 a {
+    display: inline-block;
+    color: #d3e0ea; /* Azul grisáceo pálido */
+    background-color: #374045;
+    transition: transform 0.3s ease;
+}
+
+#tituloLogo h2 a:hover {
+    transform: scale(1.1) rotate(-2deg);
+}
+
+a {
+    text-decoration: none;
+    color: #e9e2d0; /* Beige claro para los enlaces */
+    background-color: #374045;
+}
+
+section#contenido a {
+    display: inline-block;
+    padding: 3px;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+section#contenido a:hover {
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.35); /* Agrega una sombra */
+    transform: rotate(-5deg) scale(1.2); /* Rotación de 5 grados */
 }
 
 #menuCabecera {
@@ -89,35 +89,36 @@ a {
     color: #d3e0ea; /* Azul grisáceo pálido */
 }
 
+#cuerpo {
+    padding: 120px 10%; /* Espaciado superior para evitar solapamiento con la cabecera fija */
+    font-family: Arial, sans-serif;
+}
+
 #contenido {
     background-color: #e9e2d0; /* Beige claro */
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    display: flex;
-    flex-wrap: wrap; /* Permite que los elementos se ajusten si es necesario */
-    justify-content: space-between; /* Espacia los artículos */
-    align-items: start; /* Alinea los artículos en la parte superior */
-    gap: 5px;
 }
 
 #contenido h1 {
     font-size: 1.75em;
     color: #374045; /* Gris carbón */
     text-align: center;
-    margin-left: 37%;
+    margin-left: 35%;
     margin-bottom: 20px;
     padding: 5px;
-    width: 200px;
+    width: 320px;
     border-radius: 5px;
     box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.3);
 }
 
-article {
+.faq {
     padding: 2px;
     padding-left: 10px;
     border-radius: 5px;
-    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.3); /* Agrega una sombra */
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.3);
+    margin-top: 25px;
 }
 
 article, h1 {
@@ -126,10 +127,10 @@ article, h1 {
 
 article:hover, h1:hover {
     transform: scale(1.05); /* Aumenta el tamaño un 10% */
-    box-shadow: 0 0px 20px rgba(0, 0, 0, 0.5); /* Agrega una sombra */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3); /* Agrega una sombra */
 }
 
-#contenido h2, #contenido h3 {
+#contenido h2 {
     color: #2c3333; /* Tonalidad oscura */
     margin-top: 20px;
 }
@@ -139,66 +140,8 @@ article:hover, h1:hover {
     line-height: 1.5em;
 }
 
-#contacto {
-    margin: auto;
-    text-align: center;
-}
-
-form {
+li {
     margin-top: 10px;
-    margin-left: 50px;
-    text-align: left;
-    font-size: 1.7em;
-}
-
-form label {
-    font-weight: bold;
-}
-
-form input, form button {
-    border-radius: 5px;
-    margin-top: 5px;
-    margin-bottom: 15px;
-    padding: 5px;
-    width: 100%;
-    max-width: 400px;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.3); /* Agrega una sombra */
-}
-
-form input[type=text], form input[type=email] {
-    margin-left: 20px;
-}
-
-form input:hover, form button:hover {
-    transform: scale(1.1); /* Aumenta el tamaño un 10% */
-    box-shadow: 0 0px 20px rgba(0, 0, 0, 0.5); /* Agrega una sombra */
-}
-
-form input[type=checkbox] {
-    margin-left: 15px;
-    width: auto;
-    transform: scale(1.5);
-    transition: transform 0.3s ease;
-}
-
-form input[type=checkbox]:hover {
-    transform: scale(2);
-    cursor: pointer;
-}
-
-#botones {
-    text-align: center;
-    margin-right: 7%
-}
-
-form button {
-    width: 170px;
-    font-size: 1.2em;
-}
-
-form button:hover {
-    cursor: pointer;
 }
 
 #pie {
@@ -218,7 +161,6 @@ table * {
     background-color: #374045;
     color: #d3e0ea;
     font-size: 1.05em;
-    text-align: left;
 }
 
 /* Ajustar el padding si es necesario */
