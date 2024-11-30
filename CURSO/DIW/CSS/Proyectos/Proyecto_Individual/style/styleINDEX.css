@@ -12,7 +12,7 @@ a {
 }
 
 #cuerpo {
-    height: 1200px;
+    height: 1000px;
     padding: 120px 100px; /* Espaciado superior para evitar solapamiento con la cabecera fija */
     font-family: Arial, sans-serif;
 }
@@ -82,7 +82,8 @@ li {
     display: flex;
     flex-wrap: wrap; /* Permite que los elementos se ajusten si es necesario */
     justify-content: space-between; /* Espacia los artículos */
-    align-items: flex-start; /* Alinea los artículos en la parte superior */
+    align-items: start; /* Alinea los artículos en la parte superior */
+    gap: 5px;
 }
 
 #contenido h1 {
@@ -117,10 +118,11 @@ li {
 }
 
 #seleccionServidor {
-    width: 48%;
+    flex-basis: 48%;
     padding: 2px;
     padding-left: 15px;
     border-radius: 5px;
+    margin-bottom: 100px;
     box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.3);
 }
 
