@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inicio</title>
+
+    <link rel="stylesheet" href="style/styleCONTACT.css">
+</head>
+
+<body>
+    <div id="cabecera">
+        <div id="tituloLogo">
+            <h2><a href="index.html">ToolBox Web</a></h2>
+        </div>
+        <div id="menuCabecera">
+            <a href="apache.html"><span id="apacheTomcat"> Apache Tomcat </span></a>
+            <a href="wildfly.html"><span id="wildFly"> WildFly </span></a>
+            <a href="glassfish.html"><span id="glassFish"> GlassFish </span></a>
+        </div>
+    </div>
+
+    <div id="cuerpo">
+        <section id="contenido">
+            <h1>Contáctanos</h1>
+            <article id="contacto">
+                <p>
+                    Para cualquier <u><i><b>sugerencia, queja, dudas o demás</b></i></u>, por favor,
+                    realice el siguiente formulario. <u><i><b>Contestaremos entre 24 y 48 horas:</b></i></u> <br> <br>
+
+                </p>
+                <form action="volver.html" method="POST">
+                    <!-- Nombre -->
+                    <label for="nombre">Nombre: </label>
+                    <input type="text" id="nombre" name="nombre" placeholder="Ingrese su nombre" required><br><br>
+
+                    <!-- Correo Electrónico -->
+                    <label for="correo">Correo Electrónico: </label>
+                    <input type="email" id="correo" name="correo" placeholder="Ingrese su correo electrónico" required><br><br>
+
+                    <!-- Checkbox No soy un Robot -->
+                    <label>
+                        No soy un robot<input type="checkbox" id="robot" name="robot" required>
+                    </label><br><br>
+
+                    <!-- Botones -->
+                     <div id="botones">
+                        <button type="submit">Enviar</button>
+                        <button type="reset">Borrar</button>
+                     </div>
+                </form>
+            </article>
+
+        </section>
+    </div>
+
+    <footer id="pie">
+        <br>
+        <br>
+
+        <table id="contacto">
+            <tr>
+                <td>© 2024 ToolBox Web</td>
+                <td><img id="imgInsta" src="img/instagram.png" alt="instagram"> <a href="https://www.instagram.com/"
+                        target="_blank">Instagram: @toolboxweb</a></td>
+                <td><a href="index.html">Inicio</a></td>
+            </tr>
+
+            <tr>
+                <td><img id="imgMaps" src="img/maps.png" alt="maps"> <a
+                        href="https://www.google.es/maps/place/C.+F%C3%A1tima,+33,+41089+Dos+Hermanas,+Sevilla/@37.3334844,-5.9376783,17z/data=!4m5!3m4!1s0xd126fce9b222de1:0x4c860bb3704cd44!8m2!3d37.3334802!4d-5.9351034?entry=ttu&g_ep=EgoyMDI0MTEyNC4xIKXMDSoASAFQAw%3D%3D"
+                        target="_blank">Calle Fátima, Nº 33</a></td>
+                <td><img id="imgFace" src="img/facebook.png" alt="facebook"> <a href="https://www.facebook.com"
+                        target="_blank">Facebook: @toolboxweb</a></td>
+                <td><a href="about.html">Sobre Nosotros</a></td>
+            </tr>
+
+            <tr>
+                <td><img id="imgTel" src="img/tel.png" alt="tel"> Tel: +34 612 34 56 78</td>
+                <td><img id="imgTwitter" src="img/twitter.png" alt="twitter"> <a href="https://twitter.com"
+                        target="_blank">Twitter: @toolboxweb</a></td>
+                <td><a href="contact.html">Contáctanos</a></td>
+            </tr>
+
+            <tr>
+                <td><img id="imgMail" src="img/mail.png" alt="mail"> Correo: toolbox@web.com</td>
+                <td><img id="imgTelegram" src="img/telegram.png" alt="telegram"> <a href="https://telegram.com"
+                        target="_blank">Telegram: toolboxweb</a></td>
+                <td><a href="faq.html">FAQ</a></td>
+            </tr>
+        </table>
+    </footer>
+
+</body>
+
+</html>
