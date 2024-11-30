@@ -5,12 +5,15 @@
 
 body {
     margin: 0;
+    
 }
 
 #cuerpo {
-    height: 1200px;
-    padding: 120px 100px; /* Espaciado superior para evitar solapamiento con la cabecera fija */
-    font-family: Arial, sans-serif;
+    height: 300px;
+}
+
+#cabecera #tituloLogo h2, #cabecera #tituloLogo h2 a {
+    background-color: #374045;
 }
 
 #cabecera {
@@ -31,6 +34,30 @@ body {
     width: 230px;
     font-size: 1.3em;
     color: #e9e2d0; /* Beige claro para el texto del título */
+}
+
+#tituloLogo h2 a {
+    color: #d3e0ea;
+    background-color: #374045;
+}
+
+a {
+    text-decoration: none;
+    color: #e9e2d0; /* Beige claro para los enlaces */
+    background-color: #374045;
+}
+
+section#contenido a {
+    display: inline-block;
+    padding: 0;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+section#contenido a:hover {
+    transform: rotate(-3deg) scale(1.2);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.35); /* Agrega una sombra */
 }
 
 #menuCabecera {
@@ -57,6 +84,11 @@ body {
     color: #d3e0ea; /* Azul grisáceo pálido */
 }
 
+#cuerpo {
+    padding: 120px 10%; /* Espaciado superior para evitar solapamiento con la cabecera fija */
+    font-family: Arial, sans-serif;
+}
+
 li {
     list-style: none;
 }
@@ -66,59 +98,29 @@ li {
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    display: flex;
-    flex-wrap: wrap; /* Permite que los elementos se ajusten si es necesario */
-    justify-content: space-between; /* Espacia los artículos */
-    align-items: flex-start; /* Alinea los artículos en la parte superior */
 }
 
 #contenido h1 {
     font-size: 1.75em;
     color: #374045; /* Gris carbón */
     text-align: center;
-    margin-left: 27%;
+    margin-left: 38%;
     margin-bottom: 20px;
     padding: 5px;
-    width: 530px;
+    width: 250px;
     border-radius: 5px;
     box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.3);
 }
 
-#introduccion {
-    width: 100%; /* Ocupa toda la anchura de la columna */
-    margin-bottom: 10px; /* Espacio entre los elementos */
+#introduccion, #about {
     padding: 2px;
-    padding-left: 15px;
+    padding-left: 10px;
     border-radius: 5px;
     box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.3);
 }
 
-#imagenServidores {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-basis: 48%; /* Ajusta el tamaño de la imagen */
-    padding: 3px;
-    border-radius: 5px;
-    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.3);
-}
-
-#seleccionServidor {
-    width: 48%;
-    padding: 2px;
-    padding-left: 15px;
-    border-radius: 5px;
-    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.3);
-}
-
-#imgServidores {
-    width: 100%; /* Ajusta el tamaño de la imagen para que se mantenga en el contenedor */
-    max-width: 650px; /* Tamaño máximo de la imagen */
-    height: auto; /* Mantiene la proporción de la imagen */
-}
-
-article {
-    box-shadow: 0 0px 20px rgba(0, 0, 0, 0.3); /* Agrega una sombra */
+#about {
+    margin-top: 25px;
 }
 
 article, h1 {
@@ -127,7 +129,7 @@ article, h1 {
 
 article:hover, h1:hover {
     transform: scale(1.05); /* Aumenta el tamaño un 10% */
-    box-shadow: 0 0px 20px rgba(0, 0, 0, 0.5); /* Agrega una sombra */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3); /* Agrega una sombra */
 }
 
 #contenido h2, #contenido h3 {
@@ -138,38 +140,6 @@ article:hover, h1:hover {
 #contenido p {
     margin: 10px 0;
     line-height: 1.5em;
-}
-
-#contenedorServidores {
-    margin-right: 2%;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-}
-
-#contenedorServidores a {
-    background-color: #e9e2d0;
-    
-}
-
-#apache, #wildfly, #glassfish {
-    background-color: #e9e2d0;
-    margin: 10px;
-    border-radius: 10px;
-    padding: 2%;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.3);
-}
-
-#apache:hover, #wildfly:hover, #glassfish:hover {
-    transform: scale(1.1); /* Aumenta el tamaño un 10% */
-    box-shadow: 0 0px 20px rgba(0, 0, 0, 0.5); /* Agrega una sombra */
-}
-
-#imgApache, #imgWildFly, #imgGlassFish {
-    width: 150px;
-    height: 140px;
-    background-color: #e9e2d0;
 }
 
 #pie {
@@ -196,6 +166,7 @@ td {
     padding-bottom: 15px;
     padding-right: 100px;
 }
+
 
 #imgMaps, #imgTel, #imgMail, #imgInsta, #imgFace, #imgTwitter, #imgTelegram {
     height: 15px;

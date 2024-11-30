@@ -48,6 +48,7 @@ a {
 }
 
 section#contenido a {
+    display: inline-block;
     padding: 3px;
     border-radius: 5px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
@@ -56,7 +57,7 @@ section#contenido a {
 
 section#contenido a:hover {
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.35); /* Agrega una sombra */
-    transform: rotate(5deg); /* Rotación de 5 grados */
+    transform: rotate(-5deg) scale(1.2); /* Rotación de 5 grados */
 }
 
 
