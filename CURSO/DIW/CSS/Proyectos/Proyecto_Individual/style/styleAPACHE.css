@@ -12,6 +12,10 @@ body {
     height: 1200px;
 }
 
+#cabecera #tituloLogo h2, #cabecera #tituloLogo h2 a {
+    background-color: #374045;
+}
+
 #cabecera {
     text-align: center;
     width: 100%;

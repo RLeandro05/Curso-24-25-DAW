@@ -17,6 +17,14 @@ a {
     font-family: Arial, sans-serif;
 }
 
+#cabecera #tituloLogo h2, #cabecera #tituloLogo h2 a {
+    background-color: #374045;
+}
+
+#cabecera #tituloLogo h2 a {
+    color: #d3e0ea;
+}
+
 #cabecera {
     text-align: center;
     width: 100%;
