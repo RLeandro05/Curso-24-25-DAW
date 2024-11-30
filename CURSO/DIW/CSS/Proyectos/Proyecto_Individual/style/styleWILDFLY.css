@@ -37,8 +37,14 @@ body {
 }
 
 #tituloLogo h2 a {
-    color: #d3e0ea;
+    display: inline-block;
+    color: #d3e0ea; /* Azul grisáceo pálido */
     background-color: #374045;
+    transition: transform 0.3s ease;
+}
+
+#tituloLogo h2 a:hover {
+    transform: scale(1.1) rotate(-2deg);
 }
 
 a {

@@ -36,15 +36,22 @@ body {
     color: #e9e2d0; /* Beige claro para el texto del título */
 }
 
-#tituloLogo h2 a {
-    color: #d3e0ea;
-    background-color: #374045;
-}
-
 a {
     text-decoration: none;
     color: #e9e2d0; /* Beige claro para los enlaces */
     background-color: #374045;
+    transition: background-color 0.5s ease, color 0.5s ease, transform 0.3s ease;
+}
+
+#tituloLogo h2 a {
+    display: inline-block;
+    color: #d3e0ea; /* Azul grisáceo pálido */
+    background-color: #374045;
+    transition: transform 0.3s ease;
+}
+
+#tituloLogo h2 a:hover {
+    transform: scale(1.1) rotate(-2deg);
 }
 
 section#contenido a {
