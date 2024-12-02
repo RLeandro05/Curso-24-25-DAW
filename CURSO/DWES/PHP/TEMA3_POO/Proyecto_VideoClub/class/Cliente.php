@@ -1,4 +1,5 @@
 <?php
+require_once("Soporte.php");
 class Cliente
 { //Instanciar clase
     //Instanciar atributos
@@ -95,6 +96,23 @@ class Cliente
 
     //Método para listar el número de alquileres del cliente y su información
     public function listarAlquileres(): void {
-        
+        echo nl2br("El cliente tiene un total de '"+$this->numSoportesAlquilados+"' alquileres realizados\n");
+        echo nl2br("A continuación, se le presemta los soportes alquilados:\n");
+
+
+        foreach ($this->soportesAlquilados as $soporteAlquilado) {
+            echo nl2br("Soporte: \n");
+            echo nl2br($soporteAlquilado."\n");
+        }
+    }
+
+    //Método para mostrar el resumen de los soportes
+    public function muestraResumen() {
+        echo nl2br("Lista de alquileres de la persona: \n");
+
+        foreach ($this->soportesAlquilados as $soporteAlquilado) {
+            echo nl2br("Nombre: ".$soporteAlquilado->getTitulo()."\n");
+            echo nl2br("Cantidad de alquileres: ".$this->numSoportesAlquilados);
+        }
     }
 }
