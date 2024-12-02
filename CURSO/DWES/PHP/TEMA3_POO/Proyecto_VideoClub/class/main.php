@@ -2,6 +2,7 @@
     require_once("CintaVideo.php");
     require_once("Juego.php"); 
     require_once("Cliente.php");
+    require_once("VideoClub.php");
 
     
     //Crear objeto Soporte
@@ -29,8 +30,14 @@
 
     //Crear Objeto Cliente
     $objCliente = new Cliente("Leandro", 5);
-    
-    $objCliente->alquilar($objSoporte1);
 
-    $objCliente->muestraResumen();
+
+    //Crear objeto VideoClub
+    $objVideoClub = new VideoClub();
+
+    $objVideoClub->incluirProducto($objSoporte1);
+    $objVideoClub->incluirSocio($objCliente);
+
+    $objVideoClub->listarProductos();
+    $objVideoClub->listarSocios();
 ?>
