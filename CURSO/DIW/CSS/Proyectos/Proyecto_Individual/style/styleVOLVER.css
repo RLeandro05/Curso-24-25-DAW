@@ -23,7 +23,7 @@ a {
 }
 
 #cuerpo {
-    height: 320px;
+    height: 420px;
     padding: 150px 500px; /* Espaciado superior para evitar solapamiento con la cabecera fija */
     font-family: Arial, sans-serif;
 }
@@ -140,7 +140,6 @@ a {
     margin: auto;
     text-align: center;
     font-weight: bold;
-    padding: 5px;
 }
 
 #pie {
