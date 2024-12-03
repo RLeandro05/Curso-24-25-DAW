@@ -1,12 +1,28 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
-    <meta name="viewport" content="initial-scale=1.0">
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>Ejemplo de acceso a fichero XML (local) e imprimir en mapa</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script src="../c3-0.7.20/docs/js/d3-5.8.2.min.js"></script>
+    <script src="../c3-0.7.20/c3.min.js"></script>
+
+    <script type="text/javascript"
+        src="http://maps.google.com/maps/api/js?libraries=geometry&key=AIzaSyA6rLid89W1HGF2lCnQbfx62tr-57ugzdU">
+            // "http://maps.google.com/maps/api/js?key=key_value"
+        </script>
+
+    <link rel="stylesheet" href="../c3-0.7.20/c3.css">
 
     <style type="text/css">
+        #c3 {
+            width: 100%;
+            height: 800px;
+            border: 1px solid;
+        }
+
         #divMapa {
             width: 100%;
             height: 700px;
@@ -14,12 +30,12 @@
         }
     </style>
 
-    <script type="text/javascript" src="http://maps.google.com/maps/api/js?libraries=geometry&key=AIzaSyA6rLid89W1HGF2lCnQbfx62tr-57ugzdU">
-        // "http://maps.google.com/maps/api/js?key=key_value"
-    </script>
-
     <script type="text/javascript">
-        let contador = 1;
+
+        let datosAltitud = ['Altitud'];
+
+        let XML = "";
+
 
         window.onload = () => {
             document.querySelector("#id_fichero").addEventListener("change", Leer_Fichero);
@@ -44,6 +60,7 @@
 
             reader.onload = function (e) { //Cuando se cargue el fichero, convertir a xml y devolver resultado
                 let miXml = Convertir_a_XML(reader.result);
+                XML = miXml;
                 console.log("miXml: ", miXml);
                 tratarXML(miXml);
             }
@@ -51,17 +68,17 @@
         }
 
         function tratarXML(xml) { //Función para tratar el xml y crear los puntos
-            let puntos = xml.getElementsByTagName("trkpt"); //Guardar como array los puntos trkpt del gpx
+            let puntos = xml.getElementsByTagName("trkpt"); //Guardar como array los puntos ele del gpx
 
             alert("Número de puntos: " + puntos.length);
 
             //Instanciar la latitud y longitud
             let latitud, longitud;
 
-            CargarMapa(puntos);
+            cargarLinea(puntos);
         }
 
-        function CargarMapa(puntos) { //Función para cargar el mapa con los puntos del GPX
+        function cargarLinea(puntos) { //Función para cargar el gráfico con los puntos del GPX
             var divMapa = document.getElementById("divMapa");
             console.log(divMapa);
 
@@ -124,19 +141,19 @@
             //Calcular distancia en metros
             let distanciaM = google.maps.geometry.spherical.computeLength(rutaLineada);
             let distanciaKM = 0;
-            
+
             let informacion = document.querySelector("#informacion");
             informacion.innerHTML = "";
 
             if (distanciaM >= 1000) {
-                distanciaKM = distanciaM/1000;
+                distanciaKM = distanciaM / 1000;
                 informacion.innerHTML += "Distancia: " + distanciaKM.toFixed(2) + " km";
                 //console.log("Información: ", informacion);
-                
+
             } else {
                 informacion.innerHTML += "Distancia: " + distanciaM.toFixed(2) + "m";
             }
-            
+
             //Sacar fecha inicial y final
             let dateInic = new Date(puntos[0].getElementsByTagName("time")[0].innerHTML);
             let dateFin = new Date(puntos[puntos.length - 1].getElementsByTagName("time")[0].innerHTML);
@@ -154,25 +171,60 @@
             let velocidad = 0;
 
             if (distanciaM >= 1000) { //Si son kilómetros, directamente hacer el cálculo
-                velocidad = (distanciaKM/(diffSegundos/3600));
-                
+                velocidad = (distanciaKM / (diffSegundos / 3600));
+
             } else { //Si son metros, dividir entre 1000 pra hacer conversión a kilómetros y hacer el cálculo
-                distanciaM = distanciaM/1000;
-                velocidad = (distanciaM/(diffSegundos/3600));
+                distanciaM = distanciaM / 1000;
+                velocidad = (distanciaM / (diffSegundos / 3600));
             }
-            
+
 
             //Mostrar por pantalla el tiempo y la velocidad media
             informacion.innerHTML += " || Tiempo: " + tiempo + " || Velocidad: " + velocidad.toFixed(2) + " km/h";
-            
-            
 
+
+            for (let i = 0; i < puntos.length; i++) {
+                datosAltitud.push(parseInt(puntos[i].getElementsByTagName("ele")[0].innerHTML));
+            }
+
+            console.log(datosAltitud);
+
+            pintarGrafico("#c3", datosAltitud);
+
+        }
+
+        const pintarGrafico = (div, datosAltitud) => {
+            //Crear un chart 
+            let chart = c3.generate({
+                bindto: div,
+                data: {
+                    columns: [
+                        datosAltitud
+                    ],
+                    types: {
+                        Altitud: "area"
+                    }
+                }
+            });
+
+            alert("Gráfico pintado con éxito");
+
+            crearJSON(XML);
+        }
+
+        const crearJSON = (XML) => {
+            let desc = XML.getElementsByTagName("desc")[0].innerHTML;
+            console.log("DESC:", desc);
+
+            let objetoTRK = {
+                desc: desc
+            }
+            
         }
     </script>
 </head>
 
 <body>
-
     <p>
         <label for="id_fichero">Selecciona el fichero a leer:</label><br>
         <input id="id_fichero" type="file" />
@@ -183,12 +235,14 @@
     </div>
 
     <p>
+
     <div id="divMapa">
 
     </div>
-    </p>
 
+    <div id="c3">
 
+    </div>
 </body>
 
 </html>
