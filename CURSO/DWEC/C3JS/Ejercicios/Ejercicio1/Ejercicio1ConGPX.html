@@ -6,15 +6,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 
-    <script src="../c3-0.7.20/docs/js/d3-5.8.2.min.js"></script>
-    <script src="../c3-0.7.20/c3.min.js"></script>
+    <script src="../../c3-0.7.20/docs/js/d3-5.8.2.min.js"></script>
+    <script src="../../c3-0.7.20/c3.min.js"></script>
 
     <script type="text/javascript"
         src="http://maps.google.com/maps/api/js?libraries=geometry&key=AIzaSyA6rLid89W1HGF2lCnQbfx62tr-57ugzdU">
             // "http://maps.google.com/maps/api/js?key=key_value"
         </script>
 
-    <link rel="stylesheet" href="../c3-0.7.20/c3.css">
+    <link rel="stylesheet" href="../../c3-0.7.20/c3.css">
 
     <style type="text/css">
         #c3 {
@@ -61,7 +61,7 @@
             reader.onload = function (e) { //Cuando se cargue el fichero, convertir a xml y devolver resultado
                 let miXml = Convertir_a_XML(reader.result);
                 XML = miXml;
-                console.log("miXml: ", miXml);
+                //console.log("miXml: ", miXml);
                 tratarXML(miXml);
             }
             reader.readAsText(fichero); //Leer el fichero como texto
@@ -80,7 +80,7 @@
 
         function cargarLinea(puntos) { //Función para cargar el gráfico con los puntos del GPX
             var divMapa = document.getElementById("divMapa");
-            console.log(divMapa);
+            //console.log(divMapa);
 
             //Guardar el primer punto
             latitud = puntos[0].getAttributeNode("lat").nodeValue;
@@ -187,7 +187,7 @@
                 datosAltitud.push(parseInt(puntos[i].getElementsByTagName("ele")[0].innerHTML));
             }
 
-            console.log(datosAltitud);
+            //console.log(datosAltitud);
 
             pintarGrafico("#c3", datosAltitud);
 
@@ -212,14 +212,53 @@
             crearJSON(XML);
         }
 
+        //Método para crear el JSON
         const crearJSON = (XML) => {
+            //Sacar la descripción
             let desc = XML.getElementsByTagName("desc")[0].innerHTML;
-            console.log("DESC:", desc);
+            //console.log("DESC:", desc);
 
-            let objetoTRK = {
-                desc: desc
-            }
+            //Crear el array de los objetos
+            let datosJson = [];
+
+            //console.log(datosJson);
             
+            let listaAtributos = XML.getElementsByTagName("trkpt");
+
+            for (let i = 0; i < listaAtributos.length; i++) {
+                //Por cada iteración de los elementos trkpt, crear variables con sus atributos
+                let lat = listaAtributos[i].getAttributeNode("lat").nodeValue;
+                let lon = listaAtributos[i].getAttributeNode("lon").nodeValue;
+                let ele = parseInt(listaAtributos[i].getElementsByTagName("ele")[0].innerHTML);
+                let time = listaAtributos[i].getElementsByTagName("time")[0].innerHTML;
+
+                //Añadir los atributos a un objeto nuevo
+                let trkpt = {
+                    lat: lat,
+                    lon: lon,
+                    ele: ele,
+                    time: time
+                }
+
+                //Añadir el objeto al array de objetos de trkpt
+                datosJson.push(trkpt);
+            }
+
+            //Tras salir del for, crear el objeto final JSON, el cual tendrá la descripción y el array de objetos trkpt
+            let objetoJson = {
+                desc: desc,
+                datos: datosJson
+            }
+
+            /*
+            console.log("Desc: ", objetoJson.desc);
+            console.log("Datos: ", objetoJson.datos);
+            */
+
+            //Crear el objeto a json
+            let gpxToJSON = JSON.stringify(objetoJson);
+
+            console.log(gpxToJSON);
         }
     </script>
 </head>
