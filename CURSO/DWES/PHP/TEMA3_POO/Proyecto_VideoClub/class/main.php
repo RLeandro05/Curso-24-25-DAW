@@ -6,10 +6,10 @@
 
     
     //Crear objeto Soporte
-    $objSoporte1 = new Soporte("DVD Blue-Ray", 12 ,  8.90);
+    $objSoporte1 = new Juego("Mario Party Super Star", 12 ,  59.99, "Nintendo Switch", 1, 4);
 
     //Mostrar resumen del objeto
-    $objSoporte1->muestraResumen();
+    //$objSoporte1->muestraResumen();
     
 
     /*
@@ -30,6 +30,8 @@
 
     //Crear Objeto Cliente
     $objCliente = new Cliente("Leandro", 5);
+
+    $objCliente->alquilar($objSoporte1);
 
 
     //Crear objeto VideoClub

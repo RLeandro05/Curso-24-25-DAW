@@ -3,6 +3,7 @@
     require_once("CintaVideo.php");
     require_once("Juego.php");
     require_once("Soporte.php");
+    require_once("Resumible.php");
 
     class VideoClub { //Instanciar clase 
         //Instanciar atributos

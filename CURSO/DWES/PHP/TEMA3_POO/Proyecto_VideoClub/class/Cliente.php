@@ -52,10 +52,10 @@ class Cliente
         }
 
         //Asegurarse de si existe ya el soporte
-        if ($this->tieneAlquilado($soporte)) {
-            return "El soporte no está alquilado en tu lista de soportes";
+        if ($this->tieneAlquilado(soporte: $soporte)) {
+            return "El soporte no está alquilado en tu lista de soportes <br>";
         } else {
-            echo nl2br("El soporte no está en tu lista de soportes");
+            echo nl2br("El soporte no está en tu lista de soportes <br>");
         }
         $this->tieneAlquilado($soporte);
 
@@ -65,7 +65,9 @@ class Cliente
         //Incrementar el contador de soportes alquilados
         $this->numSoportesAlquilados++;
 
-        echo "Soporte alquilado con éxito.";
+        echo "Soporte alquilado con éxito. <br>";
+
+        return $this;
     }
 
     //Método para asegurar si ya existe el soporte seleccionado en la lista

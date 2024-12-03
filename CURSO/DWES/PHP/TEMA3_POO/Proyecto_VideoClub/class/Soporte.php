@@ -1,5 +1,7 @@
 <?php
-    class Soporte { //Instanciar clase
+    require_once "Resumible.php";
+
+    abstract class Soporte implements Resumible { //Instanciar clase
         //Instanciar atributos e id incremental
         public string $titulo;
         protected int $numero;
