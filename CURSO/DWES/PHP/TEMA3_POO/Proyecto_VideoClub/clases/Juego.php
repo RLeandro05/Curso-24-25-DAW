@@ -1,9 +1,7 @@
 <?php
-    namespace DWES\PHP\TEMA3_POO\Proyecto_VideoClub\class;
+    namespace clases;
 
-    require_once("Soporte.php"); //Incluir clase padre
-
-    use DWES\PHP\TEMA3_POO\Proyecto_VideoClub\class\Soporte;
+    use clases\Soporte;
 
     class Juego extends Soporte { //Instanciar clase
         //Instanciar atributos

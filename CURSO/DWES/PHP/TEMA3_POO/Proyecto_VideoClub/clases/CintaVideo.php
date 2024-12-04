@@ -1,9 +1,7 @@
 <?php
-    namespace DWES\PHP\TEMA3_POO\Proyecto_VideoClub\class;
-
-    require_once("Soporte.php"); //Llamar al padre
+    namespace clases;
     
-    use DWES\PHP\TEMA3_POO\Proyecto_VideoClub\Class\Soporte;
+    use clases\Soporte;
 
     class CintaVideo extends Soporte { //Instanciar clase y heredar del padre
         //Instanciar nuevos atributos del hijo

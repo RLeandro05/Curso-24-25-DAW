@@ -1,5 +1,5 @@
 <?php 
-    namespace DWES\PHP\TEMA3_POO\Proyecto_VideoClub\class;
+    namespace clases;
     interface Resumible {
         public function muestraResumen();
     }

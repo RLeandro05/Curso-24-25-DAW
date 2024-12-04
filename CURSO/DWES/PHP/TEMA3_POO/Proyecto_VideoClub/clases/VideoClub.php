@@ -1,17 +1,11 @@
 <?php
-    namespace DWES\PHP\TEMA3_POO\Proyecto_VideoClub\class;
-    
-    require_once("Cliente.php");
-    require_once("CintaVideo.php");
-    require_once("Juego.php");
-    require_once("Soporte.php");
-    require_once("Resumible.php");
+    namespace clases;
 
-    use DWES\PHP\TEMA3_POO\Proyecto_VideoClub\class\Cliente;
-    use DWES\PHP\TEMA3_POO\Proyecto_VideoClub\class\CintaVideo;
-    use DWES\PHP\TEMA3_POO\Proyecto_VideoClub\class\Juego;
-    use DWES\PHP\TEMA3_POO\Proyecto_VideoClub\class\Soporte;
-    use DWES\PHP\TEMA3_POO\Proyecto_VideoClub\class\Resumible;
+    use clases\Cliente;
+    use clases\CintaVideo;
+    use clases\Juego;
+    use clases\Soporte;
+    use clases\Resumible;
 
     class VideoClub { //Instanciar clase 
         //Instanciar atributos

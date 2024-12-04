@@ -1,10 +1,8 @@
 <?php
 
-namespace DWES\PHP\TEMA3_POO\Proyecto_VideoClub\class;
+namespace clases;
 
-require_once("Soporte.php");
-
-use DWES\PHP\TEMA3_POO\Proyecto_VideoClub\class\Soporte;
+use clases\Soporte;
 
 class Cliente
 { //Instanciar clase

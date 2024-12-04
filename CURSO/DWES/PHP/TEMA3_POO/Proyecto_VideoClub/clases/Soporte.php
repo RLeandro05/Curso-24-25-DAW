@@ -1,9 +1,7 @@
 <?php
-    namespace DWES\PHP\TEMA3_POO\Proyecto_VideoClub\class;
+    namespace clases;
 
-    require_once "Resumible.php";
-
-    use DWES\PHP\TEMA3_POO\Proyecto_VideoClub\class\Resumible;
+    use clases\Resumible;
 
     abstract class Soporte implements Resumible { //Instanciar clase
         //Instanciar atributos e id incremental

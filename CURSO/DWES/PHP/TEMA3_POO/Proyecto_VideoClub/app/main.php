@@ -1,13 +1,10 @@
 <?php
-    require_once("CintaVideo.php");
-    require_once("Juego.php"); 
-    require_once("Cliente.php");
-    require_once("VideoClub.php");
+    require __DIR__ . "/../autoload.php";
 
-    use DWES\PHP\TEMA3_POO\Proyecto_VideoClub\class\CintaVideo;
-    use DWES\PHP\TEMA3_POO\Proyecto_VideoClub\class\Juego;
-    use DWES\PHP\TEMA3_POO\Proyecto_VideoClub\class\Cliente;
-    use DWES\PHP\TEMA3_POO\Proyecto_VideoClub\class\VideoClub;
+    use clases\CintaVideo;
+    use clases\Juego;
+    use clases\Cliente;
+    use clases\VideoClub;
 
     
     //Crear objeto Soporte
