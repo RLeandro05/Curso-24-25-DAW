@@ -4,6 +4,11 @@
     require_once("Cliente.php");
     require_once("VideoClub.php");
 
+    use DWES\PHP\TEMA3_POO\Proyecto_VideoClub\class\CintaVideo;
+    use DWES\PHP\TEMA3_POO\Proyecto_VideoClub\class\Juego;
+    use DWES\PHP\TEMA3_POO\Proyecto_VideoClub\class\Cliente;
+    use DWES\PHP\TEMA3_POO\Proyecto_VideoClub\class\VideoClub;
+
     
     //Crear objeto Soporte
     $objSoporte1 = new Juego("Mario Party Super Star", 12 ,  59.99, "Nintendo Switch", 1, 4);

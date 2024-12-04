@@ -1,5 +1,11 @@
 <?php
+
+namespace DWES\PHP\TEMA3_POO\Proyecto_VideoClub\class;
+
 require_once("Soporte.php");
+
+use DWES\PHP\TEMA3_POO\Proyecto_VideoClub\class\Soporte;
+
 class Cliente
 { //Instanciar clase
     //Instanciar atributos
@@ -71,7 +77,8 @@ class Cliente
     }
 
     //Método para asegurar si ya existe el soporte seleccionado en la lista
-    public function tieneAlquilado(Soporte $soporte): bool{
+    public function tieneAlquilado(Soporte $soporte): bool
+    {
         if (in_array($soporte, $this->soportesAlquilados)) {
             return true;
         }
@@ -80,7 +87,8 @@ class Cliente
     }
 
     //Método para devolver soportes
-    public function devolver(int $numSoporte): bool {
+    public function devolver(int $numSoporte): bool
+    {
 
         //Recorrer la lista de soportes alquildos
         foreach ($this->soportesAlquilados as $key => $soporte) {
@@ -97,24 +105,26 @@ class Cliente
     }
 
     //Método para listar el número de alquileres del cliente y su información
-    public function listarAlquileres(): void {
-        echo nl2br("El cliente tiene un total de '"+$this->numSoportesAlquilados+"' alquileres realizados\n");
+    public function listarAlquileres(): void
+    {
+        echo nl2br("El cliente tiene un total de '" + $this->numSoportesAlquilados + "' alquileres realizados\n");
         echo nl2br("A continuación, se le presemta los soportes alquilados:\n");
 
 
         foreach ($this->soportesAlquilados as $soporteAlquilado) {
             echo nl2br("Soporte: \n");
-            echo nl2br($soporteAlquilado."\n");
+            echo nl2br($soporteAlquilado . "\n");
         }
     }
 
     //Método para mostrar el resumen de los soportes
-    public function muestraResumen() {
+    public function muestraResumen()
+    {
         echo nl2br("Lista de alquileres de la persona: \n");
 
         foreach ($this->soportesAlquilados as $soporteAlquilado) {
-            echo nl2br("Nombre: ".$soporteAlquilado->getTitulo()."\n");
-            echo nl2br("Cantidad de alquileres: ".$this->numSoportesAlquilados);
+            echo nl2br("Nombre: " . $soporteAlquilado->getTitulo() . "\n");
+            echo nl2br("Cantidad de alquileres: " . $this->numSoportesAlquilados);
         }
     }
 }
