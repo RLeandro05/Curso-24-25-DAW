@@ -3,6 +3,8 @@
 namespace clases;
 
 use clases\Soporte;
+use util\SoporteYaAlquiladoException;
+use util\CupoSuperadoException;
 
 class Cliente
 { //Instanciar clase
@@ -51,13 +53,12 @@ class Cliente
     {
         //Comprobar si el cliente ya tiene alquilados el número máximo de soportes
         if ($this->numSoportesAlquilados >= $this->maxAlquilerConcurrente) {
-            echo nl2br("Has alcanzado el límite de alquileres concurrentes.\n");
-            return;
+            throw new CupoSuperadoException("Has alcanzado el límite de alquileres concurrentes.");
         }
 
         //Asegurarse de si existe ya el soporte
         if ($this->tieneAlquilado(soporte: $soporte)) {
-            return "El soporte no está alquilado en tu lista de soportes <br>";
+            throw new SoporteYaAlquiladoException("El soporte ya estaba alquilado");
         } else {
             echo nl2br("El soporte no está en tu lista de soportes <br>");
         }
@@ -98,15 +99,14 @@ class Cliente
             }
         }
 
-        //Si no está, devuelve false
-        return false;
+        throw new CupoSuperadoException("No existe el soporte devuelto o no lo tenías en tu lista de alquileres");
     }
 
     //Método para listar el número de alquileres del cliente y su información
     public function listarAlquileres(): void
     {
         echo nl2br("El cliente tiene un total de '" + $this->numSoportesAlquilados + "' alquileres realizados\n");
-        echo nl2br("A continuación, se le presemta los soportes alquilados:\n");
+        echo nl2br("A continuación, se le presenta los soportes alquilados:\n");
 
 
         foreach ($this->soportesAlquilados as $soporteAlquilado) {
