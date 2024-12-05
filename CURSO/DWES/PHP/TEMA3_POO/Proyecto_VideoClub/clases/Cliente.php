@@ -5,6 +5,7 @@ namespace clases;
 use clases\Soporte;
 use util\SoporteYaAlquiladoException;
 use util\CupoSuperadoException;
+use util\SoporteNoEncontradoException;
 
 class Cliente
 { //Instanciar clase
@@ -72,6 +73,8 @@ class Cliente
 
         echo "Soporte alquilado con éxito. <br>";
 
+        $soporte->alquilado = true;
+
         return $this;
     }
 
@@ -99,7 +102,7 @@ class Cliente
             }
         }
 
-        throw new CupoSuperadoException("No existe el soporte devuelto o no lo tenías en tu lista de alquileres");
+        throw new SoporteNoEncontradoException("No existe el soporte devuelto o no lo tenías en tu lista de alquileres");
     }
 
     //Método para listar el número de alquileres del cliente y su información

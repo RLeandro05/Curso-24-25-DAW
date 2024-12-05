@@ -7,6 +7,8 @@
     use clases\Soporte;
     use clases\Resumible;
 
+    use util\SoporteYaAlquiladoException;
+
     class VideoClub { //Instanciar clase 
         //Instanciar atributos
         private string $nombre;
@@ -18,6 +20,8 @@
         private int $numCintasVideo;
         private array $juegos = []; //Array de juegos
         private int $numJuegos;
+        private int $numProductosAlquilados;
+        private int $numTotalAlquileres;
 
         //Creación de constructor
         public function __construct() {}
@@ -67,11 +71,21 @@
             return $this->numJuegos;
         }
 
+        //Método para obtener el valor del número de los productos alquilados
+        public function getNumProductosAlquilados() {
+            return $this->numProductosAlquilados;
+        }
+
+        //Método para obtener el valor del número del total de alquileres
+        public function getnumTotalAlquileres() {
+            return $this->numTotalAlquileres;
+        }
+
         //Método para incluir un nuevo producto al array
         public function incluirProducto(Soporte $soporte) {
             foreach ($this->productos as $producto) {
                 if ($producto === $soporte) {
-                    return "Ya existe dicho soporte";
+                    throw new SoporteYaAlquiladoException("Ya existe dicho soporte");
                 }
             }
 
@@ -84,7 +98,7 @@
         public function incluirCintaVideo(CintaVideo $cintaVideo) {
             foreach ($this->cintasVideo as $cintavideo) {
                 if ($cintavideo == $cintaVideo) {
-                    return "Ya existe dicha cinta de vídeo";
+                    throw new SoporteYaAlquiladoException("Ya existe dicha cinta de vídeo");
                 }
             }
 
@@ -97,7 +111,7 @@
         public function incluirJuego(Juego $juego) {
             foreach ($this->juegos as $Juego) {
                 if ($Juego == $juego) {
-                    return "Ya existe dicho juego";
+                    throw new SoporteYaAlquiladoException("Ya existe dicho juego");
                 }
             }
 
@@ -138,6 +152,11 @@
                 echo nl2br("Socio: ".$socio->getNombre()."\n");
                 echo nl2br("Número: ".$socio->getNumero()."\n-------------------------\n");
             }
+        }
+
+        
+        public function alquilarSocioProductos(int $numSocio, array $numerosProductos) {
+            
         }
     }
 ?>

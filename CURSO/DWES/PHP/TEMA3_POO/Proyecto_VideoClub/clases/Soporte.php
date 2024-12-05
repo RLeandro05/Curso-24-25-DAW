@@ -9,12 +9,14 @@
         protected int $numero;
         private float $precio;
         private const IVA = 0.21;
+        public bool $alquilado;
 
         //Constructor para crear objetos Soporte
         public function __construct(string $titulo, int $numero , float $precio) {
             $this->titulo = $titulo;
             $this->numero = $numero;
             $this->precio = $precio;
+            $this->alquilado = false;
         }
 
         //Función para devolver el valor del título
