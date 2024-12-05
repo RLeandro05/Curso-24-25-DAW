@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script src="../../c3-0.7.20/docs/js/d3-5.8.2.min.js"></script>
+    <script src="../../c3-0.7.20/c3.min.js"></script>
+
+    <link rel="stylesheet" href="../../c3-0.7.20/c3.css">
+
+    <style type="text/css">
+        #salGrafico {
+            width: 100%;
+            height: 680px;
+            border: 1px solid;
+        }
+    </style>
+
+    <script type="text/javascript">
+        window.onload = () => {
+            document.querySelector("#archivoXML").addEventListener("change", Leer_Fichero);
+        }
+
+        let xml = null;
+
+        //Función para leer el fichero xml
+        function Leer_Fichero(evento) {
+            let e = evento || window.event; //Guardar en una variabel el evento accionado
+            let fichero = e.target.files[0]; //Guardar el fichero en una variable
+
+            function Convertir_a_XML(texto) { //Función para convertir a xml
+                if (window.ActiveXObject) {
+                    xml = new ActiveXObject("Microsoft.XMLDOM");
+                    xml.loadXML(texto);
+                } else {
+                    xml = new DOMParser().parseFromString(texto, "text/xml");
+                    return xml;
+                }
+            }
+
+            let reader = new FileReader(); //Instanciar un reader
+
+            reader.onload = function (e) { //Cuando se cargue el fichero, convertir a xml y devolver resultado
+                let miXml = Convertir_a_XML(reader.result);
+                xml = miXml;
+                //console.log("miXml: ", miXml);
+                tratarXML(miXml);
+            }
+            reader.readAsText(fichero); //Leer el fichero como texto
+        }
+
+        //Función para tratar el xml y crear los puntos
+        function tratarXML(xml) {
+            //Sacar las filas del xml
+            let rows = xml.getElementsByTagName("row");
+
+            //Sacar la primera fila para sacar el número de atributos y cargar la lista con los mismos
+            let row = xml.getElementsByTagName("row")[0];
+            cargarSelect(row);
+
+            /*
+            for (let i = 0; i < rows.length; i++) {
+                console.log(rows[i].getElementsByTagName("trimestre")[0].tagName);
+                
+            }
+            */
+
+            let div = "#salGrafico";
+        }
+
+        //Fnción para cargar la lista de atributos del xml
+        const cargarSelect = (row) => {
+            let numOptions = (row.childNodes.length-1)/2;
+
+            //console.log(numOptions);
+
+            let select = document.querySelector("#listaAtributos");
+            select.size = numOptions; //Insertar nuevo size del select
+
+            for (let i = 0; i < numOptions-1; i++) {
+                /*let option = document.createElement("option");
+                option.value = row[i].tagName;
+                option.innerHTML = row[i].tagName;
+
+                select.appendChild(option);*/
+
+                console.log(row[0].childNodes.length);
+                
+            }
+        }
+
+        const pintarGrafico = (div, datosAltitud) => {
+            //Crear un chart 
+            let chart = c3.generate({
+                bindto: div,
+                data: {
+                    columns: [
+                        datosAltitud
+                    ],
+                    types: {
+                        Altitud: "area"
+                    }
+                }
+            });
+
+            alert("Gráfico pintado con éxito");
+
+            crearJSON(XML);
+        }
+    </script>
+</head>
+<body>
+    <h1 style="text-align: center; color: #800000;">Datos Estadísticos de la EPA</h1>
+    <hr size="1px" color="#800000">
+    <p>
+        <input type="file" name="archivoXML" id="archivoXML">
+
+        <button type="button" id="btDescargarJSON">Descargar JSON</button>
+    </p>
+    <p>
+        <select name="listaAtributos" id="listaAtributos">
+            
+        </select>
+    </p>
+
+    <p>
+        <div id="salGrafico">
+
+        </div>
+    </p>
+</body>
+</html>

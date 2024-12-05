@@ -259,6 +259,31 @@
             let gpxToJSON = JSON.stringify(objetoJson);
 
             console.log(gpxToJSON);
+
+            let btDescargar = document.createElement("button");
+            btDescargar.innerHTML = "Descargar";
+
+            document.querySelector("#salBoton").appendChild(btDescargar);
+
+            btDescargar.onclick = () => {
+                //Descargar el json
+                descargarDatos(gpxToJSON);
+            }
+        }
+
+        //Método para descargar el json creado
+        const descargarDatos = (archivoJSON) => {
+            let link = document.createElement("a");
+            const nombreFichero = prompt("Introduce el nombre del fichero (no pongas extensión)", "Datos_EPA");
+
+            link.download = nombreFichero + ".json";
+
+            let blob = new Blob([archivoJSON], {type: "application/json"});
+
+            link.href = URL.createObjectURL(blob);
+            link.click();
+
+            URL.revokeObjectURL(link.href);
         }
     </script>
 </head>
@@ -267,6 +292,12 @@
     <p>
         <label for="id_fichero">Selecciona el fichero a leer:</label><br>
         <input id="id_fichero" type="file" />
+    </p>
+
+    <p>
+        <div id="salBoton">
+
+        </div>
     </p>
 
     <div id="informacion">
