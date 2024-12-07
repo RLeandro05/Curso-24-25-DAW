@@ -146,8 +146,14 @@
             for (let i = 0; i < listaValoresSelect.length; i++) {
                 datosGrafico.push(listaValoresSelect[i].innerHTML);
             }
-            for (let i = 0; i < datosGrafico.length; i++) {
+            /*for (let i = 0; i < datosGrafico.length; i++) {
                 console.log(datosGrafico[i]);
+            }*/
+
+            let trimestres = xml.getElementsByTagName("trimestre");
+            let ejeX = [];
+            for (let i = 0; i < trimestres.length; i++) {
+                ejeX.push(trimestres[i].innerHTML);
             }
 
             let div = "#salGrafico";
@@ -160,6 +166,16 @@
                     columns: [
                         datosGrafico
                     ],
+                },
+                axis: {
+                    //Configurar eje x
+                    x: {
+                        type: "category",
+                        categories: ejeX, //Añadir en el eje x la lista de los valores de los trimestres
+                        tick: {
+                            rotate: 30 //Rotar 30º para dejar algo de estética
+                        }
+                    }
                 }
             });
 
