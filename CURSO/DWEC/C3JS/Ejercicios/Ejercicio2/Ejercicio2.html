@@ -23,9 +23,11 @@
         window.onload = () => {
             document.querySelector("#archivoXML").addEventListener("change", Leer_Fichero);
             document.querySelector("#listaAtributos").addEventListener("change", pintarGrafico);
+            document.querySelector("#btDescargarJSON").addEventListener("click", descargarJSON);
         }
 
         let xml = null;
+        let archivoJSON = null;
 
         //Función para leer el fichero xml
         function Leer_Fichero(evento) {
@@ -103,7 +105,7 @@
             let select = document.querySelector("#listaAtributos");
 
             //Asginar el size del select con el número de hijos de la fila
-            select.size = numOptions-1;
+            select.size = numOptions - 1;
 
             //Limpiar opciones existentes (si es necesario)
             select.innerHTML = "";
@@ -179,7 +181,71 @@
                 }
             });
 
-            alert("Gráfico pintado con éxito");
+            //Convertir a JSON
+            let desc = valorSelect;
+
+            //Eliminar primer valor el cual contiene el desc que sobra
+            datosGrafico.shift();
+
+            //Crear lista de objetos JSON
+            let listaObjetosJSON = [];
+
+            for (let i = 0; i < datosGrafico.length; i++) {
+                //Al tener la lista de trimestres más pequeña, mientras la i no supere a la longitud de trimestres, crear objetos
+                if (i < trimestres.length) {
+                    let trimestre = trimestres[i];
+
+                    let dato = datosGrafico[i];
+
+                    let objetoJSON = {
+                        trimestre: trimestre.innerHTML,
+                        dato: dato
+                    }
+
+                    //Añadir el objeto a la lista
+                    listaObjetosJSON.push(objetoJSON);
+                }
+            }
+
+            //Crear el gráfico al estilo JSON
+            let graficoToJSON = {
+                desc: desc,
+                datos: listaObjetosJSON
+            }
+
+            archivoJSON = JSON.stringify(graficoToJSON);
+
+            console.log(archivoJSON);
+        }
+
+        //Función para descargar el archivo del gráfico en JSON, si lo desea el usuario
+        const descargarJSON = () => {
+            if (confirm("¿Estás seguro de que quiere descargar el gráfico en formato JSON?")) {
+                //Crear un enlace para poder descargarlo
+                let link = document.createElement("a");
+
+                //Introducir un nombre del archivo
+                const nombreFichero = prompt("Introduce el nombre del fichero (no pongas extensión)", "Datos_EPA");
+
+                //Descargar el archivo con extensión .json
+                link.download = nombreFichero + ".json";
+
+                //Crear un nuevo blob de tipo json
+                let blob = new Blob([archivoJSON], { type: "application/json" });
+
+                //Llevar al blob creado como URL para ser descargado
+                link.href = URL.createObjectURL(blob);
+                //Hacer un click virtual para descargar
+                link.click();
+
+                URL.revokeObjectURL(link.href);
+
+                //Mostrar mensaje
+                alert("El gráfico ha sido descargado en formato JSON satisfactoriamente.")
+            } else {
+                //Mostrar mensaje al denegar
+                alert("No se descargó el gráfico en formato JSON.")
+            }
         }
     </script>
 </head>
