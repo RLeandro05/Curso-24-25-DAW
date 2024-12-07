@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -70,26 +71,60 @@
             let div = "#salGrafico";
         }
 
-        //Fnción para cargar la lista de atributos del xml
+        // Función para cargar la lista de atributos del XML
         const cargarSelect = (row) => {
-            let numOptions = (row.childNodes.length-1)/2;
-
-            //console.log(numOptions);
+            /*
+            //Guardar en una constante los hijos de la fila
+            const hijos = Array.from(row.children);
 
             let select = document.querySelector("#listaAtributos");
-            select.size = numOptions; //Insertar nuevo size del select
 
-            for (let i = 0; i < numOptions-1; i++) {
-                /*let option = document.createElement("option");
-                option.value = row[i].tagName;
-                option.innerHTML = row[i].tagName;
+            //Asginar el size del select con el número de hijos de la fila
+            select.size = hijos.length;
 
-                select.appendChild(option);*/
+            //Limpiar opciones existentes
+            select.innerHTML = "";
 
-                console.log(row[0].childNodes.length);
-                
+            //Por cada iteración, crear un option y añadir el el nombre del elemento hijo
+            hijos.forEach((hijo) => {
+                let option = document.createElement("option");
+                option.value = hijo.tagName;
+                option.innerHTML = hijo.tagName;
+
+                select.appendChild(option);
+            });
+            */
+
+            //Guardar en una constante los hijos de la fila
+            const children = row.children; //Trae un HTMLCollection, que no necesariamente es un array, aunque puede usarse como tal
+            const numOptions = children.length;
+
+            let select = document.querySelector("#listaAtributos");
+
+            //Asginar el size del select con el número de hijos de la fila
+            select.size = numOptions;
+
+            //Limpiar opciones existentes (si es necesario)
+            select.innerHTML = "";
+
+            //Por cada iteración, crear un option y añadir el el nombre del elemento hijo
+            for (let i = 0; i < numOptions; i++) {
+                let child = children[i];
+                let option = document.createElement("option");
+                option.value = child.tagName;
+                option.innerHTML = child.tagName;
+
+                select.appendChild(option);
             }
-        }
+
+            /*
+            for (let i = 0; i < numOptions; i++) {
+                console.log(children[i].tagName);
+            }
+            */
+
+        };
+
 
         const pintarGrafico = (div, datosAltitud) => {
             //Crear un chart 
@@ -111,6 +146,7 @@
         }
     </script>
 </head>
+
 <body>
     <h1 style="text-align: center; color: #800000;">Datos Estadísticos de la EPA</h1>
     <hr size="1px" color="#800000">
@@ -121,14 +157,15 @@
     </p>
     <p>
         <select name="listaAtributos" id="listaAtributos">
-            
+
         </select>
     </p>
 
     <p>
-        <div id="salGrafico">
+    <div id="salGrafico">
 
-        </div>
+    </div>
     </p>
 </body>
+
 </html>
