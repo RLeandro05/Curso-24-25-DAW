@@ -212,37 +212,52 @@
             let listaObjRows = [];
             let datosRow;
 
+            //Iterar cada row para crear objetos que contengan los atributos de row
             listaRows.forEach(row => {
                 //console.log("row :>", row);
 
                 datosRow = [];
                 
+                //Iterar cada elemento dentro de row
                 Array.from(row.children).forEach(child => {
                     //console.log("child :>", child);
 
+                    //En caso de ser un trimestre, ponerlo como cadena
                     if (child.tagName == "trimestre") {
-                        datosRow.push(child.innerHTML);
-                    } else {
-                        datosRow.push(parseFloat(child.innerHTML));
+                        //Crear objTri para añadir el trimestre
+                        let objTri = {
+                            trimestre: child.innerHTML
+                        }
+
+                        datosRow.push(objTri);
+                    } else { //En caso de ser otro elemento, se parsea a Float al ser un valor decimal
+                        //Crear objValor para añadir el valor
+                        let objValor = {
+                            [child.tagName]: parseFloat(child.innerHTML)
+                        }
+
+                        datosRow.push(objValor);
                     }
                 })
 
+                //Cada row iterado, meter la lista de sus elementos con sus valores en un nuevo objeto Row
                 let objetoRow = {
                     valores: datosRow
                 }
 
+                //Por cada objeto Row creado, meterlo en la lista de objetos row creados
                 listaObjRows.push(objetoRow);
             });
 
+            //Crear el objeto final que se parseará a JSON
             let objJSON = {
                 desc: desc,
                 root: listaObjRows
             }
             
-
-            console.log(JSON.stringify(objJSON));
+            //console.log(JSON.stringify(objJSON));
             
-            
+            archivoJSON = JSON.stringify(objJSON);
         }
 
         //Función para descargar el archivo del gráfico en JSON, si lo desea el usuario
