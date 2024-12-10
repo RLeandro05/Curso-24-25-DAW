@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script src="../../c3-0.7.20/docs/js/d3-5.8.2.min.js"></script>
+    <script src="../../c3-0.7.20/c3.min.js"></script>
+
+    <link rel="stylesheet" href="../../c3-0.7.20/c3.css">
+
+    <style type="text/css">
+        #salGrafico {
+            width: 100%;
+            height: 400px;
+            border: 1px solid;
+        }
+    </style>
+
+    <script type="text/javascript">
+        window.onload = () => {
+            document.querySelector("#archivoXML").addEventListener("change", Leer_Fichero);
+            document.querySelector("#listaAtributos").addEventListener("change", pintarGrafico);
+            document.querySelector("#btDescargarJSON").addEventListener("click", descargarJSON);
+        }
+
+        let xml = null;
+        let archivoJSON = null;
+
+        //Función para leer el fichero xml
+        function Leer_Fichero(evento) {
+            let e = evento || window.event; //Guardar en una variabel el evento accionado
+            let fichero = e.target.files[0]; //Guardar el fichero en una variable
+
+            function Convertir_a_XML(texto) { //Función para convertir a xml
+                if (window.ActiveXObject) {
+                    xml = new ActiveXObject("Microsoft.XMLDOM");
+                    xml.loadXML(texto);
+                } else {
+                    xml = new DOMParser().parseFromString(texto, "text/xml");
+                    return xml;
+                }
+            }
+
+            let reader = new FileReader(); //Instanciar un reader
+
+            reader.onload = function (e) { //Cuando se cargue el fichero, convertir a xml y devolver resultado
+                let miXml = Convertir_a_XML(reader.result);
+                xml = miXml;
+                //console.log("miXml: ", miXml);
+                tratarXML(miXml);
+            }
+            reader.readAsText(fichero); //Leer el fichero como texto
+        }
+
+        //Función para tratar el xml y crear los puntos
+        function tratarXML(xml) {
+            //Sacar las filas del xml
+            let rows = xml.getElementsByTagName("row");
+
+            //Sacar la primera fila para sacar el número de atributos y cargar la lista con los mismos
+            let row = xml.getElementsByTagName("row")[0];
+            cargarSelect(row);
+
+            /*
+            for (let i = 0; i < rows.length; i++) {
+                console.log(rows[i].getElementsByTagName("trimestre")[0].tagName);
+                
+            }
+            */
+
+            let div = "#salGrafico";
+        }
+
+        // Función para cargar la lista de atributos del XML
+        const cargarSelect = (row) => {
+            /*
+            //Guardar en una constante los hijos de la fila
+            const hijos = Array.from(row.children);
+
+            let select = document.querySelector("#listaAtributos");
+
+            //Asginar el size del select con el número de hijos de la fila
+            select.size = hijos.length;
+
+            //Limpiar opciones existentes
+            select.innerHTML = "";
+
+            //Por cada iteración, crear un option y añadir el el nombre del elemento hijo
+            hijos.forEach((hijo) => {
+                let option = document.createElement("option");
+                option.value = hijo.tagName;
+                option.innerHTML = hijo.tagName;
+
+                select.appendChild(option);
+            });
+            */
+
+            //Guardar en una constante los hijos de la fila
+            const children = row.children; //Trae un HTMLCollection, que no necesariamente es un array, aunque puede usarse como tal
+            const numOptions = children.length;
+
+            let select = document.querySelector("#listaAtributos");
+
+            //Asginar el size del select con el número de hijos de la fila
+            select.size = numOptions - 1;
+
+            //Limpiar opciones existentes (si es necesario)
+            select.innerHTML = "";
+
+            //Por cada iteración, crear un option y añadir el el nombre del elemento hijo
+            for (let i = 1; i < numOptions; i++) {
+                let child = children[i];
+                let option = document.createElement("option");
+                option.value = child.tagName;
+                option.innerHTML = child.tagName;
+
+                select.appendChild(option);
+            }
+
+            /*
+            for (let i = 0; i < numOptions; i++) {
+                console.log(children[i].tagName);
+            }
+            */
+
+        };
+
+
+        const pintarGrafico = () => {
+            //console.log("Llega a pintarGrafico");
+
+            let valorSelect = document.querySelector("#listaAtributos").value;
+            //console.log("valorSelect :>", valorSelect);
+
+            //Guardar en una lista las etiquetas con el valor del Select seleccionado
+            let listaValoresSelect = xml.getElementsByTagName(valorSelect);
+            /*for (let i = 0; i < listaValoresSelect.length; i++) {
+                console.log(listaValoresSelect[i].innerHTML);
+            }*/
+
+            //Crear la lista de los datos del gráfico y añadir como descripción el que se seleccionó de la lista de atributos
+            let datosGrafico = [valorSelect];
+
+            //Por cada iteración, añadir a la lista de los datos el valor de cada elemento
+            for (let i = 0; i < listaValoresSelect.length; i++) {
+                datosGrafico.push(listaValoresSelect[i].innerHTML);
+            }
+            /*for (let i = 0; i < datosGrafico.length; i++) {
+                console.log(datosGrafico[i]);
+            }*/
+
+            let trimestres = xml.getElementsByTagName("trimestre");
+            let ejeX = [];
+            for (let i = 0; i < trimestres.length; i++) {
+                ejeX.push(trimestres[i].innerHTML);
+            }
+
+            ejeX.reverse();
+
+            let div = "#salGrafico";
+            document.querySelector(div).innerHTML = "";
+
+            //Crear el gráfico
+            let chart = c3.generate({
+                bindto: div,
+                data: {
+                    columns: [
+                        datosGrafico
+                    ],
+                },
+                axis: {
+                    //Configurar eje x
+                    x: {
+                        type: "category",
+                        categories: ejeX, //Añadir en el eje x la lista de los valores de los trimestres
+                        tick: {
+                            rotate: 30 //Rotar 30º para dejar algo de estética
+                        }
+                    }
+                }
+            });
+
+            //Convertir a JSON
+            let desc = valorSelect;
+
+            //Eliminar primer valor el cual contiene el desc que sobra
+            datosGrafico.shift();
+
+            //Crear lista de objetos JSON
+            let listaObjetosJSON = [];
+
+            for (let i = 0; i < datosGrafico.length; i++) {
+                //Al tener la lista de trimestres más pequeña, mientras la i no supere a la longitud de trimestres, crear objetos
+                if (i < trimestres.length) {
+                    let trimestre = trimestres[i];
+
+                    let dato = datosGrafico[i];
+
+                    let objetoJSON = {
+                        trimestre: trimestre.innerHTML,
+                        dato: dato
+                    }
+
+                    //Añadir el objeto a la lista
+                    listaObjetosJSON.push(objetoJSON);
+                }
+            }
+
+            //Crear el gráfico al estilo JSON
+            let graficoToJSON = {
+                desc: desc,
+                datos: listaObjetosJSON
+            }
+
+            archivoJSON = JSON.stringify(graficoToJSON);
+
+            console.log(archivoJSON);
+        }
+
+        //Función para descargar el archivo del gráfico en JSON, si lo desea el usuario
+        const descargarJSON = () => {
+            if (confirm("¿Estás seguro de que quiere descargar el gráfico en formato JSON?")) {
+                //Crear un enlace para poder descargarlo
+                let link = document.createElement("a");
+
+                //Introducir un nombre del archivo
+                const nombreFichero = prompt("Introduce el nombre del fichero (no pongas extensión)", "Datos_EPA");
+
+                //Descargar el archivo con extensión .json
+                link.download = nombreFichero + ".json";
+
+                //Crear un nuevo blob de tipo json
+                let blob = new Blob([archivoJSON], { type: "application/json" });
+
+                //Llevar al blob creado como URL para ser descargado
+                link.href = URL.createObjectURL(blob);
+                //Hacer un click virtual para descargar
+                link.click();
+
+                URL.revokeObjectURL(link.href);
+
+                //Mostrar mensaje
+                alert("El gráfico ha sido descargado en formato JSON satisfactoriamente.")
+            } else {
+                //Mostrar mensaje al denegar
+                alert("No se descargó el gráfico en formato JSON.")
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <h1 style="text-align: center; color: #800000;">Datos Estadísticos de la EPA</h1>
+    <hr size="1px" color="#800000">
+    <p>
+        <input type="file" name="archivoXML" id="archivoXML">
+
+        <button type="button" id="btDescargarJSON">Descargar JSON</button>
+    </p>
+    <p>
+        <select name="listaAtributos" id="listaAtributos">
+
+        </select>
+    </p>
+
+    <p>
+    <div id="salGrafico">
+
+    </div>
+    </p>
+</body>
+
+</html>
