@@ -141,20 +141,22 @@
 
             //Crear el atributo de columnas para crear más fácilmente el gráfico
             let columnas = [];
-            
+
             //Por cada iteración del array de las opciones seleccionadas, crear un objeto
             valoresSelect.forEach(valorSelect => {
                 //console.log("valorSelect :>", valorSelect.value);
-                
+
                 let objetoValor = [valorSelect.value];
 
                 //Crear una lista que contenga los valores de la opción seleccionada en ese momento
-                let listaValorSelect = xml.getElementsByTagName(valorSelect.value);
+                let listaValorSelect = Array.from(xml.getElementsByTagName(valorSelect.value));
+
+                listaValorSelect.reverse();
 
                 //Iterar por cada valor del array de valores, añadir dicho valor en el objeto
                 for (let i = 0; i < listaValorSelect.length; i++) {
                     //console.log("Dato valorSelect :>", listaValorSelect[i].innerHTML);
-                    
+
                     objetoValor.push(listaValorSelect[i].innerHTML);
                 }
 
@@ -183,7 +185,8 @@
             let chart = c3.generate({
                 bindto: div,
                 data: {
-                    columns: columnas
+                    columns: columnas,
+                    type: "bar"
                 },
                 axis: {
                     //Configurar eje x
@@ -198,25 +201,51 @@
             });
 
             //Convertir a JSON
-            let desc = valorSelect;
-
-            //Eliminar primer valor el cual contiene el desc que sobra
-            datosGrafico.shift();
+            let desc = "Datos_EPA";
 
             //Crear lista de objetos JSON
             let listaObjetosJSON = [];
+            let listaObjetosJSON2 = [];
 
-            for (let i = 0; i < datosGrafico.length; i++) {
+            for (let i = 0; i < columnas.length; i++) {
                 //Al tener la lista de trimestres más pequeña, mientras la i no supere a la longitud de trimestres, crear objetos
-                if (i < trimestres.length) {
-                    let trimestre = trimestres[i];
+                if (i < ejeX.length) {
+                    let trimestre = ejeX[i];
 
-                    let dato = datosGrafico[i];
+                    let datoColumna = Array.from(columnas[i]);
+
+                    datoColumna.shift();
+
+                    //console.log(datoColumna);
+                    
+                    for (let j = 0; j < datoColumna.length; j++) {
+                        if (j < ejeX.length) {
+                            let trimestre = ejeX[j];
+                            //console.log("Trimestre :>", trimestre);
+                            //console.log(datoColumna[j]);
+
+                            let valorDatoColumna = datoColumna[j];
+                            
+                            let objetoJSON2 = {
+                                trimestre: trimestre,
+                                valor: valorDatoColumna
+                            }
+
+                            //console.log(objetoJSON2);
+
+                            listaObjetosJSON2.push(objetoJSON2);
+                            
+                        }
+
+
+                    }
 
                     let objetoJSON = {
-                        trimestre: trimestre.innerHTML,
-                        dato: dato
+                        parametro: columnas[i][0],
+                        dato: listaObjetosJSON2
                     }
+
+                    listaObjetosJSON2 = [];
 
                     //Añadir el objeto a la lista
                     listaObjetosJSON.push(objetoJSON);
