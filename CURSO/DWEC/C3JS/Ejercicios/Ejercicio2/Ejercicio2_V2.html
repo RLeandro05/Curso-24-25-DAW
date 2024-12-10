@@ -228,21 +228,18 @@
                             
                             let objetoJSON2 = {
                                 trimestre: trimestre,
-                                valor: valorDatoColumna
+                                valor: parseFloat(valorDatoColumna)
                             }
 
                             //console.log(objetoJSON2);
 
                             listaObjetosJSON2.push(objetoJSON2);
-                            
                         }
-
-
                     }
 
                     let objetoJSON = {
                         parametro: columnas[i][0],
-                        dato: listaObjetosJSON2
+                        valores: listaObjetosJSON2
                     }
 
                     listaObjetosJSON2 = [];
