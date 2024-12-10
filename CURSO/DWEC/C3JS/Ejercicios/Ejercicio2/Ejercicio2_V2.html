@@ -132,25 +132,41 @@
         const pintarGrafico = () => {
             //console.log("Llega a pintarGrafico");
 
-            let valorSelect = document.querySelector("#listaAtributos").value;
-            //console.log("valorSelect :>", valorSelect);
+            //Sacar del select un array de las opciones seleccionadas
+            let valoresSelect = Array.from(document.querySelector("#listaAtributos").selectedOptions);
 
-            //Guardar en una lista las etiquetas con el valor del Select seleccionado
-            let listaValoresSelect = xml.getElementsByTagName(valorSelect);
-            /*for (let i = 0; i < listaValoresSelect.length; i++) {
-                console.log(listaValoresSelect[i].innerHTML);
+            /*for (let i = 0; i < valoresSelect.length; i++) {
+                console.log("valorSelect :>", valoresSelect[i].value);
             }*/
 
-            //Crear la lista de los datos del gráfico y añadir como descripción el que se seleccionó de la lista de atributos
-            let datosGrafico = [valorSelect];
+            //Crear el atributo de columnas para crear más fácilmente el gráfico
+            let columnas = [];
+            
+            //Por cada iteración del array de las opciones seleccionadas, crear un objeto
+            valoresSelect.forEach(valorSelect => {
+                //console.log("valorSelect :>", valorSelect.value);
+                
+                let objetoValor = [valorSelect.value];
 
-            //Por cada iteración, añadir a la lista de los datos el valor de cada elemento
-            for (let i = 0; i < listaValoresSelect.length; i++) {
-                datosGrafico.push(listaValoresSelect[i].innerHTML);
+                //Crear una lista que contenga los valores de la opción seleccionada en ese momento
+                let listaValorSelect = xml.getElementsByTagName(valorSelect.value);
+
+                //Iterar por cada valor del array de valores, añadir dicho valor en el objeto
+                for (let i = 0; i < listaValorSelect.length; i++) {
+                    //console.log("Dato valorSelect :>", listaValorSelect[i].innerHTML);
+                    
+                    objetoValor.push(listaValorSelect[i].innerHTML);
+                }
+
+                //Por cada objeto terminado de crear, añadirlo como nuevo elemento en el array de columnas
+                columnas.push(objetoValor);
+            });
+
+            /*
+            for (let i = 0; i < columnas.length; i++) {
+                console.log("Valor columna :>", columnas[i]);
             }
-            /*for (let i = 0; i < datosGrafico.length; i++) {
-                console.log(datosGrafico[i]);
-            }*/
+            */
 
             let trimestres = xml.getElementsByTagName("trimestre");
             let ejeX = [];
@@ -167,9 +183,7 @@
             let chart = c3.generate({
                 bindto: div,
                 data: {
-                    columns: [
-                        datosGrafico
-                    ],
+                    columns: columnas
                 },
                 axis: {
                     //Configurar eje x
@@ -261,7 +275,7 @@
         <button type="button" id="btDescargarJSON">Descargar JSON</button>
     </p>
     <p>
-        <select name="listaAtributos" id="listaAtributos">
+        <select name="listaAtributos" id="listaAtributos" multiple>
 
         </select>
     </p>
