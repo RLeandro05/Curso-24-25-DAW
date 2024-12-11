@@ -1,30 +1,59 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es">
+
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
     <link rel="stylesheet" type="text/css" href="index.css" title="style" />
     <script src="../../../JQUERY/jquery-3.7.1.min.js"></script>
 
     <style type="text/css">
+        .ocultar, .visible {
+            color: orange;
+        }
+        
         .ocultar {
             display: none;
         }
+
         .visible {
             display: block;
-            color: orange;
         }
     </style>
 
     <script type="text/javascript">
-        $(document).ready(function() {
-            $("a#seguirLeyendo1").click(function(e) {
+        $(document).ready(function () {
+            //En caso de hacer click, ejecutar función
+            $("a#seguirLeyendo1").click(function (e) {
                 e.preventDefault();
-                $("#principal .articulo1 .ocultar").addClass("visible"); // Mostrar el contenido al hacer clic
+                //Guardar en una variable el texto escondido
+                let $elemento = $("#principal .articulo1 #contenidoEscondido1");
+
+                //console.log(elemento.attr("class"));
+
+                if ($elemento.hasClass("ocultar")) { //En el caso de que el elemento tenga la clase ocultar, cambiarla por visible para mostrar el texto
+                    $elemento.removeClass("ocultar").addClass("visible").hide().slideDown(500); //Importante poner hide() para que haga la transición de movimiento
+                    $(this).text("Leer menos..."); //Cambiar el texto
+                } else if ($elemento.hasClass("visible")) { //En el caso de que el elemento tenga la clase visible, cambiarla por ocultar para ocultar el texto
+                    $elemento.removeClass("visible").addClass("ocultar").show().slideUp(500); //Importante poner show() para que haga la transición de movimiento
+                    $(this).text("Seguir leyendo..."); //Cambiar el texto
+                }
             });
 
-            $("a#seguirLeyendo2").click(function(e) {
+            //En caso de hacer click, ejecutar función
+            $("a#seguirLeyendo2").click(function (e) {
                 e.preventDefault();
-                $("#principal .articulo2 .ocultar").addClass("visible"); // Mostrar el contenido al hacer clic en el segundo artículo
+                //Guardar en una variable el texto escondido
+                let $elemento = $("#principal .articulo2 #contenidoEscondido2");
+
+                //console.log(elemento.attr("class"));
+
+                if ($elemento.hasClass("ocultar")) { //En el caso de que el elemento tenga la clase ocultar, cambiarla por visible para mostrar el texto
+                    $elemento.removeClass("ocultar").addClass("visible").hide().slideDown(500); //Importante poner hide() para que haga la transición de movimiento
+                    $(this).text("Leer menos..."); //Cambiar el texto
+                } else if ($elemento.hasClass("visible")) { //En el caso de que el elemento tenga la clase visible, cambiarla por ocultar para ocultar el texto
+                    $elemento.removeClass("visible").addClass("ocultar").show().slideUp(500); //Importante poner show() para que haga la transición de movimiento
+                    $(this).text("Seguir leyendo..."); //Cambiar el texto
+                }
             });
         });
     </script>
@@ -99,7 +128,7 @@
                     <p>Vestibulum pulvinar urna et quam. Pellentesque habitant morbi tristique senectus et netus et
                         malesuada fames ac turpis egestas. Nullam vel turpis vitae dui imperdiet laoreet. Quisque eget
                         ipsum.</p>
-                    <p class="ocultar">Donec commodo, turpis vel venenatis sollicitudin, quam ante convallis justo, sed
+                    <p class="ocultar" id="contenidoEscondido1">Donec commodo, turpis vel venenatis sollicitudin, quam ante convallis justo, sed
                         eleifend justo
                         lectus quis sapien. Ut consequat libero eget est.</p>
                     <p><a id="seguirLeyendo1" href="#">Seguir leyendo...</a></p>
@@ -112,7 +141,7 @@
                     <p>Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nullam
                         dictum hendrerit neque. Mauris id ligula non elit mattis semper. Fusce arcu ipsum, tempus eget,
                         tincidunt at, imperdiet in, mi.</p>
-                    <p class="ocultar">Donec commodo, turpis vel venenatis sollicitudin, quam ante convallis justo, sed
+                    <p class="ocultar" id="contenidoEscondido2">Donec commodo, turpis vel venenatis sollicitudin, quam ante convallis justo, sed
                         eleifend justo
                         lectus quis sapien. Ut consequat libero eget est.</p>
                     <p><a id="seguirLeyendo2" href="#">Seguir leyendo...</a></p>
