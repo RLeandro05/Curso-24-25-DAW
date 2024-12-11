@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Título de la página</title>
+    <style>
+        /* Estilos CSS aquí */
+        div {
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            font-size: 44px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+    </style>
+    <script src="../../jquery-3.7.1.min.js"></script>
+    <script type="text/javascript">
+        // Código JavaScript aquí
+
+        $(document).ready(function()  {
+
+            $("div").click(function() {
+
+                for (let i = 0; i < 10; i++) {
+                    $(this).fadeOut(300).delay(100).fadeIn(400);
+                }
+                
+            });
+
+        }); 
+    </script>
+</head>
+<body>
+    <!-- Contenido de la página aquí -->
+     <div>
+        Púlsame para ocultarme!!!!!
+     </div>
+    
+</body>
+</html>

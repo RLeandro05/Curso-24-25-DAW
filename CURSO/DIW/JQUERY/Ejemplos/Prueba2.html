@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Título de la página</title>
+    <style>
+        /* Estilos CSS aquí */
+        div {
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            font-size: 44px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+    </style>
+    <script src="../../JQUERY/jquery-3.7.1.min.js"></script>
+    <script type="text/javascript">
+        // Código JavaScript aquí
+
+        $(document).ready(function()  {
+
+            $("a:first").click(function(e) {
+                e.preventDefault();
+
+                $(this).fadeOut(1000, function() {
+                    alert("Desapareció el primer enlace");
+                }).delay(1000).fadeIn();
+            })
+
+            $("a:eq(1)").click(function(e) {
+                e.preventDefault();
+
+                $(this).fadeOut(1000, function() {
+                    alert("Desapareció el segundo enlace");
+                }).delay(1000).fadeIn();
+            })
+
+        }); 
+    </script>
+</head>
+<body>
+    <!-- Contenido de la página aquí -->
+     <p>
+        <a href="#" class="e1">Click aquí al enlace 1</a>
+     </p>
+     <p>
+        <a href="#" class="e2">Click aquí al enlace 2</a>
+     </p>
+    
+</body>
+</html>
