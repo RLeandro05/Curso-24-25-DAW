@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Ejercicio Datos Ocupación Empleo</title>
+    <style type="text/css">
+        h2 {
+            text-align: center;
+            color: maroon;
+        }
+    </style>
+
+    <script src="../../c3-0.7.20/docs/js/d3-5.8.2.min.js"></script>
+    <script src="../../c3-0.7.20/c3.min.js"></script>
+
+    <link rel="stylesheet" href="../../c3-0.7.20/c3.css">
+
+    <script type="text/javascript">
+        window.onload = () => {
+            document.querySelector("#fichero").addEventListener("change", LeerJSON);
+            document.querySelector("#selDatos").addEventListener("change", cargarGrafico);
+        }
+
+        let listaSexos = null;
+
+        const LeerJSON = () => {
+            // Obtener el archivo seleccionado por el usuario
+            const fichero = document.querySelector("#fichero").files[0];
+
+            if (fichero) {
+                const reader = new FileReader();
+
+                // Evento que se ejecuta cuando se ha leído el archivo correctamente
+                reader.onload = (event) => {
+                    try {
+                        // Parsear el contenido del archivo JSON
+                        const datos = JSON.parse(event.target.result);
+
+                        // Hacer algo con los datos (por ejemplo, mostrar el contenido en el select)
+                        mostrarDatosEnSelect(datos);
+                        // Aquí podrías agregar más lógica para generar gráficos o procesar la información
+                    } catch (error) {
+                        console.error("Error al leer el JSON:", error);
+                    }
+                };
+
+                // Leer el archivo como texto
+                reader.readAsText(fichero);
+            }
+        };
+
+        // Función para mostrar los datos en el select
+        const mostrarDatosEnSelect = (datos) => {
+            //console.log(datos);
+
+            //Sacar un array de agrupaciones de objetos por sexo
+            listaSexos = Object.groupBy(datos, sexo => sexo.MetaData[1].Nombre);
+
+            let select = document.querySelector("#selDatos");
+
+            //Por cada iteración de dicho array, crear una nueva opción para mostrar en select
+            for (const key in listaSexos) {
+                //console.log(key);
+
+                let opcion = new Option(key, key);
+
+                select.add(opcion);
+            }
+
+        };
+
+        //Función para cargar el gráfico con la lista de agrupaciones seleccionada
+        const cargarGrafico = () => {
+            //console.log("Llega a cargarGrafico");
+
+            //Sacar valor del select
+            let valorSelect = document.querySelector("#selDatos").value;
+            //console.log(valorSelect);
+
+            //Guardar en un array, la lista de la agrupació respectiva al valor seleccionado en el select
+            let listaDatosValSelect = listaSexos[valorSelect];
+            //console.log(listaDatosValSelect);
+
+            //Crear un array de estilo mapa paraañadir el rango de edades y valores
+            let listaEdadesyValores = [];
+
+            ///Por cada iteración, meter en ela array el rango de edades y valor asociado
+            listaDatosValSelect.forEach(datos => {
+                //console.log(datos);
+
+                listaEdadesyValores.push([datos.MetaData[2].Nombre, datos.Data[0].Valor])
+            });
+
+            //console.log(listaEdadesyValores);
+
+            //Crear el gráfico
+            let chart = c3.generate({
+                bindto: "#grafico",
+                data: {
+                    columns: listaEdadesyValores,
+                    type: "donut",
+                }
+            });
+        }
+
+
+    </script>
+
+</head>
+
+<body>
+    <h2>Ocupados por sexo y grupo de edad</h2>
+
+
+
+    <div>
+        <label for="fichero">Fichero: </label>
+        <input type="file" id="fichero" accept=".json" />
+    </div>
+
+    <br>
+
+    <select id="selDatos" multiple size="7">
+    </select>
+
+    <br><br>
+
+    <p>
+    <div id="grafico"></div>
+    </p>
+
+</body>
+
+</html>

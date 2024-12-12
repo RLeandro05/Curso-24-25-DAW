@@ -1,0 +1,1694 @@
+[
+    {
+        "COD": "EPA75",
+        "Nombre": "Total Nacional. Ambos sexos. De 16 a 19 años. Ocupados. Personas. ",
+        "T3_Unidad": "Personas",
+        "T3_Escala": "Miles",
+        "MetaData": [
+            {
+                "Id": 16473,
+                "T3_Variable": "Total Nacional",
+                "Nombre": "Total Nacional",
+                "Codigo": "00"
+            },
+            {
+                "Id": 454,
+                "T3_Variable": "Sexo",
+                "Nombre": "Ambos sexos",
+                "Codigo": ""
+            },
+            {
+                "Id": 10553,
+                "T3_Variable": "Grupos de edad",
+                "Nombre": "De 16 a 19 años",
+                "Codigo": "Y16T19"
+            },
+            {
+                "Id": 21332,
+                "T3_Variable": "RELACIÓN CON LA ACTIVIDAD ",
+                "Nombre": "Ocupados",
+                "Codigo": ""
+            },
+            {
+                "Id": 20258,
+                "T3_Variable": "Tipo de dato",
+                "Nombre": "Valor absoluto",
+                "Codigo": ""
+            }
+        ],
+        "Data": [
+            {
+                "Fecha": "2023-10-01T00:00:00.000+02:00",
+                "T3_TipoDato": "Definitivo",
+                "T3_Periodo": "T4",
+                "Anyo": 2023,
+                "Valor": 161.6
+            }
+        ]
+    },
+    {
+        "COD": "EPA69",
+        "Nombre": "Total Nacional. Ambos sexos. De 20 a 24 años. Ocupados. Personas. ",
+        "T3_Unidad": "Personas",
+        "T3_Escala": "Miles",
+        "MetaData": [
+            {
+                "Id": 16473,
+                "T3_Variable": "Total Nacional",
+                "Nombre": "Total Nacional",
+                "Codigo": "00"
+            },
+            {
+                "Id": 454,
+                "T3_Variable": "Sexo",
+                "Nombre": "Ambos sexos",
+                "Codigo": ""
+            },
+            {
+                "Id": 15661,
+                "T3_Variable": "Grupos de edad",
+                "Nombre": "De 20 a 24 años",
+                "Codigo": "Y20T24"
+            },
+            {
+                "Id": 21332,
+                "T3_Variable": "RELACIÓN CON LA ACTIVIDAD ",
+                "Nombre": "Ocupados",
+                "Codigo": ""
+            },
+            {
+                "Id": 20258,
+                "T3_Variable": "Tipo de dato",
+                "Nombre": "Valor absoluto",
+                "Codigo": ""
+            }
+        ],
+        "Data": [
+            {
+                "Fecha": "2023-10-01T00:00:00.000+02:00",
+                "T3_TipoDato": "Definitivo",
+                "T3_Periodo": "T4",
+                "Anyo": 2023,
+                "Valor": 1054.8
+            }
+        ]
+    },
+    {
+        "COD": "EPA23411",
+        "Nombre": "Total Nacional. Ambos sexos. De 25 a 29 años. Ocupados. Personas. ",
+        "T3_Unidad": "Personas",
+        "T3_Escala": "Miles",
+        "MetaData": [
+            {
+                "Id": 16473,
+                "T3_Variable": "Total Nacional",
+                "Nombre": "Total Nacional",
+                "Codigo": "00"
+            },
+            {
+                "Id": 454,
+                "T3_Variable": "Sexo",
+                "Nombre": "Ambos sexos",
+                "Codigo": ""
+            },
+            {
+                "Id": 15666,
+                "T3_Variable": "Grupos de edad",
+                "Nombre": "De 25 a 29 años",
+                "Codigo": "Y25T29"
+            },
+            {
+                "Id": 21332,
+                "T3_Variable": "RELACIÓN CON LA ACTIVIDAD ",
+                "Nombre": "Ocupados",
+                "Codigo": ""
+            },
+            {
+                "Id": 20258,
+                "T3_Variable": "Tipo de dato",
+                "Nombre": "Valor absoluto",
+                "Codigo": ""
+            }
+        ],
+        "Data": [
+            {
+                "Fecha": "2023-10-01T00:00:00.000+02:00",
+                "T3_TipoDato": "Definitivo",
+                "T3_Periodo": "T4",
+                "Anyo": 2023,
+                "Valor": 1863.1
+            }
+        ]
+    },
+    {
+        "COD": "EPA23405",
+        "Nombre": "Total Nacional. Ambos sexos. De 30 a 34 años. Ocupados. Personas. ",
+        "T3_Unidad": "Personas",
+        "T3_Escala": "Miles",
+        "MetaData": [
+            {
+                "Id": 16473,
+                "T3_Variable": "Total Nacional",
+                "Nombre": "Total Nacional",
+                "Codigo": "00"
+            },
+            {
+                "Id": 454,
+                "T3_Variable": "Sexo",
+                "Nombre": "Ambos sexos",
+                "Codigo": ""
+            },
+            {
+                "Id": 15662,
+                "T3_Variable": "Grupos de edad",
+                "Nombre": "De 30 a 34 años",
+                "Codigo": "Y30T34"
+            },
+            {
+                "Id": 21332,
+                "T3_Variable": "RELACIÓN CON LA ACTIVIDAD ",
+                "Nombre": "Ocupados",
+                "Codigo": ""
+            },
+            {
+                "Id": 20258,
+                "T3_Variable": "Tipo de dato",
+                "Nombre": "Valor absoluto",
+                "Codigo": ""
+            }
+        ],
+        "Data": [
+            {
+                "Fecha": "2023-10-01T00:00:00.000+02:00",
+                "T3_TipoDato": "Definitivo",
+                "T3_Periodo": "T4",
+                "Anyo": 2023,
+                "Valor": 2190.7
+            }
+        ]
+    },
+    {
+        "COD": "EPA23399",
+        "Nombre": "Total Nacional. Ambos sexos. De 35 a 39 años. Ocupados. Personas. ",
+        "T3_Unidad": "Personas",
+        "T3_Escala": "Miles",
+        "MetaData": [
+            {
+                "Id": 16473,
+                "T3_Variable": "Total Nacional",
+                "Nombre": "Total Nacional",
+                "Codigo": "00"
+            },
+            {
+                "Id": 454,
+                "T3_Variable": "Sexo",
+                "Nombre": "Ambos sexos",
+                "Codigo": ""
+            },
+            {
+                "Id": 15658,
+                "T3_Variable": "Grupos de edad",
+                "Nombre": "De 35 a 39 años",
+                "Codigo": "Y35T39"
+            },
+            {
+                "Id": 21332,
+                "T3_Variable": "RELACIÓN CON LA ACTIVIDAD ",
+                "Nombre": "Ocupados",
+                "Codigo": ""
+            },
+            {
+                "Id": 20258,
+                "T3_Variable": "Tipo de dato",
+                "Nombre": "Valor absoluto",
+                "Codigo": ""
+            }
+        ],
+        "Data": [
+            {
+                "Fecha": "2023-10-01T00:00:00.000+02:00",
+                "T3_TipoDato": "Definitivo",
+                "T3_Periodo": "T4",
+                "Anyo": 2023,
+                "Valor": 2397.3
+            }
+        ]
+    },
+    {
+        "COD": "EPA23393",
+        "Nombre": "Total Nacional. Ambos sexos. De 40 a 44 años. Ocupados. Personas. ",
+        "T3_Unidad": "Personas",
+        "T3_Escala": "Miles",
+        "MetaData": [
+            {
+                "Id": 16473,
+                "T3_Variable": "Total Nacional",
+                "Nombre": "Total Nacional",
+                "Codigo": "00"
+            },
+            {
+                "Id": 454,
+                "T3_Variable": "Sexo",
+                "Nombre": "Ambos sexos",
+                "Codigo": ""
+            },
+            {
+                "Id": 15663,
+                "T3_Variable": "Grupos de edad",
+                "Nombre": "De 40 a 44 años",
+                "Codigo": "Y40T44"
+            },
+            {
+                "Id": 21332,
+                "T3_Variable": "RELACIÓN CON LA ACTIVIDAD ",
+                "Nombre": "Ocupados",
+                "Codigo": ""
+            },
+            {
+                "Id": 20258,
+                "T3_Variable": "Tipo de dato",
+                "Nombre": "Valor absoluto",
+                "Codigo": ""
+            }
+        ],
+        "Data": [
+            {
+                "Fecha": "2023-10-01T00:00:00.000+02:00",
+                "T3_TipoDato": "Definitivo",
+                "T3_Periodo": "T4",
+                "Anyo": 2023,
+                "Valor": 2916
+            }
+        ]
+    },
+    {
+        "COD": "EPA23387",
+        "Nombre": "Total Nacional. Ambos sexos. De 45 a 49 años. Ocupados. Personas. ",
+        "T3_Unidad": "Personas",
+        "T3_Escala": "Miles",
+        "MetaData": [
+            {
+                "Id": 16473,
+                "T3_Variable": "Total Nacional",
+                "Nombre": "Total Nacional",
+                "Codigo": "00"
+            },
+            {
+                "Id": 454,
+                "T3_Variable": "Sexo",
+                "Nombre": "Ambos sexos",
+                "Codigo": ""
+            },
+            {
+                "Id": 15667,
+                "T3_Variable": "Grupos de edad",
+                "Nombre": "De 45 a 49 años",
+                "Codigo": "Y45T49"
+            },
+            {
+                "Id": 21332,
+                "T3_Variable": "RELACIÓN CON LA ACTIVIDAD ",
+                "Nombre": "Ocupados",
+                "Codigo": ""
+            },
+            {
+                "Id": 20258,
+                "T3_Variable": "Tipo de dato",
+                "Nombre": "Valor absoluto",
+                "Codigo": ""
+            }
+        ],
+        "Data": [
+            {
+                "Fecha": "2023-10-01T00:00:00.000+02:00",
+                "T3_TipoDato": "Definitivo",
+                "T3_Periodo": "T4",
+                "Anyo": 2023,
+                "Valor": 3260.3
+            }
+        ]
+    },
+    {
+        "COD": "EPA23381",
+        "Nombre": "Total Nacional. Ambos sexos. De 50 a 54 años. Ocupados. Personas. ",
+        "T3_Unidad": "Personas",
+        "T3_Escala": "Miles",
+        "MetaData": [
+            {
+                "Id": 16473,
+                "T3_Variable": "Total Nacional",
+                "Nombre": "Total Nacional",
+                "Codigo": "00"
+            },
+            {
+                "Id": 454,
+                "T3_Variable": "Sexo",
+                "Nombre": "Ambos sexos",
+                "Codigo": ""
+            },
+            {
+                "Id": 15648,
+                "T3_Variable": "Grupos de edad",
+                "Nombre": "De 50 a 54 años",
+                "Codigo": "Y50T54"
+            },
+            {
+                "Id": 21332,
+                "T3_Variable": "RELACIÓN CON LA ACTIVIDAD ",
+                "Nombre": "Ocupados",
+                "Codigo": ""
+            },
+            {
+                "Id": 20258,
+                "T3_Variable": "Tipo de dato",
+                "Nombre": "Valor absoluto",
+                "Codigo": ""
+            }
+        ],
+        "Data": [
+            {
+                "Fecha": "2023-10-01T00:00:00.000+02:00",
+                "T3_TipoDato": "Definitivo",
+                "T3_Periodo": "T4",
+                "Anyo": 2023,
+                "Valor": 2945.8
+            }
+        ]
+    },
+    {
+        "COD": "EPA23375",
+        "Nombre": "Total Nacional. Ambos sexos. De 55 a 59 años. Ocupados. Personas. ",
+        "T3_Unidad": "Personas",
+        "T3_Escala": "Miles",
+        "MetaData": [
+            {
+                "Id": 16473,
+                "T3_Variable": "Total Nacional",
+                "Nombre": "Total Nacional",
+                "Codigo": "00"
+            },
+            {
+                "Id": 454,
+                "T3_Variable": "Sexo",
+                "Nombre": "Ambos sexos",
+                "Codigo": ""
+            },
+            {
+                "Id": 15649,
+                "T3_Variable": "Grupos de edad",
+                "Nombre": "De 55 a 59 años",
+                "Codigo": "Y55T59"
+            },
+            {
+                "Id": 21332,
+                "T3_Variable": "RELACIÓN CON LA ACTIVIDAD ",
+                "Nombre": "Ocupados",
+                "Codigo": ""
+            },
+            {
+                "Id": 20258,
+                "T3_Variable": "Tipo de dato",
+                "Nombre": "Valor absoluto",
+                "Codigo": ""
+            }
+        ],
+        "Data": [
+            {
+                "Fecha": "2023-10-01T00:00:00.000+02:00",
+                "T3_TipoDato": "Definitivo",
+                "T3_Periodo": "T4",
+                "Anyo": 2023,
+                "Valor": 2496.9
+            }
+        ]
+    },
+    {
+        "COD": "EPA23369",
+        "Nombre": "Total Nacional. Ambos sexos. De 60 a 64 años. Ocupados. Personas. ",
+        "T3_Unidad": "Personas",
+        "T3_Escala": "Miles",
+        "MetaData": [
+            {
+                "Id": 16473,
+                "T3_Variable": "Total Nacional",
+                "Nombre": "Total Nacional",
+                "Codigo": "00"
+            },
+            {
+                "Id": 454,
+                "T3_Variable": "Sexo",
+                "Nombre": "Ambos sexos",
+                "Codigo": ""
+            },
+            {
+                "Id": 15650,
+                "T3_Variable": "Grupos de edad",
+                "Nombre": "De 60 a 64 años",
+                "Codigo": "Y60T64"
+            },
+            {
+                "Id": 21332,
+                "T3_Variable": "RELACIÓN CON LA ACTIVIDAD ",
+                "Nombre": "Ocupados",
+                "Codigo": ""
+            },
+            {
+                "Id": 20258,
+                "T3_Variable": "Tipo de dato",
+                "Nombre": "Valor absoluto",
+                "Codigo": ""
+            }
+        ],
+        "Data": [
+            {
+                "Fecha": "2023-10-01T00:00:00.000+02:00",
+                "T3_TipoDato": "Definitivo",
+                "T3_Periodo": "T4",
+                "Anyo": 2023,
+                "Valor": 1630.2
+            }
+        ]
+    },
+    {
+        "COD": "EPA23363",
+        "Nombre": "Total Nacional. Ambos sexos. De 65 a 69 años. Ocupados. Personas. ",
+        "T3_Unidad": "Personas",
+        "T3_Escala": "Miles",
+        "MetaData": [
+            {
+                "Id": 16473,
+                "T3_Variable": "Total Nacional",
+                "Nombre": "Total Nacional",
+                "Codigo": "00"
+            },
+            {
+                "Id": 454,
+                "T3_Variable": "Sexo",
+                "Nombre": "Ambos sexos",
+                "Codigo": ""
+            },
+            {
+                "Id": 15651,
+                "T3_Variable": "Grupos de edad",
+                "Nombre": "De 65 a 69 años",
+                "Codigo": "Y65T69"
+            },
+            {
+                "Id": 21332,
+                "T3_Variable": "RELACIÓN CON LA ACTIVIDAD ",
+                "Nombre": "Ocupados",
+                "Codigo": ""
+            },
+            {
+                "Id": 20258,
+                "T3_Variable": "Tipo de dato",
+                "Nombre": "Valor absoluto",
+                "Codigo": ""
+            }
+        ],
+        "Data": [
+            {
+                "Fecha": "2023-10-01T00:00:00.000+02:00",
+                "T3_TipoDato": "Definitivo",
+                "T3_Periodo": "T4",
+                "Anyo": 2023,
+                "Valor": 279.2
+            }
+        ]
+    },
+    {
+        "COD": "EPA23417",
+        "Nombre": "Total Nacional. Ambos sexos. 70 y más años. Ocupados. Personas. ",
+        "T3_Unidad": "Personas",
+        "T3_Escala": "Miles",
+        "MetaData": [
+            {
+                "Id": 16473,
+                "T3_Variable": "Total Nacional",
+                "Nombre": "Total Nacional",
+                "Codigo": "00"
+            },
+            {
+                "Id": 454,
+                "T3_Variable": "Sexo",
+                "Nombre": "Ambos sexos",
+                "Codigo": ""
+            },
+            {
+                "Id": 10579,
+                "T3_Variable": "Semiintervalos de edad",
+                "Nombre": "70 y más años",
+                "Codigo": "Y-GE70"
+            },
+            {
+                "Id": 21332,
+                "T3_Variable": "RELACIÓN CON LA ACTIVIDAD ",
+                "Nombre": "Ocupados",
+                "Codigo": ""
+            },
+            {
+                "Id": 20258,
+                "T3_Variable": "Tipo de dato",
+                "Nombre": "Valor absoluto",
+                "Codigo": ""
+            }
+        ],
+        "Data": [
+            {
+                "Fecha": "2023-10-01T00:00:00.000+02:00",
+                "T3_TipoDato": "Definitivo",
+                "T3_Periodo": "T4",
+                "Anyo": 2023,
+                "Valor": 51
+            }
+        ]
+    },
+    {
+        "COD": "EPA45",
+        "Nombre": "Total Nacional. Hombres. De 16 a 19 años. Ocupados. Personas. ",
+        "T3_Unidad": "Personas",
+        "T3_Escala": "Miles",
+        "MetaData": [
+            {
+                "Id": 16473,
+                "T3_Variable": "Total Nacional",
+                "Nombre": "Total Nacional",
+                "Codigo": "00"
+            },
+            {
+                "Id": 452,
+                "T3_Variable": "Sexo",
+                "Nombre": "Hombres",
+                "Codigo": "1"
+            },
+            {
+                "Id": 10553,
+                "T3_Variable": "Grupos de edad",
+                "Nombre": "De 16 a 19 años",
+                "Codigo": "Y16T19"
+            },
+            {
+                "Id": 21332,
+                "T3_Variable": "RELACIÓN CON LA ACTIVIDAD ",
+                "Nombre": "Ocupados",
+                "Codigo": ""
+            },
+            {
+                "Id": 20258,
+                "T3_Variable": "Tipo de dato",
+                "Nombre": "Valor absoluto",
+                "Codigo": ""
+            }
+        ],
+        "Data": [
+            {
+                "Fecha": "2023-10-01T00:00:00.000+02:00",
+                "T3_TipoDato": "Definitivo",
+                "T3_Periodo": "T4",
+                "Anyo": 2023,
+                "Valor": 95.8
+            }
+        ]
+    },
+    {
+        "COD": "EPA39",
+        "Nombre": "Total Nacional. Hombres. De 20 a 24 años. Ocupados. Personas. ",
+        "T3_Unidad": "Personas",
+        "T3_Escala": "Miles",
+        "MetaData": [
+            {
+                "Id": 16473,
+                "T3_Variable": "Total Nacional",
+                "Nombre": "Total Nacional",
+                "Codigo": "00"
+            },
+            {
+                "Id": 452,
+                "T3_Variable": "Sexo",
+                "Nombre": "Hombres",
+                "Codigo": "1"
+            },
+            {
+                "Id": 15661,
+                "T3_Variable": "Grupos de edad",
+                "Nombre": "De 20 a 24 años",
+                "Codigo": "Y20T24"
+            },
+            {
+                "Id": 21332,
+                "T3_Variable": "RELACIÓN CON LA ACTIVIDAD ",
+                "Nombre": "Ocupados",
+                "Codigo": ""
+            },
+            {
+                "Id": 20258,
+                "T3_Variable": "Tipo de dato",
+                "Nombre": "Valor absoluto",
+                "Codigo": ""
+            }
+        ],
+        "Data": [
+            {
+                "Fecha": "2023-10-01T00:00:00.000+02:00",
+                "T3_TipoDato": "Definitivo",
+                "T3_Periodo": "T4",
+                "Anyo": 2023,
+                "Valor": 561.6
+            }
+        ]
+    },
+    {
+        "COD": "EPA23351",
+        "Nombre": "Total Nacional. Hombres. De 25 a 29 años. Ocupados. Personas. ",
+        "T3_Unidad": "Personas",
+        "T3_Escala": "Miles",
+        "MetaData": [
+            {
+                "Id": 16473,
+                "T3_Variable": "Total Nacional",
+                "Nombre": "Total Nacional",
+                "Codigo": "00"
+            },
+            {
+                "Id": 452,
+                "T3_Variable": "Sexo",
+                "Nombre": "Hombres",
+                "Codigo": "1"
+            },
+            {
+                "Id": 15666,
+                "T3_Variable": "Grupos de edad",
+                "Nombre": "De 25 a 29 años",
+                "Codigo": "Y25T29"
+            },
+            {
+                "Id": 21332,
+                "T3_Variable": "RELACIÓN CON LA ACTIVIDAD ",
+                "Nombre": "Ocupados",
+                "Codigo": ""
+            },
+            {
+                "Id": 20258,
+                "T3_Variable": "Tipo de dato",
+                "Nombre": "Valor absoluto",
+                "Codigo": ""
+            }
+        ],
+        "Data": [
+            {
+                "Fecha": "2023-10-01T00:00:00.000+02:00",
+                "T3_TipoDato": "Definitivo",
+                "T3_Periodo": "T4",
+                "Anyo": 2023,
+                "Valor": 978.1
+            }
+        ]
+    },
+    {
+        "COD": "EPA23345",
+        "Nombre": "Total Nacional. Hombres. De 30 a 34 años. Ocupados. Personas. ",
+        "T3_Unidad": "Personas",
+        "T3_Escala": "Miles",
+        "MetaData": [
+            {
+                "Id": 16473,
+                "T3_Variable": "Total Nacional",
+                "Nombre": "Total Nacional",
+                "Codigo": "00"
+            },
+            {
+                "Id": 452,
+                "T3_Variable": "Sexo",
+                "Nombre": "Hombres",
+                "Codigo": "1"
+            },
+            {
+                "Id": 15662,
+                "T3_Variable": "Grupos de edad",
+                "Nombre": "De 30 a 34 años",
+                "Codigo": "Y30T34"
+            },
+            {
+                "Id": 21332,
+                "T3_Variable": "RELACIÓN CON LA ACTIVIDAD ",
+                "Nombre": "Ocupados",
+                "Codigo": ""
+            },
+            {
+                "Id": 20258,
+                "T3_Variable": "Tipo de dato",
+                "Nombre": "Valor absoluto",
+                "Codigo": ""
+            }
+        ],
+        "Data": [
+            {
+                "Fecha": "2023-10-01T00:00:00.000+02:00",
+                "T3_TipoDato": "Definitivo",
+                "T3_Periodo": "T4",
+                "Anyo": 2023,
+                "Valor": 1153
+            }
+        ]
+    },
+    {
+        "COD": "EPA23339",
+        "Nombre": "Total Nacional. Hombres. De 35 a 39 años. Ocupados. Personas. ",
+        "T3_Unidad": "Personas",
+        "T3_Escala": "Miles",
+        "MetaData": [
+            {
+                "Id": 16473,
+                "T3_Variable": "Total Nacional",
+                "Nombre": "Total Nacional",
+                "Codigo": "00"
+            },
+            {
+                "Id": 452,
+                "T3_Variable": "Sexo",
+                "Nombre": "Hombres",
+                "Codigo": "1"
+            },
+            {
+                "Id": 15658,
+                "T3_Variable": "Grupos de edad",
+                "Nombre": "De 35 a 39 años",
+                "Codigo": "Y35T39"
+            },
+            {
+                "Id": 21332,
+                "T3_Variable": "RELACIÓN CON LA ACTIVIDAD ",
+                "Nombre": "Ocupados",
+                "Codigo": ""
+            },
+            {
+                "Id": 20258,
+                "T3_Variable": "Tipo de dato",
+                "Nombre": "Valor absoluto",
+                "Codigo": ""
+            }
+        ],
+        "Data": [
+            {
+                "Fecha": "2023-10-01T00:00:00.000+02:00",
+                "T3_TipoDato": "Definitivo",
+                "T3_Periodo": "T4",
+                "Anyo": 2023,
+                "Valor": 1273.6
+            }
+        ]
+    },
+    {
+        "COD": "EPA23333",
+        "Nombre": "Total Nacional. Hombres. De 40 a 44 años. Ocupados. Personas. ",
+        "T3_Unidad": "Personas",
+        "T3_Escala": "Miles",
+        "MetaData": [
+            {
+                "Id": 16473,
+                "T3_Variable": "Total Nacional",
+                "Nombre": "Total Nacional",
+                "Codigo": "00"
+            },
+            {
+                "Id": 452,
+                "T3_Variable": "Sexo",
+                "Nombre": "Hombres",
+                "Codigo": "1"
+            },
+            {
+                "Id": 15663,
+                "T3_Variable": "Grupos de edad",
+                "Nombre": "De 40 a 44 años",
+                "Codigo": "Y40T44"
+            },
+            {
+                "Id": 21332,
+                "T3_Variable": "RELACIÓN CON LA ACTIVIDAD ",
+                "Nombre": "Ocupados",
+                "Codigo": ""
+            },
+            {
+                "Id": 20258,
+                "T3_Variable": "Tipo de dato",
+                "Nombre": "Valor absoluto",
+                "Codigo": ""
+            }
+        ],
+        "Data": [
+            {
+                "Fecha": "2023-10-01T00:00:00.000+02:00",
+                "T3_TipoDato": "Definitivo",
+                "T3_Periodo": "T4",
+                "Anyo": 2023,
+                "Valor": 1536.3
+            }
+        ]
+    },
+    {
+        "COD": "EPA23327",
+        "Nombre": "Total Nacional. Hombres. De 45 a 49 años. Ocupados. Personas. ",
+        "T3_Unidad": "Personas",
+        "T3_Escala": "Miles",
+        "MetaData": [
+            {
+                "Id": 16473,
+                "T3_Variable": "Total Nacional",
+                "Nombre": "Total Nacional",
+                "Codigo": "00"
+            },
+            {
+                "Id": 452,
+                "T3_Variable": "Sexo",
+                "Nombre": "Hombres",
+                "Codigo": "1"
+            },
+            {
+                "Id": 15667,
+                "T3_Variable": "Grupos de edad",
+                "Nombre": "De 45 a 49 años",
+                "Codigo": "Y45T49"
+            },
+            {
+                "Id": 21332,
+                "T3_Variable": "RELACIÓN CON LA ACTIVIDAD ",
+                "Nombre": "Ocupados",
+                "Codigo": ""
+            },
+            {
+                "Id": 20258,
+                "T3_Variable": "Tipo de dato",
+                "Nombre": "Valor absoluto",
+                "Codigo": ""
+            }
+        ],
+        "Data": [
+            {
+                "Fecha": "2023-10-01T00:00:00.000+02:00",
+                "T3_TipoDato": "Definitivo",
+                "T3_Periodo": "T4",
+                "Anyo": 2023,
+                "Valor": 1736.5
+            }
+        ]
+    },
+    {
+        "COD": "EPA23321",
+        "Nombre": "Total Nacional. Hombres. De 50 a 54 años. Ocupados. Personas. ",
+        "T3_Unidad": "Personas",
+        "T3_Escala": "Miles",
+        "MetaData": [
+            {
+                "Id": 16473,
+                "T3_Variable": "Total Nacional",
+                "Nombre": "Total Nacional",
+                "Codigo": "00"
+            },
+            {
+                "Id": 452,
+                "T3_Variable": "Sexo",
+                "Nombre": "Hombres",
+                "Codigo": "1"
+            },
+            {
+                "Id": 15648,
+                "T3_Variable": "Grupos de edad",
+                "Nombre": "De 50 a 54 años",
+                "Codigo": "Y50T54"
+            },
+            {
+                "Id": 21332,
+                "T3_Variable": "RELACIÓN CON LA ACTIVIDAD ",
+                "Nombre": "Ocupados",
+                "Codigo": ""
+            },
+            {
+                "Id": 20258,
+                "T3_Variable": "Tipo de dato",
+                "Nombre": "Valor absoluto",
+                "Codigo": ""
+            }
+        ],
+        "Data": [
+            {
+                "Fecha": "2023-10-01T00:00:00.000+02:00",
+                "T3_TipoDato": "Definitivo",
+                "T3_Periodo": "T4",
+                "Anyo": 2023,
+                "Valor": 1581.3
+            }
+        ]
+    },
+    {
+        "COD": "EPA23315",
+        "Nombre": "Total Nacional. Hombres. De 55 a 59 años. Ocupados. Personas. ",
+        "T3_Unidad": "Personas",
+        "T3_Escala": "Miles",
+        "MetaData": [
+            {
+                "Id": 16473,
+                "T3_Variable": "Total Nacional",
+                "Nombre": "Total Nacional",
+                "Codigo": "00"
+            },
+            {
+                "Id": 452,
+                "T3_Variable": "Sexo",
+                "Nombre": "Hombres",
+                "Codigo": "1"
+            },
+            {
+                "Id": 15649,
+                "T3_Variable": "Grupos de edad",
+                "Nombre": "De 55 a 59 años",
+                "Codigo": "Y55T59"
+            },
+            {
+                "Id": 21332,
+                "T3_Variable": "RELACIÓN CON LA ACTIVIDAD ",
+                "Nombre": "Ocupados",
+                "Codigo": ""
+            },
+            {
+                "Id": 20258,
+                "T3_Variable": "Tipo de dato",
+                "Nombre": "Valor absoluto",
+                "Codigo": ""
+            }
+        ],
+        "Data": [
+            {
+                "Fecha": "2023-10-01T00:00:00.000+02:00",
+                "T3_TipoDato": "Definitivo",
+                "T3_Periodo": "T4",
+                "Anyo": 2023,
+                "Valor": 1361
+            }
+        ]
+    },
+    {
+        "COD": "EPA23309",
+        "Nombre": "Total Nacional. Hombres. De 60 a 64 años. Ocupados. Personas. ",
+        "T3_Unidad": "Personas",
+        "T3_Escala": "Miles",
+        "MetaData": [
+            {
+                "Id": 16473,
+                "T3_Variable": "Total Nacional",
+                "Nombre": "Total Nacional",
+                "Codigo": "00"
+            },
+            {
+                "Id": 452,
+                "T3_Variable": "Sexo",
+                "Nombre": "Hombres",
+                "Codigo": "1"
+            },
+            {
+                "Id": 15650,
+                "T3_Variable": "Grupos de edad",
+                "Nombre": "De 60 a 64 años",
+                "Codigo": "Y60T64"
+            },
+            {
+                "Id": 21332,
+                "T3_Variable": "RELACIÓN CON LA ACTIVIDAD ",
+                "Nombre": "Ocupados",
+                "Codigo": ""
+            },
+            {
+                "Id": 20258,
+                "T3_Variable": "Tipo de dato",
+                "Nombre": "Valor absoluto",
+                "Codigo": ""
+            }
+        ],
+        "Data": [
+            {
+                "Fecha": "2023-10-01T00:00:00.000+02:00",
+                "T3_TipoDato": "Definitivo",
+                "T3_Periodo": "T4",
+                "Anyo": 2023,
+                "Valor": 865.8
+            }
+        ]
+    },
+    {
+        "COD": "EPA23303",
+        "Nombre": "Total Nacional. Hombres. De 65 a 69 años. Ocupados. Personas. ",
+        "T3_Unidad": "Personas",
+        "T3_Escala": "Miles",
+        "MetaData": [
+            {
+                "Id": 16473,
+                "T3_Variable": "Total Nacional",
+                "Nombre": "Total Nacional",
+                "Codigo": "00"
+            },
+            {
+                "Id": 452,
+                "T3_Variable": "Sexo",
+                "Nombre": "Hombres",
+                "Codigo": "1"
+            },
+            {
+                "Id": 15651,
+                "T3_Variable": "Grupos de edad",
+                "Nombre": "De 65 a 69 años",
+                "Codigo": "Y65T69"
+            },
+            {
+                "Id": 21332,
+                "T3_Variable": "RELACIÓN CON LA ACTIVIDAD ",
+                "Nombre": "Ocupados",
+                "Codigo": ""
+            },
+            {
+                "Id": 20258,
+                "T3_Variable": "Tipo de dato",
+                "Nombre": "Valor absoluto",
+                "Codigo": ""
+            }
+        ],
+        "Data": [
+            {
+                "Fecha": "2023-10-01T00:00:00.000+02:00",
+                "T3_TipoDato": "Definitivo",
+                "T3_Periodo": "T4",
+                "Anyo": 2023,
+                "Valor": 144.7
+            }
+        ]
+    },
+    {
+        "COD": "EPA23357",
+        "Nombre": "Total Nacional. Hombres. 70 y más años. Ocupados. Personas. ",
+        "T3_Unidad": "Personas",
+        "T3_Escala": "Miles",
+        "MetaData": [
+            {
+                "Id": 16473,
+                "T3_Variable": "Total Nacional",
+                "Nombre": "Total Nacional",
+                "Codigo": "00"
+            },
+            {
+                "Id": 452,
+                "T3_Variable": "Sexo",
+                "Nombre": "Hombres",
+                "Codigo": "1"
+            },
+            {
+                "Id": 10579,
+                "T3_Variable": "Semiintervalos de edad",
+                "Nombre": "70 y más años",
+                "Codigo": "Y-GE70"
+            },
+            {
+                "Id": 21332,
+                "T3_Variable": "RELACIÓN CON LA ACTIVIDAD ",
+                "Nombre": "Ocupados",
+                "Codigo": ""
+            },
+            {
+                "Id": 20258,
+                "T3_Variable": "Tipo de dato",
+                "Nombre": "Valor absoluto",
+                "Codigo": ""
+            }
+        ],
+        "Data": [
+            {
+                "Fecha": "2023-10-01T00:00:00.000+02:00",
+                "T3_TipoDato": "Definitivo",
+                "T3_Periodo": "T4",
+                "Anyo": 2023,
+                "Valor": 35.8
+            }
+        ]
+    },
+    {
+        "COD": "EPA15",
+        "Nombre": "Total Nacional. Mujeres. De 16 a 19 años. Ocupados. Personas. ",
+        "T3_Unidad": "Personas",
+        "T3_Escala": "Miles",
+        "MetaData": [
+            {
+                "Id": 16473,
+                "T3_Variable": "Total Nacional",
+                "Nombre": "Total Nacional",
+                "Codigo": "00"
+            },
+            {
+                "Id": 453,
+                "T3_Variable": "Sexo",
+                "Nombre": "Mujeres",
+                "Codigo": "6"
+            },
+            {
+                "Id": 10553,
+                "T3_Variable": "Grupos de edad",
+                "Nombre": "De 16 a 19 años",
+                "Codigo": "Y16T19"
+            },
+            {
+                "Id": 21332,
+                "T3_Variable": "RELACIÓN CON LA ACTIVIDAD ",
+                "Nombre": "Ocupados",
+                "Codigo": ""
+            },
+            {
+                "Id": 20258,
+                "T3_Variable": "Tipo de dato",
+                "Nombre": "Valor absoluto",
+                "Codigo": ""
+            }
+        ],
+        "Data": [
+            {
+                "Fecha": "2023-10-01T00:00:00.000+02:00",
+                "T3_TipoDato": "Definitivo",
+                "T3_Periodo": "T4",
+                "Anyo": 2023,
+                "Valor": 65.7
+            }
+        ]
+    },
+    {
+        "COD": "EPA9",
+        "Nombre": "Total Nacional. Mujeres. De 20 a 24 años. Ocupados. Personas. ",
+        "T3_Unidad": "Personas",
+        "T3_Escala": "Miles",
+        "MetaData": [
+            {
+                "Id": 16473,
+                "T3_Variable": "Total Nacional",
+                "Nombre": "Total Nacional",
+                "Codigo": "00"
+            },
+            {
+                "Id": 453,
+                "T3_Variable": "Sexo",
+                "Nombre": "Mujeres",
+                "Codigo": "6"
+            },
+            {
+                "Id": 15661,
+                "T3_Variable": "Grupos de edad",
+                "Nombre": "De 20 a 24 años",
+                "Codigo": "Y20T24"
+            },
+            {
+                "Id": 21332,
+                "T3_Variable": "RELACIÓN CON LA ACTIVIDAD ",
+                "Nombre": "Ocupados",
+                "Codigo": ""
+            },
+            {
+                "Id": 20258,
+                "T3_Variable": "Tipo de dato",
+                "Nombre": "Valor absoluto",
+                "Codigo": ""
+            }
+        ],
+        "Data": [
+            {
+                "Fecha": "2023-10-01T00:00:00.000+02:00",
+                "T3_TipoDato": "Definitivo",
+                "T3_Periodo": "T4",
+                "Anyo": 2023,
+                "Valor": 493.2
+            }
+        ]
+    },
+    {
+        "COD": "EPA23291",
+        "Nombre": "Total Nacional. Mujeres. De 25 a 29 años. Ocupados. Personas. ",
+        "T3_Unidad": "Personas",
+        "T3_Escala": "Miles",
+        "MetaData": [
+            {
+                "Id": 16473,
+                "T3_Variable": "Total Nacional",
+                "Nombre": "Total Nacional",
+                "Codigo": "00"
+            },
+            {
+                "Id": 453,
+                "T3_Variable": "Sexo",
+                "Nombre": "Mujeres",
+                "Codigo": "6"
+            },
+            {
+                "Id": 15666,
+                "T3_Variable": "Grupos de edad",
+                "Nombre": "De 25 a 29 años",
+                "Codigo": "Y25T29"
+            },
+            {
+                "Id": 21332,
+                "T3_Variable": "RELACIÓN CON LA ACTIVIDAD ",
+                "Nombre": "Ocupados",
+                "Codigo": ""
+            },
+            {
+                "Id": 20258,
+                "T3_Variable": "Tipo de dato",
+                "Nombre": "Valor absoluto",
+                "Codigo": ""
+            }
+        ],
+        "Data": [
+            {
+                "Fecha": "2023-10-01T00:00:00.000+02:00",
+                "T3_TipoDato": "Definitivo",
+                "T3_Periodo": "T4",
+                "Anyo": 2023,
+                "Valor": 885
+            }
+        ]
+    },
+    {
+        "COD": "EPA23285",
+        "Nombre": "Total Nacional. Mujeres. De 30 a 34 años. Ocupados. Personas. ",
+        "T3_Unidad": "Personas",
+        "T3_Escala": "Miles",
+        "MetaData": [
+            {
+                "Id": 16473,
+                "T3_Variable": "Total Nacional",
+                "Nombre": "Total Nacional",
+                "Codigo": "00"
+            },
+            {
+                "Id": 453,
+                "T3_Variable": "Sexo",
+                "Nombre": "Mujeres",
+                "Codigo": "6"
+            },
+            {
+                "Id": 15662,
+                "T3_Variable": "Grupos de edad",
+                "Nombre": "De 30 a 34 años",
+                "Codigo": "Y30T34"
+            },
+            {
+                "Id": 21332,
+                "T3_Variable": "RELACIÓN CON LA ACTIVIDAD ",
+                "Nombre": "Ocupados",
+                "Codigo": ""
+            },
+            {
+                "Id": 20258,
+                "T3_Variable": "Tipo de dato",
+                "Nombre": "Valor absoluto",
+                "Codigo": ""
+            }
+        ],
+        "Data": [
+            {
+                "Fecha": "2023-10-01T00:00:00.000+02:00",
+                "T3_TipoDato": "Definitivo",
+                "T3_Periodo": "T4",
+                "Anyo": 2023,
+                "Valor": 1037.6
+            }
+        ]
+    },
+    {
+        "COD": "EPA23279",
+        "Nombre": "Total Nacional. Mujeres. De 35 a 39 años. Ocupados. Personas. ",
+        "T3_Unidad": "Personas",
+        "T3_Escala": "Miles",
+        "MetaData": [
+            {
+                "Id": 16473,
+                "T3_Variable": "Total Nacional",
+                "Nombre": "Total Nacional",
+                "Codigo": "00"
+            },
+            {
+                "Id": 453,
+                "T3_Variable": "Sexo",
+                "Nombre": "Mujeres",
+                "Codigo": "6"
+            },
+            {
+                "Id": 15658,
+                "T3_Variable": "Grupos de edad",
+                "Nombre": "De 35 a 39 años",
+                "Codigo": "Y35T39"
+            },
+            {
+                "Id": 21332,
+                "T3_Variable": "RELACIÓN CON LA ACTIVIDAD ",
+                "Nombre": "Ocupados",
+                "Codigo": ""
+            },
+            {
+                "Id": 20258,
+                "T3_Variable": "Tipo de dato",
+                "Nombre": "Valor absoluto",
+                "Codigo": ""
+            }
+        ],
+        "Data": [
+            {
+                "Fecha": "2023-10-01T00:00:00.000+02:00",
+                "T3_TipoDato": "Definitivo",
+                "T3_Periodo": "T4",
+                "Anyo": 2023,
+                "Valor": 1123.8
+            }
+        ]
+    },
+    {
+        "COD": "EPA23273",
+        "Nombre": "Total Nacional. Mujeres. De 40 a 44 años. Ocupados. Personas. ",
+        "T3_Unidad": "Personas",
+        "T3_Escala": "Miles",
+        "MetaData": [
+            {
+                "Id": 16473,
+                "T3_Variable": "Total Nacional",
+                "Nombre": "Total Nacional",
+                "Codigo": "00"
+            },
+            {
+                "Id": 453,
+                "T3_Variable": "Sexo",
+                "Nombre": "Mujeres",
+                "Codigo": "6"
+            },
+            {
+                "Id": 15663,
+                "T3_Variable": "Grupos de edad",
+                "Nombre": "De 40 a 44 años",
+                "Codigo": "Y40T44"
+            },
+            {
+                "Id": 21332,
+                "T3_Variable": "RELACIÓN CON LA ACTIVIDAD ",
+                "Nombre": "Ocupados",
+                "Codigo": ""
+            },
+            {
+                "Id": 20258,
+                "T3_Variable": "Tipo de dato",
+                "Nombre": "Valor absoluto",
+                "Codigo": ""
+            }
+        ],
+        "Data": [
+            {
+                "Fecha": "2023-10-01T00:00:00.000+02:00",
+                "T3_TipoDato": "Definitivo",
+                "T3_Periodo": "T4",
+                "Anyo": 2023,
+                "Valor": 1379.7
+            }
+        ]
+    },
+    {
+        "COD": "EPA23267",
+        "Nombre": "Total Nacional. Mujeres. De 45 a 49 años. Ocupados. Personas. ",
+        "T3_Unidad": "Personas",
+        "T3_Escala": "Miles",
+        "MetaData": [
+            {
+                "Id": 16473,
+                "T3_Variable": "Total Nacional",
+                "Nombre": "Total Nacional",
+                "Codigo": "00"
+            },
+            {
+                "Id": 453,
+                "T3_Variable": "Sexo",
+                "Nombre": "Mujeres",
+                "Codigo": "6"
+            },
+            {
+                "Id": 15667,
+                "T3_Variable": "Grupos de edad",
+                "Nombre": "De 45 a 49 años",
+                "Codigo": "Y45T49"
+            },
+            {
+                "Id": 21332,
+                "T3_Variable": "RELACIÓN CON LA ACTIVIDAD ",
+                "Nombre": "Ocupados",
+                "Codigo": ""
+            },
+            {
+                "Id": 20258,
+                "T3_Variable": "Tipo de dato",
+                "Nombre": "Valor absoluto",
+                "Codigo": ""
+            }
+        ],
+        "Data": [
+            {
+                "Fecha": "2023-10-01T00:00:00.000+02:00",
+                "T3_TipoDato": "Definitivo",
+                "T3_Periodo": "T4",
+                "Anyo": 2023,
+                "Valor": 1523.8
+            }
+        ]
+    },
+    {
+        "COD": "EPA23261",
+        "Nombre": "Total Nacional. Mujeres. De 50 a 54 años. Ocupados. Personas. ",
+        "T3_Unidad": "Personas",
+        "T3_Escala": "Miles",
+        "MetaData": [
+            {
+                "Id": 16473,
+                "T3_Variable": "Total Nacional",
+                "Nombre": "Total Nacional",
+                "Codigo": "00"
+            },
+            {
+                "Id": 453,
+                "T3_Variable": "Sexo",
+                "Nombre": "Mujeres",
+                "Codigo": "6"
+            },
+            {
+                "Id": 15648,
+                "T3_Variable": "Grupos de edad",
+                "Nombre": "De 50 a 54 años",
+                "Codigo": "Y50T54"
+            },
+            {
+                "Id": 21332,
+                "T3_Variable": "RELACIÓN CON LA ACTIVIDAD ",
+                "Nombre": "Ocupados",
+                "Codigo": ""
+            },
+            {
+                "Id": 20258,
+                "T3_Variable": "Tipo de dato",
+                "Nombre": "Valor absoluto",
+                "Codigo": ""
+            }
+        ],
+        "Data": [
+            {
+                "Fecha": "2023-10-01T00:00:00.000+02:00",
+                "T3_TipoDato": "Definitivo",
+                "T3_Periodo": "T4",
+                "Anyo": 2023,
+                "Valor": 1364.5
+            }
+        ]
+    },
+    {
+        "COD": "EPA23255",
+        "Nombre": "Total Nacional. Mujeres. De 55 a 59 años. Ocupados. Personas. ",
+        "T3_Unidad": "Personas",
+        "T3_Escala": "Miles",
+        "MetaData": [
+            {
+                "Id": 16473,
+                "T3_Variable": "Total Nacional",
+                "Nombre": "Total Nacional",
+                "Codigo": "00"
+            },
+            {
+                "Id": 453,
+                "T3_Variable": "Sexo",
+                "Nombre": "Mujeres",
+                "Codigo": "6"
+            },
+            {
+                "Id": 15649,
+                "T3_Variable": "Grupos de edad",
+                "Nombre": "De 55 a 59 años",
+                "Codigo": "Y55T59"
+            },
+            {
+                "Id": 21332,
+                "T3_Variable": "RELACIÓN CON LA ACTIVIDAD ",
+                "Nombre": "Ocupados",
+                "Codigo": ""
+            },
+            {
+                "Id": 20258,
+                "T3_Variable": "Tipo de dato",
+                "Nombre": "Valor absoluto",
+                "Codigo": ""
+            }
+        ],
+        "Data": [
+            {
+                "Fecha": "2023-10-01T00:00:00.000+02:00",
+                "T3_TipoDato": "Definitivo",
+                "T3_Periodo": "T4",
+                "Anyo": 2023,
+                "Valor": 1135.9
+            }
+        ]
+    },
+    {
+        "COD": "EPA23249",
+        "Nombre": "Total Nacional. Mujeres. De 60 a 64 años. Ocupados. Personas. ",
+        "T3_Unidad": "Personas",
+        "T3_Escala": "Miles",
+        "MetaData": [
+            {
+                "Id": 16473,
+                "T3_Variable": "Total Nacional",
+                "Nombre": "Total Nacional",
+                "Codigo": "00"
+            },
+            {
+                "Id": 453,
+                "T3_Variable": "Sexo",
+                "Nombre": "Mujeres",
+                "Codigo": "6"
+            },
+            {
+                "Id": 15650,
+                "T3_Variable": "Grupos de edad",
+                "Nombre": "De 60 a 64 años",
+                "Codigo": "Y60T64"
+            },
+            {
+                "Id": 21332,
+                "T3_Variable": "RELACIÓN CON LA ACTIVIDAD ",
+                "Nombre": "Ocupados",
+                "Codigo": ""
+            },
+            {
+                "Id": 20258,
+                "T3_Variable": "Tipo de dato",
+                "Nombre": "Valor absoluto",
+                "Codigo": ""
+            }
+        ],
+        "Data": [
+            {
+                "Fecha": "2023-10-01T00:00:00.000+02:00",
+                "T3_TipoDato": "Definitivo",
+                "T3_Periodo": "T4",
+                "Anyo": 2023,
+                "Valor": 764.4
+            }
+        ]
+    },
+    {
+        "COD": "EPA23243",
+        "Nombre": "Total Nacional. Mujeres. De 65 a 69 años. Ocupados. Personas. ",
+        "T3_Unidad": "Personas",
+        "T3_Escala": "Miles",
+        "MetaData": [
+            {
+                "Id": 16473,
+                "T3_Variable": "Total Nacional",
+                "Nombre": "Total Nacional",
+                "Codigo": "00"
+            },
+            {
+                "Id": 453,
+                "T3_Variable": "Sexo",
+                "Nombre": "Mujeres",
+                "Codigo": "6"
+            },
+            {
+                "Id": 15651,
+                "T3_Variable": "Grupos de edad",
+                "Nombre": "De 65 a 69 años",
+                "Codigo": "Y65T69"
+            },
+            {
+                "Id": 21332,
+                "T3_Variable": "RELACIÓN CON LA ACTIVIDAD ",
+                "Nombre": "Ocupados",
+                "Codigo": ""
+            },
+            {
+                "Id": 20258,
+                "T3_Variable": "Tipo de dato",
+                "Nombre": "Valor absoluto",
+                "Codigo": ""
+            }
+        ],
+        "Data": [
+            {
+                "Fecha": "2023-10-01T00:00:00.000+02:00",
+                "T3_TipoDato": "Definitivo",
+                "T3_Periodo": "T4",
+                "Anyo": 2023,
+                "Valor": 134.5
+            }
+        ]
+    },
+    {
+        "COD": "EPA23297",
+        "Nombre": "Total Nacional. Mujeres. 70 y más años. Ocupados. Personas. ",
+        "T3_Unidad": "Personas",
+        "T3_Escala": "Miles",
+        "MetaData": [
+            {
+                "Id": 16473,
+                "T3_Variable": "Total Nacional",
+                "Nombre": "Total Nacional",
+                "Codigo": "00"
+            },
+            {
+                "Id": 453,
+                "T3_Variable": "Sexo",
+                "Nombre": "Mujeres",
+                "Codigo": "6"
+            },
+            {
+                "Id": 10579,
+                "T3_Variable": "Semiintervalos de edad",
+                "Nombre": "70 y más años",
+                "Codigo": "Y-GE70"
+            },
+            {
+                "Id": 21332,
+                "T3_Variable": "RELACIÓN CON LA ACTIVIDAD ",
+                "Nombre": "Ocupados",
+                "Codigo": ""
+            },
+            {
+                "Id": 20258,
+                "T3_Variable": "Tipo de dato",
+                "Nombre": "Valor absoluto",
+                "Codigo": ""
+            }
+        ],
+        "Data": [
+            {
+                "Fecha": "2023-10-01T00:00:00.000+02:00",
+                "T3_TipoDato": "Definitivo",
+                "T3_Periodo": "T4",
+                "Anyo": 2023,
+                "Valor": 15.2
+            }
+        ]
+    }
+]
