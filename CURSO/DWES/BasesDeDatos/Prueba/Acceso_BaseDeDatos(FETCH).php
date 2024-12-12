@@ -9,11 +9,11 @@
         echo "<p>Conectado a la BBDD</p>";
 
         $resultado = $conexion->query("select * FROM mensajes");
-    while ($registro = $resultado->fetch(PDO::FETCH_OBJ)) {
-        echo "<p>Id: ".$registro->id."</p>";
-        echo "<p>Nombre: ".$registro->nombre."</p>";
-        echo "<p>Email: ".$registro->email."</p>";
-    }
+        while ($registro = $resultado->fetch(PDO::FETCH_OBJ)) {
+            echo "<p>Id: ".$registro->id."</p>";
+            echo "<p>Nombre: ".$registro->nombre."</p>";
+            echo "<p>Email: ".$registro->email."</p>";
+        }
     } catch(PDOException $e) {
         echo "<p>".$e->getMessage()."</p>";
         exit();
