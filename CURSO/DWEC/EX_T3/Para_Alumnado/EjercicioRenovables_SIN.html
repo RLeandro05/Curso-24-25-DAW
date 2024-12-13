@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8" />
+	<title>Ejercicio Renovables</title>
+	<style type="text/css">
+		h2 {
+			text-align: center;
+			color: maroon;
+		}
+
+		.menuHorizontal {
+			margin-bottom: 2em;
+		}
+
+		.menuHorizontal ul {
+			display: flex;
+			padding: 0;
+			margin: 0;
+			list-style: none;
+		}
+
+
+		.menuHorizontal>ul>li {
+			margin: 0 .5em 0 .5em;
+		}
+
+
+		.menuHorizontal a {
+			display: block;
+			padding: 1em;
+			background-color: maroon;
+			background-color: pink;
+			color: #191C26;
+			text-decoration: none;
+		}
+
+
+		.menuHorizontal a:hover {
+			background-color: #CC673B;
+			color: white;
+		}
+
+		.menuHorizontal ul li ul {
+			display: none;
+			position: absolute;
+
+		}
+
+		.menuHorizontal ul li a:hover+ul,
+		.menuHorizontal ul li ul:hover {
+			display: flex;
+		}
+
+		.menuHorizontal>ul>li>a {
+			background-color: #F9B53C;
+			color: #191C26;
+		}
+
+		.menuHorizontal a[disabled] {
+			color: grey;
+			pointer-events: none;
+			cursor: default;
+		}
+	</style>
+
+	<!-- Load c3.css -->
+	<link href="c3-0.7.20/c3.css" rel="stylesheet">
+	<!-- Load d3.js and c3.js -->
+	<script src="c3-0.7.20/docs/js/d3-5.8.2.min.js"></script>
+	<script src="c3-0.7.20/c3.min.js"></script>
+
+	<script type="text/javascript">
+		window.onload = () => {
+			document.querySelector("#fichero").addEventListener("change", leerFicheroJSON);
+			document.querySelector("#selDatos").addEventListener("change", pintarGrafico);
+			document.querySelector("#btLeerFicheroJSON").addEventListener("click", crearFileJSON);
+		}
+
+		let fichero = null;
+
+		//Método para crear un file JSON
+		const crearFileJSON = () => {
+			//console.log("Entra en crearFileJSON");
+
+			let inputFile = document.createElement("input");
+			inputFile.type = "file";
+			inputFile.id = "fileJSON"
+
+			inputFile.accept = ".json";
+
+			inputFile.addEventListener("change", leerFicheroJSON);
+
+			inputFile.click();
+		}
+
+		//Método para primero intentar leer el fichero en formato JSON
+		const leerFicheroJSON = (e) => {
+			//console.log("Llega a leerFichero");
+
+			//Obtener el archivo seleccionado por el usuario
+			fichero = e.target.files[0];
+
+			if (fichero) {
+				const reader = new FileReader();
+
+				//Evento que se ejecuta cuando se ha leído el archivo correctamente
+				reader.onload = (event) => {
+					try {
+						//Parsear el contenido del archivo JSON
+						const datos = JSON.parse(event.target.result);
+
+						//Mostrar los datos del JSON
+						mostrarDatosEnSelectJSON(datos);
+					} catch (error) {
+						//En el caso de que sea CSV, dará error, por lo que entrará en el otro método para leer el CSV
+						leerFicheroCSV();
+					}
+				};
+
+				// Leer el archivo como texto
+				reader.readAsText(fichero);
+			}
+		}
+
+		//Método para leer el fichero CSV en caso de no ser JSON
+		const leerFicheroCSV = () => {
+			//console.log("Llega a leerFicheroCSV");
+
+			//Obtener el archivo seleccionado por el usuario
+			const fichero = document.querySelector("#fichero").files[0];
+
+			if (fichero) {
+				const reader = new FileReader();
+
+				//Evento que se ejecuta cuando se ha leído el archivo correctamente
+				reader.onload = (event) => {
+					try {
+						//Parsear el contenido del archivo CSV
+						const datos = CSV.parse(event.target.result);
+
+						//Mostrar los datos del CSV
+						mostrarDatosEnSelectCSV(datos);
+					} catch (error) {
+						console.error("Parece que hubo un error: ", error);
+					}
+				};
+
+				// Leer el archivo como texto
+				reader.readAsText(fichero);
+			}
+		}
+
+		let datosAgrupados = [];
+		//Método para mostrar los datos del JSON en el select
+		const mostrarDatosEnSelectJSON = (fichero) => {
+			/*console.log("Llega a mostrarDatosEnSelect");
+			console.log(fichero);*/
+
+			//Agrupar los datos por país para mostrar mejor en el select las opciones
+			datosAgrupados = Object.groupBy(fichero, datos => datos.Entity);
+
+			//console.log(datosAgrupados);
+
+			let select = document.querySelector("#selDatos");
+
+			//Por cada iteración de los datos agrupados, añadir una nueva opción en el select que sea sólo el país sin repetirse
+			for (const key in datosAgrupados) {
+				//console.log(key);
+
+				let opcion = new Option(key, key);
+
+				//Añadir la nueva opción al select para poder mostrarse
+				select.add(opcion);
+			}
+
+		}
+
+		//Método para mostrar los datos del CSV en el select
+		const mostrarDatosEnSelectCSV = () => {
+			console.log("Llega a mostrarDatosEnSelectCSV");
+
+		}
+
+		//Método para pintar el gráfico en función de las opciones seleccionadas en el select
+		const pintarGrafico = () => {
+			//console.log("Llega a pintarGrafico");
+
+			//Obtener los valores seleccionados del select
+			let valoresSelect = Array.from(document.querySelector("#selDatos").selectedOptions);
+
+			/*for (let i = 0; i < valoresSelect.length; i++) {
+				console.log("valorSelect :>", valoresSelect[i].value);
+			}*/
+
+			let columnas = [];
+			let anios = [];
+
+			//Por cada iteración, crear un objeto en el cual se guarden los valores
+			valoresSelect.forEach(valorSelect => {
+
+				let lista = Array.from(datosAgrupados[valorSelect.value])
+
+				let columna = [];
+
+				columna.push(valorSelect.value);
+				//console.log(columna);
+
+
+				lista.forEach(datos => {
+					//console.log(datos["Electricity from wind - TWh"]);
+
+					columna.push(parseFloat(datos["Electricity from wind - TWh"]));
+					anios.push(datos["Year"]);
+				});
+
+				//console.log(columna);
+
+				columnas.push(columna);
+			});
+
+			//console.log(columnas);
+			//console.log(anios);
+
+			//Crear el gráfico con las columnas dadas
+			let chart = c3.generate({
+				bindto: "#grafico",
+				data: {
+					columns: columnas
+				},
+				axis: {
+					x: {
+						type: "category",
+						categories: anios
+					}
+				}
+			});
+
+			//Habilitar los botones de descarga en cuanto se cargue el gráfico
+			document.querySelector("#btGuardarDatosJSON").removeAttribute("disabled");
+			document.querySelector("#btGuarSeleccionJSON").removeAttribute("disabled");
+
+			//Guardar un objeto JSON con TODOS los valores del mismo
+			document.querySelector("#btGuardarDatosJSON").onclick = () => {
+				//console.log("Entra");
+
+				if (confirm("¿Desea descargar todos los datos en formato JSON?")) {
+					//console.log(JSON.stringify(datosAgrupados));
+
+					//Crear un enlace para poder descargarlo
+					let link = document.createElement("a");
+
+					//Introducir un nombre del archivo
+					const nombreFichero = prompt("Introduce el nombre del fichero (no pongas extensión)", "Datos_EnergíaEólica");
+
+					//Descargar el archivo con extensión .json
+					link.download = nombreFichero + ".json";
+
+					//Crear un nuevo blob de tipo json
+					let blob = new Blob([JSON.stringify(datosAgrupados)], { type: "application/json" });
+
+					//Llevar al blob creado como URL	 para ser descargado
+					link.href = URL.createObjectURL(blob);
+					//Hacer un click virtual para descargar
+					link.click();
+
+					URL.revokeObjectURL(link.href);
+
+					//Mostrar mensaje
+					alert("El gráfico ha sido descargado en formato JSON satisfactoriamente.")
+
+				} else {
+					//Mostrar mensaje al denegar
+					alert("No se descargó el gráfico en formato JSON.")
+				}
+			}
+
+			//Guardar un objeto con los datos SELECCIONADOS en el gráfico
+			document.querySelector("#btGuarSeleccionJSON").onclick = () => {
+				//console.log("Entra");
+
+				/*columnas.forEach(columna => {
+					console.log(columna[0]);
+				});*/
+
+				//console.log(datosAgrupados["ASEAN (Ember)"]);
+
+				let listaObjetos = [];
+
+				columnas.forEach(columna => {
+					let listaDatos = datosAgrupados[columna[0]];
+					//console.log(listaDatos);
+
+					let objeto = {
+						nombre: columna[0],
+						datos: listaDatos
+					}
+
+					//console.log(objeto);
+
+					listaObjetos.push(objeto);
+				});
+
+				//console.log(listaObjetos);
+
+				if (confirm("¿Desea descargar los datos eólicos presentes en el gráfico?")) {
+					//Crear un enlace para poder descargarlo
+					let link = document.createElement("a");
+
+					//Introducir un nombre del archivo
+					const nombreFichero = prompt("Introduce el nombre del fichero (no pongas extensión)", "Datos_EnergíaEólica");
+
+					let objetoJSON = {
+						archivo: nombreFichero,
+						datosEspecificos: listaObjetos
+					}
+
+					//Descargar el archivo con extensión .json
+					link.download = nombreFichero + ".json";
+
+					//Crear un nuevo blob de tipo json
+					let blob = new Blob([JSON.stringify(objetoJSON)], { type: "application/json" });
+
+					//Llevar al blob creado como URL para ser descargado
+					link.href = URL.createObjectURL(blob);
+					//Hacer un click virtual para descargar
+					link.click();
+
+					URL.revokeObjectURL(link.href);
+
+					//Mostrar mensaje
+					alert("El gráfico ha sido descargado en formato JSON satisfactoriamente.")
+				} else {
+					//Mostrar mensaje al denegar
+					alert("No se descargó el gráfico en formato JSON.")
+				}
+			}
+		}
+	</script>
+
+
+</head>
+
+<body>
+	<h2>Gráfico de Energía Eólica</h2>
+
+	<nav class="menuHorizontal">
+		<ul>
+			<li>
+				<a id="btLeerFicheroCSV" href="#">Leer fichero .csv</a>
+			</li>
+			<li>
+				<a id="btLeerFicheroJSON" href="#">Leer fichero .json</a>
+			</li>
+			<li>
+				<a id="btGuardarDatosJSON" href="#" disabled>Guardar datos JSON</a>
+			</li>
+			<li>
+				<a id="btGuarSeleccionJSON" href="#" disabled>Guardar selección JSON</a>
+			</li>
+		</ul>
+	</nav>
+
+	<div>
+		<label for="fichero">Fichero: </label>
+		<input type="file" id="fichero" accept=".csv, .json" />
+	</div>
+
+	<br><br>
+	<select id="selDatos" multiple size="15">
+		<option value="-1">Selecciona opción</option>
+	</select>
+
+	<br><br>
+
+	<p>
+	<div id="grafico"></div>
+	</p>
+
+</body>
+
+</html>
