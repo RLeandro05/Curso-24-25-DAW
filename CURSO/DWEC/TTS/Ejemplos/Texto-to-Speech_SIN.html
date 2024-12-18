@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+  <head>   
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"> 
+    <title>Plantilla</title>
+    <script type="text/javascript">
+		let sintesis = window.speechSynthesis;
+		let voces = [];
+
+		window.onload = () => {
+			//llenaVoces();
+			if (speechSynthesis !== undefined) {
+				speechSynthesis.onvoiceschanged = llenaVoces;
+				//console.log(sintesis.getVoices());
+			}
+			document.querySelector("#btnHablar").addEventListener("click", () => hablar());
+		}
+
+		const llenaVoces = () => {
+			voces = sintesis.getVoices();
+			//console.log(voces);
+			
+			let select = document.querySelector("#listaVoces");
+
+			voces.forEach(voz => {
+				let opcion = new Option(voz.name, voz.name);
+
+				select.add(opcion);
+			});
+		}
+
+		const hablar = () => {
+			let texto = document.querySelector("#texto");
+			let toSpeak = new SpeechSynthesisUtterance(texto.value);
+			let select = document.querySelector("#listaVoces");
+
+			toSpeak.voice = voces[select.value];
+			sintesis.speak(toSpeak);
+		}
+      
+    </script>
+  </head>
+  
+  <body>
+
+	<div>
+		<label>Selecciona Voz:</label>
+		<select id='listaVoces'></select> 
+	</div>
+	<br><br>
+
+	<div>
+		<textarea id='texto' rows="7" cols="44">Esto es un texto de prueba</textarea>
+	</div>
+	
+	<br><br>
+	<button id='btnHablar'>Hablar</button>
+    
+    
+  </body>
+  
+</html>
