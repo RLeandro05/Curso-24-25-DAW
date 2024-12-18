@@ -63,9 +63,10 @@ else
 // COMPROBAR LA CONTRASEÑA
 //-----------------------------------------------------
 // Comprobamos si es válida
-if (password_verify($password, $resultado["password"]))
+if (password_verify($password, $resultado["contrasena"]))
 {
 // Si son correctos, creamos la sesión
+session_name("sesion-privada");
 session_start();
 $_SESSION["email"] = $email;
 // Redireccionamos a la página segura

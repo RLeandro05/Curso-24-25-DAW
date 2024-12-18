@@ -117,7 +117,7 @@ Hola!\n
 Gracias por registrate en la mejor plataforma de internet, demuestras inteligencia.\
 n
 Para activar entra en el siguiente enlace:\n
-http://localhost/Curso-24-25-DAW/CURSO/DWES/PHP/TEMA4_LOGIN/EJEMPLO/verifyToken.php?email=$emailEncode&token=$tokenEncode
+http://localhost/Curso-24-25-DAW/CURSO/DWES/PHP/TEMA4_LOGIN/EJEMPLO/verificar-cuenta.php?email=$emailEncode&token=$tokenEncode
 ";
         // Envio del email
         mail($email, 'Activa tu cuenta', $textoEmail, $headers);
