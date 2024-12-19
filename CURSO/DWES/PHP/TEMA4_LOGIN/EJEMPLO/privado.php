@@ -19,6 +19,7 @@ if (!isset($_SESSION["email"])) {
 </head>
 
 <body>
+    <h1>Panel secreto</h1>
     <p>¡Te encuentras en una zona secreta!, solo visible por una persona identificada.</p>
     <p><a href="cerrarSesion.php">Cerrar sesión</a></p>
 </body>
