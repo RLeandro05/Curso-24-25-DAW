@@ -22,8 +22,8 @@
 			
 			let select = document.querySelector("#listaVoces");
 
-			voces.forEach(voz => {
-				let opcion = new Option(voz.name, voz.name);
+			voces.forEach((voz, i) => {
+				let opcion = new Option(voz.name, i);
 
 				select.add(opcion);
 			});
