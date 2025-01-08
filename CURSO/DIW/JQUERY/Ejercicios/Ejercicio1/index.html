@@ -7,10 +7,7 @@
     <script src="../../../JQUERY/jquery-3.7.1.min.js"></script>
 
     <style type="text/css">
-        .ocultar, .visible {
-            color: orange;
-        }
-        
+
         .ocultar {
             display: none;
         }
@@ -53,6 +50,44 @@
                 } else if ($elemento.hasClass("visible")) { //En el caso de que el elemento tenga la clase visible, cambiarla por ocultar para ocultar el texto
                     $elemento.removeClass("visible").addClass("ocultar").show().slideUp(500); //Importante poner show() para que haga la transición de movimiento
                     $(this).text("Seguir leyendo..."); //Cambiar el texto
+                }
+            });
+
+            $("a#seguirLeyendoSecundario1").click(function (e) {
+                e.preventDefault();
+
+                let $elemento1 = $("#secundario #secundario1 #secundario_1");
+                let $elemento2 = $("#secundario #secundario2");
+
+                // Si el texto de #secundario1 está oculto, mostramos el texto y ocultamos #secundario2
+                if ($elemento1.hasClass("ocultar")) {
+                    $elemento1.removeClass("ocultar").addClass("visible").hide().slideDown(500);
+                    $elemento2.removeClass("visible").addClass("ocultar").show().slideUp(500); // Ocultamos el texto de #secundario2
+                    $(this).text("Leer menos..."); // Cambiar el texto del enlace
+                } else if ($elemento1.hasClass("visible")) {
+                    // Si ya está visible, lo ocultamos
+                    $elemento1.removeClass("visible").addClass("ocultar").show().slideUp(500);
+                    $elemento2.removeClass("visible").addClass("ocultar").hide().slideDown(500); // Restablecer #secundario2 a su estado original
+                    $(this).text("Seguir leyendo..."); // Restaurar texto del enlace
+                }
+            });
+
+            $("a#seguirLeyendoSecundario2").click(function (e) {
+                e.preventDefault();
+
+                let $elemento1 = $("#secundario #secundario2 #secundario_2");
+                let $elemento2 = $("#secundario #secundario1");
+
+                // Si el texto de #secundario1 está oculto, mostramos el texto y ocultamos #secundario2
+                if ($elemento1.hasClass("ocultar")) {
+                    $elemento1.removeClass("ocultar").addClass("visible").hide().slideDown(500);
+                    $elemento2.removeClass("visible").addClass("ocultar").show().slideUp(500); // Ocultamos el texto de #secundario2
+                    $(this).text("Leer menos..."); // Cambiar el texto del enlace
+                } else if ($elemento1.hasClass("visible")) {
+                    // Si ya está visible, lo ocultamos
+                    $elemento1.removeClass("visible").addClass("ocultar").show().slideUp(500);
+                    $elemento2.removeClass("visible").addClass("ocultar").hide().slideDown(500); // Restablecer #secundario2 a su estado original
+                    $(this).text("Seguir leyendo..."); // Restaurar texto del enlace
                 }
             });
         });
@@ -128,7 +163,8 @@
                     <p>Vestibulum pulvinar urna et quam. Pellentesque habitant morbi tristique senectus et netus et
                         malesuada fames ac turpis egestas. Nullam vel turpis vitae dui imperdiet laoreet. Quisque eget
                         ipsum.</p>
-                    <p class="ocultar" id="contenidoEscondido1">Donec commodo, turpis vel venenatis sollicitudin, quam ante convallis justo, sed
+                    <p class="ocultar" id="contenidoEscondido1">Donec commodo, turpis vel venenatis sollicitudin, quam
+                        ante convallis justo, sed
                         eleifend justo
                         lectus quis sapien. Ut consequat libero eget est.</p>
                     <p><a id="seguirLeyendo1" href="#">Seguir leyendo...</a></p>
@@ -141,7 +177,8 @@
                     <p>Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nullam
                         dictum hendrerit neque. Mauris id ligula non elit mattis semper. Fusce arcu ipsum, tempus eget,
                         tincidunt at, imperdiet in, mi.</p>
-                    <p class="ocultar" id="contenidoEscondido2">Donec commodo, turpis vel venenatis sollicitudin, quam ante convallis justo, sed
+                    <p class="ocultar" id="contenidoEscondido2">Donec commodo, turpis vel venenatis sollicitudin, quam
+                        ante convallis justo, sed
                         eleifend justo
                         lectus quis sapien. Ut consequat libero eget est.</p>
                     <p><a id="seguirLeyendo2" href="#">Seguir leyendo...</a></p>
@@ -149,14 +186,32 @@
             </div>
 
             <div id="secundario">
-                <h2>Phasellus blandit</h2>
-                <p>Praesent sodales imperdiet augue. Mauris lorem felis, semper eu, tincidunt eu, sollicitudin eget,
-                    sem. Nulla facilisi. Morbi ut enim ut enim ultricies dapibus.</p>
-                <p><a href="#">Seguir leyendo...</a></p>
-                <h2>Nullam vel turpis</h2>
-                <p>Donec commodo, turpis vel venenatis sollicitudin, quam ante convallis justo, sed eleifend justo
-                    lectus quis sapien. Ut consequat libero eget est.</p>
-                <p><a href="#">Seguir leyendo...</a></p>
+                <div id="secundario1">
+                    <h2>Phasellus blandit</h2>
+                    <p>Praesent sodales imperdiet augue. Mauris lorem felis, semper eu, tincidunt eu, sollicitudin eget,
+                        sem. Nulla facilisi. Morbi ut enim ut enim ultricies dapibus.
+                    <p id="secundario_1" class="ocultar">Praesent sodales imperdiet augue. Mauris lorem felis, semper
+                        eu, tincidunt eu, sollicitudin eget,
+                        sem. Nulla facilisi. Morbi ut enim ut enim ultricies dapibus.Praesent sodales imperdiet augue.
+                        Mauris lorem felis, semper eu, tincidunt eu, sollicitudin eget,
+                        sem. Nulla facilisi. Morbi ut enim ut enim ultricies dapibus.</p>
+                    </p>
+                    <p><a href="#" id="seguirLeyendoSecundario1">Seguir leyendo...</a></p>
+                </div>
+                <div id="secundario2">
+                    <h2>Nullam vel turpis</h2>
+                    <p>Donec commodo, turpis vel venenatis sollicitudin, quam ante convallis justo, sed eleifend justo
+                        lectus quis sapien. Ut consequat libero eget est.Donec commodo, turpis vel venenatis
+                        sollicitudin, quam ante convallis justo, sed eleifend justo
+                        lectus quis sapien.
+                    <p id="secundario_2" class="ocultar">Ut consequat libero eget est.Donec commodo, turpis vel
+                        venenatis sollicitudin, quam ante convallis justo, sed eleifend justo
+                        lectus quis sapien. Ut consequat libero eget est.Donec commodo, turpis vel venenatis
+                        sollicitudin, quam ante convallis justo, sed eleifend justo
+                        lectus quis sapien. Ut consequat libero eget est.</p>
+                    </p>
+                    <p><a href="#" id="seguirLeyendoSecundario2">Seguir leyendo...</a></p>
+                </div>
             </div>
 
         </div>
