@@ -1,7 +1,8 @@
 <?php
 
 //Función para conectarse a una base de datos que devuelve un objeto PDO, es decir, una conexión
-function conectarPDO(string $host, string $user, string $password, string $bbdd): PDO {
+function conectarPDO(string $host, string $user, string $password, string $bbdd): PDO
+{
     try {
         //sql en el cual tendremos el host, el nombre de la base de datos y el charset
         $mysql = "mysql:host=$host;dbname=$bbdd;charset=utf8";
@@ -41,15 +42,14 @@ if (isset($_GET['id'])) {
 
     //Ejecutar la consulta
     if ($consulta->execute()) {
-        echo "El campeón ha sido borrado exitosamente.";
+        //echo "El campeón ha sido borrado exitosamente.";
     } else {
-        echo "Hubo un problema al borrar el campeón.";
+        //echo "Hubo un problema al borrar el campeón.";
     }
 } else {
-    echo "No se ha especificado un ID para borrar.";
+    //echo "No se ha especificado un ID para borrar.";
 }
 
 //Redirigir al listado de campeones después de borrar
 header("Location: mostrar.php");  //Cambiar a la página donde se listan los campeones
 exit();
-?>

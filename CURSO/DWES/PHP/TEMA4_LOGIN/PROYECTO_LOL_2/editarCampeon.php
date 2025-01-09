@@ -75,7 +75,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['btGuardar'])) {
 
     //Si se ejecuta correctamente, mostrar mensaje exitoso y redirigir a la tabla
     if ($consulta->execute()) {
-        echo "El campeón ha sido actualizado.";
+        //echo "El campeón ha sido actualizado.";
         header("Location: mostrar.php");  //Redirigir después de guardar los cambios
         exit();
     } else {
