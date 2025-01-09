@@ -30,14 +30,17 @@ $bbdd = "lol_manana";
 //Guardar en una variable la conexión devuelta de la función
 $conexion = conectarPDO($host, $user, $passwordDB, $bbdd);
 
-//Consulta para obtener toda la información de los campeones de la tabla campeon
-$sql = "SELECT * FROM campeon";
+//Obtener parámetros de ordenación
+$campo = $_GET['campo'] ?? 'id'; // Por defecto, ordenar por 'id'
+$orden = $_GET['orden'] ?? 'ASC'; // Por defecto, orden ascendente
 
-//Preparar y ejecutar la consulta insertando el sql anteriormente creado
+//Consulta SQL ordenada
+$sql = "SELECT * FROM campeon ORDER BY $campo $orden";
+//Preparar la consulta insertando el sql previamente realizado
 $consulta = $conexion->prepare($sql);
-$consulta->execute();
 
-//Obtener todos los resultados con fetchAll para dar todos los campos al completo
+//Ejecutar la consulta
+$consulta->execute();
 $campeones = $consulta->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
@@ -116,12 +119,13 @@ $campeones = $consulta->fetchAll(PDO::FETCH_ASSOC);
         </tbody>
     </table>
 
-<script>
-    //Función para borrar un campeón
-    const borrarCampeon = (id, nombre) => {
-        if (confirm("¿Estás seguro de que deseas eliminar a " + nombre + "?")) {
-            //En caso afirmativo, llevarlo a la página correspondiente llevándose el id para así eliminar el campeón seleccionado
-            window.location.href = "borrarCampeon.php?id=" + id;
+    <script>
+        //Función para borrar un campeón
+        const borrarCampeon = (id, nombre) => {
+            if (confirm("¿Estás seguro de que deseas eliminar a " + nombre + "?")) {
+                window.location.href = "borrarCampeon.php?id=" + id;
+            }
         }
-    }
-</script>
+    </script>
+</body>
+</html>
