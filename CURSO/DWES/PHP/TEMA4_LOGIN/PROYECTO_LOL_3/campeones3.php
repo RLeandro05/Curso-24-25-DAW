@@ -1,5 +1,7 @@
 <?php
 
+require_once("utils/listadoCampeones.php");
+
 //Función para conectarse a una base de datos que devuelve un objeto PDO, es decir, una conexión
 function conectarPDO(string $host, string $user, string $password, string $bbdd): PDO {
     try {
