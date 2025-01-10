@@ -1,0 +1,17 @@
+<table *ngIf="lista.length > 0">
+    <thead>
+        <tr>
+            <th>Nombre del hobbit</th>
+            <th>Acción</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let hobbit of lista; index as i">
+            <td>{{hobbit}}</td>
+            <td>
+                <button>Editar</button>
+                <button>Eliminar</button>
+            </td>
+        </tr>
+    </tbody>
+</table>
