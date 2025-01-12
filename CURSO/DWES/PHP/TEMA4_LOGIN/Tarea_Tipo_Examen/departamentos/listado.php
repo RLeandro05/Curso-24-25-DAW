@@ -98,5 +98,9 @@
             <?php endforeach; ?>
         </tbody>
     </table>
+
+    <br>
+
+    <a href="../index.html">Volver a Inicio</a>
 </body>
 </html>
