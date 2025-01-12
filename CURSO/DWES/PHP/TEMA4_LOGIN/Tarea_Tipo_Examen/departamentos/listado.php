@@ -88,7 +88,7 @@
             <th>Nombre Sede</th>
         </thead>
         <tbody>
-            <!-- Mostrar el listado del array de departamentos -->
+            <!-- Mostrar el listado de la lista de departamentos -->
             <?php foreach ($departamentos as $departamento) :?>
                 <tr>
                     <td><?= htmlspecialchars($departamento["departamento_nombre"]); ?></td>
