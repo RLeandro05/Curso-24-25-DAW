@@ -25,6 +25,7 @@
         $conexion = conectarPDO($host, $user, $passwordDB, $bbdd);
 
         $sql = "SELECT 
+                    departamentos.id as departamento_id,
                     departamentos.nombre as departamento_nombre, 
                     departamentos.presupuesto as departamento_presupuesto, 
                     sedes.nombre as sede_nombre
@@ -36,10 +37,12 @@
         $consulta = $conexion->prepare($sql);
 
         //Vinculamos las variables a las columnas
+        $departamento_id = '';
         $departamento_nombre = '';
         $departamento_presupuesto = '';
         $sede_nombre = '';
 
+        $consulta->bindColumn('departamento_id', $departamento_id);
         $consulta->bindColumn('departamento_nombre', $departamento_nombre);
         $consulta->bindColumn('departamento_presupuesto', $departamento_presupuesto);
         $consulta->bindColumn('sede_nombre', $sede_nombre);
@@ -54,6 +57,7 @@
         while ($consulta->fetch(PDO::FETCH_BOUND)) {
             //Añadimos los resultados al array
             $departamentos[] = [
+                'departamento_id' => $departamento_id,
                 'departamento_nombre' => $departamento_nombre,
                 'departamento_presupuesto' => $departamento_presupuesto,
                 'sede_nombre' => $sede_nombre
@@ -86,6 +90,7 @@
             <th>Nombre</th>
             <th>Presupuesto</th>
             <th>Nombre Sede</th>
+            <th>Acciones</th>
         </thead>
         <tbody>
             <!-- Mostrar el listado de la lista de departamentos -->
@@ -94,6 +99,7 @@
                     <td><?= htmlspecialchars($departamento["departamento_nombre"]); ?></td>
                     <td><?= htmlspecialchars($departamento["departamento_presupuesto"]); ?></td>
                     <td><?= htmlspecialchars($departamento["sede_nombre"]); ?></td>
+                    <td><a href="modificar.php?id=<?=$departamento["departamento_id"]?>">&#9998;</a> || <a href="modificar.php?id=<?=$departamento["departamento_id"]?>">&#128465;</a></td>
                 </tr>
             <?php endforeach; ?>
         </tbody>
