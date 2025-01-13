@@ -53,6 +53,7 @@
         <thead>
             <th>Nombre</th>
             <th>Dirección</th>
+            <th>Acciones</th>
         </thead>
         <tbody>
             <!--Mostrar el listado del array de sedes-->
@@ -60,6 +61,7 @@
                 <tr>
                     <td><?= htmlspecialchars($sede["nombre"]); ?></td>
                     <td><?= htmlspecialchars($sede["direccion"]); ?></td>
+                    <td><a href="modificar.php?id=<?=$sede["id"]?>">&#9998;</a> || <a href="modificar.php?id=<?=$sede["id"]?>">&#128465;</a></td>
                 </tr>
             <?php endforeach;?>
         </tbody>
