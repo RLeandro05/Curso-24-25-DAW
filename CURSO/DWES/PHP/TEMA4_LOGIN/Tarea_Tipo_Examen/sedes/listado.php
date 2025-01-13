@@ -68,5 +68,6 @@
     <br>
 
     <a href="../index.html">Volver a Inicio</a>
+    <a href="nuevo.php">A&ntilde;adir</a>
 </body>
 </html>
