@@ -22,6 +22,7 @@
     try {
         $conexion = conectarPDO($host, $user, $passwordDB, $bbdd);
 
+        //Realizar la consulta sql uniendo las tablas necesarias y aplicar alias para no dar errores en el código
         $sql = "SELECT empleados.nombre as empleado_nombre,
                     empleados.email as empleado_email,
                     empleados.apellidos as empleado_apellidos,
@@ -64,13 +65,14 @@
 
     <table border="1">
         <thead>
-            <th>Nombre <a href="ordenar.php?campo=nombre&orden=ASC" id="ASC">&#8593;</a> <a href="ordenar.php?campo=nombre&orden=DESC" id="DESC">&#8595;</a> </th>
-            <th>Apellidos <a href="ordenar.php?campo=apellidos&orden=ASC" id="ASC">&#8593;</a> <a href="ordenar.php?campo=apellidos&orden=DESC" id="DESC">&#8595;</a> </th>
-            <th>Correo Electrónico <a href="ordenar.php?campo=email&orden=ASC" id="ASC">&#8593;</a> <a href="ordenar.php?campo=email&orden=DESC" id="DESC">&#8595;</a> </th>
-            <th>Salario <a href="ordenar.php?campo=salario&orden=ASC" id="ASC">&#8593;</a> <a href="ordenar.php?campo=salario&orden=DESC" id="DESC">&#8595;</a> </th>
-            <th>Número de Hijos <a href="ordenar.php?campo=hijos&orden=ASC" id="ASC">&#8593;</a> <a href="ordenar.php?campo=hijos&orden=DESC" id="DESC">&#8595;</a> </th>
-            <th>Departamento <a href="ordenar.php?campo=departamento&orden=ASC" id="ASC">&#8593;</> <a href="ordenar.php?campo=departamento&orden=DESC" id="DESC">&#8595;</a> </th>
-            <th>Sede <a href="ordenar.php?campo=sede&orden=ASC" id="ASC">&#8593;</a> <a href="ordenar.php?campo=sede&orden=DESC" id="DESC">&#8595;</a> </th>
+            <!-- Añadir en cada flecha el lugar destino y las variables campo y orden para poder ordenar en función de qué campo y orden sea -->
+            <th>Nombre <a href="ordenar.php?campo=empleado_nombre&orden=ASC" id="ASC">&#8593;</a> <a href="ordenar.php?campo=empleado_nombre&orden=DESC" id="DESC">&#8595;</a> </th>
+            <th>Apellidos <a href="ordenar.php?campo=empleado_apellidos&orden=ASC" id="ASC">&#8593;</a> <a href="ordenar.php?campo=empleado_apellidos&orden=DESC" id="DESC">&#8595;</a> </th>
+            <th>Correo Electrónico <a href="ordenar.php?campo=empleado_email&orden=ASC" id="ASC">&#8593;</a> <a href="ordenar.php?campo=empleado_email&orden=DESC" id="DESC">&#8595;</a> </th>
+            <th>Salario <a href="ordenar.php?campo=empleado_salario&orden=ASC" id="ASC">&#8593;</a> <a href="ordenar.php?campo=empleado_salario&orden=DESC" id="DESC">&#8595;</a> </th>
+            <th>Número de Hijos <a href="ordenar.php?campo=empleado_hijos&orden=ASC" id="ASC">&#8593;</a> <a href="ordenar.php?campo=empleado_hijos&orden=DESC" id="DESC">&#8595;</a> </th>
+            <th>Departamento <a href="ordenar.php?campo=departamento_nombre&orden=ASC" id="ASC">&#8593;</> <a href="ordenar.php?campo=departamento_nombre&orden=DESC" id="DESC">&#8595;</a> </th>
+            <th>Sede <a href="ordenar.php?campo=sede_nombre&orden=ASC" id="ASC">&#8593;</a> <a href="ordenar.php?campo=sede_nombre&orden=DESC" id="DESC">&#8595;</a> </th>
         </thead>
         <tbody>
             <!-- Mostrar el listado de la lista de objetos de empleados -->
