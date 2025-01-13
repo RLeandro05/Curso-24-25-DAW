@@ -1,0 +1,17 @@
+{
+    "name": "daw_m/proyecto1",
+    "autoload": {
+        "psr-4": {
+            "DawM\\Proyecto1\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "RLeandro05",
+            "email": "lligpic577@g.educaand.es"
+        }
+    ],
+    "require": {
+        "monolog/monolog": "^3.8"
+    }
+}
