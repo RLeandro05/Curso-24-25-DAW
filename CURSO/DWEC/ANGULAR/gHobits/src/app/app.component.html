@@ -1,7 +1,35 @@
-<div>
-  <h2>Gestión de Hobbits</h2>
-</div>
+<ul>
+  <li *ngFor="let hobbit of lista">
+      {{hobbit}}
+  </li>
+</ul>
 
-<h3>Aquí hacemos la gestión de los hobbits:</h3>
+<form>
+  <p>
+    <input type="text" name="nombre_hobbit" [(ngModel)]="gHobbit" placeholder="Mete nuevo hobbit de esos">
+    <button (click)="anade()">Añadir hobbit</button>
+  </p>
+  <p>
+    <input type="text" name="modificar_hobbit" [(ngModel)]="gHobbitMod">
+    <button (click)="modificar()">Editar hobbit</button>
+  </p>
+</form>
 
-<app-g-hobbit/>
+<table *ngIf="lista.length > 0">
+  <thead>
+      <tr>
+          <th>Nombre del hobbit</th>
+          <th>Accion</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr *ngFor="let hobbit of lista; index as i">
+          <td>{{hobbit}}</td>
+          <td>
+              <button (click)="editar(hobbit, i)">Editar</button>
+              <button (click)="eliminar(hobbit, i)">Borrar</button>
+          </td>
+      </tr>
+  </tbody>
+
+</table>
