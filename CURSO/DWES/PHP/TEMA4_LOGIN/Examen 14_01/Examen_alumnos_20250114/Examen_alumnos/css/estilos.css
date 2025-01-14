@@ -1,0 +1,16 @@
+.contenedor {
+    display: flex;
+}
+
+.enlaces {
+    padding: 1em;
+}
+
+.estilo_enlace, .confirmacion_borrar {
+    text-decoration: none;
+}
+
+.error {
+    margin-left: 1em;
+    color: red;
+}
