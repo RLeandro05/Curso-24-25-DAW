@@ -1,0 +1,6 @@
+[2025-01-15T09:53:31.318768+01:00] MiLogger.DEBUG: Esto es un mensaje de DEBUG [] []
+[2025-01-15T09:53:31.321054+01:00] MiLogger.INFO: Esto es un mensaje de INFO [] []
+[2025-01-15T09:53:31.321143+01:00] MiLogger.WARNING: Esto es un mensaje de WARNING [] []
+[2025-01-15T09:53:31.321222+01:00] MiLogger.ERROR: Esto es un mensaje de ERROR [] []
+[2025-01-15T09:53:31.321292+01:00] MiLogger.CRITICAL: Esto es un mensaje de CRITICAL [] []
+[2025-01-15T09:53:31.321360+01:00] MiLogger.ALERT: Esto es un mensaje de ALERT [] []
