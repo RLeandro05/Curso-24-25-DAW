@@ -12,7 +12,7 @@ export class AppComponent {
   public gHobbitMod: string;
   public idEdit: number = -1;
   //private accion: Object;
-  private accion : {id: number, nombre:string, indice:number};
+  public accion : {id: number, nombre:string, indice:number};
 
   constructor(){
     this.lista = ["Bilbo Bolson", "Sam Gmyi", "Frodo Bolson", "Pippin Pladin", "Mrry Brandigamo", "Rosita Goto"];

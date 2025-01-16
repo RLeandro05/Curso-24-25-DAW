@@ -6,12 +6,15 @@
 
 <form>
   <p>
-    <input type="text" name="nombre_hobbit" [(ngModel)]="gHobbit" placeholder="Mete nuevo hobbit de esos">
-    <button (click)="anade()">Añadir hobbit</button>
+    gHobbit: |{{gHobbit}}|
   </p>
   <p>
-    <input type="text" name="modificar_hobbit" [(ngModel)]="gHobbitMod">
-    <button (click)="modificar()">Editar hobbit</button>
+    <input type="text" name="nombre_hobbit" [(ngModel)]="gHobbit" placeholder="Mete nuevo hobbit de esos">
+    <button (click)="anade()" [disabled]="gHobbit.trim() == ''">{{accion.nombre}} hobbit</button>
+  </p>
+  <p>
+    <input type="text" name="modificar_hobbit" [(ngModel)]="gHobbitMod" placeholder="Edita un hobbit de esos">
+    <button (click)="modificar()" [disabled]="gHobbitMod.trim() == ''">Editar hobbit</button>
   </p>
 </form>
 
