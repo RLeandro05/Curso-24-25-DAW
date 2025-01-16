@@ -1,6 +1,7 @@
 <?php
-require_once("../../vendor/autoload.php"); // Incluye Monolog y sus dependencias
-require_once("productoManager.php");
+require_once("vendor/autoload.php");
+//require_once("productoManager.php");
+use DawM\app\ProductoManager;
 
 // Crear una instancia del gestor de productos
 $productoManager = new ProductoManager();

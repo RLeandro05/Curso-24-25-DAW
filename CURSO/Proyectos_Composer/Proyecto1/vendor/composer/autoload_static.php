@@ -17,6 +17,7 @@ class ComposerStaticInit17580fdc4d29ca738ec2988dbf6afb86
         ),
         'D' => 
         array (
+            'DawM\\app\\' => 9,
             'DawM\\Proyecto1\\' => 15,
         ),
     );
@@ -29,6 +30,10 @@ class ComposerStaticInit17580fdc4d29ca738ec2988dbf6afb86
         'Monolog\\' => 
         array (
             0 => __DIR__ . '/..' . '/monolog/monolog/src/Monolog',
+        ),
+        'DawM\\app\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/app',
         ),
         'DawM\\Proyecto1\\' => 
         array (

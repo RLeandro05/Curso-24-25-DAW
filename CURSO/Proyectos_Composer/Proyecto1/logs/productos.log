@@ -1,0 +1,2 @@
+[2025-01-16T09:52:51.300003+01:00] Productos.WARNING: Producto no encontrado {"id":123} []
+[2025-01-16T09:52:51.303089+01:00] Productos.INFO: Producto creado {"nombre":"Laptop","precio":999.99} []

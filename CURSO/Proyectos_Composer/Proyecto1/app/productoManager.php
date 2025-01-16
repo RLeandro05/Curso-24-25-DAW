@@ -1,4 +1,7 @@
 <?php
+
+namespace DawM\app;
+
 use Monolog\Logger;
 use Monolog\Handler\StreamHandler;
 use Monolog\Handler\FirePHPHandler;
