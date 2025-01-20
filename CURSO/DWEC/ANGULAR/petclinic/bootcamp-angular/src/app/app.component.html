@@ -1,0 +1,6 @@
+<button routerLink="/owners">Ir a owners</button>
+
+<app-search [labelButton]="'Búsqueda'" (searchEvent)="search($event)"></app-search>
+
+<p>{{msgEventSearch}}</p>
+<router-outlet/>
