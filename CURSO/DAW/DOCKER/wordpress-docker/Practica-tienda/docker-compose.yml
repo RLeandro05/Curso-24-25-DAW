@@ -1,0 +1,33 @@
+
+version: '3.8'
+
+services:
+  web:
+    image: php:7.4-apache
+    container_name: apache_php
+    volumes:
+      - ./web:/var/www/html
+      - ./conf/php.ini:/usr/local/etc/php/php.ini
+    ports:
+      - "8080:80"
+    depends_on:
+      - db
+    command: bash -c "docker-php-ext-install mysqli pdo_mysql && docker-php-ext-enable mysqli pdo_mysql && apache2-foreground"
+
+  db:
+    image: mysql:5.7
+    container_name: mysql_db
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpass
+      MYSQL_DATABASE: shop_db
+      MYSQL_USER: shop_user
+      MYSQL_PASSWORD: shoppass
+    ports:
+      - "3306:3306"
+    volumes:
+      - db_data:/var/lib/mysql
+
+volumes:
+  db_data:
+

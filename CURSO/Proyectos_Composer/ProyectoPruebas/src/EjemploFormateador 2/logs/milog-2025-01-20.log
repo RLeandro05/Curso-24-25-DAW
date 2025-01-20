@@ -1,0 +1,32 @@
+
+{
+    "message": "Mensaje de prueba",
+    "context": {
+        "usuario": "Juan",
+        "accion": "iniciar_sesion"
+    },
+    "level": 200,
+    "level_name": "INFO",
+    "channel": "MiLogger",
+    "datetime": "2025-01-20T09:37:27.905751+01:00",
+    "extra": {}
+}
+<h1 style="background: #28A745;color: #ffffff;padding: 5px;" class="monolog-output">INFO</h1><table cellspacing="1" width="100%" class="monolog-output"><tr style="padding: 4px;text-align: left;">
+<th style="vertical-align: top;background: #ccc;color: #000" width="100">Message:</th>
+<td style="padding: 4px;text-align: left;vertical-align: top;background: #eee;color: #000"><pre>Mensaje de prueba</pre></td>
+</tr><tr style="padding: 4px;text-align: left;">
+<th style="vertical-align: top;background: #ccc;color: #000" width="100">Time:</th>
+<td style="padding: 4px;text-align: left;vertical-align: top;background: #eee;color: #000"><pre>2025-01-20T09:42:20.607858+01:00</pre></td>
+</tr><tr style="padding: 4px;text-align: left;">
+<th style="vertical-align: top;background: #ccc;color: #000" width="100">Channel:</th>
+<td style="padding: 4px;text-align: left;vertical-align: top;background: #eee;color: #000"><pre>MiLogger</pre></td>
+</tr><tr style="padding: 4px;text-align: left;">
+<th style="vertical-align: top;background: #ccc;color: #000" width="100">Context:</th>
+<td style="padding: 4px;text-align: left;vertical-align: top;background: #eee;color: #000"><table cellspacing="1" width="100%"><tr style="padding: 4px;text-align: left;">
+<th style="vertical-align: top;background: #ccc;color: #000" width="100">usuario:</th>
+<td style="padding: 4px;text-align: left;vertical-align: top;background: #eee;color: #000"><pre>Juan</pre></td>
+</tr><tr style="padding: 4px;text-align: left;">
+<th style="vertical-align: top;background: #ccc;color: #000" width="100">accion:</th>
+<td style="padding: 4px;text-align: left;vertical-align: top;background: #eee;color: #000"><pre>iniciar_sesion</pre></td>
+</tr></table></td>
+</tr></table>
