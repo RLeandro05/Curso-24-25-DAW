@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { RouterLink, RouterOutlet } from '@angular/router';
+import { RouterOutlet, RouterLink } from '@angular/router';
 import { SearchComponent } from './search/search.component';
 
 @Component({
@@ -9,9 +9,11 @@ import { SearchComponent } from './search/search.component';
   styleUrl: './app.component.css'
 })
 export class AppComponent {
-  public msgEventSearch: string = "";
+  title = 'bootcamp_ejemplo';
 
-  search(event: any) {
-    this.msgEventSearch = `Query: ${event.query} || Resultado: ${event.resultado}`;
+  msgEventSearch: string = '';
+
+  search(event: any){
+    this.msgEventSearch = `Query: ${event.query}, Resultado: ${event.resultado}`;
   }
 }

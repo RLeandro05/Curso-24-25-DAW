@@ -1,8 +1,13 @@
-<h1>Buscador</h1>
+<div class="hijo">
+    <h1>Buscador</h1>
+    
+    <form>
+        <input type="text" name="query" [(ngModel)]="query">
+        <button (click)="search()"  class="btn btn-primary">{{labelButton}}</button>
+        <p>Parametro de búsqueda: {{query}}</p>
+        <p>Resultado: {{result}}</p>
+    </form>
+    
 
-<form>
-    <input type="text" name="query" [(ngModel)]="query">
-    <button (click)="search()" class="bi bi-search">{{labelButton}}</button>
-    <p>Parámetros de búsqueda: {{query}}</p>
-    <p>Resultado: {{result}}</p>
-</form>
+</div>
+

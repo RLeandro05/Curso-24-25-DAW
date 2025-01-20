@@ -1,10 +1,11 @@
 <?php
 
-header("Content-Type: application/json; charset=UTF-8");
-header('Access-Control-Allow-Origin: *');
-header('Access-Control-Allow-Methods: GET,POST,OPTIONS,POST,PUT');
-header("Access-Control-Allow-Headers: *");
-header("Access-Control-Allow-Credentials: true");
+header("Access-Control-Allow-Origin: *");
+header('Access-Control-Allow-Credentials: true');
+header("Access-Control-Allow-Methods: GET,HEAD,OPTIONS,POST,PUT");
+header("Access-Control-Allow-Headers: Access-Control-Allow-Headers, Origin, X-Requested-With, Content-Type, Accept, Authorization");
+
+header('Content-Type: application/json');
 
 /*
 header("Access-Control-Allow-Origin: *");

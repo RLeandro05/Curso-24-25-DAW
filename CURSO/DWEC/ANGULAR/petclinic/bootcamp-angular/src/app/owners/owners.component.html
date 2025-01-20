@@ -1,1 +1,49 @@
-<p>owners works!</p>
+<h2>Lista de Propietarios</h2>
+<div class="table-container">
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Nombre</th>
+        <th>Apellidos</th>
+        <th>Dirección</th>
+        <th>Ciudad</th>
+        <th>Teléfono</th>
+        <th>Mascotas</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let owner of owners">
+        <td>{{ owner.id }}</td>
+        <td>{{ owner.firstName }}</td>
+        <td>{{ owner.lastName }}</td>
+        <td>{{ owner.address }}</td>
+        <td>{{ owner.city }}</td>
+        <td>{{ owner.telephone }}</td>
+        <td>{{ owner.pets }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!--
+<h2>Lista de Personas</h2>
+<table border="1">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Nombre</th>
+      <th>Apellidos</th>
+      <th>DNI</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let persona of personas">
+      <td>{{ persona.id }}</td>
+      <td>{{ persona.nombre }}</td>
+      <td>{{ persona.apellidos }}</td>
+      <td>{{ persona.dni }}</td>
+    </tr>
+  </tbody>
+</table>
+-->

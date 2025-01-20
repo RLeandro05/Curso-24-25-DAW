@@ -1,6 +1,11 @@
-<button routerLink="/owners">Ir a owners</button>
+<div>
+    <button routerLink="/owners">Vamos Owners</button>
+</div>
+<app-search 
+[labelButton]="'Vamos a buscar'"
+[placeholder]="'Escribe algo...'"
+(searchEvent)="search($event)"
+></app-search>
 
-<app-search [labelButton]="'Búsqueda'" (searchEvent)="search($event)"></app-search>
-
-<p>{{msgEventSearch}}</p>
-<router-outlet/>
+<p>Resultado de la busqueda: {{msgEventSearch}}</p>
+<router-outlet />
