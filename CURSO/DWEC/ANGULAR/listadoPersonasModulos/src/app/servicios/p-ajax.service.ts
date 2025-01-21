@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Persona } from '../modelos/persona';
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +16,7 @@ export class PAjaxService {
     let cuerpo = JSON.stringify({
       servicio: "listar"
     });
-    return this.http.post(this.url, cuerpo);
+    return this.http.post<Persona[]>(this.url, cuerpo);
   }
 
   /*listarPersonas() {

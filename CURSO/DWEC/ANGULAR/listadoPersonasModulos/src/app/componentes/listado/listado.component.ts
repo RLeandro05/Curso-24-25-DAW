@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { PAjaxService } from '../../servicios/p-ajax.service';
+import { Persona } from '../../modelos/persona';
 
 @Component({
   selector: 'app-listado',
@@ -9,7 +10,7 @@ import { PAjaxService } from '../../servicios/p-ajax.service';
   styleUrl: './listado.component.css'
 })
 export class ListadoComponent {
-  public listaPer: any = [];
+  public listaPer: Persona[] = [];
 
   constructor(private peticion: PAjaxService) {
     this.peticion.listarPersonas().subscribe(datos => {
