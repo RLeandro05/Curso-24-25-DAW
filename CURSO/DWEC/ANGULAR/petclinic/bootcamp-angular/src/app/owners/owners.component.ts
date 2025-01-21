@@ -16,25 +16,13 @@ export class OwnersComponent implements OnInit {
   constructor(private servicioPAjax: PAjaxService) {}
 
   ngOnInit() {
-    // Obtener la lista de propietarios (owners)
+    //Obtener los owners llamando al servicioPAjax
     this.servicioPAjax.getOwners().subscribe({
-      next: res => {
+      next: res => { 
         console.log("Propietarios recibidos: ", res);
         this.owners = res as any[];
       },
       error: error => console.log("Error al obtener propietarios: ", error)
     });
-
-
-    /*
-    // Obtener la lista de personas
-    this.servicioPAjax.getPersonas().subscribe({
-      next: res => {
-        console.log("Personas recibidas: ", res);
-        this.personas = res as any[];
-      },
-      error: error => console.log("Error al obtener personas: ", error)
-    });
-    */
   }
 }

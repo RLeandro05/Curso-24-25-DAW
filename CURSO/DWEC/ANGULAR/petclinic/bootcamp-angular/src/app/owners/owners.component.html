@@ -1,8 +1,8 @@
 <h2>Lista de Propietarios</h2>
 <div class="table-container">
-  <table>
+  <table class="table table-bordered table-striped table-hover">
     <thead>
-      <tr>
+      <tr class="table-success">
         <th>ID</th>
         <th>Nombre</th>
         <th>Apellidos</th>
@@ -13,7 +13,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let owner of owners">
+      <tr *ngFor="let owner of owners" class="table-secondary-emphasis">
         <td>{{ owner.id }}</td>
         <td>{{ owner.firstName }}</td>
         <td>{{ owner.lastName }}</td>
@@ -25,25 +25,3 @@
     </tbody>
   </table>
 </div>
-
-<!--
-<h2>Lista de Personas</h2>
-<table border="1">
-  <thead>
-    <tr>
-      <th>ID</th>
-      <th>Nombre</th>
-      <th>Apellidos</th>
-      <th>DNI</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let persona of personas">
-      <td>{{ persona.id }}</td>
-      <td>{{ persona.nombre }}</td>
-      <td>{{ persona.apellidos }}</td>
-      <td>{{ persona.dni }}</td>
-    </tr>
-  </tbody>
-</table>
--->
