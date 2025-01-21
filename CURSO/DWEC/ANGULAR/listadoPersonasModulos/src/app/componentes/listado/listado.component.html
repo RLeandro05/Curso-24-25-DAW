@@ -1,0 +1,21 @@
+<h2>Lista de Personas</h2>
+<div class="table-container">
+  <table class="table table-bordered table-striped table-hover">
+    <thead>
+      <tr class="table-success">
+        <th>ID</th>
+        <th>DNI</th>
+        <th>Nombre</th>
+        <th>Apellidos</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let persona of listaPer" class="table-secondary-emphasis">
+        <td>{{ persona.ID }}</td>
+        <td>{{ persona.DNI }}</td>
+        <td>{{ persona.NOMBRE }}</td>
+        <td>{{ persona.APELLIDOS }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
