@@ -3,5 +3,4 @@ export interface Persona {
     dni: string,
     nombre: string,
     apellidos: string,
-    sexo?: boolean
 }
