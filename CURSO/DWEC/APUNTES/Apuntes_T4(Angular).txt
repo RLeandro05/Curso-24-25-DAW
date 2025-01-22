@@ -1,0 +1,69 @@
+//Actualizar npm
+npm install -g npm
+
+//Instalar Angular en un proyecto
+npm install -g @angular/cli
+
+//Creación de proyecto standalone
+ng new <proyectName>
+no
+css
+no
+
+//Creación de proyecto con módulos
+ng new <proyectName> --no-standalone --skip-tests
+
+//Iniciar proyectong serve
+
+//Crear componente
+ng g c <componentName>
+
+//Crear servicio
+ng g s <serviceName>
+
+//Instalar módulos (node_modules)
+npm install
+
+//Importar HttpClientModule en app.module.ts
+import { HttpClientModule } from '@angular/common/http';
+imports: [
+    HttpClientModule,
+  ],
+
+//Importar una nueva ruta en proyecto standalone en app.routes.ts
+import { OwnersComponent } from './owners/owners.component';
+export const routes: Routes = [
+    {path: 'owners', component: OwnersComponent},
+];
+
+//for en component.html
+*ngFor="let a of as"
+
+//Añadir el tipo de una variable en TypeScript
+public variable:string/[]/etc...
+
+//Mostrar una variable de component.ts en component.html
+{{variable}}
+
+//Añadir una url y usarla con HttpClient en service.ts
+private url: string = "ruta/al/archivo.php"
+constructor(private http:HttpClient){}
+
+//Usar post con HttpClient
+let cuerpo = {
+      accion: "ListarOwners"
+    };
+this.http.post(this.url, cuerpo)
+
+//Usar @Input de entrada
+@Input() variable:tipoVariable = valor;
+
+|
+v
+
+//component.html
+<input [variable]=valor></input>
+
+//Usar @OutPut de salida
+@Output() searchEvent = new EventEmitter();
+searchEvent.emit()
