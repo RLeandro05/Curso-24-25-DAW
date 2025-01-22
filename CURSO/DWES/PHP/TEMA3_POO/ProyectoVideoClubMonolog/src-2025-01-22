@@ -1,0 +1,31 @@
+[2025-01-22T10:20:05.328358+01:00] VideoclubLogger.INFO: El soporte no está en tu lista de soportes <br> [] {"file":"C:\\Users\\DAW_M\\Documents\\Curso-24-25-DAW\\CURSO\\DWES\\PHP\\TEMA3_POO\\ProyectoVideoClubMonolog\\index.php","line":38,"class":null,"callType":null,"function":null}
+[2025-01-22T10:20:05.331380+01:00] VideoclubLogger.INFO: Soporte alquilado con éxito. <br> [] {"file":"C:\\Users\\DAW_M\\Documents\\Curso-24-25-DAW\\CURSO\\DWES\\PHP\\TEMA3_POO\\ProyectoVideoClubMonolog\\index.php","line":38,"class":null,"callType":null,"function":null}
+[2025-01-22T10:20:05.707213+01:00] VideoclubLogger.INFO: El soporte no está en tu lista de soportes <br> [] {"file":"C:\\Users\\DAW_M\\Documents\\Curso-24-25-DAW\\CURSO\\DWES\\PHP\\TEMA3_POO\\ProyectoVideoClubMonolog\\index.php","line":38,"class":null,"callType":null,"function":null}
+[2025-01-22T10:20:05.710520+01:00] VideoclubLogger.INFO: Soporte alquilado con éxito. <br> [] {"file":"C:\\Users\\DAW_M\\Documents\\Curso-24-25-DAW\\CURSO\\DWES\\PHP\\TEMA3_POO\\ProyectoVideoClubMonolog\\index.php","line":38,"class":null,"callType":null,"function":null}
+[2025-01-22T10:25:32.253455+01:00] VideoclubLogger.INFO: El soporte no está en tu lista de soportes <br> [] {"file":"C:\\Users\\DAW_M\\Documents\\Curso-24-25-DAW\\CURSO\\DWES\\PHP\\TEMA3_POO\\ProyectoVideoClubMonolog\\index.php","line":38,"class":null,"callType":null,"function":null}
+[2025-01-22T10:25:32.255561+01:00] VideoclubLogger.INFO: Soporte alquilado con éxito. <br> [] {"file":"C:\\Users\\DAW_M\\Documents\\Curso-24-25-DAW\\CURSO\\DWES\\PHP\\TEMA3_POO\\ProyectoVideoClubMonolog\\index.php","line":38,"class":null,"callType":null,"function":null}
+[2025-01-22T10:25:32.288911+01:00] VideoclubLogger.INFO: Lista de productos: <br />  [] {"file":"C:\\Users\\DAW_M\\Documents\\Curso-24-25-DAW\\CURSO\\DWES\\PHP\\TEMA3_POO\\ProyectoVideoClubMonolog\\index.php","line":47,"class":null,"callType":null,"function":null}
+[2025-01-22T10:25:32.289616+01:00] VideoclubLogger.INFO: Producto: Mario Party Super Star<br />  [] {"file":"C:\\Users\\DAW_M\\Documents\\Curso-24-25-DAW\\CURSO\\DWES\\PHP\\TEMA3_POO\\ProyectoVideoClubMonolog\\index.php","line":47,"class":null,"callType":null,"function":null}
+[2025-01-22T10:25:32.289770+01:00] VideoclubLogger.INFO: Número: 12<br />  [] {"file":"C:\\Users\\DAW_M\\Documents\\Curso-24-25-DAW\\CURSO\\DWES\\PHP\\TEMA3_POO\\ProyectoVideoClubMonolog\\index.php","line":47,"class":null,"callType":null,"function":null}
+[2025-01-22T10:25:32.289911+01:00] VideoclubLogger.INFO: Precio: 59.99€<br /> -------------------------<br />  [] {"file":"C:\\Users\\DAW_M\\Documents\\Curso-24-25-DAW\\CURSO\\DWES\\PHP\\TEMA3_POO\\ProyectoVideoClubMonolog\\index.php","line":47,"class":null,"callType":null,"function":null}
+[2025-01-22T10:25:32.290049+01:00] VideoclubLogger.INFO: Lista de socios: <br />  [] {"file":"C:\\Users\\DAW_M\\Documents\\Curso-24-25-DAW\\CURSO\\DWES\\PHP\\TEMA3_POO\\ProyectoVideoClubMonolog\\index.php","line":48,"class":null,"callType":null,"function":null}
+[2025-01-22T10:25:32.290185+01:00] VideoclubLogger.INFO: Socio: Leandro<br />  [] {"file":"C:\\Users\\DAW_M\\Documents\\Curso-24-25-DAW\\CURSO\\DWES\\PHP\\TEMA3_POO\\ProyectoVideoClubMonolog\\index.php","line":48,"class":null,"callType":null,"function":null}
+[2025-01-22T10:25:32.290320+01:00] VideoclubLogger.INFO: Número: 5<br /> -------------------------<br />  [] {"file":"C:\\Users\\DAW_M\\Documents\\Curso-24-25-DAW\\CURSO\\DWES\\PHP\\TEMA3_POO\\ProyectoVideoClubMonolog\\index.php","line":48,"class":null,"callType":null,"function":null}
+[2025-01-22T10:28:28.415664+01:00] VideoclubLogger.INFO: El soporte no está en tu lista de soportes <br> [] {"file":"C:\\Users\\DAW_M\\Documents\\Curso-24-25-DAW\\CURSO\\DWES\\PHP\\TEMA3_POO\\ProyectoVideoClubMonolog\\index.php","line":38,"class":null,"callType":null,"function":null}
+[2025-01-22T10:28:28.418024+01:00] VideoclubLogger.INFO: Soporte alquilado con éxito. <br> [] {"file":"C:\\Users\\DAW_M\\Documents\\Curso-24-25-DAW\\CURSO\\DWES\\PHP\\TEMA3_POO\\ProyectoVideoClubMonolog\\index.php","line":38,"class":null,"callType":null,"function":null}
+[2025-01-22T10:28:28.456972+01:00] VideoclubLogger.INFO: Lista de productos: <br />  [] []
+[2025-01-22T10:28:28.457666+01:00] VideoclubLogger.INFO: Producto: Mario Party Super Star<br />  [] []
+[2025-01-22T10:28:28.457788+01:00] VideoclubLogger.INFO: Número: 12<br />  [] []
+[2025-01-22T10:28:28.457900+01:00] VideoclubLogger.INFO: Precio: 59.99€<br /> -------------------------<br />  [] []
+[2025-01-22T10:28:28.458011+01:00] VideoclubLogger.INFO: Lista de socios: <br />  [] []
+[2025-01-22T10:28:28.458120+01:00] VideoclubLogger.INFO: Socio: Leandro<br />  [] []
+[2025-01-22T10:28:28.458236+01:00] VideoclubLogger.INFO: Número: 5<br /> -------------------------<br />  [] []
+[2025-01-22T10:28:43.839697+01:00] VideoclubLogger.INFO: El soporte no está en tu lista de soportes <br> [] []
+[2025-01-22T10:28:43.841824+01:00] VideoclubLogger.INFO: Soporte alquilado con éxito. <br> [] []
+[2025-01-22T10:28:43.842402+01:00] VideoclubLogger.INFO: Lista de productos: <br />  [] []
+[2025-01-22T10:28:43.842935+01:00] VideoclubLogger.INFO: Producto: Mario Party Super Star<br />  [] []
+[2025-01-22T10:28:43.843067+01:00] VideoclubLogger.INFO: Número: 12<br />  [] []
+[2025-01-22T10:28:43.843185+01:00] VideoclubLogger.INFO: Precio: 59.99€<br /> -------------------------<br />  [] []
+[2025-01-22T10:28:43.843301+01:00] VideoclubLogger.INFO: Lista de socios: <br />  [] []
+[2025-01-22T10:28:43.843416+01:00] VideoclubLogger.INFO: Socio: Leandro<br />  [] []
+[2025-01-22T10:28:43.843530+01:00] VideoclubLogger.INFO: Número: 5<br /> -------------------------<br />  [] []

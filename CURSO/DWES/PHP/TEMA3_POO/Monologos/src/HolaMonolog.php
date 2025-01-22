@@ -17,7 +17,7 @@ class HolaMonolog //Definir clase
         $this->hora = $hora;
 
         //Crear un logger 
-        $this->miLog = new Logger('logger');
+        $this->miLog = new Logger('VideoclubLogger');
 
         //Agregar el RotatingFileHandler con nivel debug 
         $this->miLog->pushHandler(new RotatingFileHandler(__DIR__, 0, Logger::DEBUG));

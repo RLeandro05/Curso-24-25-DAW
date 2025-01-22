@@ -1,0 +1,17 @@
+{
+    "name": "daw_m/proyecto-video-club-monolog",
+    "autoload": {
+        "psr-4": {
+            "DawM\\ProyectoVideoClubMonolog\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "RLeandro05",
+            "email": "lligpic577@g.educaand.es"
+        }
+    ],
+    "require": {
+        "monolog/monolog": "^3.8"
+    }
+}
