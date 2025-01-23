@@ -1,12 +1,13 @@
 <h2>Lista de Personas</h2>
 <div class="table-container">
-  <table class="table table-bordered table-striped table-hover">
+  <table border="1" class="table table-bordered table-striped table-hover">
     <thead>
       <tr class="table-success">
         <th>ID</th>
         <th>DNI</th>
         <th>Nombre</th>
         <th>Apellidos</th>
+        <th>Acciones</th>
       </tr>
     </thead>
     <tbody>
@@ -15,6 +16,7 @@
         <td>{{ persona.DNI }}</td>
         <td>{{ persona.NOMBRE }}</td>
         <td>{{ persona.APELLIDOS }}</td>
+        <td><button (click)="borrarPersona(persona)">Borrar</button><button>Modificar</button></td>
       </tr>
     </tbody>
   </table>

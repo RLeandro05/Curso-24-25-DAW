@@ -18,4 +18,13 @@ export class ListadoComponent {
       this.listaPer = datos;
     })
   }
+
+  borrarPersona(persona: Persona) {
+    if (confirm("¿Estás seguro de que deseas eliminar a "+persona.NOMBRE+" "+persona.APELLIDOS+"?")) {
+      this.peticion.borrarPersona(persona.ID).subscribe(datos => {
+        console.log("Estamos en borrarPersona", datos);
+        this.listaPer = datos;
+      })
+    }
+  }
 }
