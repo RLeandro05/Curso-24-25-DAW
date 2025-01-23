@@ -8,5 +8,6 @@ $baseDir = dirname($vendorDir);
 return array(
     'Psr\\Log\\' => array($vendorDir . '/psr/log/src'),
     'Monolog\\' => array($vendorDir . '/monolog/monolog/src/Monolog'),
+    'DawM\\util\\' => array($baseDir . '/util'),
     'DawM\\ProyectoVideoClubMonolog\\' => array($baseDir . '/src'),
 );

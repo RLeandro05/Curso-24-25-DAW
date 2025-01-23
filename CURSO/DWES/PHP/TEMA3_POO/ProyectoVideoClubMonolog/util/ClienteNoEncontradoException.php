@@ -1,5 +1,5 @@
 <?php 
-    namespace util;
+    namespace DawM\util;
 
     use util\VideoClubException;
 

@@ -6,9 +6,10 @@ use DawM\ProyectoVideoClubMonolog\Soporte;
 use Monolog\Handler\RotatingFileHandler;
 use Monolog\Logger;
 use Monolog\Processor\IntrospectionProcessor;
-use util\SoporteYaAlquiladoException;
-use util\CupoSuperadoException;
-use util\SoporteNoEncontradoException;
+use DawM\util\SoporteYaAlquiladoException;
+use DawM\util\CupoSuperadoException;
+use DawM\util\SoporteNoEncontradoException;
+use DawM\util\LogFactory;
 
 class Cliente
 { //Instanciar clase
@@ -24,14 +25,7 @@ class Cliente
     public function __construct(string $nombre, int $numero, int $maxAlquilerConcurrente = 3)
     {
         //Crear un logger 
-        $this->miLog = new Logger('VideoclubLogger');
-
-        //Agregar el RotatingFileHandler con nivel debug 
-        $this->miLog->pushHandler(new RotatingFileHandler(__DIR__, 0, Logger::DEBUG));
-
-        //Agregar el procesador de introspección y el manejador 
-        $this->miLog->pushHandler(new \Monolog\Handler\StreamHandler(__DIR__ . '/../logs/videoclub.log', Logger::DEBUG));
-        //$this->miLog->pushProcessor(new IntrospectionProcessor());
+        $this->miLog = LogFactory::getLogger("VideoclubLogger", '/../logs/videoclub.log');
 
         $this->nombre = $nombre;
         $this->numero = $numero;

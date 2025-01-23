@@ -6,10 +6,11 @@
     use DawM\ProyectoVideoClubMonolog\Juego;
     use DawM\ProyectoVideoClubMonolog\Soporte;
     use DawM\ProyectoVideoClubMonolog\Resumible;
-use Monolog\Handler\RotatingFileHandler;
-use Monolog\Logger;
-use Monolog\Processor\IntrospectionProcessor;
-use util\SoporteYaAlquiladoException;
+    use Monolog\Handler\RotatingFileHandler;
+    use Monolog\Logger;
+    use Monolog\Processor\IntrospectionProcessor;
+    use DawM\util\SoporteYaAlquiladoException;
+    use DawM\util\LogFactory;
 
     class VideoClub { //Instanciar clase 
         //Instanciar atributos
@@ -29,13 +30,7 @@ use util\SoporteYaAlquiladoException;
         //Creación de constructor
         public function __construct() {
             //Crear un logger 
-            $this->miLog = new Logger('VideoclubLogger');
-
-            //Agregar el RotatingFileHandler con nivel debug 
-            $this->miLog->pushHandler(new RotatingFileHandler(__DIR__, 0, Logger::DEBUG));
-
-            //Agregar el procesador de introspección y el manejador 
-            $this->miLog->pushHandler(new \Monolog\Handler\StreamHandler(__DIR__ . '/../logs/videoclub.log', Logger::DEBUG));
+            $this->miLog = LogFactory::getLogger("VideoclubLogger", '/../logs/videoclub.log');
             //$this->miLog->pushProcessor(new IntrospectionProcessor());
         }
 

@@ -2,7 +2,8 @@
     "name": "daw_m/proyecto-video-club-monolog",
     "autoload": {
         "psr-4": {
-            "DawM\\ProyectoVideoClubMonolog\\": "src/"
+            "DawM\\ProyectoVideoClubMonolog\\": "src/",
+            "DawM\\util\\": "util/"
         }
     },
     "authors": [
