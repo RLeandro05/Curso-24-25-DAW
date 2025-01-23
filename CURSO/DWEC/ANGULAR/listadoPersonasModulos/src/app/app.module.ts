@@ -6,11 +6,13 @@ import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ListadoComponent } from './componentes/listado/listado.component';
+import { FormPersonaComponent } from './componentes/form-persona/form-persona.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ListadoComponent
+    ListadoComponent,
+    FormPersonaComponent
   ],
   imports: [
     BrowserModule,

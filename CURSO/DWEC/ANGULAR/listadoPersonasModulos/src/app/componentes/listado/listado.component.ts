@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { PAjaxService } from '../../servicios/p-ajax.service';
 import { Persona } from '../../modelos/persona';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-listado',
@@ -12,7 +13,7 @@ import { Persona } from '../../modelos/persona';
 export class ListadoComponent {
   public listaPer: Persona[] = [];
 
-  constructor(private peticion: PAjaxService) {
+  constructor(private peticion: PAjaxService, private ruta: Router) {
     this.peticion.listarPersonas().subscribe(datos => {
       console.log("Estamos en el constructor", datos);
       this.listaPer = datos;
@@ -26,5 +27,11 @@ export class ListadoComponent {
         this.listaPer = datos;
       })
     }
+  }
+
+  iraNuevaPersona() {
+    //console.log("Hola");
+    //this.ruta.navigate(["personas-add/-1"]);
+    this.ruta.navigate(["personas-add", -1]);
   }
 }
