@@ -31,8 +31,7 @@ export class PAjaxService {
     return this.http.post<Persona[]>(this.url, cuerpo);
   }
 
-  //Método para insertar una nueva persona del formulario
-  aniadirPersona(persona: Persona) {
+  /*aniadirPersona(persona: Persona) {
     let cuerpo = JSON.stringify({ //Crear el cuerpo de la petición
       servicio: "insertar",
       dni: persona.DNI,
@@ -41,5 +40,34 @@ export class PAjaxService {
     });
 
     return this.http.post<Persona[]>(this.url, cuerpo);
+  }*/
+
+  //Método para insertar una nueva persona del formulario
+  aniadirPersona(persona: Persona) {
+    let pa = JSON.parse(JSON.stringify(persona));
+
+    pa.servicio = "insertar";
+    console.log(pa);
+    
+    return this.http.post<Persona[]>(this.url, pa);
+  }
+
+  //Método para obtener la persona con el id dado
+  selPersonaID(id: number) {
+    let cuerpo = JSON.stringify({
+      servicio: "selPersonaID",
+      id: id
+    });
+    
+    //Devolver de la consulta la persona seleccionada con el id
+    return this.http.post<Persona>(this.url, cuerpo);
+  }
+
+  //Método para modificar la persona antes seleccioanda en selPersonaID
+  modificarPersona(persona: Persona) {
+    let pa = JSON.parse(JSON.stringify(persona));
+    pa.servicio = "modificar";
+
+    return this.http.post<Persona[]>(this.url, pa);
   }
 }

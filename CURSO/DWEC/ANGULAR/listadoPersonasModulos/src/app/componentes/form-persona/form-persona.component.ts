@@ -15,12 +15,14 @@ export class FormPersonaComponent {
   public persona: Persona = <Persona>{};
   public textoBoton: string;
   public listaPer: Persona[] = [];
-  constructor(private peticion:PAjaxService, private ruta: Router) {
+  public personaID: number = 0;
+  
+  constructor(private peticion:PAjaxService, private ruta: Router, private route: ActivatedRoute) {
     this.persona = {
-      ID: -1,
-      DNI: "",
-      NOMBRE: "",
-      APELLIDOS: ""
+      id: -1,
+      dni: "",
+      nombre: "",
+      apellidos: ""
     }
     this.textoBoton = "Añadir";
   }
@@ -29,16 +31,53 @@ export class FormPersonaComponent {
     //console.log("personaForm:> ", personaForm);
     //console.log("personaForm.DNI:> ", personaForm.DNI);
     
-    //Realizar consulta a servicio.php y sacar los datos una vez realizada
-    this.peticion.aniadirPersona(personaForm).subscribe(datos => {
+    /*this.peticion.aniadirPersona(personaForm).subscribe(datos => {
       console.log("Estamos en aniadirPersona", datos);
       this.listaPer = datos;
-    })
+    })*/
 
-    //Avisar que la persona ha sido añadida correctamente
-    alert("Persona' "+personaForm.NOMBRE+" "+personaForm.APELLIDOS+"' añadida a la base de datos correctamente.");
+      if (this.persona.id == -1) {
+        //Realizar consulta a servicio.php y sacar los datos una vez realizada
+        this.peticion.aniadirPersona(personaForm).subscribe();
 
-    //Redirigir a el listado de personas
-    this.ruta.navigate(["/"]);
+        //Avisar que la persona ha sido añadida correctamente
+        alert("Persona' "+personaForm.nombre+" "+personaForm.apellidos+"' añadida a la base de datos correctamente.");
+
+        //Redirigir a el listado de personas
+        this.ruta.navigate(["/"]); 
+      } else {
+        personaForm.id = this.personaID;
+
+        this.peticion.modificarPersona(personaForm).subscribe();
+
+        console.log("personaForm :> ", personaForm);
+        
+
+        alert("Persona' "+personaForm.nombre+" "+personaForm.apellidos+"' modificada correctamente.");
+
+        this.ruta.navigate(["/"]);
+      }
+  }
+
+  ngOnInit() {
+    //Acceder al valor del id
+    this.personaID = this.route.snapshot.params["id"];
+    console.log("id: ", this.personaID);
+
+    if (this.personaID == -1) { //Si es -1 el id, dejar el texto del botón en Añadir
+      this.textoBoton = "Añadir";
+    } else { //Si tiene un id válido, se cambiará a modificar
+      this.textoBoton = "Modificar";
+    }
+    
+    this.peticion.selPersonaID(this.personaID).subscribe(
+      personaSel => { //Sacar un parámetro donde se guardará el objeto persona recibido de la consulta
+        console.log("persona :>", personaSel);
+
+        //Guardar la personaSel en la variable this.persona anteriormente creada
+        this.persona = personaSel;
+      }
+    );
+    
   }
 }

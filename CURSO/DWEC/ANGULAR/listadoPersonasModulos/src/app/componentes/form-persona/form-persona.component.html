@@ -3,27 +3,27 @@
 
 <div id="formNvPers">
     <form #personaForm="ngForm" (ngSubmit)="onSubmit(personaForm.value)">
-        <label for="DNI">DNI: </label>
+        <label for="dni">DNI: </label>
         <br>
-        <input type="text" name="DNI" id="DNI" required [(ngModel)]="persona.DNI" #dni="ngModel">
+        <input type="text" name="dni" id="dni" required [(ngModel)]="persona.dni" #dni="ngModel">
         <!--<div [hidden]="dni.valid || dni.pristine" >
             El DNI es obligatorio
         </div>-->
 
         <br><br>
 
-        <label for="NOMBRE">Nombre: </label>
+        <label for="nombre">Nombre: </label>
         <br>
-        <input type="text" name="NOMBRE" id="NOMBRE" required [(ngModel)]="persona.NOMBRE" #nombre="ngModel">
+        <input type="text" name="nombre" id="nombre" required [(ngModel)]="persona.nombre" #nombre="ngModel">
         <!--<div [hidden]="nombre.valid || nombre.pristine" >
             El NOMBRE es obligatorio
         </div>-->
 
         <br><br>
 
-        <label for="APELLIDOS">Apellidos: </label>
+        <label for="apellidos">Apellidos: </label>
         <br>
-        <input type="text" name="APELLIDOS" id="APELLIDOS" required [(ngModel)]="persona.APELLIDOS" #apellidos="ngModel">
+        <input type="text" name="apellidos" id="apellidos" required [(ngModel)]="persona.apellidos" #apellidos="ngModel">
         <!--<div [hidden]="apellidos.valid || apellidos.pristine" >
             El APELLIDO es obligatorio
         </div>-->

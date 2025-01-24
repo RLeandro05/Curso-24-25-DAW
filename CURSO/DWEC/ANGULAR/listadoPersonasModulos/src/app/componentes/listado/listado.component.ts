@@ -21,8 +21,8 @@ export class ListadoComponent {
   }
 
   borrarPersona(persona: Persona) {
-    if (confirm("¿Estás seguro de que deseas eliminar a "+persona.NOMBRE+" "+persona.APELLIDOS+"?")) {
-      this.peticion.borrarPersona(persona.ID).subscribe(datos => {
+    if (confirm("¿Estás seguro de que deseas eliminar a "+persona.nombre+" "+persona.apellidos+"?")) {
+      this.peticion.borrarPersona(persona.id).subscribe(datos => {
         console.log("Estamos en borrarPersona", datos);
         this.listaPer = datos;
       })

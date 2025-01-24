@@ -40,7 +40,7 @@ if($objeto != null) {
 function listadoPersonas() {
 	global $conn;
 	try {
-		$sc = "Select * From personas Order By ID";
+		$sc = "Select id, dni, nombre, apellidos From personas Order By ID";
 		$stm = $conn->prepare($sc);
 		$stm->execute();
 		return ($stm->fetchAll(PDO::FETCH_ASSOC));
@@ -83,10 +83,10 @@ function modificarPersona($objeto) {
 	global $conn;
 	try {
 		$sql = "UPDATE personas SET 
-							DNI				= ?,
-							NOMBRE		= ?, 
-							APELLIDOS	= ?
-						WHERE id = ?";
+							dni				= ?,
+							nombre		= ?, 
+							apellidos	= ?
+						WHERE ID = ?";
 		$conn->prepare($sql)->execute(
 		array(
 			$objeto->dni,
@@ -105,7 +105,7 @@ function modificarPersona($objeto) {
 function selPersonaID($id) {
 	global $conn;
 	try {
-		$sc = "Select * From personas Where ID = ?";
+		$sc = "Select dni, nombre, apellidos From personas Where ID = ?";
 		$stm = $conn->prepare($sc);
 		$stm->execute(array($id));
 		return ($stm->fetch(PDO::FETCH_ASSOC));

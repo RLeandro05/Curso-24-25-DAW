@@ -15,11 +15,11 @@
     </thead>
     <tbody>
       <tr *ngFor="let persona of listaPer" class="table-secondary-emphasis">
-        <td>{{ persona.ID }}</td>
-        <td>{{ persona.DNI }}</td>
-        <td>{{ persona.NOMBRE }}</td>
-        <td>{{ persona.APELLIDOS }}</td>
-        <td><button (click)="borrarPersona(persona)">Borrar</button><button>Modificar</button></td>
+        <td>{{ persona.id }}</td>
+        <td>{{ persona.dni }}</td>
+        <td>{{ persona.nombre }}</td>
+        <td>{{ persona.apellidos }}</td>
+        <td><button (click)="borrarPersona(persona)">Borrar</button><button routerLink="/personas-add/{{persona.id}}">Modificar</button></td>
       </tr>
     </tbody>
   </table>
