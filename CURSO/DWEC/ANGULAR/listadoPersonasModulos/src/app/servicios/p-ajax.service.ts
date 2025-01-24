@@ -30,4 +30,16 @@ export class PAjaxService {
     //Al ejecutar la petición en POST, este nos devolverá un dato convertido en array de tipo Persona
     return this.http.post<Persona[]>(this.url, cuerpo);
   }
+
+  //Método para insertar una nueva persona del formulario
+  aniadirPersona(persona: Persona) {
+    let cuerpo = JSON.stringify({ //Crear el cuerpo de la petición
+      servicio: "insertar",
+      dni: persona.DNI,
+      nombre: persona.NOMBRE,
+      apellidos: persona.APELLIDOS,
+    });
+
+    return this.http.post<Persona[]>(this.url, cuerpo);
+  }
 }
