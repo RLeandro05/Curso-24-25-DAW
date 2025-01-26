@@ -10,10 +10,11 @@ no
 css
 no
 
-//Creación de proyecto con módulos
+//Creación de proyecto con módulos (sin standalone)
 ng new <proyectName> --no-standalone --skip-tests
 
-//Iniciar proyectong serve
+//Iniciar proyecto
+ng serve
 
 //Crear componente
 ng g c <componentName>
@@ -24,46 +25,21 @@ ng g s <serviceName>
 //Instalar módulos (node_modules)
 npm install
 
-//Importar HttpClientModule en app.module.ts
+//--------------------------------------------------------------
+//CÓDIGO SIN STANDALONE
+
+-En app.module.ts, para poder usar HttpClientModule y FormsModule, poner:
 import { HttpClientModule } from '@angular/common/http';
-imports: [
-    HttpClientModule,
-  ],
+import { FormsModule } from '@angular/forms';
+También, si se crean nuevos componentes, añadirlos también en dicho archivo
 
-//Importar una nueva ruta en proyecto standalone en app.routes.ts
-import { OwnersComponent } from './owners/owners.component';
-export const routes: Routes = [
-    {path: 'owners', component: OwnersComponent},
+-Sin standalone, necesitaremos un .service para poder conectarse a la base de datos y poder realizar
+las distintas funciones del mismo
+
+-En app.routing.module.ts, se realizarán las conexiones de cada componente a partir de rutas.
+Simplemente, se implementa el componente nuevo y añadimos una ruta en Routes. Si queremos poner un componente como ruta
+por defecto, en path poner "", como poe ejemplo:
+const routes: Routes = [
+  {path:"", component: ListadoComponent},
+  {path:"personas-add/:id", component: FormPersonaComponent}
 ];
-
-//for en component.html
-*ngFor="let a of as"
-
-//Añadir el tipo de una variable en TypeScript
-public variable:string/[]/etc...
-
-//Mostrar una variable de component.ts en component.html
-{{variable}}
-
-//Añadir una url y usarla con HttpClient en service.ts
-private url: string = "ruta/al/archivo.php"
-constructor(private http:HttpClient){}
-
-//Usar post con HttpClient
-let cuerpo = {
-      accion: "ListarOwners"
-    };
-this.http.post(this.url, cuerpo)
-
-//Usar @Input de entrada
-@Input() variable:tipoVariable = valor;
-
-|
-v
-
-//component.html
-<input [variable]=valor></input>
-
-//Usar @OutPut de salida
-@Output() searchEvent = new EventEmitter();
-searchEvent.emit()
