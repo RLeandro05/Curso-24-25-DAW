@@ -7,7 +7,7 @@ import { Persona } from '../modelos/persona';
 })
 export class PAjaxService {
 
-  private url: string = "http://localhost/Curso-24-25-DAW/CURSO/DWEC/ANGULAR/listadoPersonasModulos/BACKENDS/servidor.php";
+  private url: string = "http://localhost/Curso-24-25-DAW/DWEC/ANGULAR/listadoPersonasModulos/BACKENDS/servidor.php";
   //Clase: http://localhost/Curso-24-25-DAW/CURSO/DWEC/ANGULAR/listadoPersonasModulos/BACKENDS/servidor.php
   //Casa: http://localhost/Curso-24-25-DAW/DWEC/ANGULAR/listadoPersonasModulos/BACKENDS/servidor.php
 
@@ -31,26 +31,26 @@ export class PAjaxService {
     return this.http.post<Persona[]>(this.url, cuerpo);
   }
 
-  /*aniadirPersona(persona: Persona) {
+  aniadirPersona(persona: Persona) {
     let cuerpo = JSON.stringify({ //Crear el cuerpo de la petición
       servicio: "insertar",
-      dni: persona.DNI,
-      nombre: persona.NOMBRE,
-      apellidos: persona.APELLIDOS,
+      dni: persona.dni,
+      nombre: persona.nombre,
+      apellidos: persona.apellidos,
     });
 
     return this.http.post<Persona[]>(this.url, cuerpo);
-  }*/
+  }
 
   //Método para insertar una nueva persona del formulario
-  aniadirPersona(persona: Persona) {
+  /*aniadirPersona(persona: Persona) {
     let pa = JSON.parse(JSON.stringify(persona));
 
     pa.servicio = "insertar";
     console.log(pa);
     
     return this.http.post<Persona[]>(this.url, pa);
-  }
+  }*/
 
   //Método para obtener la persona con el id dado
   selPersonaID(id: number) {
@@ -65,9 +65,14 @@ export class PAjaxService {
 
   //Método para modificar la persona antes seleccioanda en selPersonaID
   modificarPersona(persona: Persona) {
-    let pa = JSON.parse(JSON.stringify(persona));
-    pa.servicio = "modificar";
+    let cuerpo = {
+      servicio: "modificar",
+      id: persona.id,
+      dni: persona.dni,
+      nombre: persona.nombre,
+      apellidos: persona.apellidos
+    }
 
-    return this.http.post<Persona[]>(this.url, pa);
+    return this.http.post<Persona[]>(this.url, cuerpo);
   }
 }
