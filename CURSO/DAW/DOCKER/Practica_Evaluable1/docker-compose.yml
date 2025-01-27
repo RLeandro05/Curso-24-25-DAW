@@ -1,0 +1,28 @@
+version: "3.8"
+services:
+  web:
+    image: php:7.4-apache
+    container_name: server_postgres
+    ports:
+      - 8080:80
+    volumes:
+      - ./web:/var/www/html
+    environment:
+      DB_HOST: postgres-db
+      DB_NAME: biblioteca_db
+      DB_USER: biblioteca_user
+      DB_PASSWORD: user_pass
+    depends_on:
+      - db
+    command: bash -c "apt-get update && apt-get install -y libpq-dev && docker-php-ext-install pdo pdo_pgsql && apache2-foreground"
+  db:
+    image: postgres:13
+    container_name: postgres-db
+    environment:
+      POSTGRES_DB: biblioteca_db
+      POSTGRES_USER: biblioteca_user
+      POSTGRES_PASSWORD: user_pass
+    volumes:
+      - db_data:/var/lib/postgres
+volumes:
+  db_data:
