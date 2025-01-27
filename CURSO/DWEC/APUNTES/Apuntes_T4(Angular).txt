@@ -43,3 +43,24 @@ const routes: Routes = [
   {path:"", component: ListadoComponent},
   {path:"personas-add/:id", component: FormPersonaComponent}
 ];
+
+//--------------------------------------------------------------
+//CÓDIGO CON STANDALONE
+
+-Para usar HttpClient, en app.config.ts, poner:
+import { provideHttpClient } from '@angular/common/http';
+
+-Hay que asegurarse de que, en app.component.ts está presente el import de RouterOutlet:
+import { RouterOutlet } from '@angular/router';
+
+-Para poner las rutas de cada componente creado, se hace igual que sin standalone, pero en
+el archivo app.routes.ts: 
+export const routes: Routes = [
+    {path:"", component: ListadoPersonasComponent},
+    {path:"personas-add/:id", component: FormPersonasComponent}
+];
+
+-En sus respectivos .component.ts de los componentes, importar lo necesario. En ambos deben estar HttpClient, PAjaxService y el modelo de una interfaz
+Si uno de ellos recibe algo como enlace, además de importar Router, importar ActivatedRoute. Todo esto también se aplica al servicio. 
+
+-Hay que tener en cuenta que, en standalone, el uso del RouterLink debe ser importado en sus respectivos .component.ts si se llegan a usar

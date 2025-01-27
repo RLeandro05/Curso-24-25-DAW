@@ -1,0 +1,36 @@
+<h1>Nueva persona</h1>
+<h3>Añadir nueva persona</h3>
+
+<div id="formNvPers">
+    <form #personaForm="ngForm" (ngSubmit)="onSubmit(personaForm.value)">
+        <label for="dni">DNI: </label>
+        <br>
+        <input type="text" name="dni" id="dni" required [(ngModel)]="persona.dni" #dni="ngModel">
+        <div [hidden]="dni.valid || dni.pristine" >
+            El DNI es obligatorio
+        </div>
+
+        <br><br>
+
+        <label for="nombre">Nombre: </label>
+        <br>
+        <input type="text" name="nombre" id="nombre" required [(ngModel)]="persona.nombre" #nombre="ngModel">
+        <div [hidden]="nombre.valid || nombre.pristine" >
+            El NOMBRE es obligatorio
+        </div>
+
+        <br><br>
+
+        <label for="apellidos">Apellidos: </label>
+        <br>
+        <input type="text" name="apellidos" id="apellidos" required [(ngModel)]="persona.apellidos" #apellidos="ngModel">
+        <div [hidden]="apellidos.valid || apellidos.pristine" >
+            El APELLIDO es obligatorio
+        </div>
+
+        <br><br>
+
+        <button type="submit" [disabled]="!personaForm.valid">{{textoBoton}}</button>
+        <button type="button" routerLink="/">Cancelar</button>
+    </form>
+</div>
