@@ -53,6 +53,7 @@ export class ListaDetalleComponent {
     this.mostrarFormulario = !this.mostrarFormulario;
   }
 
+  //Método para añadir un nuevo detalle el cual se lleva el objeto DetalleFactura al enviar el formulario
   onSubmit(detalleFacturaForm: DetallesFactura) {
     console.log("detalleFacturaForm :>> ", detalleFacturaForm);
     
