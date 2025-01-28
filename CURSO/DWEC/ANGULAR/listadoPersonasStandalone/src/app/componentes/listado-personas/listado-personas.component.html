@@ -1,4 +1,3 @@
-<h2>Lista de Personas</h2>
 <a routerLink="/personas-add/-1" role="button">Añadir persona (Rutas)</a>
 <button type="button" (click)="iraNuevaPersona()">Añadir persona (programáticamente)</button>
 
@@ -14,13 +13,16 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let persona of listaPer" class="table-secondary-emphasis">
-        <td>{{ persona.id }}</td>
-        <td>{{ persona.dni }}</td>
-        <td>{{ persona.nombre }}</td>
-        <td>{{ persona.apellidos }}</td>
-        <td><button (click)="borrarPersona(persona)">Borrar</button><button routerLink="/personas-add/{{persona.id}}">Modificar</button></td>
-      </tr>
+      @for (persona of listaPer; track $index) {
+        <tr class="table-secondary-emphasis">
+          <td>{{ persona.id }}</td>
+          <td>{{ persona.dni }}</td>
+          <td>{{ persona.nombre }}</td>
+          <td>{{ persona.apellidos }}</td>
+          <td><button (click)="borrarPersona(persona)">Borrar</button><button routerLink="/personas-add/{{persona.id}}">Modificar</button></td>
+        </tr>
+      }
+      
     </tbody>
   </table>
 </div>

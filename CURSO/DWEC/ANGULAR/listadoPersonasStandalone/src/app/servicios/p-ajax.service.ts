@@ -8,7 +8,7 @@ import { Persona } from '../modelos/persona';
 })
 export class PAjaxService {
 
-  private url: string = "http://localhost/Curso-24-25-DAW/DWEC/ANGULAR/listadoPersonasStandalone/BACKENDS/servidor.php";
+  private url: string = "http://localhost/Curso-24-25-DAW/CURSO/DWEC/ANGULAR/listadoPersonasStandalone/BACKENDS/servidor.php";
   //Clase: http://localhost/Curso-24-25-DAW/CURSO/DWEC/ANGULAR/listadoPersonasStandalone/BACKENDS/servidor.php
   //Casa: http://localhost/Curso-24-25-DAW/DWEC/ANGULAR/listadoPersonasStandalone/BACKENDS/servidor.php
 

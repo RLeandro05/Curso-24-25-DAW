@@ -1,4 +1,3 @@
-import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
 import { PAjaxService } from '../../servicios/p-ajax.service';
@@ -6,7 +5,7 @@ import { Persona } from '../../modelos/persona';
 
 @Component({
   selector: 'app-listado-personas',
-  imports: [CommonModule, RouterLink],
+  imports: [RouterLink],
   templateUrl: './listado-personas.component.html',
   styleUrl: './listado-personas.component.css'
 })
