@@ -1,0 +1,27 @@
+<h2>Listado de detalles de la factura</h2>
+
+<div>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>CANTIDAD</th>
+                <th>CONCEPTO</th>
+                <th>PRECIO</th>
+                <th>IVA</th>
+                <th>TOTAL</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let detalleFactura of detallesFactura">
+                <td>{{detalleFactura.id}}</td>
+                <td>{{detalleFactura.cantidad}}</td>
+                <td>{{detalleFactura.concepto}}</td>
+                <td>{{detalleFactura.precio}}</td>
+                <td>{{detalleFactura.iva}}</td>
+                <td>{{detalleFactura.total}}</td>
+        </tbody>
+    </table>
+    <br>
+    <button type="button" [routerLink]="['/']">Volver atrás</button>
+</div>
