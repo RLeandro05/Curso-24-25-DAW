@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
-import { Factura } from '../../modules/factura';
-import { Router, ActivatedRoute } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { PAjaxService } from '../../services/pajax.service';
 import { DetallesFactura } from '../../modules/detalles-factura';
 
@@ -18,6 +17,8 @@ export class ListaDetalleComponent {
   public IVA: number = 0;
   public Total: number = 0;
   public detalle: DetallesFactura = <DetallesFactura>{};
+  public totalesIVA: number = 0;
+  public totalesTotal: number = 0;
 
   //Constructor que muestra el listado de los detalles de la factura seleccionada
   constructor(private activatedRoute: ActivatedRoute, private peticion: PAjaxService) {
@@ -36,9 +37,25 @@ export class ListaDetalleComponent {
 
         //Por cada detalle, añadir en el campo iva y total sus valores
         this.detalle["iva"] = parseFloat((this.detalle["precio"]*(this.detalle["tipo_iva"]/100)).toFixed(2));
+        this.totalesIVA += this.detalle["iva"];
+
         this.detalle["total"] = parseFloat(this.detalle["iva"] + this.detalle["precio"].toFixed(2));
+        this.totalesTotal += this.detalle["total"];
       }
       
+
     });
+  }
+
+  public mostrarFormulario: boolean = false;
+
+  toggleForm() {
+    this.mostrarFormulario = !this.mostrarFormulario;
+  }
+
+  onSubmit(detalleFacturaForm: DetallesFactura) {
+    console.log("detalleFacturaForm :>> ", detalleFacturaForm);
+    
+
   }
 }
