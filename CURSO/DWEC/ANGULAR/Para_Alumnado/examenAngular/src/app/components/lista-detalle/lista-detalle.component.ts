@@ -56,6 +56,10 @@ export class ListaDetalleComponent {
   onSubmit(detalleFacturaForm: DetallesFactura) {
     console.log("detalleFacturaForm :>> ", detalleFacturaForm);
     
+    detalleFacturaForm["id_factura"] = this.idFactura;
 
+    this.peticion.nuevoDetalle(detalleFacturaForm).subscribe(datos => {
+      this.detallesFactura = datos;
+    })
   }
 }

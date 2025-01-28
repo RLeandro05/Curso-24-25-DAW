@@ -28,4 +28,13 @@ export class PAjaxService {
     };
     return this.http.post<DetallesFactura[]>(this.url, cuerpo);
   }
+
+  //Método para insertar un nuevo detalle de factura
+  nuevoDetalle(detalleFactura: DetallesFactura) {
+    let cuerpo = {
+      servicio: "anade",
+      detalle: detalleFactura
+    }
+    return this.http.post<DetallesFactura[]>(this.url, cuerpo);
+  }
 }

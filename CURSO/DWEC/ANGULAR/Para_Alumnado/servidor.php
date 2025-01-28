@@ -1,11 +1,11 @@
 <?php
 
-header("Access-Control-Allow-Origin: *"); // allow request from all origin
+header("Access-Control-Allow-Origin: *");
 header('Access-Control-Allow-Credentials: true');
 header("Access-Control-Allow-Methods: GET,HEAD,OPTIONS,POST,PUT");
 header("Access-Control-Allow-Headers: Access-Control-Allow-Headers, Origin, X-Requested-With, Content-Type, Accept, Authorization");
 
-header('Content-Type: application/json');  //  Todo se devolverá en formato JSON.
+header('Content-Type: application/json');
 
 
 $conn = Conectar2("practicaex_angular", "root", "");
@@ -64,7 +64,7 @@ function listadoDetalle($id) {
 
 function anadeDetalle($objeto){
 	global $conn;
-	$sc = "Insert into detalle_facturas(ID_FACTURA, CANTIDAD, CONCEPTO, PRECIO, TIPO_IVA) " .
+	$sc = "Insert into detalle_facturas(id_factura, cantidad, concepto, precio, tipo_iva) " .
 				"values($objeto->id_factura, $objeto->cantidad, '$objeto->concepto', $objeto->precio, $objeto->tipo_iva)";
 	Consulta($conn, $sc);
 }
