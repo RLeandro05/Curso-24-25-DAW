@@ -37,4 +37,14 @@ export class PAjaxService {
     }
     return this.http.post<DetallesFactura[]>(this.url, cuerpo);
   }
+
+  //Método para borrar un detalle específico
+  borrarDetalle(idDetalle: number, id_facturaDetalle: number) {
+    let cuerpo = {
+      servicio: "borra",
+      id: idDetalle,
+      id_factura: id_facturaDetalle
+    }
+    return this.http.post<DetallesFactura[]>(this.url, cuerpo);
+  }
 }

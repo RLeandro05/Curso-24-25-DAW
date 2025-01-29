@@ -14,6 +14,8 @@
                 <th>PRECIO</th>
                 <th>IVA</th>
                 <th>TOTAL</th>
+                <th>EDITAR</th>
+                <th>BORRAR</th>
             </tr>
         </thead>
         <tbody>
@@ -24,6 +26,8 @@
                 <td>{{detalleFactura.precio}}</td>
                 <td>{{detalleFactura.iva}}</td>
                 <td>{{detalleFactura.total}}</td>
+                <td><button type="button" (click)="toggleForm()">Editar</button></td>
+                <td><button type="button" (click)="onClickBorrar(detalleFactura.id, detalleFactura.concepto)">Borrar</button></td>
             </tr>
             <tr>
                 <td colspan="4">TOTALES</td>
@@ -60,6 +64,6 @@
 
         <br><br>
       
-        <button type="submit" [disabled]="!detalleForm.valid">Añadir línea de detalle</button>
+        <button type="submit" (click)="toggleForm()" [disabled]="!detalleForm.valid">{{textoBoton}}</button>
     </form>      
 </div>
