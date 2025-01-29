@@ -14,7 +14,7 @@ npm install && npm run build: Para descargar los módulos del proyecto, como en 
 
 (Dentro de Linux Ubuntu) source ~/.bashrc: Para actualizar el archivo donde se puso el alias
 
-(Dentro de Linux Ubuntu) sali up -d: Como si fuese docker-compose up, pero en Linux Ubuntu
+(Dentro de Linux Ubuntu) sail up -d: Como si fuese docker-compose up, pero en Linux Ubuntu
 
 (Dentro de Linux Ubuntu) sail artisan migrate: Para actualizar la base de datos de los archivos de migración
 
