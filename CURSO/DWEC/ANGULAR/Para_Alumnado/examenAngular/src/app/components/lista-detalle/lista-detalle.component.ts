@@ -20,7 +20,7 @@ export class ListaDetalleComponent {
   public Total: number = 0;
 
   public detalle: DetallesFactura = <DetallesFactura>{};
-  public detalleForm: DetallesFactura = <DetallesFactura>{};
+  public detalleFacturaForm: DetallesFactura = <DetallesFactura>{};
 
   public totalesIVA: number = 0;
   public totalesTotal: number = 0;
@@ -41,7 +41,7 @@ export class ListaDetalleComponent {
       this.calcularIvasyTotales();
     });
 
-    this.detalleForm = {
+    this.detalleFacturaForm = {
       id: -1,
       id_factura: 0,
       cantidad: 0,
@@ -72,8 +72,35 @@ export class ListaDetalleComponent {
 
   public mostrarFormulario: boolean = false;
 
-  toggleForm() {
-    this.mostrarFormulario = !this.mostrarFormulario;
+  toggleForm(accion: number, detalleTraido: DetallesFactura) {
+    if (accion == 1 || accion == 0) {
+      this.textoBoton = "Añadir línea de detalle";
+      this.detalleFacturaForm = {
+        id: -1,
+        id_factura: 0,
+        cantidad: 0,
+        concepto: "",
+        precio: 0,
+        tipo_iva: 0,
+        iva: 0,
+        total: 0
+      };
+      //console.log("detalleFacturaForm :>> ", this.detalleFacturaForm);
+
+      this.mostrarFormulario = !this.mostrarFormulario;
+
+    } else {
+      this.textoBoton = "Modificar línea de detalle";
+      this.detalleFacturaForm = detalleTraido;
+      //console.log("detalleFacturaForm :>> ", this.detalleFacturaForm);
+
+      if (!this.mostrarFormulario) {
+        this.mostrarFormulario = true;
+      }
+    }
+
+    console.log(this.mostrarFormulario);
+    
   }
 
   //Método para añadir un nuevo detalle el cual se lleva el objeto DetalleFactura al enviar el formulario
@@ -84,11 +111,19 @@ export class ListaDetalleComponent {
 
     detalleFacturaForm["id_factura"] = this.idFactura;
 
-    this.peticion.nuevoDetalle(detalleFacturaForm).subscribe(datos => {
-      this.detallesFactura = datos;
+    if (detalleFacturaForm.id == -1) {
+      this.peticion.nuevoDetalle(detalleFacturaForm).subscribe(datos => {
+        this.detallesFactura = datos;
+  
+        this.calcularIvasyTotales();
+      });
+    } else {
+      this.peticion.editarDetalle(detalleFacturaForm).subscribe(datos => {
+        this.detallesFactura = datos;
 
-      this.calcularIvasyTotales();
-    })
+        this.calcularIvasyTotales();
+      })
+    }
   }
 
   //Método para borrar un detalle específico

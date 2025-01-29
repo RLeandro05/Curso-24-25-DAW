@@ -47,4 +47,13 @@ export class PAjaxService {
     }
     return this.http.post<DetallesFactura[]>(this.url, cuerpo);
   }
+
+  //Método para editar un detalle específico
+  editarDetalle(detalleFactura: DetallesFactura) {
+    let cuerpo = {
+      servicio: "modifica",
+      detalle: detalleFactura
+    }
+    return this.http.post<DetallesFactura[]>(this.url, cuerpo);
+  }
 }
