@@ -1,4 +1,9 @@
-wsl -d ubuntu: Meterte dentro de Linux Ubuntu dentro de Windows sin meterse directamente en una máquina virtual de Linux
+# Apuntes Sail
+
+``` bash
+  wsl -d ubuntu
+``` 
+Para meterse dentro de Linux Ubuntu dentro de Windows sin meterse directamente en una máquina virtual de Linux
 
 exit (Estando dentro de Linux Ubuntu): Para salir de Ubuntu y volver a la terminal de Windows
 
