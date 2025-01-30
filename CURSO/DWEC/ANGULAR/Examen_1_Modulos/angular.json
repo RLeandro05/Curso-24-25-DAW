@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "pruebasSinStandalone": {
+    "Examen_1_Modulos": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:class": {
@@ -41,7 +41,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/pruebas-sin-standalone",
+            "outputPath": "dist/examen-1-modulos",
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": [
@@ -87,10 +87,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "pruebasSinStandalone:build:production"
+              "buildTarget": "Examen_1_Modulos:build:production"
             },
             "development": {
-              "buildTarget": "pruebasSinStandalone:build:development"
+              "buildTarget": "Examen_1_Modulos:build:development"
             }
           },
           "defaultConfiguration": "development"

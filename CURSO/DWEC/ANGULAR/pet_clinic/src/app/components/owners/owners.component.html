@@ -1,1 +1,30 @@
-<p>owners works!</p>
+<h2>Lista de Propietarios</h2>
+<div class="table-container">
+  <button type="button" [routerLink]="['form-owner', -1]">Añadir Owner</button>
+  <table class="table table-bordered table-striped table-hover">
+    <thead>
+      <tr class="table-success">
+        <th>ID</th>
+        <th>Nombre</th>
+        <th>Apellidos</th>
+        <th>Dirección</th>
+        <th>Ciudad</th>
+        <th>Teléfono</th>
+        <th>Mascotas</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (owner of owners; track $index) {
+        <tr>
+          <td>{{ owner.id }}</td>
+          <td>{{ owner.firstName }}</td>
+          <td>{{ owner.lastName }}</td>
+          <td>{{ owner.address }}</td>
+          <td>{{ owner.city }}</td>
+          <td>{{ owner.telephone }}</td>
+          <td>{{ owner.pets }}</td>
+        </tr>
+      }
+    </tbody>
+  </table>
+</div>

@@ -1,11 +1,29 @@
 import { Component } from '@angular/core';
+import { OwnerService } from '../../services/owner.service';
+import { CommonModule } from '@angular/common';
+import { Owner } from '../../modules/owner';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-owners',
-  imports: [],
+  imports: [CommonModule, RouterLink],
   templateUrl: './owners.component.html',
   styleUrl: './owners.component.css'
 })
 export class OwnersComponent {
+  owners: Owner[] = [];
+  personas: any[] = [];
 
+  constructor(private servicioOwner: OwnerService) {}
+
+  ngOnInit() {
+    //Obtener los owners llamando al servicioPAjax
+    this.servicioOwner.getOwners().subscribe({
+      next: datos => { 
+        console.log("Propietarios recibidos: ", datos);
+        this.owners = datos;
+      },
+      error: error => console.log("Error al obtener propietarios: ", error)
+    });
+  }
 }

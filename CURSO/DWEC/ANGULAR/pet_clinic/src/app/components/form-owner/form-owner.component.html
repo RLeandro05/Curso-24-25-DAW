@@ -1,1 +1,53 @@
-<p>form-owner works!</p>
+<h1>Añadir owner</h1>
+
+<div id="formNvOwner">
+    <form #ownerForm="ngForm" (ngSubmit)="onSubmit(ownerForm.value)">
+        <label for="firstName">Nombre: </label>
+        <br>
+        <input type="text" name="firstName" id="firstName" required [(ngModel)]="owner.firstName" #firstName="ngModel">
+        <div [hidden]="firstName.valid || firstName.pristine" >
+            El Nombre es obligatorio
+        </div>
+
+        <br>
+
+        <label for="lastName">Apellidos: </label>
+        <br>
+        <input type="text" name="lastName" id="lastName" required [(ngModel)]="owner.lastName" #lastName="ngModel">
+        <div [hidden]="lastName.valid || lastName.pristine" >
+            Los Apellidos son obligatorios
+        </div>
+
+        <br>
+
+        <label for="address">Dirección: </label>
+        <br>
+        <input type="text" name="address" id="address" required [(ngModel)]="owner.address" #address="ngModel">
+        <div [hidden]="address.valid || address.pristine" >
+            La Dirección es obligatoria
+        </div>
+
+        <br>
+
+        <label for="city">Ciudad: </label>
+        <br>
+        <input type="text" name="city" id="city" required [(ngModel)]="owner.city" #city="ngModel">
+        <div [hidden]="city.valid || city.pristine" >
+            La Ciudad es obligatoria
+        </div>
+
+        <br>
+
+        <label for="telephone">Teléfono: </label>
+        <br>
+        <input type="text" name="telephone" id="telephone" required [(ngModel)]="owner.telephone" #telephone="ngModel">
+        <div [hidden]="telephone.valid || telephone.pristine" >
+            El Teléfono es obligatorio
+        </div>
+
+        <br>
+
+        <button type="submit" [disabled]="!ownerForm.valid">Añadir owner</button>
+        <button type="button" [routerLink]="['/']">Cancelar</button>
+    </form>
+</div>

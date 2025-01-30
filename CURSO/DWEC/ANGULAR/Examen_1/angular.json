@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "pet_clinic": {
+    "Examen_1": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:class": {
@@ -38,7 +38,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/pet_clinic",
+            "outputPath": "dist/examen-1",
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": [
@@ -75,13 +75,7 @@
             "development": {
               "optimization": false,
               "extractLicenses": false,
-              "sourceMap": true,
-              "fileReplacements": [
-                {
-                  "replace": "src/environments/environment.ts",
-                  "with": "src/environments/environment.development.ts"
-                }
-              ]
+              "sourceMap": true
             }
           },
           "defaultConfiguration": "production"
@@ -90,10 +84,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "pet_clinic:build:production"
+              "buildTarget": "Examen_1:build:production"
             },
             "development": {
-              "buildTarget": "pet_clinic:build:development"
+              "buildTarget": "Examen_1:build:development"
             }
           },
           "defaultConfiguration": "development"
