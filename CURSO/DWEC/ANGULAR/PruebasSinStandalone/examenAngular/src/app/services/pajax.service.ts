@@ -8,7 +8,7 @@ import { DetallesFactura } from '../modules/detalles-factura';
 })
 export class PAjaxService {
 
-  private url: string = "http://localhost/Curso-24-25-DAW/DWEC/ANGULAR/Para_Alumnado/servidor.php";
+  private url: string = "http://localhost/Curso-24-25-DAW/DWEC/ANGULAR/pruebasSinStandalone/servidor.php";
 
   constructor(private http:HttpClient) {}
 
