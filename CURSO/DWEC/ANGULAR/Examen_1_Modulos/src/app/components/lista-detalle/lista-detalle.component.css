@@ -1,0 +1,16 @@
+table button {
+    width: 100%;
+}
+
+#mostrarNumeroFactura {
+    font-size: 1.3em;
+    color: darkred;
+}
+
+table {
+    border-collapse: collapse;
+}
+
+td {
+    padding: .4em;
+}

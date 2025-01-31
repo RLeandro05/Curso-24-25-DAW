@@ -1,0 +1,26 @@
+<h2>Listado de facturas</h2>
+
+<div>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>NUMERO</th>
+                <th>CLIENTE</th>
+                <th>FECHA</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let factura of listaFacturas">
+                <td>{{factura.id}}</td>
+                <td>
+                    <a [routerLink]="['lista-detalle', factura.id, factura.numero]">
+                        {{factura.numero}}
+                    </a>
+                </td>
+                <td>{{factura.id_cliente}}</td>
+                <td>{{factura.fecha | date}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
