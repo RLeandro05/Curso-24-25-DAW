@@ -7,6 +7,9 @@
 #### HTML5
 #### CSS3
 #### PHP
+#### Angular
+#### BootStrap
+#### TypesCRIPT
 ### .
 ### .
 ### .
