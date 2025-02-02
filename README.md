@@ -9,7 +9,7 @@
 #### PHP
 #### Angular
 #### BootStrap
-#### TypesCRIPT
+#### TypeScript
 ### .
 ### .
 ### .
