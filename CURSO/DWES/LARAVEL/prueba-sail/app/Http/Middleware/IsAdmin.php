@@ -6,7 +6,7 @@ use Closure;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 
-class SecondMiddleware
+class IsAdmin
 {
     /**
      * Handle an incoming request.
@@ -15,7 +15,13 @@ class SecondMiddleware
      */
     public function handle(Request $request, Closure $next): Response
     {
-        echo "Estoy en second || ";
+        if (auth()->check() && auth()->user()->is_admin) {
+            return $next($request);
+        }
+         // Si no es admin, redirigir o devolver error 403
+        if (!auth()->check() || !auth()->user()->isAdmin()) {
+            abort(403, 'Pues eso, va todo bien pero no tienes el Acceso autorizado.');
         return $next($request);
+        }
     }
 }

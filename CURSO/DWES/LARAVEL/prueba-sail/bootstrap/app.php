@@ -13,9 +13,13 @@ return Application::configure(basePath: dirname(__DIR__))
         health: '/up',
     )
     ->withMiddleware(function (Middleware $middleware) {
-        $middleware->web(append: FirstMiddleware::class);
-        $middleware->web(append: SecondMiddleware::class);
+        /*$middleware->web(append: FirstMiddleware::class);
+        $middleware->web(append: SecondMiddleware::class);*/
+
+        $middleware->alias([
+            'first' => FirstMiddleware::class,
+            'second' => SecondMiddleware::class
+        ]);
     })
     ->withExceptions(function (Exceptions $exceptions) {
-        //
     })->create();

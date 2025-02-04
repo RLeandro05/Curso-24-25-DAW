@@ -32,12 +32,12 @@ Route::get('/blog/crear', [BlogController::class, 'create'])->name('blog.create'
     return "Sección de contactos";
 })->name("contactos");*/
 
-Route::middleware(['first', 'second'])->group(function () {
-    Route::get('user/', function () {
-    echo "Mostrando listas de usuarios";
-    });
+Route::middleware('first')->group(function () {
     Route::get('user/profile', function () {
-        echo "Mostrando perfil epecífico de la lista de usuarios";
+        return "Dashboard del usuario con middlewares 'first' y 'second'.";
+    });
+    Route::get('user/', function () {
+        return "Ajustes del usuario con middlewares 'first' y 'second'.";
     });
 }); 
    

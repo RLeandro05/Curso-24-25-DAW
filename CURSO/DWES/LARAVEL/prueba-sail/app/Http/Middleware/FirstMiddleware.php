@@ -15,6 +15,7 @@ class FirstMiddleware
      */
     public function handle(Request $request, Closure $next): Response
     {
+        echo "Estoy en first || ";
         return $next($request);
     }
 }
