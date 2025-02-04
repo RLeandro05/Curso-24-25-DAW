@@ -21,6 +21,14 @@ export class OwnerService {
     return this.http.post<Owner[]>(this.url, JSON.stringify(cuerpo));
   }
 
+  aniadirOwner(owner: Owner) {
+    let cuerpo = {
+      accion: "AnadeOwner",
+      owner: owner
+    };
+    return this.http.post<Owner[]>(this.url, cuerpo);
+  }
+
   /*
   getPersonas() {
     let cuerpo = {

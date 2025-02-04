@@ -21,8 +21,8 @@ $datos = file_get_contents('php://input');  //  $datos es un string, y no un obj
 //  Lo convertimos a un objeto php:
 $objeto=json_decode($datos);
 
-	$objeto = new stdClass();
-	$objeto->accion = "ListarOwners";
+	//$objeto = new stdClass();
+	//$objeto->accion = "ListarOwners";
 	//$objeto->id = 9;
 
 if($objeto != null) {

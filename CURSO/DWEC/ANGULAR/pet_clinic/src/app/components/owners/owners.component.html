@@ -10,19 +10,19 @@
         <th>Dirección</th>
         <th>Ciudad</th>
         <th>Teléfono</th>
-        <th>Mascotas</th>
+        <!--<th>Mascotas</th>-->
       </tr>
     </thead>
     <tbody>
       @for (owner of owners; track $index) {
         <tr>
           <td>{{ owner.id }}</td>
-          <td>{{ owner.firstName }}</td>
+          <td><a [routerLink]="">{{ owner.firstName }}</a></td>
           <td>{{ owner.lastName }}</td>
           <td>{{ owner.address }}</td>
           <td>{{ owner.city }}</td>
           <td>{{ owner.telephone }}</td>
-          <td>{{ owner.pets }}</td>
+          <!--<td>{{ owner.pets }}</td>-->
         </tr>
       }
     </tbody>
