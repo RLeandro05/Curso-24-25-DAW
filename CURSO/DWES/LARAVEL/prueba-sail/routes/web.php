@@ -7,15 +7,15 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Middleware\FirstMiddleware; 
 use App\Http\Middleware\SecondMiddleware;
 
-/*Route::get('/', function () {
+Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get("/hola", function() {
+/*Route::get("/hola", function() {
     return "Hola, mundo";
 });
 
-/Route::get('/hola', [HolaController::class, 'index']);
+Route::get('/hola', [HolaController::class, 'index']);
 Route::get('/hola/{nombre}', [HolaController::class, 'show']);
 
 //BlogController
@@ -32,12 +32,24 @@ Route::get('/blog/crear', [BlogController::class, 'create'])->name('blog.create'
     return "Sección de contactos";
 })->name("contactos");*/
 
-Route::middleware('first')->group(function () {
+Route::middleware(['first', 'second'])->group(  function () {
     Route::get('user/profile', function () {
         return "Dashboard del usuario con middlewares 'first' y 'second'.";
     });
     Route::get('user/', function () {
         return "Ajustes del usuario con middlewares 'first' y 'second'.";
     });
-}); 
-   
+});
+
+Route::prefix('admin')->middleware(['auth', 'isAdmin'])->group(function (){
+    Route::get('/dashboard', function () {
+    return "Dashboard admin";
+    });
+});
+
+Route::get('/login', function () {
+    return 'Página de login';
+})->name('login');
+
+//Route::view('/welcome', 'welcome');
+Route::view('/welcome', 'saludo', ['nombre' => 'Taylor']);
