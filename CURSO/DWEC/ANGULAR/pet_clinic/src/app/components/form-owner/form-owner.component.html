@@ -47,7 +47,9 @@
 
         <br>
 
-        <button type="submit" [disabled]="!ownerForm.valid">Añadir owner</button>
+        <input type="hidden" name="id" id="id" [(ngModel)]="owner.id">
+
+        <button type="submit" [disabled]="!ownerForm.valid">{{textoBoton}}</button>
         <button type="button" [routerLink]="['/']">Cancelar</button>
     </form>
 </div>

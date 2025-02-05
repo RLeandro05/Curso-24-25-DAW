@@ -29,11 +29,19 @@ export class OwnerService {
     return this.http.post<Owner[]>(this.url, cuerpo);
   }
 
-  /*
-  getPersonas() {
+  obtenerOwnerId(id: number) {
     let cuerpo = {
-      servicio: "listar"
+      accion: "ObtenerOwnerId",
+      id: id
     };
-    return this.http.post(this.url, cuerpo);
-  }*/
+    return this.http.post<Owner>(this.url, cuerpo);
+  }
+
+  modificarOwner(owner: Owner) {
+    let cuerpo = {
+      accion: "ModificaOwner",
+      owner: owner
+    };
+    return this.http.post<Owner[]>(this.url, cuerpo);
+  }
 }
