@@ -44,4 +44,13 @@ export class OwnerService {
     };
     return this.http.post<Owner[]>(this.url, cuerpo);
   }
+
+  borrarOwner(id: number, listado: string = "") {
+    let cuerpo = {
+      accion: "BorraOwner",
+      id: id,
+      listado: listado
+    };
+    return this.http.post<Owner[]>(this.url, cuerpo);
+  }
 }

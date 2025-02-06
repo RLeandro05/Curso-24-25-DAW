@@ -75,7 +75,7 @@ export class FormOwnerComponent {
           this.listaOwners = datos;
           console.log("listaOwners :>> ", this.listaOwners);
           
-          this.ruta.navigate(["/"]);
+          this.ruta.navigate(["/detail-owner", owner.id]);
         }
       )
     }

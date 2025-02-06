@@ -11,18 +11,20 @@
         <th>Ciudad</th>
         <th>Teléfono</th>
         <!--<th>Mascotas</th>-->
+        <!--<th>Borrar</th>-->
       </tr>
     </thead>
     <tbody>
       @for (owner of owners; track $index) {
         <tr>
           <td>{{ owner.id }}</td>
-          <td><a [routerLink]="['form-owner', owner.id]">{{ owner.firstName }}</a></td>
+          <td><a [routerLink]="['detail-owner', owner.id]">{{ owner.firstName }}</a></td>
           <td>{{ owner.lastName }}</td>
           <td>{{ owner.address }}</td>
           <td>{{ owner.city }}</td>
           <td>{{ owner.telephone }}</td>
           <!--<td>{{ owner.pets }}</td>-->
+          <!--<td><button type="button" (click)="borrarOwner(owner)">Borrar</button></td>-->
         </tr>
       }
     </tbody>

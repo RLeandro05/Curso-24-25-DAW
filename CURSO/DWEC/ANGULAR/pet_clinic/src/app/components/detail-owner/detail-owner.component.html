@@ -1,1 +1,24 @@
-<p>detail-owner works!</p>
+<h2>Detalles del Propietario</h2>
+
+<table>
+    <tr>
+        <th>Nombre: </th>
+        <td>{{owner.firstName}} {{owner.lastName}}</td>
+    </tr>
+    <tr>
+        <th>Dirección: </th>
+        <td>{{owner.address}}</td>
+    </tr>
+    <tr>
+        <th>Ciudad: </th>
+        <td>{{owner.city}}</td>
+    </tr>
+    <tr>
+        <th>Teléfono: </th>
+        <td>{{owner.telephone}}</td>
+    </tr>
+</table>
+<button type="button" [routerLink]="(['/'])">< Volver</button>
+<button type="button" (click)="borrarOwner(owner)">Eliminar</button>
+<button type="button" [routerLink]="(['/form-owner', owner.id])">Modificar</button>
+<button type="button">Add pet</button>

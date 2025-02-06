@@ -26,4 +26,17 @@ export class OwnersComponent {
       error: error => console.log("Error al obtener propietarios: ", error)
     });
   }
+
+  /*borrarOwner(owner: Owner) {
+    console.log("idOwner :>> ", owner.id);
+
+    if(confirm("¿Estás seguro de que deseas eliminar a "+owner.firstName+" "+owner.lastName+"?")) {
+      this.servicioOwner.borrarOwner(owner.id).subscribe(
+        datos => {
+          this.owners = datos;
+          
+        }
+      )
+    }
+  }*/
 }

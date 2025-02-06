@@ -1,6 +1,9 @@
 <?php
 
 //use App\Http\Controllers\BlogController;
+
+use App\Http\Controllers\ActividadesController;
+use App\Http\Controllers\UserPruebaController;
 use Illuminate\Support\Facades\Route;
 //use App\Http\Controllers\HolaController;
 
@@ -53,3 +56,7 @@ Route::get('/login', function () {
 
 //Route::view('/welcome', 'welcome');
 Route::view('/welcome', 'saludo', ['nombre' => 'Taylor']);
+
+Route::get('/quienesSomos/{nombre?}', [UserPruebaController::class, 'quienesSomos']);
+
+Route::get('/actividades', [ActividadesController::class]);
