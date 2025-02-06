@@ -21,7 +21,7 @@
 <button type="button" [routerLink]="(['/'])">< Volver</button> || 
 <button type="button" (click)="borrarOwner(owner)">Eliminar</button> || 
 <button type="button" [routerLink]="(['/form-owner', owner.id])">Modificar</button> || 
-<button type="button">Add pet</button>
+<button type="button" [routerLink]="(['/pet-add', owner.id])">Add pet</button>
 
 <hr><hr>
 

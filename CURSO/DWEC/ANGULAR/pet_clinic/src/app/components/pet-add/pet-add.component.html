@@ -1,1 +1,34 @@
-<p>pet-add works!</p>
+<h1>Añadir nuevo Pet</h1>
+
+<form #petForm="ngForm" (ngSubmit)="onSubmit(petForm.value)">
+    <label for="owner">Owner: </label>
+    <br>
+    <input type="text" name="owner" id="owner" [(ngModel)]="pet.owner.firstName" #owner="ngModel" readonly required>
+
+    <br><br>
+
+    <label for="name">Nombre: </label>
+    <br>
+    <input type="text" name="name" id="name" required [(ngModel)]="pet.name" #name="ngModel">
+    <div [hidden]="name.valid || name.pristine" >
+        El Nombre es obligatorio
+    </div>
+
+    <br><br>
+
+    <label for="birthDate">Fecha de Nacimiento: </label>
+    <br>
+    <input type="date" name="birthDate" id="birthDate" required [(ngModel)]="pet.birthDate" #birthDate="ngModel">
+    <div [hidden]="birthDate.valid || birthDate.pristine" >
+        La Fecha es obligatoria
+    </div>
+
+    <br><br>
+
+    <br>
+
+    <input type="hidden" name="owner_id" id="owner_id" [(ngModel)]="pet.owner.id">
+
+    <button type="button" [routerLink]="(['/detail-owner', pet.owner.id])">< Volver</button> || 
+    <button type="submit" [disabled]="!petForm.valid">Guardar Pet</button>
+</form>
