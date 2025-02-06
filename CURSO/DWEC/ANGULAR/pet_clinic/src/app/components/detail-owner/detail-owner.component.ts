@@ -3,6 +3,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Owner } from '../../modules/owner';
 import { OwnerService } from '../../services/owner.service';
 import { RouterLink } from '@angular/router';
+import { PetService } from '../../services/pet.service';
+import { Pet } from '../../modules/pet';
 
 @Component({
   selector: 'app-detail-owner',
@@ -13,8 +15,9 @@ import { RouterLink } from '@angular/router';
 export class DetailOwnerComponent {
   public idOwner: number = 0;
   public owner: Owner = <Owner>{};
+  public pets: Pet[] = [];
 
-  constructor(private activatedRoute: ActivatedRoute, private servicioOwner: OwnerService, private ruta: Router) {
+  constructor(private activatedRoute: ActivatedRoute, private servicioOwner: OwnerService, private servicioPet: PetService, private ruta: Router) {
     this.idOwner = activatedRoute.snapshot.params["id"];
 
     console.log("idOwner :>> ", this.idOwner);
@@ -23,6 +26,14 @@ export class DetailOwnerComponent {
       datos => {
         this.owner = datos;
         console.log("Owner :>> ", this.owner);
+      }
+    )
+
+    this.servicioPet.listarPetsIdOwner(this.idOwner).subscribe(
+      datos => {
+        this.pets = datos;
+        console.log("Pets :>> ", this.pets);
+        
       }
     )
   }

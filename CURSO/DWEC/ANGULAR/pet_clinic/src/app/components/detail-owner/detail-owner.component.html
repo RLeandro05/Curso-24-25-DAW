@@ -18,7 +18,33 @@
         <td>{{owner.telephone}}</td>
     </tr>
 </table>
-<button type="button" [routerLink]="(['/'])">< Volver</button>
-<button type="button" (click)="borrarOwner(owner)">Eliminar</button>
-<button type="button" [routerLink]="(['/form-owner', owner.id])">Modificar</button>
+<button type="button" [routerLink]="(['/'])">< Volver</button> || 
+<button type="button" (click)="borrarOwner(owner)">Eliminar</button> || 
+<button type="button" [routerLink]="(['/form-owner', owner.id])">Modificar</button> || 
 <button type="button">Add pet</button>
+
+<hr><hr>
+
+<h2>Pets and Visits</h2>
+
+@for (pet of pets; track $index) {
+    <table>
+        <tr>
+            <th>Nombre:</th>
+            <td>{{pet.name}}</td>
+        </tr>
+        <tr>
+            <th>Fecha Nacimiento: </th>
+            <td>{{pet.birthDate}}</td>
+        </tr>
+        <tr>
+            <th>Tipo: </th>
+            <td>{{pet.type}}</td>
+        </tr>
+    </table>
+    <button type="button">Editar Pet</button> || 
+    <button type="button">Eliminar Pet</button> ||
+    <button type="button">Añadir Visita</button>
+    <br><br>
+    <hr>
+}
