@@ -1,0 +1,22 @@
+/* Centrar los botones dentro de la barra de herramientas */
+.p-toolbar-group-center {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+  }
+  
+  /* Opcional: Ajustar el margen entre los botones */
+  .p-mr-2 {
+    margin-right: 10px;  /* Ajusta el valor a tu preferencia */
+  }
+  
+  /* Estilos personalizados de la barra de herramientas */
+  p-toolbar {
+    background-color: #007ad9;  /* Fondo azul */
+    color: white;  /* Color de texto blanco */
+  }
+  
+  /* Si quieres que los botones tengan un tamaño consistente */
+  button.p-button {
+    min-width: 120px;  /* Ajusta el ancho mínimo de los botones */
+  }  
