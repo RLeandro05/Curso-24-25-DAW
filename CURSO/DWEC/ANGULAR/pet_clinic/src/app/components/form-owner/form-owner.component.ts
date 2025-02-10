@@ -80,4 +80,12 @@ export class FormOwnerComponent {
       )
     }
   }
+
+  cancelarFormulario(idOwner: number) {
+    if (idOwner == -1) {
+      this.ruta.navigate(["/"]);
+    } else {
+      this.ruta.navigate(["/detail-owner", idOwner]);
+    }
+  }
 }

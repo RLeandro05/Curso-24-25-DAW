@@ -50,6 +50,6 @@
         <input type="hidden" name="id" id="id" [(ngModel)]="owner.id">
 
         <button type="submit" [disabled]="!ownerForm.valid">{{textoBoton}}</button>
-        <button type="button" [routerLink]="['/detail-owner', owner.id]">Cancelar</button>
+        <button type="button" (click)="cancelarFormulario(owner.id)">Cancelar</button>
     </form>
 </div>
