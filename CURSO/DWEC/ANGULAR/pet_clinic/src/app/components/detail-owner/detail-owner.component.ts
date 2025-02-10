@@ -48,4 +48,8 @@ export class DetailOwnerComponent {
       )
     }
   }
+
+  actualizarLista(idPet: number) {
+    this.pets = this.pets.filter(pet => pet.id !== idPet);
+  }
 }

@@ -25,4 +25,4 @@
 
 <hr><hr>
 
-<app-pet-list [pets]="pets"></app-pet-list>
+<app-pet-list [pets]="pets" (petDeleted)="actualizarLista($event)"></app-pet-list>

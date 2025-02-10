@@ -44,4 +44,12 @@ export class PetService {
     };
     return this.http.post<Visit[]>(this.url, cuerpo);
   }
+
+  borrarPet(idPet: number) {
+    let cuerpo = {
+      accion: "BorraPet",
+      id: idPet
+    };
+    return this.http.post<Pet[]>(this.url, cuerpo);
+  }
 }
