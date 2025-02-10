@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { Visit } from '../../modules/visit';
 
 @Component({
   selector: 'app-visit-list',
@@ -7,5 +8,7 @@ import { Component } from '@angular/core';
   styleUrl: './visit-list.component.css'
 })
 export class VisitListComponent {
+  @Input() visits: Visit[] = [];
 
+  constructor() {}
 }

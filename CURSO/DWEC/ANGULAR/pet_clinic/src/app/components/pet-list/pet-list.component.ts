@@ -1,11 +1,15 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { Pet } from '../../modules/pet';
+import { VisitListComponent } from "../visit-list/visit-list.component";
 
 @Component({
   selector: 'app-pet-list',
-  imports: [],
   templateUrl: './pet-list.component.html',
-  styleUrl: './pet-list.component.css'
+  styleUrls: ['./pet-list.component.css'],
+  imports: [VisitListComponent]
 })
 export class PetListComponent {
+  @Input() pets: Pet[] = [];
 
+  constructor() {}
 }

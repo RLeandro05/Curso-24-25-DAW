@@ -25,26 +25,4 @@
 
 <hr><hr>
 
-<h2>Pets and Visits</h2>
-
-@for (pet of pets; track $index) {
-    <table>
-        <tr>
-            <th>Nombre:</th>
-            <td>{{pet.name}}</td>
-        </tr>
-        <tr>
-            <th>Fecha Nacimiento: </th>
-            <td>{{pet.birthDate}}</td>
-        </tr>
-        <tr>
-            <th>Tipo: </th>
-            <td>{{pet.type}}</td>
-        </tr>
-    </table>
-    <button type="button">Editar Pet</button> || 
-    <button type="button">Eliminar Pet</button> ||
-    <button type="button">Añadir Visita</button>
-    <br><br>
-    <hr>
-}
+<app-pet-list [pets]="pets"></app-pet-list>

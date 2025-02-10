@@ -1,1 +1,18 @@
-<p>visit-list works!</p>
+@for (visit of visits; track $index) {
+    <table>
+        <tr>
+            <th>Fecha de Visita: </th>
+            <td>{{visit.visitDate}}</td>
+        </tr>
+        <tr>
+            <th>Description: </th>
+            <td>{{visit.description}}</td>
+        </tr>
+        <tr>
+            <th>Acciones: </th>
+            <td><button type="button">Editar visita</button></td> || 
+            <td><button type="button">Borrar visita</button></td>
+        </tr>
+        <hr align="left" width="70%">
+    </table>
+}

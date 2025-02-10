@@ -3,7 +3,7 @@
 <form #petForm="ngForm" (ngSubmit)="onSubmit(petForm.value)">
     <label for="owner">Owner: </label>
     <br>
-    <input type="text" name="owner" id="owner" [(ngModel)]="pet.owner.firstName" #owner="ngModel" readonly required>
+    <input type="text" name="owner" id="owner" value="{{pet.owner.firstName}} {{pet.owner.lastName}}" readonly required>
 
     <br><br>
 

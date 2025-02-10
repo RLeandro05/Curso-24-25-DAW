@@ -3,6 +3,7 @@ import { environment } from '../../environments/environment.development';
 import { HttpClient } from '@angular/common/http';
 import { Pet } from '../modules/pet';
 import { Pettype } from '../modules/pettype';
+import { Visit } from '../modules/visit';
 
 @Injectable({
   providedIn: 'root'
@@ -33,5 +34,13 @@ export class PetService {
       pet: pet
     };
     return this.http.post(this.url, cuerpo);
+  }
+
+  listarVisitsPet(idPet: number) {
+    let cuerpo = {
+      accion: "ListarVisitasPet",
+      id: idPet
+    };
+    return this.http.post<Visit[]>(this.url, cuerpo);
   }
 }

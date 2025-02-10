@@ -27,6 +27,7 @@ export class PetAddComponent implements OnInit {
       birthDate: null,
       owner: {} as Owner,
       type: {} as Pettype,
+      typeName: "",
       visits: []
     };
 
