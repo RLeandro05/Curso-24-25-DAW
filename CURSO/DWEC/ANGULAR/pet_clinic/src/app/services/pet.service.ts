@@ -29,6 +29,7 @@ export class PetService {
   }
 
   anadePet(pet: Pet) {
+    console.log("pet :>> ", pet);
     let cuerpo = {
       accion: "AnadePet",
       pet: pet

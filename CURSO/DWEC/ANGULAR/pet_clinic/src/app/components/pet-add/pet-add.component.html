@@ -25,9 +25,19 @@
 
     <br><br>
 
-    <br>
+    <select name="type" id="type" [(ngModel)]="pet.type" #type="ngModel" required>
+        <option [ngValue]="null" disabled selected> Seleccione un tipo</option>
+        @for (petType of petTypes; track $index) {
+            <option [ngValue]="petType">{{petType.name}}</option>
+        }
+    </select>
+    <div [hidden]="type.valid || type.pristine" >
+        El Tipo es obligatorio
+    </div>
 
-    <input type="hidden" name="owner_id" id="owner_id" [(ngModel)]="pet.owner.id">
+    <br><br>
+
+    <input type="hidden" name="owner" id="owner" [(ngModel)]="pet.owner">
 
     <button type="button" [routerLink]="(['/detail-owner', pet.owner.id])">< Volver</button> || 
     <button type="submit" [disabled]="!petForm.valid">Guardar Pet</button>

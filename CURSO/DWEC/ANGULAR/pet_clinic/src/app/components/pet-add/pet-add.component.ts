@@ -26,7 +26,7 @@ export class PetAddComponent implements OnInit {
       name: "",
       birthDate: null,
       owner: {} as Owner,
-      type: {} as Pettype,
+      type: null,
       typeName: "",
       visits: []
     };
@@ -37,7 +37,7 @@ export class PetAddComponent implements OnInit {
         console.log("petTypes :>> ", this.petTypes);
         
       }
-    )
+    );
   }
 
   ngOnInit() {
@@ -59,9 +59,11 @@ export class PetAddComponent implements OnInit {
     );
   }
 
-  onSubmit(petTraido: Pet): void {
+  onSubmit(petTraido: Pet) {
     console.log("petTraido :>> ", petTraido);
     
-    //this.servicioPet.anadePet(petTraido).subscribe();
+    this.servicioPet.anadePet(petTraido).subscribe();
+
+    this.ruta.navigate(["/detail-owner", this.idOwnerTraido]);
   }
 }

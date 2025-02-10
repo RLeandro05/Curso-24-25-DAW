@@ -6,7 +6,7 @@ import { OwnerService } from '../../services/owner.service';
 
 @Component({
   selector: 'app-form-owner',
-  imports: [FormsModule, RouterLink],
+  imports: [FormsModule],
   templateUrl: './form-owner.component.html',
   styleUrl: './form-owner.component.css'
 })
