@@ -3,12 +3,13 @@ import { Pet } from '../../modules/pet';
 import { VisitListComponent } from "../visit-list/visit-list.component";
 import { PetService } from '../../services/pet.service';
 import { Router } from '@angular/router';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-pet-list',
   templateUrl: './pet-list.component.html',
   styleUrls: ['./pet-list.component.css'],
-  imports: [VisitListComponent]
+  imports: [VisitListComponent, RouterLink]
 })
 export class PetListComponent {
   @Input() pets: Pet[] = [];
@@ -24,14 +25,6 @@ export class PetListComponent {
       },
       error => console.log("Error al borrar el pet :>> ", error));
     }
-  }
-
-  irAPetAdd(petAIrse: Pet) {
-    //console.log("idOwner :>> ", idOwner);
-    //console.log("pets :>> ", this.pets);
-    
-    
-    //this.route.navigate(["/pet-add", idOwner]);
   }
   
 }

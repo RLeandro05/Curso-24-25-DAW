@@ -44,8 +44,11 @@ export class DetailOwnerComponent {
       if(this.pets.length != 0) {
         alert("El owner posee pets y no puede eliminarse.");
       } else {
-        this.servicioOwner.borrarOwner(owner.id).subscribe();
-        this.ruta.navigate(['/']);
+        this.servicioOwner.borrarOwner(owner.id).subscribe(() => {
+          setTimeout(() => {
+            this.ruta.navigate(['/']);
+          }, 1000);
+        });
       }
     }
   }

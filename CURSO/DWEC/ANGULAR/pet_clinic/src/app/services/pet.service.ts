@@ -52,4 +52,20 @@ export class PetService {
     };
     return this.http.post<Pet[]>(this.url, cuerpo);
   }
+
+  ObtenerPetId(idPet: number) {
+    let cuerpo = {
+      accion: "ObtenerPetId",
+      id: idPet
+    };
+    return this.http.post<Pet>(this.url, cuerpo);
+  }
+
+  ModificarPet(pet: Pet) {
+    let cuerpo = {
+      accion: "ModificaPet",
+      pet: pet
+    }
+    return this.http.post(this.url, cuerpo);
+  }
 }

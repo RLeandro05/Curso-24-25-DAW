@@ -10,6 +10,7 @@ export interface Pet {
     type: Pettype | null;
     typeName?: string;
     owner: Owner;
+    ownerId: number;
     //visits: any[];
     visits: Visit[];
 }

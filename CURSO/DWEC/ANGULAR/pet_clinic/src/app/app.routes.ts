@@ -8,5 +8,5 @@ export const routes: Routes = [
     {path: "", component: OwnersComponent},
     {path: "form-owner/:id", component: FormOwnerComponent},
     {path: "detail-owner/:id", component: DetailOwnerComponent},
-    {path: "pet-add/:idOwner", component: PetAddComponent}
+    {path: "pet-add/:idOwner/:id", component: PetAddComponent}
 ];
