@@ -41,11 +41,12 @@ export class DetailOwnerComponent {
 
   borrarOwner(owner: Owner) {
     if(confirm("¿Quieres eliminar a "+owner.firstName+" "+owner.lastName+"?")) {
-      this.servicioOwner.borrarOwner(owner.id).subscribe(
-        datos => {
-          this.ruta.navigate(['/']);
-        }
-      )
+      if(this.pets.length != 0) {
+        alert("El owner posee pets y no puede eliminarse.");
+      } else {
+        this.servicioOwner.borrarOwner(owner.id).subscribe();
+        this.ruta.navigate(['/']);
+      }
     }
   }
 

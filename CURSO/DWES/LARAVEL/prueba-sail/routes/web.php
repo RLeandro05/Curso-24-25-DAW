@@ -9,10 +9,7 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Middleware\FirstMiddleware; 
 use App\Http\Middleware\SecondMiddleware;
-
-Route::get('/', function () {
-    return view('welcome');
-});
+use App\Models\Task;
 
 /*Route::get("/hola", function() {
     return "Hola, mundo";
@@ -35,7 +32,7 @@ Route::get('/blog/crear', [BlogController::class, 'create'])->name('blog.create'
     return "Sección de contactos";
 })->name("contactos");*/
 
-Route::middleware(['first', 'second'])->group(  function () {
+/*Route::middleware(['first', 'second'])->group(  function () {
     Route::get('user/profile', function () {
         return "Dashboard del usuario con middlewares 'first' y 'second'.";
     });
@@ -59,4 +56,15 @@ Route::view('/welcome', 'saludo', ['nombre' => 'Taylor']);
 
 Route::get('/quienesSomos/{nombre?}', [UserPruebaController::class, 'quienesSomos']);
 
-Route::get('/actividades', [ActividadesController::class]);
+Route::get('/actividades', [ActividadesController::class]);*/
+
+Route::get('/', function () {
+    return view('welcome');
+});
+
+Route::get('/tasks', function() {
+    $tasks=Task::take(10)->get(["original"=>"name"]);
+    dump($tasks);
+});
+
+Route::view("layouts.app", "layouts/app", ["slot" => "Twingo por Ferrari"]);
