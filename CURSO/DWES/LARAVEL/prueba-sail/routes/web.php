@@ -3,6 +3,7 @@
 //use App\Http\Controllers\BlogController;
 
 use App\Http\Controllers\ActividadesController;
+use App\Http\Controllers\TaskController;
 use App\Http\Controllers\UserPruebaController;
 use Illuminate\Support\Facades\Route;
 //use App\Http\Controllers\HolaController;
@@ -52,7 +53,6 @@ Route::get('/login', function () {
 })->name('login');
 
 //Route::view('/welcome', 'welcome');
-Route::view('/welcome', 'saludo', ['nombre' => 'Taylor']);
 
 Route::get('/quienesSomos/{nombre?}', [UserPruebaController::class, 'quienesSomos']);
 
@@ -62,9 +62,19 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/tasks', function() {
+/*Route::get('/tasks', function() {
     $tasks=Task::take(10)->get(["original"=>"name"]);
     dump($tasks);
+});*/
+
+/*Route::get("/layout", function() {
+    return view("layouts/app", ["slot" => "Pan con Aceite"]);
+});*/
+
+//Route::view('/welcome', 'saludo', ['nombre' => 'Taylor']);
+
+Route::get("/index", function() {
+    return view("tasks/index");
 });
 
-Route::view("layouts.app", "layouts/app", ["slot" => "Twingo por Ferrari"]);
+Route::get("/tasks", [TaskController::class, "index"]);
