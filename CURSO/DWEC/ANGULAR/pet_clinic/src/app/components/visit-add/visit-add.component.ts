@@ -14,28 +14,54 @@ import { RouterLink } from '@angular/router';
 export class VisitAddComponent {
   public idPetRoute: number = 0;
   public idOwnerRoute: number = 0;
+  public idVisitRoute: number = 0;
   public visit: Visit = <Visit>{};
   public textoBoton: string = "Guardar";
 
   constructor(private servicioVisit:VisitService, private activatedRoute: ActivatedRoute, private route: Router) {
-    this.idPetRoute = Number(activatedRoute.snapshot.params["idPet"]);
-    this.idOwnerRoute = Number(activatedRoute.snapshot.params["idOwner"]);
+  }
+
+  ngOnInit() {
+    this.idPetRoute = Number(this.activatedRoute.snapshot.params["idPet"]);
+    this.idOwnerRoute = Number(this.activatedRoute.snapshot.params["idOwner"]);
+    this.idVisitRoute = Number(this.activatedRoute.snapshot.params["idVisit"]);
 
     console.log("idPetRoute :>> ", this.idPetRoute);
+    console.log("idOwnerRoute :>> ", this.idOwnerRoute);
+    console.log("idPetVisit :>> ", this.idVisitRoute);
 
-    this.visit = {
-      id: -1,
-      petId: this.idPetRoute,
-      visitDate: null,
-      description: ""
+    if(this.idVisitRoute == -1) {
+      this.visit = {
+        id: -1,
+        petId: this.idPetRoute,
+        visitDate: null,
+        description: ""
+      }
+    } else {
+      this.servicioVisit.obtenerVisitId(this.idVisitRoute).subscribe(
+        datos => {
+          this.visit = datos;
+
+          console.log("Visit traído de obtenerVisitId :>> ", this.visit);
+          
+        },
+        error => console.log("Error al obtenerVisitId :>> ", error)
+      );
+      
     }
   }
 
   onSubmit(visitForm: Visit) {
     console.log("visitForm :>> ", visitForm);
-    
-    this.servicioVisit.anadeVisit(visitForm).subscribe();
 
-    this.route.navigate(['/detail-owner', this.idOwnerRoute]);
+    if(this.idVisitRoute == -1) {
+      this.servicioVisit.anadeVisit(visitForm).subscribe();
+
+      this.route.navigate(['/detail-owner', this.idOwnerRoute]);
+    } else {
+      this.servicioVisit.modificarVisit(visitForm).subscribe();
+
+      this.route.navigate(['detail-owner', this.idOwnerRoute]);
+    }
   }
 }

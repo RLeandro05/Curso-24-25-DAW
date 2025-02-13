@@ -17,10 +17,10 @@
     </table>
     <button type="button" [routerLink]="(['/pet-add', pet.ownerId, pet.id])">Editar Pet</button> || 
     <button type="button" (click)="borrarPet(pet.id, pet.name)">Eliminar Pet</button> ||
-    <button type="button" [routerLink]="(['/visit-add', pet.id, pet.ownerId])">Añadir Visita</button>
+    <button type="button" [routerLink]="(['/visit-add', pet.id, pet.ownerId, -1])">Añadir Visita</button>
     <br><br>
     <hr align="left" width="20%">
 
-    <app-visit-list [visits]="pet.visits" (visitDeleted)="actualizarListaPets($event)"></app-visit-list>
+    <app-visit-list [visits]="pet.visits" [idOwner]="pet.ownerId" [idPet]="pet.id" (visitDeleted)="actualizarListaPets($event)"></app-visit-list>
     <hr>
 }

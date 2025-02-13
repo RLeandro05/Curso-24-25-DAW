@@ -10,7 +10,7 @@
         </tr>
         <tr>
             <th>Acciones: </th>
-            <td><button type="button">Editar visita</button></td> || 
+            <td><button type="button" [routerLink]="(['/visit-add', idPet, idOwner, visit.id])">Editar visita</button></td> || 
             <td><button type="button" (click)="borrarVisita(visit.id)">Borrar visita</button></td>
         </tr>
         <hr align="left" width="70%">

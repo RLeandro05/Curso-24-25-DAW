@@ -20,11 +20,12 @@
 
         <br>
 
-        <input type="hidden" name="petId" id="petId" [(ngModel)]="visit.petId">
+        <input type="hidden" name="petId" id="petId" [(ngModel)]="idPetRoute">
+        <input type="hidden" name="id" id="id" [(ngModel)]="idVisitRoute">
 
         <br>
 
-        <button type="submit" [disabled]="!visitForm.valid" (click)="onSubmit(visit)">{{textoBoton}}</button> || 
+        <button type="submit" [disabled]="!visitForm.valid" (ngSubmit)="onSubmit(visit)">{{textoBoton}}</button> || 
         <button type="button" [routerLink]="(['/detail-owner', idOwnerRoute])">Cancelar</button>
     </form>
 </div>

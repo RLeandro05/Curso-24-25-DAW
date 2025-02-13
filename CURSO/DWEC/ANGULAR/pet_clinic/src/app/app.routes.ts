@@ -10,5 +10,5 @@ export const routes: Routes = [
     {path: "form-owner/:id", component: FormOwnerComponent},
     {path: "detail-owner/:id", component: DetailOwnerComponent},
     {path: "pet-add/:idOwner/:id", component: PetAddComponent},
-    {path: "visit-add/:idPet/:idOwner", component: VisitAddComponent}
+    {path: "visit-add/:idPet/:idOwner/:idVisit", component: VisitAddComponent}
 ];

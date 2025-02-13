@@ -1,15 +1,18 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Visit } from '../../modules/visit';
 import { VisitService } from '../../services/visit.service';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-visit-list',
-  imports: [],
+  imports: [RouterLink],
   templateUrl: './visit-list.component.html',
   styleUrl: './visit-list.component.css'
 })
 export class VisitListComponent {
   @Input() visits: Visit[] = [];
+  @Input() idOwner: number = 0;
+  @Input() idPet: number = 0;
   @Output() visitDeleted = new EventEmitter<number>();
 
   constructor(private servicioVisit: VisitService) {}
@@ -26,5 +29,10 @@ export class VisitListComponent {
         
       );
     }
+  }
+
+  ngOnInit() {
+    console.log("idOwner en visit-list :>> ", this.idOwner);
+    console.log("idPet en visit-list :>> ", this.idPet);
   }
 }

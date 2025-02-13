@@ -35,4 +35,20 @@ export class VisitService {
       };
       return this.http.post<any>(this.url, cuerpo);
     }
+
+    obtenerVisitId(idVisit: number) {
+      let cuerpo = {
+        accion: "ObtenerVisitId",
+        id: idVisit
+      };
+      return this.http.post<Visit>(this.url, cuerpo);
+    }
+
+    modificarVisit(visit: Visit) {
+      let cuerpo = {
+        accion: "ModificaVisit",
+        visit: visit
+      };
+      return this.http.post(this.url, cuerpo);
+    }
 }
