@@ -1,3 +1,3 @@
 <div>
-    <!-- Very little is needed to make a happy life. - Marcus Aurelius -->
+    <!-- Simplicity is the essence of happiness. - Cedric Bledsoe -->
 </div>

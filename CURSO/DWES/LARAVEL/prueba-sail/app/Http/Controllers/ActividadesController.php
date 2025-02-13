@@ -6,11 +6,18 @@ use Illuminate\Http\Request;
 
 class ActividadesController extends Controller
 {
-    public function actividadesVistas() {
-        $usuarios = ["Leandro", "Javier", "Manolo"];
-        $nivel = [1, 2, 3];
-        $categorias = ["Admin", "Editor", "Suscriptor"];
+    public function actividadesVistas()
+    {
+        
+        $usuarios = ['Javier', 'Clara', 'Paco', 'Leandro', 'Marta'];
 
-        return view("actividadesVistas", compact('usuarios', 'nivel', 'categorias'));
+        
+        $nivel = [1-3]; 
+
+        
+        $categorias = ['Admin', 'Editor', 'Suscriptor'];
+
+        
+        return view('actividades', compact('usuarios', 'nivel', 'categorias'));
     }
 }

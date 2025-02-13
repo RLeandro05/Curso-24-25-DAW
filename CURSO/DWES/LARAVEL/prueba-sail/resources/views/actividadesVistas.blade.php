@@ -1,3 +1,0 @@
-<div>
-    Hola amigo
-</div>

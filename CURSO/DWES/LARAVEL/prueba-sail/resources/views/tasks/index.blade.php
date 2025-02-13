@@ -10,6 +10,11 @@
         <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
             <div class="p-g sm:px.20 bg-white border-b border-gray-200">
                 Cuerpo
+                <botton class="p-4">                    
+                    <a href="{{route('tasks.create')}}" class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium bg-black text-white rounded-md hover:bg-gray-800">
+                        Crear Tarea
+                     </a>                        
+                </botton>
                 <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
                     <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
                         <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
@@ -25,6 +30,9 @@
                                 </th>
                                 <th scope="col" class="px-6 py-3">
                                    Completada
+                                </th>
+                                <th scope="col" class="px-6 py-3">
+                                    Listado de tareas
                                 </th>
                                                             <th scope="col" class="px-6 py-3">
                                     Acciones
@@ -47,6 +55,9 @@
                             </td>
                             <td class="px-6 py-4">
                                 {{$task->completed?'Sí':'No'}}
+                            </td>
+                            <td class="px-6 py-4">
+                                {{$task->created_at->format("d/m/Y")}}
                             </td>
                             <td class="px-6 py-4">
                                 <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">
@@ -80,8 +91,9 @@
                 </div>
             </div>
         </div>
+        {{$tasks->links()}}
     </div>  
      <!-- hacemos dump die de las tareas @dump($tasks)   -->
 <!-- renderizamos   -->
-<!-- sustituimos con el código de flowbite{{$tasks->links()}} pero lo metemos dentro del cuerpo-->
+
 </x-app-layout>

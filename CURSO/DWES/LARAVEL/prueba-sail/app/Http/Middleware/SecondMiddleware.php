@@ -15,7 +15,7 @@ class SecondMiddleware
      */
     public function handle(Request $request, Closure $next): Response
     {
-        echo "Estoy en second || ";
+        echo " Second Middle en => ";
         return $next($request);
     }
 }

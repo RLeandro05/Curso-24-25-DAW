@@ -1,80 +1,104 @@
 <?php
+/*
+use App\Http\Controllers\BlogController;
+use App\Http\Controllers\HolaController;*/
 
-//use App\Http\Controllers\BlogController;
-
-use App\Http\Controllers\ActividadesController;
 use App\Http\Controllers\TaskController;
-use App\Http\Controllers\UserPruebaController;
 use Illuminate\Support\Facades\Route;
-//use App\Http\Controllers\HolaController;
+/*use App\Http\Controllers\userPruebaControler;
+use App\Http\Controllers\ActividadesController;
+use App\Models\Task;*/
+/*
+Route::get('/hola/{nombre}', [HolaController::class, 'index']);
+*/
 
-use App\Http\Middleware\FirstMiddleware; 
-use App\Http\Middleware\SecondMiddleware;
-use App\Models\Task;
-
-/*Route::get("/hola", function() {
-    return "Hola, mundo";
+Route::get('/', function () {
+    return view("welcome");
 });
 
-Route::get('/hola', [HolaController::class, 'index']);
+
+//Route::get('/tasks', [TaskController::class, 'index']);
+
+Route::get("tasks", [TaskController::class, "index"])->name(name:"tasks.index");
+
+Route::get("tasks/create", [TaskController::class, "create"])->name(name:"tasks.create");
+
+Route::post('tasks', [TaskController::class, "store"])->name(name:"tasks.store");
+/*
+Route::get('/pruebalayout', function () {
+    return view("pruebalayout");
+});*/
+
+
+/*
+Route::get('/layout', function () {
+    return view("layouts/app");
+});*/
+
+//Route::view('/layout', 'layouts/app')
+
+/*
+Route::get('/tasks', function () {
+    $tasks=Task::all();
+    dump($tasks);
+});*/
+
+/*
+Route::get('/tasks', function () {
+    $tasks=Task::take(10)->all();
+    dump($tasks);
+});
+*/
+
+/*
+Route::get('/tasks', function () {
+    $tasks=Task::take(10)->get(['original'=>'name']); // get o take
+    dump($tasks); // Detiene la ejecución del script 
+});
+*/
+
+
+
+/*
 Route::get('/hola/{nombre}', [HolaController::class, 'show']);
 
+
 //BlogController
-// Mostrar todos los artículos del blog
-Route::get('/blog', [BlogController::class, 'index'])->name('blog.index');
 
-// Mostrar un artículo específico
-Route::get('/blog/{id}', [BlogController::class, 'show'])->name('blog.show');
+Route::get('/index', [BlogController::class, 'index'])->name('blog.index');
+Route::get('/show/{nombreBlog}', [BlogController::class, 'show'])->name('blog.show');
+Route::get('/create/{nombreBlog}', [BlogController::class, 'create'])->name('blog.create');
 
-// Mostrar el formulario para crear un nuevo artículo
-Route::get('/blog/crear', [BlogController::class, 'create'])->name('blog.create');*/
-
-/*Route::get("contactos", function() {
+Route::get('contactos', function () {
     return "Sección de contactos";
-})->name("contactos");*/
+});
 
-/*Route::middleware(['first', 'second'])->group(  function () {
-    Route::get('user/profile', function () {
-        return "Dashboard del usuario con middlewares 'first' y 'second'.";
-    });
-    Route::get('user/', function () {
-        return "Ajustes del usuario con middlewares 'first' y 'second'.";
+/*
+Route::get('/', function () {
+    echo "<p><a href='/contactos'>Contactos 1 </a></p>";
+    echo "<p><a href='/contactos'>Contactos 2 </a></p>";
+    echo "<p><a href='/contactos'>Contactos 3 </a></p>";
+    echo "<p><a href='/contactos'>Contactos 4 </a></p>";
+    echo "<p><a href='/contactos'>Contactos 5 </a></p>";
+});*/
+
+
+/*
+Route::prefix('admin')->middleware('auth', 'isAdmin')->group(function () {
+    Route::get('dashboard', function () {
+        return "Dashboard admin";
     });
 });
 
-Route::prefix('admin')->middleware(['auth', 'isAdmin'])->group(function (){
-    Route::get('/dashboard', function () {
-    return "Dashboard admin";
-    });
-});
 
 Route::get('/login', function () {
     return 'Página de login';
 })->name('login');
 
-//Route::view('/welcome', 'welcome');
 
-Route::get('/quienesSomos/{nombre?}', [UserPruebaController::class, 'quienesSomos']);
+//Route::view('/welcome', 'hola');
+Route::view('/welcome', 'hola', ['nombre' => 'Taylor']);
+    
+Route::get('/quienesSomos/{nombre?}', [userPruebaControler::class, 'quienesSomos']);
 
-Route::get('/actividades', [ActividadesController::class]);*/
-
-Route::get('/', function () {
-    return view('welcome');
-});
-
-/*Route::get('/tasks', function() {
-    $tasks=Task::take(10)->get(["original"=>"name"]);
-    dump($tasks);
-});*/
-
-/*Route::get("/layout", function() {
-    return view("layouts/app", ["slot" => "Pan con Aceite"]);
-});*/
-
-//Route::view('/welcome', 'saludo', ['nombre' => 'Taylor']);
-
-Route::get("/index", function() {
-    return view("tasks/index");
-});
-
-Route::get("/tasks", [TaskController::class, "index"]);
+Route::get('/actividades', [ActividadesController::class, 'actividades'])->name('actividades');*/
