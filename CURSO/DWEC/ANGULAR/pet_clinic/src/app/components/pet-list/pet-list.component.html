@@ -21,6 +21,6 @@
     <br><br>
     <hr align="left" width="20%">
 
-    <app-visit-list [visits]="pet.visits"></app-visit-list>
+    <app-visit-list [visits]="pet.visits" (visitDeleted)="actualizarListaPets($event)"></app-visit-list>
     <hr>
 }

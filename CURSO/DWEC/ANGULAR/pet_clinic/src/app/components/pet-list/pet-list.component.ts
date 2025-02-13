@@ -26,5 +26,13 @@ export class PetListComponent {
       error => console.log("Error al borrar el pet :>> ", error));
     }
   }
+
+  actualizarListaPets(idVisitDeleted: number) {
+    console.log("idVisitDeleted :>> ", idVisitDeleted);
+
+    this.pets.forEach(pet => {
+      pet.visits = pet.visits.filter(visit => visit.id != idVisitDeleted);
+    });
+  }
   
 }

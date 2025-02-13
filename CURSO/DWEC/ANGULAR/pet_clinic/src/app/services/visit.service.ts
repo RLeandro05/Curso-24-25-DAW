@@ -27,4 +27,12 @@ export class VisitService {
       };
       return this.http.post(this.url, cuerpo);
     }
+
+    borrarVisit(idVisit: number) {
+      let cuerpo = {
+        accion: "BorraVisit",
+        id: idVisit
+      };
+      return this.http.post<any>(this.url, cuerpo);
+    }
 }
