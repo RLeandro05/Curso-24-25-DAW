@@ -1,1 +1,30 @@
-<p>visit-add works!</p>
+<h1>Añadir visita</h1>
+
+<div id="formNvVisit">
+    <form #visitForm="ngForm" (ngSubmit)="onSubmit(visitForm.value)">
+        <label for="visitDate">Fecha de visita: </label>
+        <br>
+        <input type="date" name="visitDate" id="visitDate" required [(ngModel)]="visit.visitDate" #visitDate="ngModel">
+        <div [hidden]="visitDate.valid || visitDate.pristine" >
+            La Fecha es obligatoria
+        </div>
+
+        <br><br>
+
+        <label for="description">Descripción: </label>
+        <br>
+        <input type="text" name="description" id="description" required [(ngModel)]="visit.description" #description="ngModel">
+        <div [hidden]="description.valid || description.pristine" >
+            La Descripción es obligatoria
+        </div>
+
+        <br>
+
+        <input type="hidden" name="petId" id="petId" [(ngModel)]="visit.petId">
+
+        <br>
+
+        <button type="submit" [disabled]="!visitForm.valid">{{textoBoton}}</button> || 
+        <button type="button" [routerLink]="(['/detail-owner', idOwnerRoute])">Cancelar</button>
+    </form>
+</div>

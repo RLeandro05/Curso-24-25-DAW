@@ -19,4 +19,12 @@ export class VisitService {
       };
       return this.http.post<Visit[]>(this.url, cuerpo);
     }
+
+    anadeVisit(visit: Visit) {
+      let cuerpo = {
+        accion: "AnadeVisit",
+        visit: visit
+      };
+      return this.http.post(this.url, cuerpo);
+    }
 }

@@ -17,7 +17,7 @@
     </table>
     <button type="button" [routerLink]="(['/pet-add', pet.ownerId, pet.id])">Editar Pet</button> || 
     <button type="button" (click)="borrarPet(pet.id, pet.name)">Eliminar Pet</button> ||
-    <button type="button">Añadir Visita</button>
+    <button type="button" [routerLink]="(['/visit-add', pet.id, pet.ownerId])">Añadir Visita</button>
     <br><br>
     <hr align="left" width="20%">
 
