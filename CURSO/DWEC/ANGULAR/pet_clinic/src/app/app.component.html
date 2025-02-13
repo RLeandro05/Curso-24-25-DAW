@@ -2,6 +2,7 @@
     <div class="p-toolbar-group-center">
       <!-- Primer Dropdown (3 opciones) -->
       <p-dropdown 
+        (onChange)="cambioDesplegableOwners($event)"
         [options]="dropdown1Options" 
         [(ngModel)]="selectedOption1" 
         placeholder="Selecciona opción 1" 
@@ -9,15 +10,16 @@
   
       <!-- Segundo Dropdown (2 opciones) -->
       <p-dropdown 
+      (onChange)="cambioDesplegableVeterinarios($event)"
         [options]="dropdown2Options" 
         [(ngModel)]="selectedOption2" 
         placeholder="Selecciona opción 2" 
         class="p-mr-2"></p-dropdown>
   
       <!-- Botones simples -->
-      <button pButton type="button" label="Botón 3" class="p-mr-2"></button>
-      <button pButton type="button" label="Botón 4" class="p-mr-2"></button>
-      <button pButton type="button" label="Botón 5" class="p-mr-2"></button>
+      <button pButton type="button" label="Pet Types" class="p-mr-2"></button>
+      <button pButton type="button" label="Especialidades" class="p-mr-2"></button>
+      <button pButton type="button" label="Log out" class="p-mr-2"></button>
     </div>
   </p-toolbar>
   
