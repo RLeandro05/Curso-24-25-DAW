@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { VisitService } from '../../services/visit.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Visit } from '../../modules/visit';
 import { FormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
@@ -17,7 +17,7 @@ export class VisitAddComponent {
   public visit: Visit = <Visit>{};
   public textoBoton: string = "Guardar";
 
-  constructor(private servicioVisit:VisitService, private activatedRoute: ActivatedRoute) {
+  constructor(private servicioVisit:VisitService, private activatedRoute: ActivatedRoute, private route: Router) {
     this.idPetRoute = Number(activatedRoute.snapshot.params["idPet"]);
     this.idOwnerRoute = Number(activatedRoute.snapshot.params["idOwner"]);
 
@@ -32,6 +32,10 @@ export class VisitAddComponent {
   }
 
   onSubmit(visitForm: Visit) {
+    console.log("visitForm :>> ", visitForm);
+    
+    this.servicioVisit.anadeVisit(visitForm).subscribe();
 
+    this.route.navigate(['/detail-owner', this.idOwnerRoute]);
   }
 }

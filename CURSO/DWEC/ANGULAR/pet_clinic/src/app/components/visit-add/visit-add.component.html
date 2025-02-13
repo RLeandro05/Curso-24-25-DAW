@@ -24,7 +24,7 @@
 
         <br>
 
-        <button type="submit" [disabled]="!visitForm.valid">{{textoBoton}}</button> || 
+        <button type="submit" [disabled]="!visitForm.valid" (click)="onSubmit(visit)">{{textoBoton}}</button> || 
         <button type="button" [routerLink]="(['/detail-owner', idOwnerRoute])">Cancelar</button>
     </form>
 </div>
