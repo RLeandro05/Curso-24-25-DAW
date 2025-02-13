@@ -26,9 +26,16 @@
     <br><br>
 
     <select name="type" id="type" [(ngModel)]="pet.type" #type="ngModel" required>
-        <option [ngValue]="null" disabled selected> Seleccione un tipo</option>
+        @if (pet.type == null) {
+            <option [ngValue]="null" disabled selected> Seleccione un tipo</option>   
+        }
+
         @for (petType of petTypes; track $index) {
-            <option [ngValue]="petType">{{petType.name}}</option>
+            @if (petType.id === pet.type.id) {
+                <option [ngValue]="petType" selected>{{petType.name}}</option>
+            } @else {
+                <option [ngValue]="petType">{{petType.name}}</option>
+            }
         }
     </select>
     <div [hidden]="type.valid || type.pristine" >

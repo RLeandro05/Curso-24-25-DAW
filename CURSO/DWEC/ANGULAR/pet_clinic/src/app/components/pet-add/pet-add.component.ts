@@ -22,7 +22,10 @@ export class PetAddComponent {
   public idPetTraido: number = 0;
 
   constructor(private activatedRoute: ActivatedRoute, private servicioOwner: OwnerService, private servicioPet: PetService, private ruta: Router) {
-    this.idPetTraido = Number(activatedRoute.snapshot.params["id"]);
+  }
+
+  ngOnInit() {
+    this.idPetTraido = Number(this.activatedRoute.snapshot.params["id"]);
     console.log("idPetTraido :>> ", this.idPetTraido);
 
     this.pet = {
@@ -31,7 +34,7 @@ export class PetAddComponent {
       birthDate: null,
       owner: {} as Owner,
       ownerId: -1,
-      type: null,
+      type: {} as Pettype,
       typeName: "",
       visits: []
     };
@@ -67,30 +70,18 @@ export class PetAddComponent {
     this.servicioPet.listarPetTypes().subscribe(
       datos => {
         this.petTypes = datos;
-        console.log("petTypes :>> ", this.petTypes);
 
+        if (this.pet && this.pet.type) {
+          const matchingType = this.petTypes.find(pt => pt.id === this.pet.type.id);
+          if (matchingType) {
+            this.pet.type = matchingType;
+          } else {
+            this.pet.type = {} as Pettype;
+          }
+        }
       }
     );
   }
-
-  /*ngOnInit() {
-    this.idOwnerTraido = Number(this.activatedRoute.snapshot.params['idOwner']);
-    //console.log('idOwnerTraido :>> ', this.idOwnerTraido);
-
-    this.servicioOwner.obtenerOwnerId(this.idOwnerTraido).subscribe(
-      (datos) => {
-        this.ownerTraido = datos;
-        console.log('owner :>> ', this.ownerTraido);
-
-        this.pet.owner = this.ownerTraido;
-        
-        console.log('pet :>> ', this.pet);
-      },
-      (error) => {
-        console.error('Error al obtener el propietario:', error);
-      }
-    );
-  }*/
 
   onSubmit(petTraido: Pet) {
     console.log("petTraido :>> ", petTraido);

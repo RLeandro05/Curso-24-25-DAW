@@ -7,7 +7,7 @@ export interface Pet {
     name: string;
     birthDate: Date | null;
     //type: any;
-    type: Pettype | null;
+    type: Pettype;
     typeName?: string;
     owner: Owner;
     ownerId: number;
