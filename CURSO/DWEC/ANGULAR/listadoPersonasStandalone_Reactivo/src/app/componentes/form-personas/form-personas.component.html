@@ -1,0 +1,75 @@
+<h1>Nueva persona</h1>
+<h3>Añadir nueva persona</h3>
+
+<div id="formNvPers">
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+        <label for="dni">DNI: </label>
+        <br>
+        <input type="text" id="dni" required formControlName="dni">
+        @if (form.controls["dni"].invalid && (form.controls["dni"].dirty || form.controls["dni"].touched)) {
+            @if (form.controls["dni"].errors?.["required"]) {
+                <div class="alert alert-danger">
+                    El DNI es obligatorio
+                </div>
+            }
+            @if (form.controls["dni"].errors?.["minlength"]) {
+                <div class="alert alert-danger">
+                    El DNI debe tener al menos 9 caracteres
+                </div>
+            }
+        }
+
+        <!--<div [hidden]="dni.valid || dni.pristine" >
+            El DNI es obligatorio
+        </div>-->
+
+        <br><br>
+
+        <label for="nombre">Nombre: </label>
+        <br>
+        <input type="text" id="nombre" required formControlName="nombre">
+        @if (form.controls["nombre"].invalid && (form.controls["nombre"].dirty || form.controls["nombre"].touched)) {
+            @if (form.controls["nombre"].errors?.["required"]) {
+                <div class="alert alert-danger">
+                    El Nombre es obligatorio
+                </div>
+            }
+            <!--@if (form.controls["nombre"].errors?.["minlength"]) {
+                <div class="alert alert-danger">
+                    El Nombre debe tener al menos 9 caracteres
+                </div>
+            }-->
+        }
+
+        <!--<div [hidden]="nombre.valid || nombre.pristine" >
+            El NOMBRE es obligatorio
+        </div>-->
+
+        <br><br>
+
+        <label for="apellidos">Apellidos: </label>
+        <br>
+        <input type="text" id="apellidos" required formControlName="apellidos">
+        @if (form.controls["apellidos"].invalid && (form.controls["apellidos"].dirty || form.controls["apellidos"].touched)) {
+            @if (form.controls["apellidos"].errors?.["required"]) {
+                <div class="alert alert-danger">
+                    Los Apellidos son obligatorios
+                </div>
+            }
+            <!--@if (form.controls["apellidos"].errors?.["minlength"]) {
+                <div class="alert alert-danger">
+                    Los Apellidos deben tener al menos 9 caracteres
+                </div>
+            }-->
+        }
+
+        <!--<div [hidden]="apellidos.valid || apellidos.pristine" >
+            El APELLIDO es obligatorio
+        </div>-->
+
+        <br><br>
+
+        <button type="submit" [disabled]="!form.valid">{{textoBoton}}</button>
+        <button type="button" routerLink="/">Cancelar</button>
+    </form>
+</div>
