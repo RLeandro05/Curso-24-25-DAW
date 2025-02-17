@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\TaskRequest;
 use App\Models\Task;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 
 class TaskController extends Controller
@@ -20,5 +22,8 @@ class TaskController extends Controller
          "actionURL"=>route("tasks.store"),
          "submitButtonText"=>"Crear Tarea"
       ]);
+   }
+   public function store(TaskRequest $request):RedirectResponse {
+      dd(1);
    }
 }
