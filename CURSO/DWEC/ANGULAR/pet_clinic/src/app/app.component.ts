@@ -6,12 +6,14 @@ import { FormsModule } from '@angular/forms';
 import { RouterOutlet } from '@angular/router';
 import { Router } from '@angular/router';
 
+import { SelectModule } from 'primeng/select';
+
 @Component({
   selector: 'app-root',
   standalone: true,
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
-  imports: [DropdownModule, ButtonModule, ToolbarModule, FormsModule, RouterOutlet]
+  imports: [DropdownModule, ButtonModule, ToolbarModule, FormsModule, RouterOutlet, SelectModule]
 })
 export class AppComponent {
   title = 'Mi Aplicación PrimeNG';
@@ -51,4 +53,13 @@ export class AppComponent {
   cambioDesplegableVeterinarios(event: any) {
 
   }
+
+  cities: { name: string; code: string }[] = [
+    { name: 'New York', code: 'NY' },
+    { name: 'London', code: 'LDN' },
+    { name: 'Paris', code: 'PAR' },
+    { name: 'Berlin', code: 'BER' }
+  ];
+
+  selectedCity: { name: string; code: string } | null = null;
 }
