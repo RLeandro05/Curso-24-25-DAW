@@ -1,1 +1,20 @@
-<p>vets works!</p>
+<h1>Listado completo de Vets</h1>
+
+<table border="1">
+    <thead>
+        <th>Id</th>
+        <th>Nombre</th>
+        <th>Apellido</th>
+    </thead>
+    <tbody>
+        @for (vet of vets; track $index) {
+            <tr>
+                <td>{{vet.id}}</td>
+                <td>{{vet.firstName}}</td>
+                <td>{{vet.lastName}}</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<button type="button" [routerLink]="(['/form-vet', -1])">Añadir Vet</button>

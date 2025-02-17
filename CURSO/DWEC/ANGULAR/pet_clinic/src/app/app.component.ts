@@ -19,7 +19,6 @@ export class AppComponent {
   dropdown1Options = [
     { label: 'Owners', value: '1' },
     { label: 'Añadir Owner', value: '2' },
-    { label: 'Opción 3', value: '3' }
   ];
 
   dropdown2Options = [
@@ -43,12 +42,19 @@ export class AppComponent {
       case "2":
         this.route.navigate(['/form-owner', -1]);
         break;
-      case "3":
-        this.route.navigate(['/']);
     }
   }
 
   cambioDesplegableVeterinarios(event: any) {
+    const seleccion = event.value;
 
+    switch (seleccion) {
+      case "A":
+        this.route.navigate(['/vets']);
+        break;
+      case "B":
+        this.route.navigate(['/form-vet', -1]);
+        break;
+    }
   }
 }

@@ -1,0 +1,174 @@
+Dado el archivo comprimidos y, a partir del enunciado del examen suministrado por el profesor. Añadir el código JavaScript necesario para la resolución de las preguntas de dicho enunciado.
+
+Descargar el archivo comprimido, descomprimirlo y, junto con el enunciado del examen, prestar atención a la explicación del profesor.
+
+
+Existe una relacion n:m de películas e intérpretes, la cual NO está reflejada 
+
+	en la interfaz Interprete.
+
+
+
+
+
+	Existe una relacion n:m de películas e intérpretes, la cual NO está reflejada 
+
+	en la interfaz Película.
+
+
+
+	La interfaz Pelicula es incorrecta ya que, en este examen, una película SOLO puede
+
+	tener un género. Y además, es obligatorio.
+
+
+
+	API_URL: "http://localhost/servicioswebs/cine/servicios.php" ES INCORRECTA. Sobra una s
+
+	Esto restará 1 punto.
+
+
+
+
+
+
+
+   NOTA:
+
+       Los datos numéricos que se muestren en la página tendrá el formato  numérico. (No hay)
+
+       Las fechas que se muestren en la página tendrá el formato fecha. ==> Restará 2 puntos.
+
+
+
+
+
+
+
+   La puntuación de cada una de estas partes de la aplicación es la siguiente:
+
+
+
+    	• Intérpretes: 4,5 puntos.
+
+    	• Películas: 5,5 puntos.
+
+
+
+
+
+
+
+
+
+1 Intérpretes:
+
+
+
+1.1 Componente interpretes: (1,5 puntos)
+
+
+
+Mostrará un listado de todos los intérpretes (contenidos en la tabla interpretes) con los campos: Nombre, Apellidos y Fecha de Nacimiento. 
+
+Con un botón (enlace, etc.) el cual sirva para borrar el interprete asociado. 
+
+El nombre del interprete será un enlace el cual nos llevará al componente interprete-form para poder realizar la modificación de ese intérprete.
+
+Al final o al principio de este listado habrá 2 botones (o enlaces). Uno para volver al componente home y otro para añadir un nuevo interprete, navegando al componente interprete-form
+
+
+
+
+
+	Lo hace: 1,5
+
+
+
+
+
+
+
+1.2 Componente interprete-form: (3 puntos)
+
+
+
+Se podrá añadir o modificar un interprete. Para ello, mostrará un formulario con todos los campos de la tabla interpretes, y NO mostrará las películas de asociadas.
+
+
+También contendrá 2 botones, uno que servirán para añadir o modificar (el texto del botón cambiará según sea el caso) y otro para volver al componente interpretes.
+
+
+Todos los campos son obligatorios, así que, no se podrá añadir o modifcar sin completarlos todos.
+
+
+
+
+
+	Lo hace: 3
+
+
+
+
+
+
+
+2 Películas:
+
+
+
+2.1 Componente peliculas: (2 puntos)
+
+
+
+Mostrará un listado de todas las películas (contenidas en la tabla peliculas) con los campos: Nombre, Fecha y Género. 
+
+Con un botón (enlace, etc.) el cual sirva para borrar la película asociada. 
+
+El nombre de la película será un enlace el cual nos llevará al componente pelicula-form para poder realizar la modificación de esa película.
+
+Al final o al principio de este listado habrá 2 botones (o enlaces). Uno para volver al componente home y otro para añadir una nueva película, navegando al componente pelicula-form
+
+
+
+	NO PINTA EL GENERO. 
+
+
+
+	Lo hace: 1
+
+
+
+
+
+
+
+2.2 Componente pelicula-form: (3,5 puntos)
+
+
+
+Se podrá añadir o modificar una película. Para ello, mostrará un formulario con todos los campos de la tabla peliculas, INCLUYENDO los intérpretes de esa película (ver tabla de relación).
+
+También contendrá 2 botones, uno que servirán para añadir o modificar (el texto del botón cambiará según sea el caso) y otro para volver al componente peliculas
+
+Todos los campos son obligatorios de la tabla, así que, no se podrá añadir o modifcar sin completarlos todos.
+
+NO ES OBLIGATORIO AÑADIR NINGÚN INTÉRPRETE para dar de alta o modificar una película. Aunque SI DEBE SER POSIBLE. No puntuará si no dispone de esta funcionalidad.
+
+
+
+	Produce un error al añadir.
+
+
+
+	NO Lo hace: 0
+
+
+
+3. GENEROS (Si lo hace todo: 1 punto) ¿?
+
+
+
+
+
+	NOTA: 5,5 - 1 (url no válida) => 4,5

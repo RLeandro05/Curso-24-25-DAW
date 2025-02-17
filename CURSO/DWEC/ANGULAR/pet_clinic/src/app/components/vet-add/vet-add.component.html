@@ -1,1 +1,38 @@
-<p>vet-add works!</p>
+<h1>Añadir Vet</h1>
+
+<div id="formNvVet">
+    <form #vetForm="ngForm" (ngSubmit)="onSubmit(vetForm.value)">
+        <label for="firstName">Nombre: </label>
+        <br>
+        <input type="text" name="firstName" id="firstName" required [(ngModel)]="vet.firstName" #firstName="ngModel">
+        <div [hidden]="firstName.valid || firstName.pristine" >
+            El Nombre es obligatorio
+        </div>
+
+        <br>
+
+        <label for="lastName">Apellidos: </label>
+        <br>
+        <input type="text" name="lastName" id="lastName" required [(ngModel)]="vet.lastName" #lastName="ngModel">
+        <div [hidden]="lastName.valid || lastName.pristine" >
+            Los Apellidos son obligatorios
+        </div>
+
+        <br>
+
+        <select name="type" id="type" [(ngModel)]="vet.specialties" #specialties="ngModel" required>
+    
+            
+        </select>
+        <div [hidden]="specialties.valid || specialties.pristine" >
+            La Especialidad es obligatoria
+        </div>
+
+        <br>
+
+        <input type="hidden" name="id" id="id" [(ngModel)]="vet.id">
+
+        <button type="submit" [disabled]="!vetForm.valid">Guardar Datos</button> || 
+        <button type="button" [routerLink]="(['/vets'])">Cancelar</button>
+    </form>
+</div>
