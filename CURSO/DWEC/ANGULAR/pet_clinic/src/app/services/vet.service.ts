@@ -33,4 +33,12 @@ export class VetService {
     };
     return this.http.post(this.url, cuerpo);
   }
+
+  borraVet(idVet: number) {
+    let cuerpo = {
+      accion: "BorraVet",
+      id: idVet
+    };
+    return this.http.post(this.url, cuerpo);
+  }
 }

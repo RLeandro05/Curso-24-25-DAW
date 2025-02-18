@@ -26,4 +26,11 @@ export class VetsComponent {
       error => console.log("Error al obtener listado de vets :>> ", error)
     )
   }
+
+  borrarVet(vet: Vet) {
+    if(confirm("¿Deseas eliminar a '"+vet.firstName+" "+vet.lastName+"'?")) {
+      this.servicioVet.borraVet(vet.id).subscribe();
+      this.vets = this.vets.filter(vete => vete.id != vet.id);
+    }
+  }
 }
