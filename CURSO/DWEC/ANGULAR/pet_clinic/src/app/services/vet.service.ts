@@ -41,4 +41,20 @@ export class VetService {
     };
     return this.http.post(this.url, cuerpo);
   }
+
+  obtenerVetId(idVet: number) {
+    let cuerpo = {
+      accion: "ObtenerVetId",
+      id: idVet
+    };
+    return this.http.post<Vet>(this.url, cuerpo);
+  }
+
+  modificaVet(vet: Vet) {
+    let cuerpo = {
+      accion: "ModificaVet",
+      vet: vet
+    };
+    return this.http.post(this.url, cuerpo);
+  }
 }

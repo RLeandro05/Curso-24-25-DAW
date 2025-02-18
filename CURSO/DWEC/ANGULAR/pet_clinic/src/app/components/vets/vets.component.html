@@ -24,7 +24,7 @@
                         }
                     }
                 </td>
-                <td><button type="button">Editar</button></td>
+                <td><button type="button" [routerLink]="(['/form-vet', vet.id])">Editar</button></td>
                 <td><button type="button" (click)="borrarVet(vet)">Borrar</button></td>
             </tr>
         }

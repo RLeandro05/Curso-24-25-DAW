@@ -23,7 +23,7 @@
     <label>Especialidades:</label>
     <br>
     <div *ngFor="let specialty of specialties">
-      <input type="checkbox" [value]="specialty.name" (change)="toggleSpecialty(specialty)" required/>
+      <input type="checkbox" [value]="specialty.name" (change)="toggleSpecialty(specialty)" [checked]="isChecked(specialty.name)" required/>
       {{ specialty.name }}
     </div>
     <br>
@@ -33,6 +33,6 @@
 
     <!-- Botones -->
     <button type="submit" [disabled]="!vetForm.valid">Guardar Datos</button> ||
-    <button type="button" routerLink="/vets">Cancelar</button>
+    <button type="button" [routerLink]="(['/vets'])">Cancelar</button>
   </form>
 </div>
