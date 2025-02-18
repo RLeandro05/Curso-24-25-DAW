@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { VetService } from '../../services/vet.service';
 import { Vet } from '../../modules/vet';
 import { RouterLink } from '@angular/router';
+import { Specialtie } from '../../modules/specialtie';
 
 @Component({
   selector: 'app-vets',

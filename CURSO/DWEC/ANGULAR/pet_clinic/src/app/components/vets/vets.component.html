@@ -5,6 +5,7 @@
         <th>Id</th>
         <th>Nombre</th>
         <th>Apellido</th>
+        <th>Especialidades</th>
         <th>Editar</th>
         <th>Borrar</th>
     </thead>
@@ -14,6 +15,15 @@
                 <td>{{vet.id}}</td>
                 <td>{{vet.firstName}}</td>
                 <td>{{vet.lastName}}</td>
+                <td>
+                    @for (specialty of vet.specialties; track $index) {
+                        @if (vet.specialties.length > 1) {
+                            || {{specialty.name}}
+                        } @else {
+                            {{specialty.name}}
+                        }
+                    }
+                </td>
                 <td><button type="button">Editar</button></td>
                 <td><button type="button">Borrar</button></td>
             </tr>
