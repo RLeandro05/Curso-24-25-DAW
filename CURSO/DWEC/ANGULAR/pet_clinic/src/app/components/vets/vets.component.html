@@ -5,6 +5,8 @@
         <th>Id</th>
         <th>Nombre</th>
         <th>Apellido</th>
+        <th>Editar</th>
+        <th>Borrar</th>
     </thead>
     <tbody>
         @for (vet of vets; track $index) {
@@ -12,6 +14,8 @@
                 <td>{{vet.id}}</td>
                 <td>{{vet.firstName}}</td>
                 <td>{{vet.lastName}}</td>
+                <td><button type="button">Editar</button></td>
+                <td><button type="button">Borrar</button></td>
             </tr>
         }
     </tbody>

@@ -1,38 +1,38 @@
-<h1>Añadir Vet</h1>
-
+<h1>Añadir Veterinario</h1>
 <div id="formNvVet">
-    <form #vetForm="ngForm" (ngSubmit)="onSubmit(vetForm.value)">
-        <label for="firstName">Nombre: </label>
-        <br>
-        <input type="text" name="firstName" id="firstName" required [(ngModel)]="vet.firstName" #firstName="ngModel">
-        <div [hidden]="firstName.valid || firstName.pristine" >
-            El Nombre es obligatorio
-        </div>
+  <form #vetForm="ngForm" (ngSubmit)="onSubmit(vetForm.value)">
+    <!-- Nombre -->
+    <label for="firstName">Nombre: </label>
+    <br>
+    <input type="text" name="firstName" id="firstName" required [(ngModel)]="vet.firstName" #firstName="ngModel">
+    <div [hidden]="firstName.valid || firstName.pristine">
+      El Nombre es obligatorio.
+    </div>
+    <br>
 
-        <br>
+    <!-- Apellidos -->
+    <label for="lastName">Apellidos: </label>
+    <br>
+    <input type="text" name="lastName" id="lastName" required [(ngModel)]="vet.lastName" #lastName="ngModel">
+    <div [hidden]="lastName.valid || lastName.pristine">
+      Los Apellidos son obligatorios.
+    </div>
+    <br>
 
-        <label for="lastName">Apellidos: </label>
-        <br>
-        <input type="text" name="lastName" id="lastName" required [(ngModel)]="vet.lastName" #lastName="ngModel">
-        <div [hidden]="lastName.valid || lastName.pristine" >
-            Los Apellidos son obligatorios
-        </div>
+    <!-- Especialidades -->
+    <label>Especialidades:</label>
+    <br>
+    <div *ngFor="let specialty of specialties">
+      <input type="checkbox" [value]="specialty.name" (change)="toggleSpecialty(specialty)" required/>
+      {{ specialty.name }}
+    </div>
+    <br>
 
-        <br>
+    <!-- ID oculto -->
+    <input type="hidden" name="id" id="id" [(ngModel)]="vet.id">
 
-        <select name="type" id="type" [(ngModel)]="vet.specialties" #specialties="ngModel" required>
-    
-            
-        </select>
-        <div [hidden]="specialties.valid || specialties.pristine" >
-            La Especialidad es obligatoria
-        </div>
-
-        <br>
-
-        <input type="hidden" name="id" id="id" [(ngModel)]="vet.id">
-
-        <button type="submit" [disabled]="!vetForm.valid">Guardar Datos</button> || 
-        <button type="button" [routerLink]="(['/vets'])">Cancelar</button>
-    </form>
+    <!-- Botones -->
+    <button type="submit" [disabled]="!vetForm.valid">Guardar Datos</button> ||
+    <button type="button" routerLink="/vets">Cancelar</button>
+  </form>
 </div>

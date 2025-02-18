@@ -1,0 +1,11 @@
+label {
+    font-weight: bold;
+  }
+  
+  div input[type="checkbox"] {
+    margin-right: 8px;
+  }
+  
+  div button {
+    margin-top: 16px;
+  }
