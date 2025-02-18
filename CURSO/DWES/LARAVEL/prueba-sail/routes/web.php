@@ -25,6 +25,9 @@ Route::get("tasks/create", [TaskController::class, "create"])->name(name:"tasks.
 
 Route::post('tasks', [TaskController::class, "store"])->name(name:"tasks.store");
 
+Route::get("tasks/{task}/edit", [TaskController::class, "edit"])->name(name:"tasks.edit");
+
+Route::put("tasks/{task}", [TaskController::class, "update"])->name(name:"tasks.update");
 /*
 Route::get('/pruebalayout', function () {
     return view("pruebalayout");

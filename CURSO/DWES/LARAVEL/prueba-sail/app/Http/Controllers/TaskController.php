@@ -11,7 +11,7 @@ class TaskController extends Controller
 {
    public function index()
    {
-      $tasks=Task::paginate(perPage:3);
+      $tasks=Task::latest(column: "id")->paginate(perPage:5);
       return view('tasks.index', [
       'tasks' => $tasks,
       ]);
@@ -19,11 +19,25 @@ class TaskController extends Controller
    public function create() {
       return view("tasks.create", [
          "task"=>new Task(),
+         "method"=>"POST",
          "actionURL"=>route("tasks.store"),
          "submitButtonText"=>"Crear Tarea"
       ]);
    }
+   public function edit(Task $task) {
+      return view("tasks.edit", [
+         "task"=>$task,
+         "method"=>"PUT",
+         "actionURL"=>route("tasks.update", $task),
+         "submitButtonText"=>"Actualizar Tarea"
+      ]);
+   }
+   public function update(Task $task, TaskRequest $request):RedirectResponse {
+      $task->update($request->validated());
+      return redirect()->route("tasks.index");
+   }
    public function store(TaskRequest $request):RedirectResponse {
-      dd(1);
+      Task::create($request->validated());
+      return redirect()->route('tasks.index');
    }
 }
