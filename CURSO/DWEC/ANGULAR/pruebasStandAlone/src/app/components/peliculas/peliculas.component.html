@@ -1,0 +1,28 @@
+<h2>Listado de intérpretes</h2>
+
+<button type="button" (click)="mostrarFormulario()">{{textButton}}</button>
+
+@if (mostrarForm) {
+    <div>
+        <app-pelicula-form [idTraido]="-1"></app-pelicula-form>
+    </div>
+}
+<table border="1">
+    <thead>
+        <th>Nombre</th>
+        <th>Fecha</th>
+        <th>Género</th>
+        <th>Borrar</th>
+    </thead>
+    <tbody>
+        @for (pelicula of listPeliculas; track $index) {
+            <tr>
+                <td><a>{{pelicula.nombre}}</a></td>
+                <td>{{pelicula.fecha | date}}</td>
+                <td>{{pelicula.genero.nombre}}</td>
+                <td><button type="button" (click)="borrarPelicula(pelicula)">Borrar</button></td>
+            </tr>
+        }
+    </tbody>
+</table>
+<a [routerLink]="(['/'])">Volver al Inicio</a>

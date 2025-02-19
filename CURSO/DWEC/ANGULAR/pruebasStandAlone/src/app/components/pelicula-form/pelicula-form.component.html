@@ -1,0 +1,62 @@
+<h2>Añadir nueva película</h2>
+
+<div id="formNvPelicula">
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+        <label for="nombre">Nombre: </label>
+        <br>
+        <input type="text" id="nombre" required formControlName="nombre">
+        @if (form.controls["nombre"].invalid && (form.controls["nombre"].dirty || form.controls["nombre"].touched)) {
+            @if (form.controls["nombre"].errors?.["required"]) {
+                <div class="alert alert-danger">
+                    El Nombre es obligatorio
+                </div>
+            }
+        }
+
+        <br><br>
+
+        <label for="fecha">Fecha: </label>
+        <br>
+        <input type="date" id="fecha" required formControlName="fecha">
+        @if (form.controls["fecha"].invalid && (form.controls["fecha"].dirty || form.controls["fecha"].touched)) {
+            @if (form.controls["fecha"].errors?.["required"]) {
+                <div class="alert alert-danger">
+                    La Fecha es obligatoria
+                </div>
+            }
+        }
+
+        <br><br>
+
+        <!--
+        <label for="fecha_nacimiento">Género: </label>
+        <br>
+        <input type="date" id="fecha_nacimiento" required formControlName="fecha_nacimiento">
+        @if (form.controls["fecha_nacimiento"].invalid && (form.controls["fecha_nacimiento"].dirty || form.controls["fecha_nacimiento"].touched)) {
+            @if (form.controls["fecha_nacimiento"].errors?.["required"]) {
+                <div class="alert alert-danger">
+                    La Fecha es obligatoria
+                </div>
+            }
+        }-->
+
+        <br><br>
+
+        <label for="sinopsis">Sinopsis: </label>
+        <br>
+        <input type="text" id="sinopsis" required formControlName="sinopsis">
+        @if (form.controls["sinopsis"].invalid && (form.controls["sinopsis"].dirty || form.controls["sinopsis"].touched)) {
+            @if (form.controls["sinopsis"].errors?.["required"]) {
+                <div class="alert alert-danger">
+                    La Sinopsis es obligatoria
+                </div>
+            }
+        }
+
+        <br><br>
+
+        <input type="hidden" name="id" id="id" formControlName="id">
+
+        <button type="submit" [disabled]="!form.valid">Guardar Película</button>
+    </form>
+</div>

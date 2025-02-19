@@ -1,0 +1,22 @@
+<h2>Listado de intérpretes</h2>
+
+<a [routerLink]="(['/interprete-form', -1])">Añadir</a>
+<table border="1">
+    <thead>
+        <th>Nombre</th>
+        <th>Apellidos</th>
+        <th>FecNa</th>
+        <th>Borrar</th>
+    </thead>
+    <tbody>
+        @for (interprete of listInterpretes; track $index) {
+            <tr>
+                <td><a [routerLink]="(['/interprete-form', interprete.id])">{{interprete.nombre}}</a></td>
+                <td>{{interprete.apellidos}}</td>
+                <td>{{interprete.fecha_nacimiento | date}}</td>
+                <td><button type="button" (click)="borrarInterprete(interprete)">Borrar</button></td>
+            </tr>
+        }
+    </tbody>
+</table>
+<a [routerLink]="(['/'])">Volver al Inicio</a>

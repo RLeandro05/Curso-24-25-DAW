@@ -1,0 +1,62 @@
+<h2>Añadir nuevo intérprete</h2>
+
+<div id="formNvInterprete">
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+        <label for="nombre">Nombre: </label>
+        <br>
+        <input type="text" id="nombre" required formControlName="nombre">
+        @if (form.controls["nombre"].invalid && (form.controls["nombre"].dirty || form.controls["nombre"].touched)) {
+            @if (form.controls["nombre"].errors?.["required"]) {
+                <div class="alert alert-danger">
+                    El Nombre es obligatorio
+                </div>
+            }
+        }
+
+        <br><br>
+
+        <label for="apellidos">Apellidos: </label>
+        <br>
+        <input type="text" id="apellidos" required formControlName="apellidos">
+        @if (form.controls["apellidos"].invalid && (form.controls["apellidos"].dirty || form.controls["apellidos"].touched)) {
+            @if (form.controls["apellidos"].errors?.["required"]) {
+                <div class="alert alert-danger">
+                    Los Apellidos son obligatorios
+                </div>
+            }
+        }
+
+        <br><br>
+
+        <label for="fecha_nacimiento">Fecha de Nacimiento: </label>
+        <br>
+        <input type="date" id="fecha_nacimiento" required formControlName="fecha_nacimiento">
+        @if (form.controls["fecha_nacimiento"].invalid && (form.controls["fecha_nacimiento"].dirty || form.controls["fecha_nacimiento"].touched)) {
+            @if (form.controls["fecha_nacimiento"].errors?.["required"]) {
+                <div class="alert alert-danger">
+                    La Fecha es obligatoria
+                </div>
+            }
+        }
+
+        <br><br>
+
+        <label for="biografia">Biografía: </label>
+        <br>
+        <input type="text" id="biografia" required formControlName="biografia">
+        @if (form.controls["biografia"].invalid && (form.controls["biografia"].dirty || form.controls["biografia"].touched)) {
+            @if (form.controls["biografia"].errors?.["required"]) {
+                <div class="alert alert-danger">
+                    La Biografía es obligatoria
+                </div>
+            }
+        }
+
+        <br><br>
+
+        <input type="hidden" name="id" id="id" formControlName="id">
+
+        <button type="submit" [disabled]="!form.valid">{{textButton}}</button> || 
+        <button type="button" [routerLink]="(['/interpretes'])">Volver</button>
+    </form>
+</div>
