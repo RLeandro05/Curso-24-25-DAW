@@ -71,8 +71,9 @@
                                     </botton>
                                 </form>
                             </td>
-                            <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">
-                                Eliminar
+                            <td>
+                                <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">
+                                    Eliminar
                                 </a>
                             </td>
                         </tr>
