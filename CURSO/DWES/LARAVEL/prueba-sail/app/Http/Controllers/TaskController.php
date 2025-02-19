@@ -40,4 +40,10 @@ class TaskController extends Controller
       Task::create($request->validated());
       return redirect()->route('tasks.index');
    }
+   public function toggle(Task $task): RedirectResponse {
+      $task->update([
+         "completed"=>!$task->completed
+      ]);
+      return redirect()->route("tasks.index");
+   }
 }

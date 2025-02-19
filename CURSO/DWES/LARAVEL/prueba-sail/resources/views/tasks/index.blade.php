@@ -63,17 +63,13 @@
                                 <a href="{{route('tasks.edit',$task)}}" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">
                                 Editar
                                 </a>
-                            @if($task->completed)
-                    <!-- en href tendremos que poner route('tasks.uncomplete',$task)}}-->
-                                <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">
-                                Deshacer
-                                </a>
-                            @else
-                    <!-- en href tendremos que poner route('tasks.complete',$task)}}-->
-                                <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">
-                                Completar
-                                </a>
-                            @endif
+                                <form action="{{route('tasks.toggle',$task)}}" method="POST">
+                                    @csrf
+                                    @method('PATCH')
+                                    <button type="submit" class="font-medium text-green-600 dark:text-green-500 hover:underline {{$task->completed?'text-red-600 dark:text-reddd-500':'text-green-600 dark:text-green-500'}}">
+                                        {{$task->completed?'Deshacer':'Completar'}}
+                                    </botton>
+                                </form>
                             <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">
                                 Eliminar
                                 </a>

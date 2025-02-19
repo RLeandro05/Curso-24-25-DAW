@@ -28,6 +28,8 @@ Route::post('tasks', [TaskController::class, "store"])->name(name:"tasks.store")
 Route::get("tasks/{task}/edit", [TaskController::class, "edit"])->name(name:"tasks.edit");
 
 Route::put("tasks/{task}", [TaskController::class, "update"])->name(name:"tasks.update");
+
+Route::patch("tasks/{tasks}/toggle", [TaskController::class, "toggle"])->name("tasks.toggle");
 /*
 Route::get('/pruebalayout', function () {
     return view("pruebalayout");
