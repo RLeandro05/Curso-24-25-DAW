@@ -29,7 +29,9 @@ Route::get("tasks/{task}/edit", [TaskController::class, "edit"])->name(name:"tas
 
 Route::put("tasks/{task}", [TaskController::class, "update"])->name(name:"tasks.update");
 
-Route::patch("tasks/{tasks}/toggle", [TaskController::class, "toggle"])->name("tasks.toggle");
+Route::patch("tasks/{task}/toggle", [TaskController::class, "toggle"])->name("tasks.toggle");
+
+Route::delete("tasks/{task}", [TaskController::class, "destroy"])->name("tasks.destroy");
 /*
 Route::get('/pruebalayout', function () {
     return view("pruebalayout");

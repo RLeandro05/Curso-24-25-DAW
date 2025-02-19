@@ -10,11 +10,11 @@
         <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
             <div class="p-g sm:px.20 bg-white border-b border-gray-200">
                 Cuerpo
-                <botton class="p-4">                    
+                <button class="p-4">                    
                     <a href="{{route('tasks.create')}}" class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium bg-black text-white rounded-md hover:bg-gray-800">
                         Crear Tarea
                      </a>                        
-                </botton>
+                </button>
                 <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
                     <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
                         <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
@@ -68,13 +68,17 @@
                                     @method('PATCH')
                                     <button type="submit" class="font-medium text-green-600 dark:text-green-500 hover:underline {{$task->completed?'text-red-600 dark:text-reddd-500':'text-green-600 dark:text-green-500'}}">
                                         {{$task->completed?'Deshacer':'Completar'}}
-                                    </botton>
+                                    </button>
                                 </form>
                             </td>
                             <td>
-                                <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">
-                                    Eliminar
-                                </a>
+                                <form action="{{ route('tasks.destroy', $task) }}" method="POST">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="font-medium text-green-600 dark:text-red-500 hover:underline">
+                                        Eliminar
+                                    </button>
+                                </form>
                             </td>
                         </tr>
                         @empty
