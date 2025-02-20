@@ -21,8 +21,8 @@ class DatabaseSeeder extends Seeder
         ]);*/
 
         $this->call([
-            //TenistaSeeder::class,
-            //TorneoSeeder::class,
+            TenistaSeeder::class,
+            TorneoSeeder::class,
             TituloSeeder::class
         ]);
 
