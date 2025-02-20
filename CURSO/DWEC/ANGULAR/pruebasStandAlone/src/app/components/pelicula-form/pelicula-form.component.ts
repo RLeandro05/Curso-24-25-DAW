@@ -1,84 +1,104 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { PeliculasService } from '../../services/peliculas.service';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Genero } from '../../models/genero';
-import { ReactiveFormsModule } from '@angular/forms';
-import { Interprete } from '../../models/interprete';
 import { InterpretesService } from '../../services/interpretes.service';
+import { Genero } from '../../models/genero';
+import { Interprete } from '../../models/interprete';
 import { Pelicula } from '../../models/pelicula';
 
 @Component({
   selector: 'app-pelicula-form',
-  imports: [ReactiveFormsModule],
+  standalone: true,
+  imports: [CommonModule, ReactiveFormsModule], // ✅ Importación necesaria
   templateUrl: './pelicula-form.component.html',
-  styleUrl: './pelicula-form.component.css'
+  styleUrls: ['./pelicula-form.component.css']
 })
 export class PeliculaFormComponent {
-  @Input() peliculaTraida: Pelicula = <Pelicula>{};
+  @Input() idPeliculaTraida: number = 0;
   @Output() peliculaNueva = new EventEmitter<Pelicula>();
+  @Output() peliculaEditada = new EventEmitter<Pelicula>();
 
-  public form: FormGroup = <FormGroup>{};
+  public form: FormGroup;
+
   public listGeneros: Genero[] = [];
   public listInterpretes: Interprete[] = [];
+  public pelicula: Pelicula = {} as Pelicula;
 
-  constructor(private servicePeliculas: PeliculasService, private serviceInterpretes: InterpretesService, private fb: FormBuilder) {
+  constructor(
+    private servicePeliculas: PeliculasService,
+    private serviceInterpretes: InterpretesService,
+    private fb: FormBuilder
+  ) {
+    this.form = this.fb.group({
+      id: [-1],
+      nombre: ["", [Validators.required]],
+      fecha: ["", [Validators.required]],
+      genero: ["", [Validators.required]],
+      sinopsis: ["", [Validators.required]],
+      interpretes: [null]
+    });
   }
 
   ngOnInit() {
-    console.log("idTraido :>> ", this.peliculaTraida.id);
-
-    this.form = this.fb.group({
-      id: this.fb.control("-1"),
-      nombre: this.fb.control("", [Validators.required]),
-      fecha: this.fb.control("", [Validators.required]),
-      genero: this.fb.control("", [Validators.required]),
-      sinopsis: this.fb.control("", [Validators.required]),
-      interpretes: this.fb.control(null)
-    });
-    
+    console.log("idTraido :>> ", this.idPeliculaTraida);
+  
+    //Primero carga los géneros
     this.servicePeliculas.listarGeneros().subscribe(
-      datos => {
-        this.listGeneros = datos;
+      generos => {
+        this.listGeneros = generos;
         console.log("listGeneros :>> ", this.listGeneros);
-        
-      }, error => console.log("Error al obtener los géneros :>> ", error)
-    )
-
+  
+        //Luego carga la película
+        if (this.idPeliculaTraida !== -1) {
+          this.servicePeliculas.obtenerPeliculaId(this.idPeliculaTraida).subscribe(
+            pelicula => {
+              this.pelicula = pelicula;
+              console.log("peliculaTraida :>> ", this.pelicula);
+              this.configurarFormulario(); //Ahora listGeneros ya está cargado
+            },
+            error => console.log("Error al obtener la película :>> ", error)
+          );
+        }
+      },
+      error => console.log("Error al obtener los géneros :>> ", error)
+    );
+  
+    //Cargar intérpretes en paralelo (no depende de géneros)
     this.serviceInterpretes.listarInterpretes().subscribe(
       datos => {
         this.listInterpretes = datos;
         console.log("listInterpretes :>> ", this.listInterpretes);
-
-        if(this.peliculaTraida.id != -1) {
-          this.configurarFormulario();
-        }
-        
-      }, error => console.log("Error al obtener los intérpretes :>> ", error)
-    )
+      },
+      error => console.log("Error al obtener los intérpretes :>> ", error)
+    );
   }
+  
 
   configurarFormulario() {
-    const generoEncontrado = this.listGeneros.find(
-      (g) => g.id === this.peliculaTraida.genero.id
+    const generoSeleccionado = this.listGeneros.find(genero => genero.id === this.pelicula.genero.id);
+
+    const interpretesSeleccionados = this.listInterpretes.filter(
+      interprete => this.pelicula.interpretes.some(i => i.id === interprete.id)
     );
 
-    this.form = this.fb.group({
-      id: this.fb.control(this.peliculaTraida.id),
-      nombre: this.fb.control(this.peliculaTraida.nombre, [Validators.required]),
-      fecha: this.fb.control(this.peliculaTraida.fecha, [Validators.required]),
-      genero: this.fb.control(generoEncontrado, [Validators.required]),
-      sinopsis: this.fb.control(this.peliculaTraida.sinopsis, [Validators.required]),
-      interpretes: this.fb.control(this.peliculaTraida.interpretes)
+    this.form.patchValue({
+      id: this.pelicula.id,
+      nombre: this.pelicula.nombre,
+      fecha: this.pelicula.fecha,
+      genero: generoSeleccionado,
+      sinopsis: this.pelicula.sinopsis,
+      interpretes: interpretesSeleccionados
     });
   }
 
   onSubmit() {
-    
-    if(this.peliculaTraida.id === -1) {
-
+    if(this.idPeliculaTraida === -1) {
       console.log("peliculaNueva :>> ", this.form.value);
-      
       this.peliculaNueva.emit(this.form.value);
+    } else {
+      console.log("peliculaEditada :>> ", this.form.value);
+      this.peliculaEditada.emit(this.form.value);
     }
   }
 }

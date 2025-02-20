@@ -31,7 +31,7 @@
         <label for="genero">Género: </label>
         <br>
         <select name="genero" id="genero" required formControlName="genero">
-            @if (peliculaTraida.id == -1) {
+            @if (idPeliculaTraida == -1) {
                 <option value="" disabled selected>Selecciona un género</option>
                 @for (genero of listGeneros; track $index) {
                   <option [ngValue]="genero">{{genero.nombre}}</option>

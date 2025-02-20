@@ -4,7 +4,7 @@
 
 @if (mostrarForm) {
     <div>
-        <app-pelicula-form [peliculaTraida]="pelicula" (peliculaNueva)="agregarPelicula($event)"></app-pelicula-form>
+        <app-pelicula-form [idPeliculaTraida]="pelicula.id" (peliculaNueva)="agregarPelicula($event)" (peliculaEditada)="editarPelicula($event)"></app-pelicula-form>
     </div>
 }
 <table border="1">

@@ -41,4 +41,20 @@ export class PeliculasService {
     };
     return this.http.post(this.url, cuerpo);
   }
+
+  obtenerPeliculaId(idPelicula: number) {
+    let cuerpo = {
+      accion: "ObtenerPeliculaId",
+      id: idPelicula
+    };
+    return this.http.post<Pelicula>(this.url, cuerpo);
+  }
+
+  modificaPelicula(pelicula: Pelicula) {
+    let cuerpo = {
+      accion: "ModificaPelicula",
+      pelicula: pelicula
+    };
+    return this.http.post(this.url, cuerpo);
+  }
 }

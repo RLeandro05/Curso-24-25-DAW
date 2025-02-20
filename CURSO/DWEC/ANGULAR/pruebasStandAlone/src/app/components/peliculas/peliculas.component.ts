@@ -85,6 +85,22 @@ export class PeliculasComponent {
     this.mostrarFormulario();
   }
 
+  editarPelicula(peliculaEditada: Pelicula) {
+    this.servicePeliculas.modificaPelicula(peliculaEditada).subscribe({
+      next: () => {
+        setTimeout(() => {
+          this.servicePeliculas.listarPeliculas().subscribe(
+            datos => {
+              this.listPeliculas = datos;
+            }, error => console.error("Error al actualizar listPeliculas :>> ", error)
+          )
+        }, 100)
+      }, error: (err) => console.error("Error al editar peliculaEditada :>> ", err)
+    })
+
+    this.mostrarFormulario();
+  }
+
   irAEditar(peliculaEditar: Pelicula) {
     this.pelicula = peliculaEditar;
 
