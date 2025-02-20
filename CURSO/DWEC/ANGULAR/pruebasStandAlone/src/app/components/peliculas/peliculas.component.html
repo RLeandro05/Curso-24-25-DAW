@@ -4,7 +4,7 @@
 
 @if (mostrarForm) {
     <div>
-        <app-pelicula-form [idTraido]="-1" (peliculaNueva)="agregarPelicula($event)"></app-pelicula-form>
+        <app-pelicula-form [peliculaTraida]="pelicula" (peliculaNueva)="agregarPelicula($event)"></app-pelicula-form>
     </div>
 }
 <table border="1">
@@ -12,6 +12,7 @@
         <th>Nombre</th>
         <th>Fecha</th>
         <th>Género</th>
+        <th>Editar</th>
         <th>Borrar</th>
     </thead>
     <tbody>
@@ -20,6 +21,7 @@
                 <td><a>{{pelicula.nombre}}</a></td>
                 <td>{{pelicula.fecha | date}}</td>
                 <td>{{pelicula.genero.nombre}}</td>
+                <td><button type="button" (click)="irAEditar(pelicula)">Editar</button></td>
                 <td><button type="button" (click)="borrarPelicula(pelicula)">Borrar</button></td>
             </tr>
         }

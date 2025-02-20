@@ -31,11 +31,17 @@
         <label for="genero">Género: </label>
         <br>
         <select name="genero" id="genero" required formControlName="genero">
-            <option value="" disabled selected>Selecciona un género</option>
-            @for (genero of listGeneros; track $index) {
-                <option [ngValue]="genero">{{genero.nombre}}</option>
+            @if (peliculaTraida.id == -1) {
+                <option value="" disabled selected>Selecciona un género</option>
+                @for (genero of listGeneros; track $index) {
+                  <option [ngValue]="genero">{{genero.nombre}}</option>
+                }
+            } @else {
+                @for (genero of listGeneros; track $index) {
+                    <option [ngValue]="genero">{{genero.nombre}}</option>
+                }
             }
-        </select>
+          </select>
         @if (form.controls["genero"].invalid && (form.controls["genero"].dirty || form.controls["genero"].touched)) {
             @if (form.controls["genero"].errors?.["required"]) {
                 <div class="alert alert-danger">
@@ -63,7 +69,7 @@
         <br>
         <select name="interpretes" id="interpretes" multiple formControlName="interpretes">
             @for (interprete of listInterpretes; track $index) {
-                <option [ngValue]="interprete">{{interprete.nombre}}</option>
+                <option [ngValue]="interprete" >{{interprete.nombre}}</option>
             }
         </select>
 
