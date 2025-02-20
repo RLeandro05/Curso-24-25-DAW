@@ -2,21 +2,25 @@ import { Component } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
 import { PAjaxService } from '../../servicios/p-ajax.service';
 import { Persona } from '../../modelos/persona';
+import { CurrencyPipe } from '@angular/common';
 
 @Component({
   selector: 'app-listado-personas',
-  imports: [RouterLink],
+  imports: [RouterLink, CurrencyPipe],
   templateUrl: './listado-personas.component.html',
   styleUrl: './listado-personas.component.css'
 })
 export class ListadoPersonasComponent {
   public listaPer: Persona[] = [];
+  public sueldo: number;
 
   constructor(private peticion: PAjaxService, private ruta: Router) {
     this.peticion.listarPersonas().subscribe(datos => {
       console.log("Estamos en el constructor", datos);
       this.listaPer = datos;
     })
+
+    this.sueldo = 1000;
   }
 
   borrarPersona(persona: Persona) {

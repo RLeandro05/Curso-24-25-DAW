@@ -9,6 +9,7 @@
         <th>DNI</th>
         <th>Nombre</th>
         <th>Apellidos</th>
+        <th>Sueldo</th>
         <th>Acciones</th>
       </tr>
     </thead>
@@ -19,6 +20,7 @@
           <td>{{ persona.dni }}</td>
           <td>{{ persona.nombre }}</td>
           <td>{{ persona.apellidos }}</td>
+          <td>{{ sueldo | currency : '€'}}</td>
           <td><button (click)="borrarPersona(persona)">Borrar</button><button routerLink="/personas-add/{{persona.id}}">Modificar</button></td>
         </tr>
       }
