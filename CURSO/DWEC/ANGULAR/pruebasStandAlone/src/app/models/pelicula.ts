@@ -1,9 +1,11 @@
 import { Genero } from "./genero";
+import { Interprete } from "./interprete";
 
 export interface Pelicula {
     id: number,
     nombre: string,
-    fecha: Date | null,
+    fecha: Date,
     genero: Genero,
-    sinopsis: string
+    sinopsis: string,
+    interpretes: Interprete[]
 }

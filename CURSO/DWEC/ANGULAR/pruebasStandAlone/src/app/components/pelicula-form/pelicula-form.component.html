@@ -28,17 +28,21 @@
 
         <br><br>
 
-        <!--
-        <label for="fecha_nacimiento">Género: </label>
+        <label for="genero">Género: </label>
         <br>
-        <input type="date" id="fecha_nacimiento" required formControlName="fecha_nacimiento">
-        @if (form.controls["fecha_nacimiento"].invalid && (form.controls["fecha_nacimiento"].dirty || form.controls["fecha_nacimiento"].touched)) {
-            @if (form.controls["fecha_nacimiento"].errors?.["required"]) {
+        <select name="genero" id="genero" required formControlName="genero">
+            <option value="" disabled selected>Selecciona un género</option>
+            @for (genero of listGeneros; track $index) {
+                <option [ngValue]="genero">{{genero.nombre}}</option>
+            }
+        </select>
+        @if (form.controls["genero"].invalid && (form.controls["genero"].dirty || form.controls["genero"].touched)) {
+            @if (form.controls["genero"].errors?.["required"]) {
                 <div class="alert alert-danger">
-                    La Fecha es obligatoria
+                    El Género es obligatorio
                 </div>
             }
-        }-->
+        }
 
         <br><br>
 
@@ -52,6 +56,16 @@
                 </div>
             }
         }
+
+        <br><br>
+
+        <label for="interpretes">Intérprete/s: </label>
+        <br>
+        <select name="interpretes" id="interpretes" multiple formControlName="interpretes">
+            @for (interprete of listInterpretes; track $index) {
+                <option [ngValue]="interprete">{{interprete.nombre}}</option>
+            }
+        </select>
 
         <br><br>
 

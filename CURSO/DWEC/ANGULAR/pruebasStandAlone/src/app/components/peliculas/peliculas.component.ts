@@ -16,7 +16,8 @@ export class PeliculasComponent {
   public mostrarForm: boolean = false;
   public textButton: string = "Añadir";
   
-    constructor(private servicePeliculas: PeliculasService) {}
+    constructor(private servicePeliculas: PeliculasService) {
+    }
   
     ngOnInit() {
       console.log("Entra en ngOnInit");
@@ -58,7 +59,19 @@ export class PeliculasComponent {
     }
 
     agregarPelicula(nuevaPelicula: Pelicula) {
-      this.listPeliculas.push(nuevaPelicula);
-      this.mostrarForm = false;
+      this.servicePeliculas.anadePelicula(nuevaPelicula).subscribe({
+        next: () => {
+          setTimeout(() => {
+            this.servicePeliculas.listarPeliculas().subscribe(
+              datos => {
+                this.listPeliculas = datos;
+              }, error => console.log("Error al actualizar listPeliculas :>> ", error)
+            )
+          }, 100);
+        },
+        error: (err) => console.log("Error al añadir nuevaPelicula :>> ", err)
+      });
+
+      this.mostrarFormulario();
     }
 }
