@@ -1,0 +1,45 @@
+<h2>Añadir nuevo intérprete</h2>
+
+<div id="formNvLocal">
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+        <label for="nombre">Nombre: </label>
+        <br>
+        <input type="text" id="nombre" formControlName="nombre">
+
+        <br><br>
+
+        <label for="id_zona">Zona: </label>
+        <br>
+        <select name="id_zona" id="id_zona" formControlName="id_zona">
+            @for (zona of listZonas; track $index) {
+                <option value="{{zona.id}}">{{zona.nombre}}</option>
+            }
+        </select>
+        || <button type="button" [routerLink]="(['/zonas', idLocalRoute])">Ver Zonas</button> 
+
+        <br><br>
+
+        <label for="telefono">Teléfono: </label>
+        <br>
+        <input type="text" id="telefono" formControlName="telefono">
+
+        <br><br>
+
+        <label for="direccion">Dirección: </label>
+        <br>
+        <input type="text" id="direccion" formControlName="direccion">
+
+        <br><br>
+
+        <label for="observaciones">Observaciones: </label>
+        <br>
+        <input type="text" id="observaciones" formControlName="observaciones">
+
+        <br><br>
+
+        <input type="hidden" name="id" id="id" formControlName="id">
+
+        <button type="submit">{{textButton}}</button> || 
+        <button type="button" (click)="irAListaroDetail()">Volver</button>
+    </form>
+</div>

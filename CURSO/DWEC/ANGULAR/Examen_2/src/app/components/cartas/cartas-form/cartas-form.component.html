@@ -1,0 +1,28 @@
+<h2>Añadir a la carta</h2>
+
+<div id="formNvCarta">
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+        <label for="descripcion">Descripción: </label>
+        <br>
+        <input type="text" id="descripcion" formControlName="descripcion">
+
+        <br><br>
+
+        <label for="tipo">Tipo: </label>
+        <br>
+        <input type="text" name="tipo" id="tipo" formControlName="tipo">
+
+        <br><br>
+
+        <label for="precio">Precio: </label>
+        <br>
+        <input type="number" name="precio" id="precio" formControlName="precio">
+
+        <br><br>
+
+        <input type="hidden" name="id" id="id" formControlName="id">
+
+        <button type="submit">{{textButton}}</button> || 
+        <button type="button" [routerLink]="(['/locales-detail', idLocalRoute])">Volver</button>
+    </form>
+</div>

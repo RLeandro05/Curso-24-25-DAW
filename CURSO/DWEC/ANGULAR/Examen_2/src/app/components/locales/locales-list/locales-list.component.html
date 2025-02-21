@@ -1,0 +1,25 @@
+<h1>Listado de Locales</h1>
+
+
+<table border="1">
+    <thead>
+        <th>Nombre</th>
+        <th>Zona</th>
+        <th>Teléfono</th>
+        <th>Dirección</th>
+    </thead>
+    <tbody>
+        @for (local of listLocales; track $index) {
+            <tr>
+                <td><a [routerLink]="(['/locales-detail', local.id])">{{local.nombre}}</a></td>
+                <td>{{local.zona}}</td>
+                <td>{{local.telefono}}</td>
+                <td>{{local.direccion}}</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<br>
+
+<button type="button" [routerLink]="(['/locales-form', -1])">Añadir Local</button>

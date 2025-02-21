@@ -1,0 +1,26 @@
+<h3>La Carta</h3>
+
+<table border="1">
+    <thead>
+        <th>Descripción</th>
+        <th>Tipo</th>
+        <th>Precio</th>
+        <th>Editar</th>
+        <th>Borrar</th>
+    </thead>
+    <tbody>
+        @for (lineaCarta of listCarta; track $index) {
+            <tr>
+                <td>{{lineaCarta.descripcion}}</td>
+                <td>{{lineaCarta.tipo}}</td>
+                <td>{{lineaCarta.precio | currency : '€'}}</td>
+                <td><button type="button" [routerLink]="(['/cartas-form', idLocal, lineaCarta.id])">Editar</button></td>
+                <td><button type="button" (click)="borrarLineaCarta(lineaCarta)">Borrar</button></td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<br>
+
+Total: {{listCarta.length}}

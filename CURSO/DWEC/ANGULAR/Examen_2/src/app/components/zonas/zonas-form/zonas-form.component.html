@@ -1,0 +1,15 @@
+<h2>Formulario de Zonas</h2>
+
+<div id="formNvZona">
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+        <label for="nombre">Nombre: </label>
+        <br>
+        <input type="text" id="nombre" formControlName="nombre">
+
+        <br><br>
+
+        <input type="hidden" name="id" id="id" formControlName="id">
+
+        <button type="submit">Guardar Zona</button>
+    </form>
+</div>

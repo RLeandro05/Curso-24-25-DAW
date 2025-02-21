@@ -1,0 +1,41 @@
+<h1>Detalles del Local</h1>
+
+<div id="detallesLocal">
+    <table>
+        <tr>
+            <th align="left">Nombre</th>
+            <td>{{local.nombre}}</td>
+        </tr>
+        <tr>
+            <th align="left">Zona</th>
+            <td>{{local.zona}}</td>
+        </tr>
+        <tr>
+            <th align="left">Teléfono</th>
+            <td>{{local.telefono}}</td>
+        </tr>
+        <tr>
+            <th align="left">Dirección</th>
+            <td>{{local.direccion}}</td>
+        </tr>
+        <tr>
+            <th align="left">Observaciones</th>
+            <td>{{local.observaciones}}</td>
+        </tr>
+    </table>
+    <br>
+    <button type="button" [routerLink]="(['/'])">< Volver</button> || 
+    <button type="button" (click)="borrarLocal()">Borrar Local</button> || 
+    <button type="button" [routerLink]="(['/locales-form', idLocalRoute])">Editar Local</button> || 
+    <button type="button" [routerLink]="(['/cartas-form', idLocalRoute, -1])">Añadir a la carta</button>
+
+    <br><br>
+
+    <hr width="70%" align="left">
+
+    <br>
+
+    @if (cartaMostrada) {
+        <app-cartas-list [listCarta]="local.carta" (resultadoBorrado)="actualizarListCarta($event)"></app-cartas-list>
+    }
+</div>

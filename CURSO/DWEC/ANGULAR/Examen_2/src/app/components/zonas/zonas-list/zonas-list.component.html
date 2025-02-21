@@ -1,0 +1,29 @@
+<h1>Listado de Zonas</h1>
+
+<table border="1">
+    <thead>
+        <th>Nombre</th>
+        <th>Editar</th>
+        <th>Borrar</th>
+    </thead>
+    <tbody>
+        @for (zona of listZonas; track $index) {
+            <tr>
+                <td><input type="text" id="nombre" name="nombre" value="{{zona.nombre}}" readonly></td>
+                <td><button type="button" (click)="borrarZona(zona)">Borrar</button></td>
+                <td><button type="button" (click)="cambiarZona(zona)">Editar</button></td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<br>
+
+<button type="button" (click)="anadirZona()">Añadir Zona</button> ||
+<button type="button" [routerLink]="(['/locales-form', idLocalRoute])">Volver</button>
+
+<br>
+
+@if (formMostrado) {
+    <app-zonas-form [zona]="zona" (zonaOutPut)="anadirOeditar_zona($event)"></app-zonas-form>
+}
