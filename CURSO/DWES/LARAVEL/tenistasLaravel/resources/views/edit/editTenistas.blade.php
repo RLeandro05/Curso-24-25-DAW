@@ -1,4 +1,4 @@
-<h1>Editar un nuevo tenista</h1>
+<h1>Editar un tenista</h1>
 
 <form action="{{ route('update.updateTenistas', $tenista) }}" method="POST">
     @csrf

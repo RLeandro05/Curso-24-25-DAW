@@ -10,7 +10,7 @@ class Torneo extends Model
     /** @use HasFactory<\Database\Factories\TorneoFactory> */
     use HasFactory;
 
-    protected $fillable = ['nombre', 'ciudad', 'superficie'];
+    protected $fillable = ['nombre', 'ciudad'];
     public function titulos()
     {
         return $this->hasMany(Titulo::class);
