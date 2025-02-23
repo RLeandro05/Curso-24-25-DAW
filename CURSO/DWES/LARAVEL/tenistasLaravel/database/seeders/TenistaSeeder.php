@@ -13,6 +13,6 @@ class TenistaSeeder extends Seeder
      */
     public function run(): void
     {
-        Tenista::factory(10)->create();
+        Tenista::factory(25)->create();
     }
 }
