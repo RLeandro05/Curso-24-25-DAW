@@ -10,8 +10,6 @@
             <div class="bg-white shadow-xl sm:rounded-lg">
                 <!-- Tarjeta de Crear Torneo -->
                 <div class="p-6 bg-yellow-100 rounded-lg shadow-md text-center mb-4">
-                    <h3 class="text-lg font-bold text-yellow-700">Crear Torneo</h3>
-                    <p class="text-gray-600">Añade un nuevo torneo a la base de datos.</p>
                     <a href="{{ route('torneos.create') }}"
                         class="mt-2 inline-block px-4 py-2 bg-yellow-600 text-white rounded-md hover:bg-yellow-800">
                         Crear Torneo
@@ -72,7 +70,7 @@
 
             <!-- Botón de Volver -->
             <div class="mt-6">
-                <a href="{{ route('estadisticas.index') }}" class="text-green-600 hover:underline">
+                <a href="{{ route('index') }}" class="text-green-600 hover:underline">
                     Volver a página principal
                 </a>
                 @if (session('error'))

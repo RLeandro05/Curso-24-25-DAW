@@ -10,8 +10,6 @@
             <div class="bg-white shadow-xl sm:rounded-lg">
                 <!-- Tarjeta de Crear Tenista -->
                 <div class="p-6 bg-blue-100 rounded-lg shadow-md text-center mb-4">
-                    <h3 class="text-lg font-bold text-blue-700">Crear Tenista</h3>
-                    <p class="text-gray-600">Añade un nuevo tenista a la base de datos.</p>
                     <a href="{{ route('tenistas.create') }}" class="mt-2 inline-block px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-800">
                         Crear Tenista
                     </a>
@@ -76,7 +74,7 @@
 
             <!-- Botón de Volver -->
             <div class="mt-6">
-                <a href="{{ route('estadisticas.index') }}" class="text-green-600 hover:underline">
+                <a href="{{ route('index') }}" class="text-green-600 hover:underline">
                     Volver a página principal
                 </a>
             </div>

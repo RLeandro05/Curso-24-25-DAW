@@ -19,9 +19,9 @@ Route::get('/pruebaLayout', function () {
 });
 
 /* Ruta para el principio */
-Route::get('/estadisticas', function () {
-    return view('estadisticas');
-})->name('estadisticas.index');
+Route::get('/index', function () {
+    return view('index');
+})->name('index');
 
 /* Tenistas */
 

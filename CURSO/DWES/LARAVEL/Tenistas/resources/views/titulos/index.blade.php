@@ -10,8 +10,6 @@
             <div class="bg-white shadow-xl sm:rounded-lg">
                 <!-- Tarjeta de Crear Título -->
                 <div class="p-6 bg-green-100 rounded-lg shadow-md text-center mb-4">
-                    <h3 class="text-lg font-bold text-green-700">Crear Título</h3>
-                    <p class="text-gray-600">Añade un nuevo título a la base de datos.</p>
                     <a href="{{ route('titulos.create') }}"
                         class="mt-2 inline-block px-4 py-2 bg-green-600 text-white rounded-md hover:bg-green-800">
                         Crear Título
@@ -74,7 +72,7 @@
 
             <!-- Botón de Volver -->
             <div class="mt-6">
-                <a href="{{ route('estadisticas.index') }}" class="text-green-600 hover:underline">
+                <a href="{{ route('index') }}" class="text-green-600 hover:underline">
                     Volver a página principal
                 </a>
             </div>
