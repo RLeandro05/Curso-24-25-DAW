@@ -54,8 +54,15 @@ class TenistaController extends Controller
      */
     public function store(TenistaRequest $request): RedirectResponse
     {
-        Tenista::create($request->validated());//Validamos
-        return redirect()->route('tenistas.index');
+        $tenista = Tenista::create($request->validated()); //Validamos
+
+        if ($tenista) {
+            return redirect()->route('tenistas.index')
+                ->with('success', 'Seha añadido correctamente el tenista.');
+        }
+
+        return redirect()->route('tenistas.index')
+            ->with('error', 'No se puede añadir el tenista.');
     }
 
 
@@ -78,8 +85,6 @@ class TenistaController extends Controller
             'actionUrl' => route('tenistas.update', $tenista),
             'sumbitButtonText' => 'Actualizar tenista',
         ]);
-
-
     }
 
     /**
@@ -95,10 +100,17 @@ class TenistaController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(TenistaRequest $request, Tenista $tenista): RedirectResponse
+    public function destroy(Tenista $tenista): RedirectResponse
     {
-        $tenista->delete();
-        return redirect()->route('tenistas.index');
+        //Verificar si el tenista tiene títulos relacionados
+        if ($tenista->titulos()->exists()) {
+            return redirect()->route('tenistas.index')
+                ->with('error', 'No se puede eliminar el tenista porque tiene títulos relacionados.');
+        }
 
+        //Si no tiene títulos, proceder con la eliminación
+        $tenista->delete();
+        return redirect()->route('tenistas.index')
+            ->with('success', 'Tenista eliminado correctamente.');
     }
 }

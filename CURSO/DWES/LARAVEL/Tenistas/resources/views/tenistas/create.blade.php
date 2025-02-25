@@ -1,8 +1,8 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 dark:text-white
-leading-tight">
-            Crear una nueva tarea
+leading-tight" style="text-align: center">
+            Crear un nuevo Tenista
         </h2>
     </x-slot>
     <!-- definimos el contenido a renderizar ( no hace falta poner slot

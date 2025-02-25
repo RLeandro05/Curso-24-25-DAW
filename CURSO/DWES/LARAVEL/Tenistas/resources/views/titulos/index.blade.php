@@ -9,7 +9,7 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white shadow-xl sm:rounded-lg">
                 <!-- Tarjeta de Crear Título -->
-                <div class="p-6 bg-green-100 rounded-lg shadow-md text-center mb-4">
+                <div class="p-6 bg-blue-100 rounded-lg shadow-md text-center mb-4">
                     <a href="{{ route('titulos.create') }}"
                         class="mt-2 inline-block px-4 py-2 bg-green-600 text-white rounded-md hover:bg-green-800">
                         Crear Título
@@ -40,7 +40,7 @@
                                     <td class="px-6 py-4">{{ $titulo->created_at->format('d/m/Y H:i:s') }}</td>
                                     <td class="px-6 py-4 flex space-x-2">
                                         <a href="{{ route('titulos.edit', ['anno' => $titulo->anno, 'tenista_id' => $titulo->tenista_id, 'torneo_id' => $titulo->torneo_id]) }}"
-                                            class="text-orange-600 hover:underline">
+                                            class="text-blue-600 hover:underline">
                                             Editar
                                         </a>
                                         <form
@@ -72,10 +72,20 @@
 
             <!-- Botón de Volver -->
             <div class="mt-6">
-                <a href="{{ route('index') }}" class="text-green-600 hover:underline">
-                    Volver a página principal
+                <a href="{{ route('index') }}" class="mt-2 inline-block px-4 py-2 bg-gray-600 text-white rounded-md hover:bg-gray-800">
+                    Inicio
                 </a>
             </div>
+
+            @if (session('error'))
+                    <div class="p-4 mb-4 text-sm text-red-700 bg-red-100 rounded-lg" role="alert">
+                        {{ session('error') }}
+                    </div>
+            @else
+                <div class="p-4 mb-4 text-sm text-red-700 bg-red-100 rounded-lg" role="alert">
+                    {{ session('success') }}
+                </div>
+            @endif
         </div>
     </div>
 </x-app-layout>

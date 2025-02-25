@@ -43,7 +43,7 @@
 
     <!-- Botón de Enviar -->
     <div class="text-center">
-        <button type="submit" class="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-800">
+        <button type="submit" class="text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800" style="margin-bottom: 1em; text-align: left;">
             {{ $submitButtonText }}
         </button>
     </div>
