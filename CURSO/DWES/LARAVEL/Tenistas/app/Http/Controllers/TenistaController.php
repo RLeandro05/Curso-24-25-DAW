@@ -54,8 +54,15 @@ class TenistaController extends Controller
      */
     public function store(TenistaRequest $request): RedirectResponse
     {
-        Tenista::create($request->validated());//Validamos
-        return redirect()->route('tenistas.index');
+        $tenista = Tenista::create($request->validated()); //Validamos
+
+        if ($tenista) {
+            return redirect()->route('tenistas.index')
+                ->with('success', 'Seha añadido correctamente el tenista.');
+        }
+
+        return redirect()->route('tenistas.index')
+            ->with('error', 'No se puede añadir el tenista.');
     }
 
 
@@ -78,8 +85,6 @@ class TenistaController extends Controller
             'actionUrl' => route('tenistas.update', $tenista),
             'sumbitButtonText' => 'Actualizar tenista',
         ]);
-
-
     }
 
     /**

@@ -44,8 +44,13 @@ class TitulosController extends Controller
      */
     public function store(TitulosRequest $request): RedirectResponse
     {
-        Titulos::create($request->validated()); // Validamos y guardamos el título
-        return redirect()->route('titulos.index')->with('success', 'Título añadido correctamente.');
+        $titulo = Titulos::create($request->validated()); // Validamos y guardamos el título
+    
+        if ($titulo) {
+            return redirect()->route('titulos.index')->with('success', 'Título añadido correctamente.');
+        }
+
+        return redirect()->route('titulos.index')->with('error', 'El título no ha sido añadido correctamente.');
     }
 
     /**

@@ -1,7 +1,7 @@
 <form action="{{$actionUrl}}" method="POST" class="mt-6 max-w-lg mx-auto">
     @csrf
     @method($method)
-        
+        <br>
     <div class="mb-5">
         <label for="nombre" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nombre</label>
         <input type="text" name="nombre" value="{{old('nombre', $tenista->nombre)}}" placeholder="Escribe el nombre" id="name"
@@ -46,8 +46,14 @@
     </div>
 
     {{-- Esto mostrará los datos enviados en la página --}}
+<<<<<<< HEAD
     <!--@dump(request()->all())-->
     <button type="submit"
         class="text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800" style="margin-bottom: 1em;">{{$sumbitButtonText}}
     </button>
+=======
+    {{-- @dump(request()->all()) --}}
+    <button type="submit"
+        class="text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800" style="margin-bottom: 1em">{{$sumbitButtonText}}</button>
+>>>>>>> 779b74e3815e2692cc2e7e8811892a8cdfc44521
 </form>

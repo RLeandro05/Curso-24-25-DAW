@@ -18,49 +18,59 @@ Route::get('/pruebaLayout', function () {
     ]);
 });
 
+
+
 /* Ruta para el principio */
-Route::get('/index', function () {
+Route::get('/tenistasProfesionales/estadisticasPepi', function () {
     return view('index');
 })->name('index');
+
+
+
 
 /* Tenistas */
 
 //Ruta para listar tenistas
-Route::get('/tenistas',[TenistaController::class,'index'])->name('tenistas.index');
+Route::get('/tenistasProfesionales/estadisticasPepi/tenistas',[TenistaController::class,'index'])->name('tenistas.index');
 
 //Ruta para ver los títulos de un tenista
-Route::get('/tenistas/{tenista}/titulos', [TenistaController::class, 'titulosTenista'])->name('tenistas.titulos');
+Route::get('/tenistasProfesionales/estadisticasPepi/tenistas/{tenista}/titulos', [TenistaController::class, 'titulosTenista'])->name('tenistas.titulos');
 
 //Ruta para crear un tenista
-Route::get('/tenistas/create',[TenistaController::class,'create'])->name('tenistas.create');
-Route::post('/tenistas/store',[TenistaController::class,'store'])->name('tenistas.store');
+Route::get('/tenistasProfesionales/estadisticasPepi/tenistas/create',[TenistaController::class,'create'])->name('tenistas.create');
+Route::post('/tenistasProfesionales/estadisticasPepi/tenistas/store',[TenistaController::class,'store'])->name('tenistas.store');
 
 //Rutas para editar y actualizar un tenista
-Route::get('tenistas/{tenista}/edit',[TenistaController::class,'edit'])->name('tenistas.edit');
-Route::put('tenistas/{tenista}',[TenistaController::class,'update'])->name('tenistas.update');
+Route::get('/tenistasProfesionales/estadisticasPepitenistas/{tenista}/edit',[TenistaController::class,'edit'])->name('tenistas.edit');
+Route::put('/tenistasProfesionales/estadisticasPepitenistas/{tenista}',[TenistaController::class,'update'])->name('tenistas.update');
 
 //Ruta para borrar un tenista
-Route::delete('tenistas/{tenista}',[TenistaController::class,'destroy'])->name('tenistas.destroy');
+Route::delete('/tenistasProfesionales/estadisticasPepitenistas/{tenista}',[TenistaController::class,'destroy'])->name('tenistas.destroy');
 
-/* Fin Tenistas */
+
+
+
 
 /* Torneos */
 
-Route::get('/torneos', [TorneoController::class, 'index'])->name('torneos.index'); // Listar torneos
-Route::get('/torneos/create', [TorneoController::class, 'create'])->name('torneos.create'); // Formulario de creación
-Route::post('/torneos/store', [TorneoController::class, 'store'])->name('torneos.store'); // Guardar nuevo torneo
-Route::get('/torneos/{torneo}', [TorneoController::class, 'show'])->name('torneos.show'); // Ver detalles (opcional)
-Route::get('/torneos/{torneo}/edit', [TorneoController::class, 'edit'])->name('torneos.edit'); // Formulario de edición
-Route::put('/torneos/{torneo}', [TorneoController::class, 'update'])->name('torneos.update'); // Actualizar torneo
-Route::delete('/torneos/{torneo}', [TorneoController::class, 'destroy'])->name('torneos.destroy'); // Eliminar torneo
+Route::get('/tenistasProfesionales/estadisticasPepi/torneos', [TorneoController::class, 'index'])->name('torneos.index'); // Listar torneos
+Route::get('/tenistasProfesionales/estadisticasPepi/torneos/create', [TorneoController::class, 'create'])->name('torneos.create'); // Formulario de creación
+Route::post('/tenistasProfesionales/estadisticasPepi/torneos/store', [TorneoController::class, 'store'])->name('torneos.store'); // Guardar nuevo torneo
+Route::get('/tenistasProfesionales/estadisticasPepi/torneos/{torneo}', [TorneoController::class, 'show'])->name('torneos.show'); // Ver detalles (opcional)
+Route::get('/tenistasProfesionales/estadisticasPepi/torneos/{torneo}/edit', [TorneoController::class, 'edit'])->name('torneos.edit'); // Formulario de edición
+Route::put('/tenistasProfesionales/estadisticasPepi/torneos/{torneo}', [TorneoController::class, 'update'])->name('torneos.update'); // Actualizar torneo
+Route::delete('/tenistasProfesionales/estadisticasPepi/torneos/{torneo}', [TorneoController::class, 'destroy'])->name('torneos.destroy'); // Eliminar torneo
 
-/* Fin Torneos */
+
+
+
+
 
 /* Rutas para Títulos */
-Route::get('/titulos', [TitulosController::class, 'index'])->name('titulos.index');
-Route::get('/titulos/create', [TitulosController::class, 'create'])->name('titulos.create');
-Route::post('/titulos/store', [TitulosController::class, 'store'])->name('titulos.store');
-Route::get('/titulos/{titulo}', [TitulosController::class, 'show'])->name('titulos.show');
-Route::get('/titulos/{anno}/{tenista_id}/{torneo_id}/edit', [TitulosController::class, 'edit'])->name('titulos.edit');
-Route::put('/titulos/{anno}/{tenista_id}/{torneo_id}', [TitulosController::class, 'update'])->name('titulos.update');
-Route::delete('/titulos/{anno}/{tenista_id}/{torneo_id}', [TitulosController::class, 'destroy'])->name('titulos.destroy');
+Route::get('/tenistasProfesionales/estadisticasPepi/titulos', [TitulosController::class, 'index'])->name('titulos.index');
+Route::get('/tenistasProfesionales/estadisticasPepi/titulos/create', [TitulosController::class, 'create'])->name('titulos.create');
+Route::post('/tenistasProfesionales/estadisticasPepi/titulos/store', [TitulosController::class, 'store'])->name('titulos.store');
+Route::get('/tenistasProfesionales/estadisticasPepi/titulos/{titulo}', [TitulosController::class, 'show'])->name('titulos.show');
+Route::get('/tenistasProfesionales/estadisticasPepi/titulos/{anno}/{tenista_id}/{torneo_id}/edit', [TitulosController::class, 'edit'])->name('titulos.edit');
+Route::put('/tenistasProfesionales/estadisticasPepi/titulos/{anno}/{tenista_id}/{torneo_id}', [TitulosController::class, 'update'])->name('titulos.update');
+Route::delete('/tenistasProfesionales/estadisticasPepi/titulos/{anno}/{tenista_id}/{torneo_id}', [TitulosController::class, 'destroy'])->name('titulos.destroy');

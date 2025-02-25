@@ -55,7 +55,11 @@
 
         <!-- Botón Crear Título -->
         <button type="submit"
+<<<<<<< HEAD
             class="w-full sm:w-auto px-5 py-2.5 bg-green-700 text-white font-medium rounded-lg hover:bg-green-800 focus:ring-4 focus:ring-green-300" style="margin-bottom: 1em;">
+=======
+            class="w-full sm:w-auto px-5 py-2.5 bg-green-700 text-white font-medium rounded-lg hover:bg-green-800 focus:ring-4 focus:ring-green-300" style="margin-bottom: 1em">
+>>>>>>> 779b74e3815e2692cc2e7e8811892a8cdfc44521
             {{ $submitButtonText }}
         </button>
     </form>

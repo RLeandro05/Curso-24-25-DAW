@@ -57,7 +57,11 @@ class TorneoController extends Controller
 
         Torneo::create($validated);
 
-        return redirect()->route('torneos.index')->with('success', 'Torneo creado correctamente.');
+        if ($validated) {
+            return redirect()->route('torneos.index')->with('success', 'Torneo creado correctamente.');
+        }
+
+        return redirect()->route('torneos.index')->with('error', 'El torneo no ha sido creado correctamente.');
     }
 
     /**
