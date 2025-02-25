@@ -42,8 +42,8 @@
     </div>
 
     <!-- Botón de Enviar -->
-    <div class="text-center">
-        <button type="submit" class="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-800">
+    <div>
+        <button type="submit" class="px-4 py-2 bg-green-600 text-white rounded-md hover:bg-green-800">
             {{ $submitButtonText }}
         </button>
     </div>

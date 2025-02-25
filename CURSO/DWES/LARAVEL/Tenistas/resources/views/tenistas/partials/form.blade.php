@@ -1,4 +1,4 @@
-<form action="{{$actionUrl}}" method="POST" class="max-w-sm mx-auto">
+<form action="{{$actionUrl}}" method="POST" class="mt-6 max-w-lg mx-auto">
     @csrf
     @method($method)
         
@@ -44,8 +44,10 @@
             <span class="text-red-500 text-sm"> {{$message}}</span>
         @enderror
     </div>
+
     {{-- Esto mostrará los datos enviados en la página --}}
-    @dump(request()->all())
+    <!--@dump(request()->all())-->
     <button type="submit"
-        class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">{{$sumbitButtonText}}</button>
+        class="text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800" style="margin-bottom: 1em;">{{$sumbitButtonText}}
+    </button>
 </form>

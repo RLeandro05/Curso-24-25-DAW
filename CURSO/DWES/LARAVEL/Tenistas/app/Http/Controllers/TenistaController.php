@@ -95,10 +95,17 @@ class TenistaController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(TenistaRequest $request, Tenista $tenista): RedirectResponse
-    {
-        $tenista->delete();
-        return redirect()->route('tenistas.index');
-
+    public function destroy(Tenista $tenista): RedirectResponse
+{
+    //Verificar si el tenista tiene títulos relacionados
+    if ($tenista->titulos()->exists()) {
+        return redirect()->route('tenistas.index')
+            ->with('error', 'No se puede eliminar el tenista porque tiene títulos relacionados.');
     }
+
+    //Si no tiene títulos, proceder con la eliminación
+    $tenista->delete();
+    return redirect()->route('tenistas.index')
+        ->with('success', 'Tenista eliminado correctamente.');
+}
 }

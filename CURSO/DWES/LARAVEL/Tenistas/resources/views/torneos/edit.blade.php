@@ -1,8 +1,8 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 dark:text-white
-leading-tight">
-            Editar un torneo
+leading-tight" style="text-align: center;">
+            Editar el Torneo '{{ $torneo->nombre }}'
         </h2>
     </x-slot>
     <!-- definimos el contenido a renderizar ( no hace falta poner slot
